@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言JavaScript（通常缩写为JS）是一种高级的、解释型的编程语言。JavaScript是一门基于原型、函数先行的语言，是一门多范式的语言，它支持面向对象编程，命令式编程，以及函数式编程。它提供语法来操控文本、数组、日期以及正则表达式等，不支持I&#x2F;O，比如网络、存储和图形等，但这些都可以由它的宿主环境提供支持。它已经由ECMA（欧洲电脑制造商协会）通过ECMAScript实现语言的标准化。它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Javascript  学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/07/31/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言JavaScript（通常缩写为JS）是一种高级的、解释型的编程语言。JavaScript是一门基于原型、函数先行的语言，是一门多范式的语言，它支持面向对象编程，命令式编程，以及函数式编程。它提供语法来操控文本、数组、日期以及正则表达式等，不支持I&#x2F;O，比如网络、存储和图形等，但这些都可以由它的宿主环境提供支持。它已经由ECMA（欧洲电脑制造商协会）通过ECMAScript实现语言的标准化。它">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-31T09:22:01.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:13.701Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/07/31/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】Javascript  学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/07/31/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Javascript  学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-31 17:22:01" itemprop="dateCreated datePublished" datetime="2020-07-31T17:22:01+08:00">2020-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS-JS/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML/CSS/JS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript（通常缩写为JS）是一种高级的、解释型的编程语言。JavaScript是一门基于原型、函数先行的语言，是一门多范式的语言，它支持面向对象编程，命令式编程，以及函数式编程。它提供语法来操控文本、数组、日期以及正则表达式等，不支持I/O，比如网络、存储和图形等，但这些都可以由它的宿主环境提供支持。它已经由ECMA（欧洲电脑制造商协会）通过ECMAScript实现语言的标准化。它被世界上的绝大多数网站所使用，也被世界主流浏览器（Chrome、IE、Firefox、Safari、Opera）支持。（<a href="https://zh.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">维基百科</a>）</p>
+<a id="more"></a>
+
+<h2 id="书写位置"><a href="#书写位置" class="headerlink" title="书写位置"></a>书写位置</h2><h3 id="script标签内"><a href="#script标签内" class="headerlink" title="script标签内"></a>script标签内</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引入-js文件"><a href="#引入-js文件" class="headerlink" title="引入.js文件"></a>引入.js文件</h3><blockquote>
+<p><code>&lt;&lt;src&gt;&gt;</code>：路径.js文件路径</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;script src=<span class="string">"&lt;&lt;src&gt;&gt;"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="当触发事件时执行指定函数"><a href="#当触发事件时执行指定函数" class="headerlink" title="当触发事件时执行指定函数"></a>当触发事件时执行指定函数</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=<span class="string">"button"</span> onclick=<span class="string">""</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
+<li>和java语法完全相同</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 多行注释 */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="打印字符串"><a href="#打印字符串" class="headerlink" title="打印字符串"></a>打印字符串</h2><h3 id="打印到弹窗"><a href="#打印到弹窗" class="headerlink" title="打印到弹窗"></a>打印到弹窗</h3><blockquote>
+<p><code>&lt;&lt;variable&gt;&gt;</code>：变量</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&lt;&lt;variable&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="打印到控制台"><a href="#打印到控制台" class="headerlink" title="打印到控制台"></a>打印到控制台</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(&lt;&lt;variable&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="在控制台打印对象结构"><a href="#在控制台打印对象结构" class="headerlink" title="在控制台打印对象结构"></a>在控制台打印对象结构</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.dir(&lt;&lt;variable&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="直接打印到网页上"><a href="#直接打印到网页上" class="headerlink" title="直接打印到网页上"></a>直接打印到网页上</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(&lt;&lt;variable&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><ul>
+<li>var可以声明任何类型变量，一个变量一可以赋值任何数据类型</li>
+</ul>
+<blockquote>
+<p><code>&lt;&lt;name&gt;&gt;</code>变量名</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> &lt;&lt;name&gt;&gt; = &lt;&lt;variable&gt;&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量（ES6新特性）"><a href="#变量（ES6新特性）" class="headerlink" title="变量（ES6新特性）"></a>变量（ES6新特性）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &lt;&lt;name&gt;&gt; = &lt;&lt;variable&gt;&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常量（ES6新特性）"><a href="#常量（ES6新特性）" class="headerlink" title="常量（ES6新特性）"></a>常量（ES6新特性）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;&lt;name&gt;&gt; = &lt;&lt;variable&gt;&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="var和let、const-的区别"><a href="#var和let、const-的区别" class="headerlink" title="var和let、const 的区别"></a>var和let、const 的区别</h3><ul>
+<li>let和const都是es5，es6新版本的js语言规范出来的定义，在这以前定义一个变量只能用var。let和const都是为了弥补var的一些缺陷而新设计出来的。</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>基本数据类型<br>String Number Boolean Null Undefined</li>
+<li>引用数据类型<br>Object</li>
+</ul>
+<h3 id="检查当前数据类型"><a href="#检查当前数据类型" class="headerlink" title="检查当前数据类型"></a>检查当前数据类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span>(&lt;&lt;variable&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="string字符串"><a href="#string字符串" class="headerlink" title="string字符串"></a>string字符串</h3><ul>
+<li><ul>
+<li>在JS中字符串需要使用引号引起来</li>
+</ul>
+</li>
+<li>使用双引号或单引号都可以，但是不要混着用</li>
+<li>引号不能嵌套，双引号不能放单引号，单引号不能放双引号</li>
+<li>使用typeof检查字符串时，会返回string</li>
+</ul>
+<h3 id="Number数值型"><a href="#Number数值型" class="headerlink" title="Number数值型"></a>Number数值型</h3><ul>
+<li>在JS中所有的数值都是Number类型</li>
+<li>包括整数和浮点数</li>
+<li>使用typeof检查数值时，会返回number</li>
+</ul>
+<h4 id="最值"><a href="#最值" class="headerlink" title="最值"></a>最值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.MAX_VALUE</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果使用Number表示的数字超过了最大值，则会返回一个<code>Infinity</code> （表示正无穷）</p>
+</li>
+<li><p>如果使用Number表示的数字低于了最小值，则会返回一个<code>-Infinity</code> （表示负无穷）</p>
+</li>
+<li><p>使用typeof检查Infinity也会返回Number</p>
+</li>
+<li><p>在JS中整数的运算基本可以保证精确</p>
+</li>
+<li><p>如果使用JS进行浮点运算，可能得到一个不精确的结果，所以千万不要使用JS进行对精确度要求比较高的运算</p>
+</li>
+</ul>
+<h3 id="boolean类型"><a href="#boolean类型" class="headerlink" title="boolean类型"></a>boolean类型</h3><ul>
+<li>布尔值只有两个，主要用来做逻辑判断</li>
+<li><code>true</code>表示真，<code>false</code>表示假</li>
+<li>使用typeof检查一个布尔值时，会返回boolean</li>
+</ul>
+<h3 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h3><ul>
+<li>Null（空值）类型的值专门用来表示一个为空的对象</li>
+<li>使用typeof检查一个null值时，会返回object</li>
+</ul>
+<h3 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h3><ul>
+<li>Undefined（未定义）类型的值只有一个就是undefined</li>
+<li>当声明一个变量，但是并不给变量赋值时，它的值就是undefined</li>
+<li>使用typeof检查一个undefined值时，会返回undefined</li>
+</ul>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><ul>
+<li>指将一个数据类型强制转换为其他的数据类型</li>
+<li>类型转换主要是指，将其他的数据类型，转化为String、Number、Boolean</li>
+</ul>
+<h4 id="将其他数据类型转换为String"><a href="#将其他数据类型转换为String" class="headerlink" title="将其他数据类型转换为String"></a>将其他数据类型转换为String</h4><h5 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h5><ul>
+<li>调用被转换数据类型的toString()方法</li>
+<li>该方法不会影响到原变量，他会将转换的结果返回</li>
+<li>但是注意：null和undefined这两个值没有toString()方法，如果调用他们的方法，会报错</li>
+</ul>
+<h5 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h5><ul>
+<li>调用String()函数，并将被转换的数据作为参数传递给函数</li>
+<li>使用String()函数做强制类型转换时，</li>
+<li>对于Number和Boolean实际上就是调用的toString()方法</li>
+<li>但是对于null和undefined，就不会调用toString()方法</li>
+<li>它会将null直接转换为”null”，将undefined直接转换为”undefined”</li>
+</ul>
+<h4 id="将其他的数据类型转换为Number"><a href="#将其他的数据类型转换为Number" class="headerlink" title="将其他的数据类型转换为Number"></a>将其他的数据类型转换为Number</h4><h5 id="Number"><a href="#Number" class="headerlink" title="Number()"></a>Number()</h5><h6 id="字符串转换为数字"><a href="#字符串转换为数字" class="headerlink" title="字符串转换为数字"></a>字符串转换为数字</h6><ul>
+<li>如果是纯数字的字符串，则直接将其转化为数字</li>
+<li>如果字符串中有非数字的内容，则转换为NaN</li>
+<li>如果字符串是一个空串或者是一个全是空格的字符串，则转换为0</li>
+</ul>
+<h6 id="布尔值转换为数字"><a href="#布尔值转换为数字" class="headerlink" title="布尔值转换为数字"></a>布尔值转换为数字</h6><ul>
+<li>true 转成 1</li>
+<li>false 转成 0</li>
+</ul>
+<h6 id="Null转换为数字"><a href="#Null转换为数字" class="headerlink" title="Null转换为数字"></a>Null转换为数字</h6><ul>
+<li>结果为0</li>
+</ul>
+<h6 id="undefined转换为数字"><a href="#undefined转换为数字" class="headerlink" title="undefined转换为数字"></a>undefined转换为数字</h6><ul>
+<li>结果为NaN</li>
+</ul>
+<h5 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt()"></a>parseInt()</h5><ul>
+<li><p>parseInt()函数：把一个字符串转换为一个整数</p>
+</li>
+<li><p>parseInt()可以将一个字符串中的有效的整数内容取出来</p>
+</li>
+<li><p>parseFloat()函数：把一个字符串转换为一个浮点数</p>
+</li>
+<li><p>parseFloat()作用和parseInt()类似，不同的是它可以获取有效的小数</p>
+</li>
+<li><p>如果对非String使用parseInt()或parseFloat()，它会先将其转换为String，然后再操作</p>
+</li>
+</ul>
+<h4 id="其他的数据类型转换为Boolean"><a href="#其他的数据类型转换为Boolean" class="headerlink" title="其他的数据类型转换为Boolean"></a>其他的数据类型转换为Boolean</h4><ul>
+<li>使用Boolean()函数</li>
+<li>数字 转换为 布尔值， 除了0和NaN，其余的都是true</li>
+<li>字符串转换为布尔值，除了空串，其余的都是true</li>
+<li>null和undefind都会转换为false</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>在js中，如果需要使用16进制的数字，则需要以0x开头</li>
+<li>如果需要表示8进制数字，则需要以0开头</li>
+<li>如果需要表示2进制的数字，则需要以0b开头</li>
+<li>但不是所有浏览器都支持</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><blockquote>
+<p>算术运算符： +，-，*，/，%，++，–<br>赋值运算符： =，+=，-=，*=，/=，%=<br>比较运算符： ==，!=，&gt;，&gt;=，&lt;，&lt;=<br>位运算符： &amp; ， |<br>逻辑运算符： &amp;&amp; ，||   ( false &amp;&amp; 表达式, true || 表达式 )<br>前置逻辑运算符： ! (not)<br>三元运算符： 表达式 ? 表达式 : 表达式</p>
+</blockquote>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>JS中的数组可以存储任意类型的数据</li>
+<li>JS中的数组长度是可以被任意改变的</li>
+</ul>
+<h3 id="声明数组"><a href="#声明数组" class="headerlink" title="声明数组"></a>声明数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">"Hello"</span>, <span class="number">111</span>, <span class="literal">false</span>, <span class="keyword">new</span> <span class="built_in">Object</span>()];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"Hello"</span>, <span class="number">111</span>, <span class="literal">false</span>, <span class="keyword">new</span> <span class="built_in">Object</span>());</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="对象的分类"><a href="#对象的分类" class="headerlink" title="对象的分类"></a>对象的分类</h3><h4 id="内建对象"><a href="#内建对象" class="headerlink" title="内建对象"></a>内建对象</h4><ul>
+<li>由ES标准定义的对象，在任何的ES的实现中都可以使用</li>
+<li>比如：Math String Number Boolean Function Object</li>
+</ul>
+<h4 id="宿主对象"><a href="#宿主对象" class="headerlink" title="宿主对象"></a>宿主对象</h4><ul>
+<li>由JS的运行环境提供的对象，目的主要指由浏览器提供的对象</li>
+<li>比如BOM DOM</li>
+</ul>
+<h4 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h4><ul>
+<li>由开发人员自己创建的对象</li>
+</ul>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><h4 id="创建对象时定义属性"><a href="#创建对象时定义属性" class="headerlink" title="创建对象时定义属性"></a>创建对象时定义属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="string">"name"</span>:<span class="string">"zhangsan"</span>, <span class="string">"sex"</span>:<span class="string">"male"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"zhangsan"</span>, <span class="attr">sex</span>:<span class="string">"male"</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建对象后定义属性"><a href="#创建对象后定义属性" class="headerlink" title="创建对象后定义属性"></a>创建对象后定义属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> object();</span><br><span class="line">obj.name = <span class="string">"zhangsan"</span>;</span><br><span class="line">obj.sex = <span class="string">"male"</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="通过构造函数创建对象"><a href="#通过构造函数创建对象" class="headerlink" title="通过构造函数创建对象"></a>通过构造函数创建对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">name, sex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = fun(<span class="string">"zhangsan"</span>, <span class="string">"male"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li>在对象中保存的值称为属性</li>
+</ul>
+<h4 id="向对象添加属性"><a href="#向对象添加属性" class="headerlink" title="向对象添加属性"></a>向对象添加属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象.属性名 = 属性值;</span><br></pre></td></tr></table></figure>
+
+<h4 id="读取对象中的属性"><a href="#读取对象中的属性" class="headerlink" title="读取对象中的属性"></a>读取对象中的属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象.属性名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果读取对象中没有的属性值，不会报错而是会返回undefined</li>
+</ul>
+<h4 id="修改对象的属性值"><a href="#修改对象的属性值" class="headerlink" title="修改对象的属性值"></a>修改对象的属性值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象.属性名 = 属性值;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除对象的属性"><a href="#删除对象的属性" class="headerlink" title="删除对象的属性"></a>删除对象的属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> 对象.属性名</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性名"><a href="#属性名" class="headerlink" title="属性名"></a>属性名</h3><ul>
+<li>对象的属性名不强制要求遵守标识符的规范，什么乱七八糟的名字都可以使用</li>
+<li>但是我们使用时还是尽量按照标识符的规范去做</li>
+<li>如果要使用特殊的属性名，不能采用.的方式来操作，需要使用另一种方式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象[<span class="string">'属性名'</span>] = 属性值;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>读取时也需要采用这种方式</li>
+<li>使用[]这种形式去操作属性，更加的灵活，</li>
+<li>在[]中可以直接传递一个变量，这样变量值是多少就会读取那个属性</li>
+</ul>
+<h3 id="属性值"><a href="#属性值" class="headerlink" title="属性值"></a>属性值</h3><ul>
+<li>JS对象的属性值，可以是任意的数据类型，甚至也可以是一个对象</li>
+</ul>
+<h3 id="in运算符"><a href="#in运算符" class="headerlink" title="in运算符"></a>in运算符</h3><ul>
+<li>通过该运算符，可以检查一个对象中是否含有指定的属性，如果有则返回true，没有则返回false</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"属性名"</span> <span class="keyword">in</span> 对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h3><ul>
+<li>在构造函数的对象通过prototype关键字添加公有属性，通过构造函数创建的对象也能访问到这个属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> point(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过prototype关键字在构造函数添加公有属性z</span></span><br><span class="line">point.prototype.z = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 虽然对象a中并没有属性z</span></span><br><span class="line"><span class="built_in">console</span>.dir(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 但此时对象a也能访问构造函数的公有属性</span></span><br><span class="line"><span class="built_in">console</span>.log(a.z);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.__proto__==point.prototype;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><p>JS中的变量都是保存到栈内存中的，</p>
+</li>
+<li><p>基本数据类型的值直接在栈内存中存储</p>
+</li>
+<li><p>值与值之间是独立存在，修改一个变量不会影响其他的变量</p>
+</li>
+<li><p>对象是保存到堆内存中的，每创建一个新的对象，就会在堆内存中开辟出一个新的空间</p>
+</li>
+<li><p>而变量保存的是对象的内存地址（对象的引用），如果两个变量保存的是用一个对象的引用，</p>
+</li>
+<li><p>当一个通过一个变量修改属性时，另一个也会受到影响</p>
+</li>
+<li><p>当比较两个基本数据类型的值时，就是比较值。</p>
+</li>
+<li><p>而比较两个引用数据类型时，它是比较的对象的内存地址，</p>
+</li>
+<li><p>如果两个对象是一模一样的，但是地址不同，它也会返回false</p>
+</li>
+<li><p>使用对象字面量，可以在创建对象时，直接指定对象中的属性</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;属性名:属性值, 属性名:属性值……&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>属性名和属性值时一组一组的名值对结构，</li>
+<li>名和值之间使用<code>:</code>连接，多个名值对之间使用<code>,</code>隔开，如果一个属性之后没有其他属性了，就不要写<code>,</code></li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li><p>函数也是一个对象</p>
+</li>
+<li><p>函数中可以封装一些功能（代码），在需要时可以执行这些功能（代码）</p>
+</li>
+<li><p>函数中可以保存一些代码在需要的时候调用</p>
+</li>
+<li><p>使用typeof检查一个函数对象时，会返回function</p>
+</li>
+<li><p>我们在实际开发中很少使用构造函数来创建一个函数对象</p>
+</li>
+<li><p>创建一个函数，可以将要封装的代码以字符串的形式传递给构造函数</p>
+</li>
+<li><p>封装到函数中的代码不会立即执行，函数中的代码会在函数调用的时候执行</p>
+</li>
+</ul>
+<h3 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h3><h4 id="使用函数声明来创建一个函数"><a href="#使用函数声明来创建一个函数" class="headerlink" title="使用函数声明来创建一个函数"></a>使用函数声明来创建一个函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">参数列表</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用函数表达式来创建一个函数"><a href="#使用函数表达式来创建一个函数" class="headerlink" title="使用函数表达式来创建一个函数"></a>使用函数表达式来创建一个函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 函数名 = <span class="function"><span class="keyword">function</span> (<span class="params">参数列表</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 函数名 = <span class="function">(<span class="params">参数列表</span>)=&gt;</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="底层创建函数"><a href="#底层创建函数" class="headerlink" title="底层创建函数"></a>底层创建函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 函数名 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'return a+b'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="匿名函数及自调用"><a href="#匿名函数及自调用" class="headerlink" title="匿名函数及自调用"></a>匿名函数及自调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">参数列表</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)(参数列表);</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">参数列表</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;(参数列表));</span><br></pre></td></tr></table></figure>
+
+<h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>当调用函数时，函数中封装的代码会按照顺序执行</li>
+</ul>
+<h3 id="预加载函数"><a href="#预加载函数" class="headerlink" title="预加载函数"></a>预加载函数</h3><ul>
+<li>function函数会在浏览器加载完整网页后立即执行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> point = <span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">point</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(x,y) &#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">    toStr() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x,<span class="keyword">this</span>.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用构造函数创建对象"><a href="#使用构造函数创建对象" class="headerlink" title="使用构造函数创建对象"></a>使用构造函数创建对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 对象名 = <span class="keyword">new</span> point(<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他-2"><a href="#其他-2" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><p>在调用函数时，可以在()中指定实参(实际参数)，实际参数会赋值给函数中对应的形参</p>
+</li>
+<li><p>调用函数时解析器不会检查实参的类型，所以要注意，是否有可能会接收到非法的参数，如果有可能则对参数进行类型的检查</p>
+</li>
+<li><p>函数的实参可以是任意的数据类型</p>
+</li>
+<li><p>调用函数时，解析器也不会检查实参的数量，多余实参不会被赋值</p>
+</li>
+<li><p>如果实参的数量少于形参的数量，则没有对应实参的形参将是undefined</p>
+</li>
+</ul>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>可以使用return来设置函数的返回值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> 值;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>return后的值将会作为函数的执行结果返回，可以定义一个变量来接收该结果</li>
+<li>在函数中return后的语句都不会执行</li>
+</ul>
+<h2 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h2><h3 id="if判断语句"><a href="#if判断语句" class="headerlink" title="if判断语句"></a>if判断语句</h3><ul>
+<li>和java语法完全相同</li>
+</ul>
+<blockquote>
+<p><code>&lt;&lt;boolean&gt;&gt;</code>：结果为布尔值的语句</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (&lt;&lt;boolean&gt;&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="seitch判断语句"><a href="#seitch判断语句" class="headerlink" title="seitch判断语句"></a>seitch判断语句</h3><ul>
+<li>和java语法完全相同</li>
+</ul>
+<blockquote>
+<p><code>&lt;&lt;num&gt;&gt;</code>：数值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (&lt;&lt;variable&gt;&gt;) &#123;</span><br><span class="line">    <span class="keyword">case</span> &lt;&lt;num&gt;&gt; :</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span> :</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><h3 id="while循环语句"><a href="#while循环语句" class="headerlink" title="while循环语句"></a>while循环语句</h3><ul>
+<li>和java语法完全相同</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (&lt;&lt;boolean&gt;&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for循环语句"><a href="#for循环语句" class="headerlink" title="for循环语句"></a>for循环语句</h3><ul>
+<li>和java中的for语句相同</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; &lt;&lt;num&gt;&gt;; i++) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for-in循环语句"><a href="#for-in循环语句" class="headerlink" title="for in循环语句"></a>for in循环语句</h3><ul>
+<li>遍历指定数组或对象中的属性</li>
+<li>和java中的for each语句类似</li>
+<li>遍历数组时会跳过为定义的值，所以不适合遍历数组，主要用于遍历对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> o <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for-of循环语句"><a href="#for-of循环语句" class="headerlink" title="for of循环语句"></a>for of循环语句</h3><ul>
+<li>遍历指定数组</li>
+<li>和java中的for each语句类似</li>
+<li>ES6新特性</li>
+<li>它的底层原理和普通for循环相同，理论上就是一个简写的普通for循环，所以它从根本上就不能遍历对象中的属性，和for in有本质上的区别</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> o <span class="keyword">of</span> obj) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for-each循环语句"><a href="#for-each循环语句" class="headerlink" title="for each循环语句"></a>for each循环语句</h3><ul>
+<li>遍历指定数组或对象中的属性</li>
+<li>和java中的for each语句类似</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="浏览器对象模型（Bower-Object-Model）"><a href="#浏览器对象模型（Bower-Object-Model）" class="headerlink" title="浏览器对象模型（Bower Object Model）"></a>浏览器对象模型（Bower Object Model）</h2><h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><ul>
+<li><p>时间单位为毫秒</p>
+</li>
+<li><p>示例：在1秒后执行匿名函数</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clearTimeout(timer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><ul>
+<li><p>时间单位为毫秒</p>
+</li>
+<li><p>示例：每隔1秒执行一次匿名函数</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="取消计时器"><a href="#取消计时器" class="headerlink" title="取消计时器"></a>取消计时器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clearInterval(timer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><h4 id="弹出页面"><a href="#弹出页面" class="headerlink" title="弹出页面"></a>弹出页面</h4><blockquote>
+<p><code>URL</code>：链接<br><code>name</code>：窗口名<br><code>features</code>：窗口参数<br><code>features</code>：true为替换当前页面，false为新窗口打开。默认为false</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> w = <span class="built_in">window</span>.open(URL,name,features,features);</span><br></pre></td></tr></table></figure>
+
+<h4 id="关闭页面"><a href="#关闭页面" class="headerlink" title="关闭页面"></a>关闭页面</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w.window.close();</span><br></pre></td></tr></table></figure>
+
+<p>####向页面写入数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w.window.write(数据);</span><br></pre></td></tr></table></figure>
+
+<h2 id="文档对象模型（Document-Object-Model）"><a href="#文档对象模型（Document-Object-Model）" class="headerlink" title="文档对象模型（Document Object Model）"></a>文档对象模型（Document Object Model）</h2><ul>
+<li>DOM: Document Object Model，文档对象模型，其实就是JS专门为访问html元素提供的一套API。</li>
+</ul>
+<h3 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h3><ul>
+<li><code>document</code>是一个js对象，用于表示当前html网页。当浏览器加载完整个html网页后，会用document对象表示整个html网页</li>
+</ul>
+<h4 id="获取当前文档中的body元素"><a href="#获取当前文档中的body元素" class="headerlink" title="获取当前文档中的body元素"></a>获取当前文档中的body元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取当前元素的父元素"><a href="#获取当前元素的父元素" class="headerlink" title="获取当前元素的父元素"></a>获取当前元素的父元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.parentNode</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取当前元素的所有html内容"><a href="#获取当前元素的所有html内容" class="headerlink" title="获取当前元素的所有html内容"></a>获取当前元素的所有html内容</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.innerHTML</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取特定元素"><a href="#获取特定元素" class="headerlink" title="获取特定元素"></a>获取特定元素</h4><h5 id="通过id获取元素"><a href="#通过id获取元素" class="headerlink" title="通过id获取元素"></a>通过id获取元素</h5><ul>
+<li>返回指定id的元素对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="通过class获取元素"><a href="#通过class获取元素" class="headerlink" title="通过class获取元素"></a>通过class获取元素</h5><ul>
+<li>返回指定class的元素对象数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementByClass(<span class="string">""</span>)[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<h5 id="通过标签名获取元素"><a href="#通过标签名获取元素" class="headerlink" title="通过标签名获取元素"></a>通过标签名获取元素</h5><ul>
+<li>返回指定标签名的元素对象数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">""</span>)[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<h4 id="以query格式获取元素"><a href="#以query格式获取元素" class="headerlink" title="以query格式获取元素"></a>以query格式获取元素</h4><h5 id="通过id获取元素-1"><a href="#通过id获取元素-1" class="headerlink" title="通过id获取元素"></a>通过id获取元素</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"#a"</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="通过class获取元素-1"><a href="#通过class获取元素-1" class="headerlink" title="通过class获取元素"></a>通过class获取元素</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">".a"</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="通过标签名获取元素-1"><a href="#通过标签名获取元素-1" class="headerlink" title="通过标签名获取元素"></a>通过标签名获取元素</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"div"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置标签的内容"><a href="#设置标签的内容" class="headerlink" title="设置标签的内容"></a>设置标签的内容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">d.innerHTML = <span class="string">"文字内容"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取父元素"><a href="#获取父元素" class="headerlink" title="获取父元素"></a>获取父元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.getElementById(<span class="string">"d"</span>);</span><br><span class="line"><span class="keyword">var</span> parent = d.parentNode;</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取表示当前时间的字符串"><a href="#获取表示当前时间的字符串" class="headerlink" title="获取表示当前时间的字符串"></a>获取表示当前时间的字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleString();</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改CSS样式"><a href="#修改CSS样式" class="headerlink" title="修改CSS样式"></a>修改CSS样式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</span><br><span class="line">link.href = <span class="string">"css/*.css"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><ul>
+<li>增删改元素</li>
+</ul>
+<h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建一个新的div元素</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">d.innerHTML = <span class="string">"新创建的div"</span>;</span><br><span class="line"><span class="comment">//2.获取body元素</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">document</span>.body;</span><br><span class="line"><span class="comment">//3.通过父元素(body元素)添加子元素(div元素)</span></span><br><span class="line">b.appendChild(d);</span><br></pre></td></tr></table></figure>
+
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.获取要删除的元素(id为d)</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.getElementById(<span class="string">"d"</span>);</span><br><span class="line"><span class="comment">//2.获取id为d的元素的父元素</span></span><br><span class="line"><span class="keyword">var</span> parent = d.parentNode;</span><br><span class="line"><span class="comment">//3.通过父元素删除子元素</span></span><br><span class="line">parent.removeChild(d);</span><br></pre></td></tr></table></figure>
+
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.获取id为d的元素</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.getElementById(<span class="string">"d"</span>);</span><br><span class="line"><span class="comment">//2.修改元素内容</span></span><br><span class="line">d.innerHTML = <span class="string">"修改后的文字"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="弹窗"><a href="#弹窗" class="headerlink" title="弹窗"></a>弹窗</h2><h3 id="弹窗接收字符串"><a href="#弹窗接收字符串" class="headerlink" title="弹窗接收字符串"></a>弹窗接收字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = prompt();</span><br></pre></td></tr></table></figure>
+
+<h4 id="提示文字"><a href="#提示文字" class="headerlink" title="提示文字"></a>提示文字</h4><blockquote>
+<p><code>&lt;&lt;text&gt;&gt;</code>：提示文字</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = prompt(&lt;&lt;text&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="弹窗接收布尔值"><a href="#弹窗接收布尔值" class="headerlink" title="弹窗接收布尔值"></a>弹窗接收布尔值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = confirm(&lt;&lt;text&gt;&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="鼠标点击时间"><a href="#鼠标点击时间" class="headerlink" title="鼠标点击时间"></a>鼠标点击时间</h3><h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">onClick</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById().onClick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鼠标获取焦点事件"><a href="#鼠标获取焦点事件" class="headerlink" title="鼠标获取焦点事件"></a>鼠标获取焦点事件</h3><h4 id="html-1"><a href="#html-1" class="headerlink" title="html"></a>html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">onFocus</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="javascript-1"><a href="#javascript-1" class="headerlink" title="javascript"></a>javascript</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById().onFocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鼠标移出焦点事件"><a href="#鼠标移出焦点事件" class="headerlink" title="鼠标移出焦点事件"></a>鼠标移出焦点事件</h3><h4 id="html-2"><a href="#html-2" class="headerlink" title="html"></a>html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">onBlur</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="javascript-2"><a href="#javascript-2" class="headerlink" title="javascript"></a>javascript</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById().onBlur = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="键盘按下事件"><a href="#键盘按下事件" class="headerlink" title="键盘按下事件"></a>键盘按下事件</h3><ul>
+<li>获取按下的按键对应的数值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById().onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event.keyCode);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鼠标移入事件"><a href="#鼠标移入事件" class="headerlink" title="鼠标移入事件"></a>鼠标移入事件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById().onmouseover = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鼠标移出事件"><a href="#鼠标移出事件" class="headerlink" title="鼠标移出事件"></a>鼠标移出事件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById().onmouseout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><ul>
+<li><p>ES6新标准</p>
+</li>
+<li><p>使用模版字符串代替字符串拼接</p>
+</li>
+<li><p>原字符串拼接</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"name="</span>+name.value;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新模版字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;name&#x3D;$&#123;name.value&#125;&#96;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li>通过原型对象实现继承关系</li>
+<li>所有子对象会共享原型对象的值</li>
+</ul>
+<h3 id="定义一个构造函数"><a href="#定义一个构造函数" class="headerlink" title="定义一个构造函数"></a>定义一个构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> point = <span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过构造函数创建对象-1"><a href="#通过构造函数创建对象-1" class="headerlink" title="通过构造函数创建对象"></a>通过构造函数创建对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> point(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> point(<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="在原型对象中添加值"><a href="#在原型对象中添加值" class="headerlink" title="在原型对象中添加值"></a>在原型对象中添加值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">point.prototype.color &#x3D; &quot;red&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在子对象修改原型对象中的值"><a href="#在子对象修改原型对象中的值" class="headerlink" title="在子对象修改原型对象中的值"></a>在子对象修改原型对象中的值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.__proto__.color = <span class="string">"black"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在子对象查看原型对象中的值"><a href="#在子对象查看原型对象中的值" class="headerlink" title="在子对象查看原型对象中的值"></a>在子对象查看原型对象中的值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p2.__proto__.color;</span><br></pre></td></tr></table></figure>
+
+<h2 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h2><p><a href="https://www.w3school.com.cn/jsref/index.asp" target="_blank" rel="noopener">W3school</a></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.zhihu.com/question/52662013" target="_blank" rel="noopener">知乎——知乎用户</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...in" target="_blank" rel="noopener">MDN web docs</a><br><a href="https://www.w3school.com.cn/jsref/met_win_open.asp" target="_blank" rel="noopener">W3school</a><br><a href="https://segmentfault.com/a/1190000023719797" target="_blank" rel="noopener">segmentfault——Jason</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/07/27/%E6%B3%A8%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【笔记】注解学习笔记">
+                  <i class="fa fa-chevron-left"></i> 【笔记】注解学习笔记
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/07/31/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】微信小程序学习笔记">
+                  【笔记】微信小程序学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写位置"><span class="nav-number">2.</span> <span class="nav-text">书写位置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#script标签内"><span class="nav-number">2.1.</span> <span class="nav-text">script标签内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入-js文件"><span class="nav-number">2.2.</span> <span class="nav-text">引入.js文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当触发事件时执行指定函数"><span class="nav-number">2.3.</span> <span class="nav-text">当触发事件时执行指定函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印字符串"><span class="nav-number">4.</span> <span class="nav-text">打印字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打印到弹窗"><span class="nav-number">4.1.</span> <span class="nav-text">打印到弹窗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打印到控制台"><span class="nav-number">4.2.</span> <span class="nav-text">打印到控制台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在控制台打印对象结构"><span class="nav-number">4.2.1.</span> <span class="nav-text">在控制台打印对象结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接打印到网页上"><span class="nav-number">4.3.</span> <span class="nav-text">直接打印到网页上</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">5.</span> <span class="nav-text">声明变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量（ES6新特性）"><span class="nav-number">5.1.</span> <span class="nav-text">变量（ES6新特性）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量（ES6新特性）"><span class="nav-number">5.2.</span> <span class="nav-text">常量（ES6新特性）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var和let、const-的区别"><span class="nav-number">5.3.</span> <span class="nav-text">var和let、const 的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">6.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查当前数据类型"><span class="nav-number">6.1.</span> <span class="nav-text">检查当前数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string字符串"><span class="nav-number">6.2.</span> <span class="nav-text">string字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number数值型"><span class="nav-number">6.3.</span> <span class="nav-text">Number数值型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最值"><span class="nav-number">6.3.1.</span> <span class="nav-text">最值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boolean类型"><span class="nav-number">6.4.</span> <span class="nav-text">boolean类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null类型"><span class="nav-number">6.5.</span> <span class="nav-text">Null类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined类型"><span class="nav-number">6.6.</span> <span class="nav-text">Undefined类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制类型转换"><span class="nav-number">6.7.</span> <span class="nav-text">强制类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将其他数据类型转换为String"><span class="nav-number">6.7.1.</span> <span class="nav-text">将其他数据类型转换为String</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#toString-NaN"><span class="nav-number">6.7.1.1.</span> <span class="nav-text">toString</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#String"><span class="nav-number">6.7.1.2.</span> <span class="nav-text">String()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将其他的数据类型转换为Number"><span class="nav-number">6.7.2.</span> <span class="nav-text">将其他的数据类型转换为Number</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Number"><span class="nav-number">6.7.2.1.</span> <span class="nav-text">Number()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串转换为数字"><span class="nav-number">6.7.2.1.1.</span> <span class="nav-text">字符串转换为数字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#布尔值转换为数字"><span class="nav-number">6.7.2.1.2.</span> <span class="nav-text">布尔值转换为数字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Null转换为数字"><span class="nav-number">6.7.2.1.3.</span> <span class="nav-text">Null转换为数字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined转换为数字"><span class="nav-number">6.7.2.1.4.</span> <span class="nav-text">undefined转换为数字</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#parseInt"><span class="nav-number">6.7.2.2.</span> <span class="nav-text">parseInt()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的数据类型转换为Boolean"><span class="nav-number">6.7.3.</span> <span class="nav-text">其他的数据类型转换为Boolean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">6.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">7.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">8.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明数组"><span class="nav-number">8.1.</span> <span class="nav-text">声明数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">9.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的分类"><span class="nav-number">9.1.</span> <span class="nav-text">对象的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内建对象"><span class="nav-number">9.1.1.</span> <span class="nav-text">内建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宿主对象"><span class="nav-number">9.1.2.</span> <span class="nav-text">宿主对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义对象"><span class="nav-number">9.1.3.</span> <span class="nav-text">自定义对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象"><span class="nav-number">9.2.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对象时定义属性"><span class="nav-number">9.2.1.</span> <span class="nav-text">创建对象时定义属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对象后定义属性"><span class="nav-number">9.2.2.</span> <span class="nav-text">创建对象后定义属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过构造函数创建对象"><span class="nav-number">9.2.3.</span> <span class="nav-text">通过构造函数创建对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">9.3.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向对象添加属性"><span class="nav-number">9.3.1.</span> <span class="nav-text">向对象添加属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取对象中的属性"><span class="nav-number">9.3.2.</span> <span class="nav-text">读取对象中的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改对象的属性值"><span class="nav-number">9.3.3.</span> <span class="nav-text">修改对象的属性值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除对象的属性"><span class="nav-number">9.3.4.</span> <span class="nav-text">删除对象的属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性名"><span class="nav-number">9.4.</span> <span class="nav-text">属性名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性值"><span class="nav-number">9.5.</span> <span class="nav-text">属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in运算符"><span class="nav-number">9.6.</span> <span class="nav-text">in运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承关系"><span class="nav-number">9.7.</span> <span class="nav-text">继承关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他-1"><span class="nav-number">9.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">10.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建函数"><span class="nav-number">10.1.</span> <span class="nav-text">创建函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用函数声明来创建一个函数"><span class="nav-number">10.1.1.</span> <span class="nav-text">使用函数声明来创建一个函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用函数表达式来创建一个函数"><span class="nav-number">10.1.2.</span> <span class="nav-text">使用函数表达式来创建一个函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">10.1.3.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底层创建函数"><span class="nav-number">10.1.4.</span> <span class="nav-text">底层创建函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数及自调用"><span class="nav-number">10.2.</span> <span class="nav-text">匿名函数及自调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用函数"><span class="nav-number">10.3.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预加载函数"><span class="nav-number">10.4.</span> <span class="nav-text">预加载函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">10.5.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6新特性"><span class="nav-number">10.5.1.</span> <span class="nav-text">ES6新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用构造函数创建对象"><span class="nav-number">10.5.2.</span> <span class="nav-text">使用构造函数创建对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他-2"><span class="nav-number">10.6.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">10.7.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断语句"><span class="nav-number">11.</span> <span class="nav-text">判断语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if判断语句"><span class="nav-number">11.1.</span> <span class="nav-text">if判断语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seitch判断语句"><span class="nav-number">11.2.</span> <span class="nav-text">seitch判断语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">12.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#while循环语句"><span class="nav-number">12.1.</span> <span class="nav-text">while循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环语句"><span class="nav-number">12.2.</span> <span class="nav-text">for循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in循环语句"><span class="nav-number">12.3.</span> <span class="nav-text">for in循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of循环语句"><span class="nav-number">12.4.</span> <span class="nav-text">for of循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-each循环语句"><span class="nav-number">12.5.</span> <span class="nav-text">for each循环语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器对象模型（Bower-Object-Model）"><span class="nav-number">13.</span> <span class="nav-text">浏览器对象模型（Bower Object Model）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定时器"><span class="nav-number">13.1.</span> <span class="nav-text">定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#清除定时器"><span class="nav-number">13.1.1.</span> <span class="nav-text">清除定时器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计时器"><span class="nav-number">13.2.</span> <span class="nav-text">计时器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取消计时器"><span class="nav-number">13.2.1.</span> <span class="nav-text">取消计时器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面"><span class="nav-number">13.3.</span> <span class="nav-text">页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#弹出页面"><span class="nav-number">13.3.1.</span> <span class="nav-text">弹出页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭页面"><span class="nav-number">13.3.2.</span> <span class="nav-text">关闭页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档对象模型（Document-Object-Model）"><span class="nav-number">14.</span> <span class="nav-text">文档对象模型（Document Object Model）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取元素"><span class="nav-number">14.1.</span> <span class="nav-text">获取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取当前文档中的body元素"><span class="nav-number">14.1.1.</span> <span class="nav-text">获取当前文档中的body元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取当前元素的父元素"><span class="nav-number">14.1.2.</span> <span class="nav-text">获取当前元素的父元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取当前元素的所有html内容"><span class="nav-number">14.1.3.</span> <span class="nav-text">获取当前元素的所有html内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取特定元素"><span class="nav-number">14.1.4.</span> <span class="nav-text">获取特定元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过id获取元素"><span class="nav-number">14.1.4.1.</span> <span class="nav-text">通过id获取元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过class获取元素"><span class="nav-number">14.1.4.2.</span> <span class="nav-text">通过class获取元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过标签名获取元素"><span class="nav-number">14.1.4.3.</span> <span class="nav-text">通过标签名获取元素</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以query格式获取元素"><span class="nav-number">14.1.5.</span> <span class="nav-text">以query格式获取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过id获取元素-1"><span class="nav-number">14.1.5.1.</span> <span class="nav-text">通过id获取元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过class获取元素-1"><span class="nav-number">14.1.5.2.</span> <span class="nav-text">通过class获取元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过标签名获取元素-1"><span class="nav-number">14.1.5.3.</span> <span class="nav-text">通过标签名获取元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置标签的内容"><span class="nav-number">14.2.</span> <span class="nav-text">设置标签的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取父元素"><span class="nav-number">14.3.</span> <span class="nav-text">获取父元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取表示当前时间的字符串"><span class="nav-number">14.4.</span> <span class="nav-text">获取表示当前时间的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改CSS样式"><span class="nav-number">14.5.</span> <span class="nav-text">修改CSS样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点操作"><span class="nav-number">14.6.</span> <span class="nav-text">节点操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增"><span class="nav-number">14.6.1.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删"><span class="nav-number">14.6.2.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改"><span class="nav-number">14.6.3.</span> <span class="nav-text">改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹窗"><span class="nav-number">15.</span> <span class="nav-text">弹窗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#弹窗接收字符串"><span class="nav-number">15.1.</span> <span class="nav-text">弹窗接收字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提示文字"><span class="nav-number">15.1.1.</span> <span class="nav-text">提示文字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹窗接收布尔值"><span class="nav-number">15.2.</span> <span class="nav-text">弹窗接收布尔值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">16.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标点击时间"><span class="nav-number">16.1.</span> <span class="nav-text">鼠标点击时间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html"><span class="nav-number">16.1.1.</span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javascript"><span class="nav-number">16.1.2.</span> <span class="nav-text">javascript</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标获取焦点事件"><span class="nav-number">16.2.</span> <span class="nav-text">鼠标获取焦点事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html-1"><span class="nav-number">16.2.1.</span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javascript-1"><span class="nav-number">16.2.2.</span> <span class="nav-text">javascript</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标移出焦点事件"><span class="nav-number">16.3.</span> <span class="nav-text">鼠标移出焦点事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html-2"><span class="nav-number">16.3.1.</span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javascript-2"><span class="nav-number">16.3.2.</span> <span class="nav-text">javascript</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#键盘按下事件"><span class="nav-number">16.4.</span> <span class="nav-text">键盘按下事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标移入事件"><span class="nav-number">16.5.</span> <span class="nav-text">鼠标移入事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标移出事件"><span class="nav-number">16.6.</span> <span class="nav-text">鼠标移出事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版字符串"><span class="nav-number">17.</span> <span class="nav-text">模版字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">18.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义一个构造函数"><span class="nav-number">18.1.</span> <span class="nav-text">定义一个构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过构造函数创建对象-1"><span class="nav-number">18.2.</span> <span class="nav-text">通过构造函数创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在原型对象中添加值"><span class="nav-number">18.3.</span> <span class="nav-text">在原型对象中添加值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在子对象修改原型对象中的值"><span class="nav-number">18.4.</span> <span class="nav-text">在子对象修改原型对象中的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在子对象查看原型对象中的值"><span class="nav-number">18.5.</span> <span class="nav-text">在子对象查看原型对象中的值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多"><span class="nav-number">19.</span> <span class="nav-text">更多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">20.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

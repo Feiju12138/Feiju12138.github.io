@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言微信小程序，小程序的一种，英文名Wechat Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。（百度百科）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】微信小程序学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/07/31/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言微信小程序，小程序的一种，英文名Wechat Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。（百度百科）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-31T12:33:46.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:14.005Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/07/31/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】微信小程序学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/07/31/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】微信小程序学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-31 20:33:46" itemprop="dateCreated datePublished" datetime="2020-07-31T20:33:46+08:00">2020-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:14" itemprop="dateModified" datetime="2021-03-21T17:21:14+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WXML-WXSS/" itemprop="url" rel="index">
+                    <span itemprop="name">WXML/WXSS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>微信小程序，小程序的一种，英文名Wechat Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。（<a href="https://baike.baidu.com/item/微信小程序/20171697" target="_blank" rel="noopener">百度百科</a>）</p>
+<a id="more"></a>
+
+<h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><ul>
+<li><p><a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">微信公众平台</a></p>
+</li>
+<li><p>邮箱要填写未被微信公众平台注册，未被微信开放平台注册，未被个人微信号绑定的邮箱</p>
+</li>
+</ul>
+<h2 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h2><ul>
+<li>在<code>设置</code>找到<code>AppID(小程序ID)</code>记下</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank" rel="noopener">微信开发者工具</a></li>
+</ul>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><ul>
+<li>如果只是测试，可以不写<code>AppID(小程序ID)</code>，如果开发后发布，要写<code>AppID(小程序ID)</code></li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><blockquote>
+<p><code>pages</code>：存放每个页面文件的目录</p>
+<blockquote>
+<p><code>pages/index/index.wxml</code>：首页结构<br><code>pages/index/index.wxss</code>：首页样式<br><code>pages/index/index.js</code>：首页逻辑<br><code>pages/index/index.json</code>：首页配置<br><code>pages/logs</code>：存放日志页面的目录<br><code>utils</code>：存放第三方插件，可以删除<br><code>app.js</code>：程序执行的入口<br><code>app.json</code>：全局配置<br><code>app.wxss</code>：全局样式<br><code>project.config.json</code>：全局详情<br><code>sitemap.json</code>：是否可以被微信索引配置</p>
+</blockquote>
+</blockquote>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="全局配置文件"><a href="#全局配置文件" class="headerlink" title="全局配置文件"></a>全局配置文件</h3><ul>
+<li><p>pages：表明当前页面有几个子页面，路径和项目内的<code>pages</code>目录下的路径相同，可以通过修改这个字段的配置然后保存，达到新建页面的效果</p>
+</li>
+<li><p>window：定义小程序所有页面顶部背景颜色、文字颜色等</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;backgroundTextStyle&quot;: &quot;dark&quot;, &#x2F;&#x2F; 下拉刷新样式，只有&#96;dark&#96;和&#96;light&#96;两个值</span><br><span class="line">&quot;navigationBarBackgroundColor&quot;: &quot;#0094ff&quot;, &#x2F;&#x2F; 导航栏背景颜色</span><br><span class="line">&quot;navigationBarTitleText&quot;: &quot;我的应用&quot;, &#x2F;&#x2F; 导航栏标题内容</span><br><span class="line">&quot;navigationBarTextStyle&quot;: &quot;black&quot;, &#x2F;&#x2F; 导航栏文字颜色，只有&#96;while&#96;和&#96;black&#96;两个值</span><br><span class="line">&quot;enablePullDownRefresh&quot;: true, &#x2F;&#x2F; 启动下拉刷新</span><br><span class="line">&quot;backgroundColor&quot;: &quot;#8DB690&quot; &#x2F;&#x2F; 下拉刷新位置的背景颜色</span><br></pre></td></tr></table></figure>
+
+<h4 id="tabbar"><a href="#tabbar" class="headerlink" title="tabbar"></a>tabbar</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;tabBar&quot;: &amp;#123;</span><br><span class="line">  &quot;list&quot;: [&amp;#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages&#x2F;index&#x2F;index&quot;,  &#x2F;&#x2F; 页面路径</span><br><span class="line">      &quot;text&quot;: &quot;主页&quot;,  &#x2F;&#x2F; 文本</span><br><span class="line">      &quot;iconPath&quot;: &quot;.&#x2F;icons&#x2F;_zhuye.png&quot;,  &#x2F;&#x2F; （未选择）图标路径</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;.&#x2F;icons&#x2F;zhuye.png&quot;  &#x2F;&#x2F; （已选择）图标路径</span><br><span class="line">    &amp;#125;,&amp;#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages&#x2F;myself&#x2F;myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;.&#x2F;icons&#x2F;_wode.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;.&#x2F;icons&#x2F;wode.png&quot;</span><br><span class="line">    &amp;#125;</span><br><span class="line">  ]</span><br><span class="line">&amp;#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="页面配置"><a href="#页面配置" class="headerlink" title="页面配置"></a>页面配置</h3><ul>
+<li>可以单独修改和全局配置相同的配置信息</li>
+</ul>
+<h3 id="sitemap配置"><a href="#sitemap配置" class="headerlink" title="sitemap配置"></a>sitemap配置</h3><ul>
+<li>微信内搜索索引配置</li>
+</ul>
+<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><ul>
+<li>可以在页面的.js文件的data字段下使用json格式定义变量，在.wxml下通过<code>&amp;#123;&amp;#123;&amp;#125;&amp;#125;</code>调用</li>
+</ul>
+<h2 id="列表循环"><a href="#列表循环" class="headerlink" title="列表循环"></a>列表循环</h2><ul>
+<li>数组或对象都可以循环遍历</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for&#x3D;&quot;&amp;#123;&amp;#123;数组或者对象&amp;#125;&amp;#125;&quot; wx:for-item&#x3D;&quot;循环项的名称&quot; wx:for-index&#x3D;&quot;循环项的索引&quot; wx:key&#x3D;&quot;唯一的值&quot;&gt;&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="如果只有一层循环"><a href="#如果只有一层循环" class="headerlink" title="如果只有一层循环"></a>如果只有一层循环</h3><ul>
+<li><code>wx:for-item</code>和<code>wx:for-index</code>可以省略，默认值为<code>&quot;item&quot;</code>和<code>&quot;index&quot;</code></li>
+</ul>
+<h3 id="提高列表渲染性能"><a href="#提高列表渲染性能" class="headerlink" title="提高列表渲染性能"></a>提高列表渲染性能</h3><ul>
+<li><code>wx:key</code>绑定一个普通的字符串的时候，那么这个字符串名称肯定是循环数组中对象的唯一属性</li>
+<li><code>wx:key = &quot;*this&quot;</code>表示的是一个普通的数组<code>*this</code>表示循环项</li>
+</ul>
+<h3 id="对象循环"><a href="#对象循环" class="headerlink" title="对象循环"></a>对象循环</h3><ul>
+<li><code>wx:for-item</code>和<code>wx:for-index</code>分别表示对象的属性和对应的值</li>
+</ul>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:if&#x3D;&quot;&amp;#123;&amp;#123;false&amp;#125;&amp;#125;&quot;&gt;内容1&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view wx:elif&#x3D;&quot;&amp;#123;&amp;#123;false&amp;#125;&amp;#125;&quot;&gt;内容2&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view wx:else&#x3D;&quot;&amp;#123;&amp;#123;true&amp;#125;&amp;#125;&quot;&gt;内容3&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hidden"><a href="#hidden" class="headerlink" title="hidden"></a>hidden</h3><ul>
+<li><code>&amp;lt;view hidden&amp;gt;&amp;lt;view&amp;gt;</code>或<code>&amp;lt;view hidden=&quot;&amp;#123;&amp;#123;true&amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;/view&amp;gt;</code></li>
+</ul>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li>当标签不是频繁的切换显示，优先使用<code>if</code></li>
+<li>当标签频繁的切换显示，优先使用hidden</li>
+</ul>
+<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; bindinput&#x3D;&quot;handleInput&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">Page(&amp;#123;</span><br><span class="line">    data: &amp;#123;</span><br><span class="line">        num: 0</span><br><span class="line">    &amp;#125;</span><br><span class="line">    handleInput(e)&amp;#123;</span><br><span class="line">        this.setData(&amp;#123;</span><br><span class="line">            num: e.detail.value</span><br><span class="line">        &amp;#125;)</span><br><span class="line">    &amp;#125;</span><br><span class="line">&amp;#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="单位换算"><a href="#单位换算" class="headerlink" title="单位换算"></a>单位换算</h2><ul>
+<li>rpx是小程序特有的长度单位，会随着屏幕宽度的变化而变化</li>
+<li>750px宽的屏幕下，px和rpx的比例是<code>1:1</code></li>
+<li>公式：<code>屏幕宽rpx = 750rpx * 元素宽度 / 屏幕宽px</code></li>
+</ul>
+<h3 id="wxss设计"><a href="#wxss设计" class="headerlink" title="wxss设计"></a>wxss设计</h3><ul>
+<li>使用<code>calc()</code>函数计算宽度</li>
+</ul>
+<blockquote>
+<p><code>&amp;lt;view&amp;gt;</code>：元素的宽度<br><code>&amp;lt;px&amp;gt;</code>：屏幕宽度的像素值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">view &amp;#123;</span><br><span class="line">    width: calc(750rpx * &lt;view&gt; &#x2F; &lt;px&gt;);</span><br><span class="line">&amp;#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="引入样式"><a href="#引入样式" class="headerlink" title="引入样式"></a>引入样式</h2><ul>
+<li>引入的代码是通过<code>@import</code>来引入的</li>
+<li>路径只能写相对路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;..&#x2F;..&#x2F;styles&#x2F;common.wxss&quot;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标签元素"><a href="#标签元素" class="headerlink" title="标签元素"></a>标签元素</h2><h3 id="常用标签元素"><a href="#常用标签元素" class="headerlink" title="常用标签元素"></a>常用标签元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;text&gt;&lt;&#x2F;text&gt; &#x2F;&#x2F; 相当于span标签，行内元素</span><br><span class="line">&lt;view&gt;&lt;&#x2F;view&gt; &#x2F;&#x2F; 相当于div标签，块级元素</span><br><span class="line">&lt;block&gt;&lt;&#x2F;block&gt; &#x2F;&#x2F; 占位标签，在源代码中出现，在渲染后会消失</span><br><span class="line">&lt;input&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="checkbox复选框"><a href="#checkbox复选框" class="headerlink" title="checkbox复选框"></a>checkbox复选框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;checkbox checked&#x3D;&quot;true&quot;&gt;&lt;&#x2F;checkbox&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>checked</code>：默认选中</p>
+</blockquote>
+<h3 id="text文本标签"><a href="#text文本标签" class="headerlink" title="text文本标签"></a>text文本标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;text selectable&#x3D;&quot;true&quot; decode&#x3D;&quot;true&quot;&gt;&lt;&#x2F;text&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>selectable</code>：长安文字复制<br><code>decode</code>：对文本内容进行解码</p>
+</blockquote>
+<h3 id="image图片标签"><a href="#image图片标签" class="headerlink" title="image图片标签"></a>image图片标签</h3><ul>
+<li>默认宽高：<code>320px * 240px</code></li>
+</ul>
+<h4 id="图片缩放方式"><a href="#图片缩放方式" class="headerlink" title="图片缩放方式"></a>图片缩放方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;image src&#x3D;&quot;&quot; mode&#x3D;&quot;scaleToFill&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>src</code>：图片路径，通常指定为外网，因为小程序不允许提交超过2M的代码<br><code>mode</code>：图片伸缩模式</p>
+<blockquote>
+<p><code>scaleToFill</code>：自由拉伸<br><code>aspectFit</code>：保持宽高比，确保图片的长边完全显示<br><code>aspectFill</code>：保持宽高比，确保图片的短边完全显示<br><code>widthFix</code>：保持宽高比不变，宽度指定后，高度会按比例自动调整</p>
+</blockquote>
+</blockquote>
+<h3 id="swiper轮播图"><a href="#swiper轮播图" class="headerlink" title="swiper轮播图"></a>swiper轮播图</h3><ul>
+<li>默认宽高：<code>100%</code>、<code>150px</code></li>
+<li>公示：<code>swiper高度 = swiper宽度 * 原图的高度 / 原图的宽度</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper autoplay&#x3D;&quot;true&quot; interval&#x3D;&quot;&quot; circular&#x3D;&quot;true&quot; indicator-dots&#x3D;&quot;true&quot; indicator-color&#x3D;&quot;&quot; indicator-active-color&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;swiper-item&gt;&lt;image src&#x3D;&quot;&quot; &#x2F;&gt;&lt;&#x2F;swiper-item&gt;</span><br><span class="line">    &lt;swiper-item&gt;&lt;image src&#x3D;&quot;&quot; &#x2F;&gt;&lt;&#x2F;swiper-item&gt;</span><br><span class="line">&lt;&#x2F;swiper&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>autoplay</code>：自动轮播<br><code>interval</code>：轮播间隔，默认5000（单位：浩渺）<br><code>circular</code>：首尾衔接<br><code>indicator-dots</code>：面板指示点<br><code>indicator-color</code>：面板指示点颜色（未选中）<br><code>indicator-active-color</code>：面板指示点颜色（已选中）</p>
+</blockquote>
+<h3 id="navigator导航"><a href="#navigator导航" class="headerlink" title="navigator导航"></a>navigator导航</h3><ul>
+<li>navigator属于块级元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator url&#x3D;&quot;&quot; target&#x3D;&quot;self&quot;&gt;&lt;&#x2F;navigator&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>url</code>：指定跳转路径<br><code>target</code>：指定要跳转的页面是当前小程序内还是其他小程序</p>
+<blockquote>
+<p><code>self</code>：跳转当前小程序内页面（默认）<br><code>miniProgram</code>：其他小程序页面</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>open-type</code>：跳转方式</p>
+<blockquote>
+<p><code>navigate</code>：保留当前页面跳转（不能跳到tabbar页面）<br><code>redirect</code>：不保留当前页面跳转（不能跳到tabbar页面）<br><code>switchTab</code>：跳到tabbar页面，并关闭所有非tabbar页面<br><code>reLaunch</code>：关闭所有页面跳转任意页面</p>
+</blockquote>
+</blockquote>
+<h3 id="rich-text富文本"><a href="#rich-text富文本" class="headerlink" title="rich-text富文本"></a>rich-text富文本</h3><blockquote>
+<p><code>nodes</code>：设置富文本标签</p>
+</blockquote>
+<h4 id="接收标签字符串"><a href="#接收标签字符串" class="headerlink" title="接收标签字符串"></a>接收标签字符串</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;rich-text nodes&#x3D;&quot;&lt;div&gt;&lt;&#x2F;div&gt;&quot;&gt;&lt;&#x2F;rich-text&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接收字符串对象"><a href="#接收字符串对象" class="headerlink" title="接收字符串对象"></a>接收字符串对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Page(&amp;#123;</span><br><span class="line">  data: &amp;#123;</span><br><span class="line">    html:[&amp;#123;</span><br><span class="line">        &#x2F;&#x2F; 通过name属性指定标签名</span><br><span class="line">        name: &quot;div&quot;,</span><br><span class="line">        &#x2F;&#x2F; 通过attrs属性定义标签上的属性</span><br><span class="line">        attrs: &amp;#123;</span><br><span class="line">          class: &quot;my_div&quot;,</span><br><span class="line">          style: &quot;color: red;&quot;</span><br><span class="line">        &amp;#125;</span><br><span class="line">        &#x2F;&#x2F; 子节点</span><br><span class="line">        children:[&amp;#123;</span><br><span class="line">            type: &quot;&quot;,</span><br><span class="line">            text: &quot;&quot;</span><br><span class="line">        &amp;#125;]</span><br><span class="line">    &amp;#125;]</span><br><span class="line">  &amp;#125;</span><br><span class="line">&amp;#125;)</span><br><span class="line"></span><br><span class="line">&lt;rich-text nodes&#x3D;&quot;html&quot;&gt;&lt;&#x2F;rich-text&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="button按钮"><a href="#button按钮" class="headerlink" title="button按钮"></a>button按钮</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button size&#x3D;&quot;&quot;&gt;&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>size</code>：按钮大小</p>
+<blockquote>
+<p><code>default</code>：默认大小<br><code>mini</code>：小尺寸</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>type</code>：控制按钮的颜色</p>
+<blockquote>
+<p><code>default</code>：灰色<br><code>primary</code>：绿色<br><code>warn</code>：红色</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>plain</code>：控制是否镂空<br><code>loding</code>：是否在前面显示等待图标</p>
+</blockquote>
+<h2 id="未完待更"><a href="#未完待更" class="headerlink" title="未完待更"></a>未完待更</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1nE41117BQ" target="_blank" rel="noopener">哔哩哔哩——黑马程序员</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/07/31/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【笔记】Javascript  学习笔记">
+                  <i class="fa fa-chevron-left"></i> 【笔记】Javascript  学习笔记
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/08/05/%E5%AE%8C%E6%95%B4%E5%8D%B8%E8%BD%BDpkg%E5%8C%85%E5%AE%89%E8%A3%85%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="prev" title="【笔记】完整卸载pkg包安装的软件">
+                  【笔记】完整卸载pkg包安装的软件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册"><span class="nav-number">2.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆"><span class="nav-number">3.</span> <span class="nav-text">登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建项目"><span class="nav-number">5.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number">6.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">7.</span> <span class="nav-text">配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局配置文件"><span class="nav-number">7.1.</span> <span class="nav-text">全局配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tabbar"><span class="nav-number">7.1.1.</span> <span class="nav-text">tabbar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面配置"><span class="nav-number">7.2.</span> <span class="nav-text">页面配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sitemap配置"><span class="nav-number">7.3.</span> <span class="nav-text">sitemap配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据绑定"><span class="nav-number">8.</span> <span class="nav-text">数据绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表循环"><span class="nav-number">9.</span> <span class="nav-text">列表循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果只有一层循环"><span class="nav-number">9.1.</span> <span class="nav-text">如果只有一层循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提高列表渲染性能"><span class="nav-number">9.2.</span> <span class="nav-text">提高列表渲染性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象循环"><span class="nav-number">9.3.</span> <span class="nav-text">对象循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件渲染"><span class="nav-number">10.</span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if语句"><span class="nav-number">10.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hidden"><span class="nav-number">10.2.</span> <span class="nav-text">hidden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">10.3.</span> <span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件绑定"><span class="nav-number">11.</span> <span class="nav-text">事件绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位换算"><span class="nav-number">12.</span> <span class="nav-text">单位换算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wxss设计"><span class="nav-number">12.1.</span> <span class="nav-text">wxss设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引入样式"><span class="nav-number">13.</span> <span class="nav-text">引入样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签元素"><span class="nav-number">14.</span> <span class="nav-text">标签元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用标签元素"><span class="nav-number">14.1.</span> <span class="nav-text">常用标签元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkbox复选框"><span class="nav-number">14.2.</span> <span class="nav-text">checkbox复选框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text文本标签"><span class="nav-number">14.3.</span> <span class="nav-text">text文本标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#image图片标签"><span class="nav-number">14.4.</span> <span class="nav-text">image图片标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图片缩放方式"><span class="nav-number">14.4.1.</span> <span class="nav-text">图片缩放方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swiper轮播图"><span class="nav-number">14.5.</span> <span class="nav-text">swiper轮播图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#navigator导航"><span class="nav-number">14.6.</span> <span class="nav-text">navigator导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rich-text富文本"><span class="nav-number">14.7.</span> <span class="nav-text">rich-text富文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接收标签字符串"><span class="nav-number">14.7.1.</span> <span class="nav-text">接收标签字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收字符串对象"><span class="nav-number">14.7.2.</span> <span class="nav-text">接收字符串对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#button按钮"><span class="nav-number">14.8.</span> <span class="nav-text">button按钮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待更"><span class="nav-number">15.</span> <span class="nav-text">未完待更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">16.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

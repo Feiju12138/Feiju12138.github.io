@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【破解】Navicat破解">
+<meta property="og:url" content="https://feiju12138.github.io/2020/08/10/Navicat%E7%A0%B4%E8%A7%A3/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-10T10:18:52.000Z">
+<meta property="article:modified_time" content="2021-04-01T03:17:15.889Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/08/10/Navicat%E7%A0%B4%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【破解】Navicat破解 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/08/10/Navicat%E7%A0%B4%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【破解】Navicat破解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 18:18:52" itemprop="dateCreated datePublished" datetime="2020-08-10T18:18:52+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-01 11:17:15" itemprop="dateModified" datetime="2021-04-01T11:17:15+08:00">2021-04-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MacOS/" itemprop="url" rel="index">
+                    <span itemprop="name">MacOS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="c10c5f9cdb5f922642bfbefe0ec771a8b20eb7641a2ce49d6d1151bbdd8509ef">febff6c6a2d4e0b13f00688c4b41d1cbcdd9d4ef839ef6393966e65819b6965a2554d21232bbcf2b765bdee7a9b42af1c75ea2f574563ae5cb2b58a193f110598d683797a60f32118308adfbd83efb9a77bd904d22342697875786f4a26b0430e32878eaa1063b74cf6f6cc4a47e6fd935592cbf5956900cc1a9755266e610d852e890af6fe8bee2dcaffac9f396ebefb6edc286088cc3303ecd457a18bcbd35626394ed39bee72a0961cc53379208a4d4fcfb9fed698b2ddeade550b926dc40ee5d40df656054b9a8ddd6364c5c0e8a56f7faac1c9462ba190019bf8b20fe16668805904d1281bf93a987fabd413cc76646ada7e5b4ae29a5bb5084e07e127171ac82c18f7ad4dcffa23707b991dfac3341cd1a638e3702fdaaf9be9e20f5b0571cb202138593368628f30d4053b42f7d26f0eaf6accf0609ea533ae11f5b2fe7d9f42aec9656c0e91fe6c18132533ad82943d76d9a8da27b1f5c6ca3491ee879f9d913caefe8d97f04f7f88e190ca69f0e773d9da786c65c6d0952be993c2b74a2054dc2cc9791d215c51378936ef84e61511e3b3fcf85380ac0944d8f04f8c888c6d996809d907e72d24383611ab884f40e4a97ab6ce463e0e3984bbba6dcb1846d3a6a5f25a313bd4a6c4901e8f4485417f4a09f2c28da716ddf5c5aeac80bc4678f31e2daa91735facd508beef12e3a7a4ea71f912ea8f9efa6819135227fe2aabb0062a7d36627987bbbd4bf9c52f1fdf493be476b5fed029f0fd0023f18e87c522e984223e084f13b650b731116dffb35018ef54590e3cdb00a805fa3b3c29152a6e25683ff705dd102920a7a9a0c024d2fb759cb3ca49912b838fd45eba25e9c1e1fa19bc776dabe6421d70e75c67add7b20f1bce3db4ae1512a19c2b6bd1c1d3245ac007dfbff840749e94c8c4d20e20ceafa38f7f109560ff2ae6c1bfb664bb59b11bbac69cbc1151473d85def57b0d0ba8e63af51f1c90a79b10ac324c9e25b66655076bfced93d07fa941d21864337e6f3ee57e161253fb9a5ccabd4389b2413ed085f643c7b555f336775b58d0b185bda477a52e96401b5c37e13222c23e0dea27436d76f89fd140350f96b74ceeba73803f1f5d3c1026efc52fef89c7c40f3383fe6b8e2295a1fbfbd1dd113dbf2e3a43cf07ff91432a1da54bb6774866a36ea584277a456256947449dac038817abfbf3b68548bd4628ee5a7976a9f4d18da74429dc3df2f09a2401a91c7ab1e3da383b188e996f2bc26d9795b6a4fa55855d3f8708f60e927e60d7d7e3587f89adaaf20e91436e82bae2b3161767cb4d1b0ff24f87b023ff77f0e9f8e1b40f2cb6fd31038295fd2b8f18ae14d44d0efc38617af6b1e36551a94a78db994d2e0484a68d27d8cf9a690bdea6435d6cfe8a638118cd71fda105e5a4079926cbe7e0d4237aaa48d00c24268ad7c44ca7e3fb66e6657586ab0b2a4767db0afb5b40552486a5801ffdbb35685967c8e85808be9a80c56deeed5b50eddc77b91e06cc4fdbdac92d4a4bc21597368238ddeaa4b402bafbf11466b6d7e795de7b1c26fc0d7c0b57fbd073b393d656e7d187d4590b1ab2c4280c7ca7af2bb564cd4eea3b4352a638daeba137239219764d8614ef9fa231711b58c2df541253e5a8a0757dc3c13c50232cdfd7385fe14828fcf42a97cd40cb1fac891d70e9f69a045c99372365d028e032bc9de1ded09d768a7eaf977fb5c14808cf82c9a7e878f377ccb64d7404b13d04a95cf7652ad9debe345b626886e2e5fd120182eea6232c16e65da42a470ad97d5d36d7deff81fe7282cee5668257f81e05bd24095e03ae0d0f4bdb9253344e90b146f87ae168e12be13c686ac31d86d8259c55f70be7e6bc8890739ae2b3c4a6212d54656f1ec74bc14a299b8c45014f7d598400ac4d2678ab17707006c1d2a6577914c4621a6ec7f7c9abee05ae32b83feb7eb0f167e8b9f0796158100ed1cd49a6287cf14fffcf8a9c30cbb4f41c062203c8ff07d81942555cd59f30f7443bc200e6bab846a159b87ab015fc0b0e7136b565dac49685adaa7f3acaf66f2a758568d7c8bf7ec84a40b57441355293ce7565f76f5e45b92af55bedbdc0631ef6cad04a7ce0ade82ce6928abb782bb267cd5e229d481bf6396cc68a00caf5a41981c142b59343fc004c240ef440486856327e562158b0b9dd3a421b8d1d175564495d1dce0029f26f69dd48a0917b6071e3366ce3d00a2d189ebc6be1d521ba6b22bc894bcb859b2ad79165d9b6f2f83ffbc7db7858df729368ddb83713677ca60f60c76cb26d5277a9f8d5df3c8afc414e4a2f197313fa7bb7ad97684e5b1a1eebb08be7c4ede6d8b0f1de8f6adbc27ac2cab2c3bf795e7b82b7e2b9f9d13f2c3055565d5c0a6ebdcb4acd9d2148e58b66a4489273176b432567a4121f46393f4ba2456a1c650b276aa75fb19b9f4dd5001ef4155f21cccc44081069741378eb48df4e0b0a8d23d9c1cd8c976b030d5cb54b05d54d676198e530f7a05a0357d3b96aa937fb28b0bd73245ac9f9fd35043f415d6abe3a6ba3279f686b335979e4cd23866f8ba174ada08f9d80ca528630a9ca62719ca77bba84ce2d6172f503390e66d00724e19a9c3aac908674db0ccd04b99796e8cdf3718430a3d7c1b2c83e15f5d08ebefa834fbf78c9f7b9da7a7d771e538393647f59e0f6f5b739484aeb80b5ea7990a7e064f2eb460173271927d3be0374631dade49f23868ac68c97233120a80966efe497e0c77c5741c07b842589f516e9cb89400b43973e620409b41c049514ae25d10e3249a4aa5d7af10820917319b95224144838b218583be15a543fdb58fcb57fd083e5ca5cdc728f06daa3053207352012c3424260e91d1c4f781b34d24cb0f31bb5ed7c23fa2fabcc43ec25849a7af19789bd2a2a641e5e29b6699e446a6d314a47e7bade39b43831e818ad7d350da12fe4f07d0f645d35f652c90fd6ff2b312dbb9598da984416eb302ae6de24a7e73a6e401a76d516d5d7eb60ef9b110d44eb04eddc67fd287b0c2e5de306a57caf1c8ec82c54679b6b48b50f345878177e2771fcdb8a2986e6d85684f85a32d8a006e1a95690d11478d6d56d3987aa3c3954fb7f6947383ba734639f1292cf378469ef3351c7350092b932e8d77ee6756c09354d92f5fe7653ae0b8e9989151b68d91ac518b53535d6cdc95a8f95bef584de6d484d7a434352f928ce61cbb9963e15f0cd5479da6042e1f95567c292a513eea83bb2b06299fcf15fac9d9e993098c8e7c54074cf618fde5350e00207c5baea5715d631639c9e9be60cab6c14817ff1af5b8f1139ed7e84aebfe7778635a4f0a3a744512dbe81fd732b4a144ed3be52e8eef5c3c3d34a3a7468c7d6f0647d88638062c8e4e4bc218d8116a36a20098c2d328a3f5f7c3d6ec7919ccdfed9ea1e49e2ec20d8d42699683cd5e809c2357c9b6ab8b16c1c39a3cbcd4c1c7f8fd9543fe7492d11a0d8f39cdf2ab37f59f344561dd2840f95a9669b1eb5f1344a4fbc5974fb1738a18067f951a629ad690d0e8bbeb3efb5bd7f45ac14e4c7b40beed16637eac30e91dcabf2f0387ba75354e6dec620fd1462e513815bb4edf8b5c4d21b02503d610080969d8a254e9df21f10d1a0c0fb6b5ed61e85a365c11b3552e95c5d42e6e0525345845a72bbed46fa50731e6d0964153188787e731e33f233d33ce6b0e96eebf17e1dbdddf5bae7aea79937617e4a97c513a596f5fded9969c131a92ed1eef5d38ebc2e7532971a87a9c670e09d0a38089a2b084b5e75c4d7619871de6687201d52ee8f182ea025dace222ae1f394d7fe834bafb5fe6be45bd217f2ab636e346ea9344a3144a72c0ac4b49acbb0a11e4f8da2322f8b260908c7428e9b4fee057663e75a12b8670d3c6957bfbcb3cb5ee735011ad0f0d3792ce5cf8690ebe390a2e07aa7bac34b1de1749eabc11b6590184f8e6865be722090bff2a29a14b96bdb7ff80b4db46c8723fbcf3c4a3de9d77fad65133b1980e42b0c1b158153a364388237b4efe97e45bb345f3c3368c93bc7d70a0864473d4c03432d7676e6a360ee28a7d5083b2010de1ca5df522489598917af83d7e20932f332b569cb06e3868c327cbfa5fb64cd223318107cacf482de8c45d344fd45a9b74123e19d097eda0a4b3088b81dc77f456a9e8b70e738b467da6c32c268e3f509e6d9cfea7a9599d140a05df4c9615cfc12d689f1ee67a83af7d3a6fc7d9fc078ab996eb463b070ddb1d26adcb911f9a31f47614bcb644ada7883446972d094ef6ca2863cce93ad57d63e04c7bf6d27b0fc07f601cdc8badc9ec7e4d7bfa883f7bcbac2521bb652dce93b945f0bdef54f980f09871d3e3f7574477cecb46418764259f4781c4f500a972a33f44652c2bf0ae2f7cac6b93d1c218f0448f17a7857526789b0085c848a1366a094668c668f42a47a7c71deb8cb8981108eb950317c6d1c20a571d360fc6073541e5f077285e6a39b2361ec149875a7b8f0e247ecd5f309998af10ff4fef5f66f181cd255fd49bcfc2490a5c38818e167a9fd246b61114e850b1095d66df1ac86a06da5bdc0be4fb0576d3da36bc503dfe853dbdc32b85ccad5f1d951883ca396a5582db41df9ed6f3ee4dd338b43e2f2eb010dce36efbaedc4b9928dc3fc6290044781478c250ca06a9738433262fc84349753edb67d24640cd027677a70945d2481080241bb04136fc5c36889ed7c4013c8147cc72535aff0fc7eb1dcd77ffc94d3ff2c1f3c680e763f754cfe9bc49a10920e138f4023673f79272af1b58a955e48be2a81e2e4c05bdd12aa74007a357dadad7d23dbd0e6846e835e99be14815a7f2aa97d1d6fba9fb78695f80e1ed1caee0f15965a70e4be614a158bcb9adb667097ebab4ee46ed8366388eee7e7df41ee36ac826fd504e82bb8a655bc9127b1997fb34d2dd81525087391eebb2771e13e9f2b1fe6e4bd211526a0f172ab3b6c5f13b928691f116bbf0c64f9b775a655ecd43f513fc88e9d9b82a3fa55a291c165008b63b93d9ebfd4281b0fba4472dae3af271ee9283dc1a04d7433099623aedf517046a0fb881fe32a32b206924a6cee362659d9de3a4409a5b03ad793897bbf0147c0911b18cb2e0dc7ece6612a1f115c19a3b4048d978d683b9d54e2857a5bb7ca1c594698dc35dea70359de4b281200dab93a89eb1cd2e89acb3dd92c0784b9532b2a8b5d9ec7bc3fea98302e91fa02a8634902f1ce8de199daf2136359cbd9f32e72984c1489ee9e23bc85851f1a059869d845168403e80c0832312fc378e375f4d00667adf459e97b54b259835735b84c5a3ea574588cc6c8d0cd9b6f65b6c299f0b9779a6ae630faafa1eb5650000e386bcf8e0ee1ba9b35ba188d464ed20073871a7bb6718a4e1a69e923ac201946e6b2ba4dd69d84a1d22e8e30a23ec4f349b94c8186325750c393bc6b1f0e85e555638aa54790f92ecb5faf457bae522ad0f032819afe25118082d5653fe1834c1f4045f973e85d50a45ea5ade39ff8f4702699743ee4f95c963d6cc8fe3bb4a7bfe23a5978b1745a1f03cfe15513e5724ebbd21f80da5e027238bb00e8419a1dfc5ef4859385edfa1829019c09b2e37c07746d9a6f8445e9b7d728a11962f0f3881f821cd8e1f2311032c23e2cf82e08dedb3525b04fa6f6ac81315b6448bad2aa6614a445802a49253bd3d4e6c69ddf172e344b458c3c3d60a40950971c4ec98abffb29fae2d15f4dfa45beab827249d94220c84749345a00e64dd8490550d53dcedfdfa4aa5409e822c6458202dcd86b2117b4752029bdce039a4b9968b45a866d8d4f1076162da83bc602ea8c9b3d94c4319542271801925a475e2b26f5a3f6d8b618796f27a4fb563a186631ad9ca0490ec83adf9a43bd67086200064663a9c90661f08d527b556f853a9385ee875684ae6c0097754a8336379f40403d99901be5c29ca544bf5c297ed5558fe16e6990285edce64be88fed1e44c2f894bc28c4b6419b33ea7187b9274a72fd19a3fea7e48ab56d067c55b97e41e58fc451c899072daa2c9d492cdda0e8c9aea31ac2d4914bb269ed4b63a6a48a645ad86aa97468056a01cc656adc2ca4a1f58dc17e95e8474a5a3c95af0217c6245023ee9ce829e2564c2754841dbe9f9ab39eae53e5e2beb53f88350547c45beadfac67feec21a6b1ec0e7b413d1026ef5e8df7ffaeb68018a2e6f07b0375b63a4a1f0e09865e93822b5bebf97e01995c4b8db9e7871c145758f03f1ab6310bb9abb7fc4972ff3a679a7be04a782541200879866d77dffb3cb908cbfe130c98a3e27b11d88687feb7616b74ba0f6271ceec2729a1095dac0523b71e29731ce8d08cd75b7d8805634f8ffb5ad345bf79524bab8e9bfc857274291340e832ea6d657740b41c44b04bc0adb5536184792934cb55eca93cde9204be5b1c6cf9db8c7bca8dd7e73eceb6df360d487cd7e78a7b990ef60b555bdeb5407075b0787fad0f46f923ad3a9e56cade7ea546ed1ec18acaaffe269e320d520a6d870e61799f776c913fdfb7ff21e17a67130b4206c8005a2a6279fc17bd9258436435ad3f6826ad89b5df4b5cea34724189c2c9f870d926481f2a856d7a80384e70e4fe5e9becc9f758a6aecc960c044db5f1b49b6f2fa52840fce4d4574bff237dfdaf55722e9af9712f4cd95f3c72cf33e56dd2e74efe42845bd99c7ff83f429330c6831bf11a8f212e8a60fde991e8d94b0fade4ef3087d553c19dd6b10c16058d73ca549729be6b5cb090d35bbcdba458ae475ffc66c347a32a91bbbb9c350a8a346bc3dc92290dfca550da6e364d2f0e7d63c3f7c309feb20d17b30ba4979748775269b59f495eacf20cfe90090239a918179748edb2d957f2895657aa6fdcf0eaac1d5369f3570f1b9f8b436c42c4adfba455dc4a44dc2bac1ebf8aca8c689f7899e2c44b4135869078f73ab5d352363d2606303c2a0d75db8b8db178b777497ec629d842a651e8fd57476a916ecc258088a3dcd7740c8f49310709b52c01046074b2128b7fded1bed997ae19483c41c2c0c9103218ad41a00b87a732e1b3bbc4760894ff7dc20ec7145605603221aee5ed22ad336b4cc2130a784a35c6919abbd7f6a4e754523df67726b101c286c1ab4b0723f22a8ed2d30ead466f342f980b3934305f4fc7564adbcf782a28c14787c43f8c26492f8a1bf85757b1b0a8346f37be03507407aab987115541613d404fdfc6ae49e4c0f3667ac44745bfeea139dd6472f6081dfeff3614a4f0720170f67bb9301dd110d20da307f301f503f6dd56564f38043b2b766daac9bc7d347fc85e88c57d66dfd2d0b93325d3a86abd054beefb3665ccd9abe185da215db0bf7c91bea136ca7e84ccc389c9f57e46ff4345271c25c1fde87564174f870482677be877b34c22283af2e5eb9157fd3a9c6f8069cdbff965da7e294c4be4afa1dfc3744b41405600421fde526b790de60a1dae14d6d3aa93</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="您好, 这里需要密码.">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/08/05/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" rel="next" title="【笔记】Mysql数据库导入导出">
+                  <i class="fa fa-chevron-left"></i> 【笔记】Mysql数据库导入导出
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/08/14/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="prev" title="【笔记】数据库连接池">
+                  【笔记】数据库连接池 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

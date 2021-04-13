@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言Servlet学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Servlet学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/05/10/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言Servlet学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://feiju12138.github.io/images/20200510103051/01.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20200510103051/02.png">
+<meta property="article:published_time" content="2020-05-10T02:30:51.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:13.796Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://feiju12138.github.io/images/20200510103051/01.png">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/05/10/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】Servlet学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/05/10/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Servlet学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-10 10:30:51" itemprop="dateCreated datePublished" datetime="2020-05-10T10:30:51+08:00">2020-05-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Servlet学习笔记</p>
+<a id="more"></a>
+
+<h2 id="编写Servlet类"><a href="#编写Servlet类" class="headerlink" title="编写Servlet类"></a>编写Servlet类</h2><h3 id="Servlet继承关系"><a href="#Servlet继承关系" class="headerlink" title="Servlet继承关系"></a>Servlet继承关系</h3><p><img src="/images/20200510103051/01.png" alt="01.png"></p>
+<h3 id="继承HttpServlet类"><a href="#继承HttpServlet类" class="headerlink" title="继承HttpServlet类"></a>继承<code>HttpServlet</code>类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Servlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    ...	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="请求-request"><a href="#请求-request" class="headerlink" title="请求 request"></a>请求 request</h2><h3 id="处理请求"><a href="#处理请求" class="headerlink" title="处理请求"></a>处理请求</h3><h4 id="处理GET请求"><a href="#处理GET请求" class="headerlink" title="处理GET请求"></a>处理GET请求</h4><ul>
+<li>默认处理GET请求</li>
+<li>重写<code>doGet</code>方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="处理POST请求"><a href="#处理POST请求" class="headerlink" title="处理POST请求"></a>处理POST请求</h4><ul>
+<li>重写<code>doPost</code>方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    ...	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置请求编码"><a href="#设置请求编码" class="headerlink" title="设置请求编码"></a>设置请求编码</h3><ul>
+<li>针对POST提交的中文乱码</li>
+<li>对于GET提交tomcat高版本已不出现乱码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取请求头的信息"><a href="#获取请求头的信息" class="headerlink" title="获取请求头的信息"></a>获取请求头的信息</h3><h4 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h4><ul>
+<li>返回StringBuffer类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestURL();</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取URI"><a href="#获取URI" class="headerlink" title="获取URI"></a>获取URI</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestURI();</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取所有的请求参数"><a href="#获取所有的请求参数" class="headerlink" title="获取所有的请求参数"></a>获取所有的请求参数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getQueryString();</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取ip地址"><a href="#获取ip地址" class="headerlink" title="获取ip地址"></a>获取ip地址</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRemoteAddr();</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取客户端主机名"><a href="#获取客户端主机名" class="headerlink" title="获取客户端主机名"></a>获取客户端主机名</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRemoteHost();</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取全部请求头"><a href="#获取全部请求头" class="headerlink" title="获取全部请求头"></a>获取全部请求头</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Enumeration&lt;string&gt; reqHeaderNames = req.getHeaderNames();</span><br><span class="line"><span class="keyword">while</span>(reqHeaderNames.hasMoreElements()) &#123;</span><br><span class="line">    String headerNames = req.HeaderNames.nextElement();</span><br><span class="line">    String headerValue = req.getHeader(headerNames);</span><br><span class="line">    System.out.println(headerNames + <span class="string">":"</span> + headerValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取请求参数"><a href="#获取请求参数" class="headerlink" title="获取请求参数"></a>获取请求参数</h3><ul>
+<li>浏览器发给服务器的参数叫请求参数</li>
+<li>通过请求参数名，获取请求参数值</li>
+<li>请求为空时，返回null</li>
+<li>如果获取多个参数的请求时使用获取单个值的方法，则只返回第一个值</li>
+</ul>
+<blockquote>
+<p><code>&lt;string&gt;</code>：参数名（键）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String &lt;string&gt; = req.getParameter(<span class="string">"&lt;string&gt;"</span>);</span><br><span class="line">String[] &lt;string&gt; = req.getParameterValues(<span class="string">"&lt;string&gt;"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="处理表单请求"><a href="#处理表单请求" class="headerlink" title="处理表单请求"></a>处理表单请求</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">req.getParameter(<span class="string">"text"</span>);</span><br><span class="line">req.getParameter(<span class="string">"radio"</span>);</span><br><span class="line">req.getParameter(<span class="string">"select"</span>);</span><br><span class="line">req.getParameter(<span class="string">"textarea"</span>);</span><br><span class="line">req.getParameter(<span class="string">"hidden"</span>);</span><br><span class="line">req.getParameterValues(<span class="string">"checkbox"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="作为域对象"><a href="#作为域对象" class="headerlink" title="作为域对象"></a>作为域对象</h3><ul>
+<li>request在实现转发时，通过request.setAttribute方法和request.getAttribute方法带数据到目的地时，就是通过request对象中的map集合带数据，这个request对象上的map集合以及request对象所在的范围即称之为是一个域对象。</li>
+</ul>
+<blockquote>
+<p><code>&lt;key&gt;</code>：键，必须是字符串类型<br><code>&lt;value&gt;</code>：值，可以是任意类型</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.setAttribute(&lt;key&gt;, &lt;value&gt;);</span><br><span class="line">request.getAttribute(&lt;key&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="响应-response"><a href="#响应-response" class="headerlink" title="响应 response"></a>响应 response</h2><h3 id="设置响应类型"><a href="#设置响应类型" class="headerlink" title="设置响应类型"></a>设置响应类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.setContentType(<span class="string">"text/html"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置字符集"><a href="#设置字符集" class="headerlink" title="设置字符集"></a>设置字符集</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.setContentType(<span class="string">"text/html; charset=utf-8"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建输出流对象"><a href="#创建输出流对象" class="headerlink" title="创建输出流对象"></a>创建输出流对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrintWriter out = resp.getWriter();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出到网页</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">out.println(<span class="string">"&lt;html&gt;"</span>);</span><br><span class="line">out.println(<span class="string">"&lt;head&gt;"</span>);</span><br><span class="line">out.println(<span class="string">"&lt;title&gt;&lt;/title&gt;"</span>);</span><br><span class="line">out.println(<span class="string">"&lt;/head&gt;"</span>);</span><br><span class="line">out.println(<span class="string">"&lt;body&gt;"</span>);</span><br><span class="line">out.println(<span class="string">"&lt;/body&gt;"</span>);</span><br><span class="line">out.println(<span class="string">"&lt;/html&gt;"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h2><ul>
+<li><p>当一个Servlet资源第一次被访问的时候，由服务器创建Servlet资源对象，通过调用Servlet的init()方法，完成对象的初始操作，该方法只会调用一次</p>
+</li>
+<li><p>对象完成初始化以后，服务器会调用Servlet()方法，完成相关的业务处理（执行各种操作，例如doGet或者doPost），该方法可以反复执行，每一次访问该Servlet资源都会执行该方法</p>
+</li>
+<li><p>当服务器停止的时候，服务器会调用Servlet资源的destroy()方法，用来销毁Servlet对象</p>
+</li>
+</ul>
+<h3 id="自动初始化"><a href="#自动初始化" class="headerlink" title="自动初始化"></a>自动初始化</h3><ul>
+<li><p>服务器启动的时候立即创建Servlet资源对象，同时访问init()方法完成对象的初始化，其中配置是一个整数数字，最小值是1，值越小，访问的优先级越高</p>
+</li>
+<li><p>修改<code>web.xml</code>的<code>&lt;servlet&gt;&lt;/servlet&gt;</code>块</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Servlet调用过程"><a href="#Servlet调用过程" class="headerlink" title="Servlet调用过程"></a>Servlet调用过程</h2><p><img src="/images/20200510103051/02.png" alt="02.png"></p>
+<h2 id="请求转发（服务器端跳转）"><a href="#请求转发（服务器端跳转）" class="headerlink" title="请求转发（服务器端跳转）"></a>请求转发（服务器端跳转）</h2><ul>
+<li>余下代码后执行，先跳转</li>
+<li>转发是一次请求，一次响应</li>
+<li>请求转发前后，浏览器的地址栏地址不会发生变化</li>
+<li>请求转发前后的request对象是同一个，可以传递参数</li>
+<li>请求转发前后的两个资源必须属于同一个Web应用，否则将无法进行转发</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>：另一个资源的路径名</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestDispatcher(<span class="string">"&lt;name&gt;"</span>).forward(req, resp);</span><br></pre></td></tr></table></figure>
+
+<h2 id="目标重定向（客户端跳转）"><a href="#目标重定向（客户端跳转）" class="headerlink" title="目标重定向（客户端跳转）"></a>目标重定向（客户端跳转）</h2><ul>
+<li>余下代码先执行，后跳转</li>
+<li>重定向是两次请求，两次响应</li>
+<li>重定向前后，浏览器的地址栏地址会发生变化</li>
+<li>重定向前后的request对象不是同一个</li>
+<li>重定向前后的两个资源可以是来自不同的web应用，甚至可以是来自不同的服务器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.sendRedirect(<span class="string">"&lt;name&gt;"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2>
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/05/08/%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8/" rel="next" title="【笔记】系统自启脚本管理器">
+                  <i class="fa fa-chevron-left"></i> 【笔记】系统自启脚本管理器
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/05/13/Cookie%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】Cookie学习笔记">
+                  【笔记】Cookie学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写Servlet类"><span class="nav-number">2.</span> <span class="nav-text">编写Servlet类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet继承关系"><span class="nav-number">2.1.</span> <span class="nav-text">Servlet继承关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承HttpServlet类"><span class="nav-number">2.2.</span> <span class="nav-text">继承HttpServlet类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求-request"><span class="nav-number">3.</span> <span class="nav-text">请求 request</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理请求"><span class="nav-number">3.1.</span> <span class="nav-text">处理请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理GET请求"><span class="nav-number">3.1.1.</span> <span class="nav-text">处理GET请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理POST请求"><span class="nav-number">3.1.2.</span> <span class="nav-text">处理POST请求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置请求编码"><span class="nav-number">3.2.</span> <span class="nav-text">设置请求编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取请求头的信息"><span class="nav-number">3.3.</span> <span class="nav-text">获取请求头的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取URL"><span class="nav-number">3.3.1.</span> <span class="nav-text">获取URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取URI"><span class="nav-number">3.3.2.</span> <span class="nav-text">获取URI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取所有的请求参数"><span class="nav-number">3.3.3.</span> <span class="nav-text">获取所有的请求参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取ip地址"><span class="nav-number">3.3.4.</span> <span class="nav-text">获取ip地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取客户端主机名"><span class="nav-number">3.3.5.</span> <span class="nav-text">获取客户端主机名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取全部请求头"><span class="nav-number">3.3.6.</span> <span class="nav-text">获取全部请求头</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取请求参数"><span class="nav-number">3.4.</span> <span class="nav-text">获取请求参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理表单请求"><span class="nav-number">3.4.1.</span> <span class="nav-text">处理表单请求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为域对象"><span class="nav-number">3.5.</span> <span class="nav-text">作为域对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应-response"><span class="nav-number">4.</span> <span class="nav-text">响应 response</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置响应类型"><span class="nav-number">4.1.</span> <span class="nav-text">设置响应类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置字符集"><span class="nav-number">4.1.1.</span> <span class="nav-text">设置字符集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建输出流对象"><span class="nav-number">4.2.</span> <span class="nav-text">创建输出流对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">5.</span> <span class="nav-text">Servlet生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自动初始化"><span class="nav-number">5.1.</span> <span class="nav-text">自动初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet调用过程"><span class="nav-number">6.</span> <span class="nav-text">Servlet调用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求转发（服务器端跳转）"><span class="nav-number">7.</span> <span class="nav-text">请求转发（服务器端跳转）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标重定向（客户端跳转）"><span class="nav-number">8.</span> <span class="nav-text">目标重定向（客户端跳转）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">9.</span> <span class="nav-text">完成</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

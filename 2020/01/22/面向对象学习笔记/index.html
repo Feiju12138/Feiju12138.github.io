@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言面向对象编程（oop）学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】面向对象 学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/01/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言面向对象编程（oop）学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-22T03:21:48.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:14.089Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/01/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】面向对象 学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/01/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】面向对象 学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-22 11:21:48" itemprop="dateCreated datePublished" datetime="2020-01-22T11:21:48+08:00">2020-01-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:14" itemprop="dateModified" datetime="2021-03-21T17:21:14+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>面向对象编程（oop）学习笔记</p>
+<a id="more"></a>
+
+<h2 id="类-对象"><a href="#类-对象" class="headerlink" title="类 对象"></a>类 对象</h2><ul>
+<li>现实世界是由很多很多对象组成的</li>
+<li>基于对象抽出了类</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>对象:真实存在的单个的个体</li>
+<li>类:类型/类别，代表一类个体</li>
+</ul>
+<h3 id="类中可以包含"><a href="#类中可以包含" class="headerlink" title="类中可以包含"></a>类中可以包含</h3><ul>
+<li>成员变量</li>
+</ul>
+<p>所有对象所共有的属性/特征</p>
+<ul>
+<li>方法</li>
+</ul>
+<p>所有对象所共有的行为</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>一个类可以创建多个对象</li>
+<li>同一类型所创建的对象，结构相同，数据不同</li>
+<li>类是对象的模板，对象是类的具体的实例</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="方法的签名"><a href="#方法的签名" class="headerlink" title="方法的签名"></a>方法的签名</h3><ul>
+<li>方法名+参数列表</li>
+</ul>
+<h3 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h3><ul>
+<li>发生在一个类中，方法名称相同，参数列表不同，方法体不同</li>
+<li>编译器在编译时会根据方法的签名自动绑定调用的方法</li>
+</ul>
+<h4 id="参数列表类型相同数量不同"><a href="#参数列表类型相同数量不同" class="headerlink" title="参数列表类型相同数量不同"></a>参数列表类型相同数量不同</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span>... nums)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>构造函数、构造器，构建器</p>
+<ul>
+<li>给成员变量赋初值</li>
+<li>与类同名，没有返回值类型</li>
+<li>在创建对象时自动调用构造方法</li>
+<li>若自己不写构造方法，则编译器默认一个无参构造方法</li>
+<li>若自己写了构造方法，则不再默认提供</li>
+<li>构造方法可以重载</li>
+</ul>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><ul>
+<li><p>指代当前对象，哪个对象调用方法它指的就是哪个对象</p>
+</li>
+<li><p>只能用在方法中，方法中访问成员变量之前默认有个this.</p>
+</li>
+</ul>
+<h4 id="this的用法"><a href="#this的用法" class="headerlink" title="this的用法"></a>this的用法</h4><h5 id="访问成员变量"><a href="#访问成员变量" class="headerlink" title="访问成员变量"></a>访问成员变量</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.成员变量名</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用方法-一般不用"><a href="#调用方法-一般不用" class="headerlink" title="调用方法(一般不用)"></a>调用方法(一般不用)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.方法名()</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用构造方法"><a href="#调用构造方法" class="headerlink" title="调用构造方法"></a>调用构造方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="null"><a href="#null" class="headerlink" title="null"></a>null</h2><ul>
+<li><p>空，没有指向任何对对象</p>
+</li>
+<li><p>若引用的值的null，则该引用不能再进行任何操作了</p>
+</li>
+<li><p>若操作则发生NullPointerException空指针异常</p>
+</li>
+</ul>
+<h2 id="引用类型变量"><a href="#引用类型变量" class="headerlink" title="引用类型变量"></a>引用类型变量</h2><ul>
+<li>指向同一个对象</li>
+<li>通过一个引用对数据的修改会影响另一个引用对数据的访问</li>
+</ul>
+<h2 id="基本类型变量"><a href="#基本类型变量" class="headerlink" title="基本类型变量"></a>基本类型变量</h2><ul>
+<li>赋值</li>
+<li>对一个变量的修改不会影响另一个变量</li>
+</ul>
+<h2 id="引用类型数组"><a href="#引用类型数组" class="headerlink" title="引用类型数组"></a>引用类型数组</h2><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>代码复用</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>通过<code>extends</code>来实现继承</li>
+</ul>
+<h3 id="属性行为范围"><a href="#属性行为范围" class="headerlink" title="属性行为范围"></a>属性行为范围</h3><ul>
+<li>超类/父类：所有派生类所共有的属性和行为</li>
+<li>派生类/子类：派生类所特有的属性和行为</li>
+<li>派生类继承超类后，派生类具有：派生类的+超类的</li>
+</ul>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><p>一个超类可以有多个派生类</p>
+</li>
+<li><p>一个派生类只能有一个超类（单一继承）</p>
+</li>
+<li><p>具有传递性</p>
+</li>
+</ul>
+<h3 id="规定"><a href="#规定" class="headerlink" title="规定"></a>规定</h3><ul>
+<li><p>构造派生类之前必须先构造超类</p>
+</li>
+<li><p>在派生类的构造方法中若自己不调用超类的构造方法，则默认`super()调用超类的无参构造方</p>
+</li>
+<li><p>在派生类的构造方法中若自己调用了超类的构造方法，则不再默认提供</p>
+</li>
+</ul>
+<h3 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h3><ul>
+<li>调用超类构造方法，必须位于派生类构造的第一行</li>
+</ul>
+<h2 id="super-1"><a href="#super-1" class="headerlink" title="super"></a>super</h2><ul>
+<li>指代当前对象的超类对象</li>
+</ul>
+<h3 id="super的用法"><a href="#super的用法" class="headerlink" title="super的用法"></a>super的用法</h3><h4 id="访问超类的成员变量"><a href="#访问超类的成员变量" class="headerlink" title="访问超类的成员变量"></a>访问超类的成员变量</h4><h5 id="访问超类的成员变量-1"><a href="#访问超类的成员变量-1" class="headerlink" title="访问超类的成员变量"></a>访问超类的成员变量</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.成员变量名</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用超类的方法"><a href="#调用超类的方法" class="headerlink" title="调用超类的方法"></a>调用超类的方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.方法名()</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用超类的构造方法"><a href="#调用超类的构造方法" class="headerlink" title="调用超类的构造方法"></a>调用超类的构造方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="向上造型"><a href="#向上造型" class="headerlink" title="向上造型"></a>向上造型</h2><ul>
+<li>超类型的引用指向派生类的对象</li>
+<li>能点出来什么，看引用的类型</li>
+</ul>
+<h2 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h2><p>重新写、覆盖</p>
+<ul>
+<li>发生在父子类中，方法名相同，参数列表相同，方法体不同</li>
+<li>重写方法被调用时，看对象的类型</li>
+</ul>
+<h3 id="遵循原则"><a href="#遵循原则" class="headerlink" title="遵循原则"></a>遵循原则</h3><ul>
+<li>遵循”两同两小一大”原则</li>
+</ul>
+<h4 id="两同"><a href="#两同" class="headerlink" title="两同"></a>两同</h4><ul>
+<li>方法名称相同</li>
+<li>参数列表相同</li>
+</ul>
+<h4 id="两小"><a href="#两小" class="headerlink" title="两小"></a>两小</h4><ul>
+<li>派生类方法的返回值类型小于或等于超类方法的</li>
+</ul>
+<p><code>void</code>时，必须相等<br>基本类型时，必须相等<br>引用类型时，小于或等于</p>
+<ul>
+<li>派生类方法抛出的异常小于或等于超类方法的</li>
+</ul>
+<h4 id="一大"><a href="#一大" class="headerlink" title="一大"></a>一大</h4><ul>
+<li>派生类方法的访问权限大于或等于超类方法的</li>
+</ul>
+<h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>避免类的命名冲突</li>
+</ul>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>包名可以有层次结构，同包中的类不能同名</li>
+</ul>
+<h3 id="类的全称"><a href="#类的全称" class="headerlink" title="类的全称"></a>类的全称</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">包名.类点</span><br></pre></td></tr></table></figure>
+
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><ul>
+<li>包名所有字母都小写</li>
+</ul>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><ul>
+<li>同包中的类可以直接访问</li>
+<li>不同包中的类不能直接访问，想访问有如下两种方式</li>
+</ul>
+<blockquote>
+<p>先import声明类再使用类<br>类的全称</p>
+</blockquote>
+<h2 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h2><blockquote>
+<p><code>public</code>:公共的，任何类<br><code>protected</code>:受保护的，本类、派生类、同包类<br>默认的:什么也不写，本类、同包类<br><code>private</code>:私有的，本类</p>
+</blockquote>
+<ul>
+<li>类的访问修饰符只能是<code>public</code>和默认的</li>
+<li>类中成员的访问修饰符如上4种都可以</li>
+</ul>
+<h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><ul>
+<li>最终的、不可改变的</li>
+</ul>
+<h3 id="修饰变量"><a href="#修饰变量" class="headerlink" title="修饰变量"></a>修饰变量</h3><ul>
+<li><p>变量不能被改变</p>
+<h3 id="修饰方法"><a href="#修饰方法" class="headerlink" title="修饰方法"></a>修饰方法</h3></li>
+<li><p>方法不能被重写</p>
+</li>
+</ul>
+<h3 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h3><ul>
+<li>类不能被继承</li>
+</ul>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><ul>
+<li>静态的</li>
+</ul>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><ul>
+<li>由<code>static</code>修饰</li>
+<li>属于类，存储在方法区中，一份</li>
+<li>常常通过类名点来访问</li>
+<li>何时用:所有对象所共享的数据(图片、音频、视频等)</li>
+</ul>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
+<li>由<code>static</code>修饰</li>
+<li>属于类，存储在方法区中，一份</li>
+<li>常常通过类名点来访问</li>
+<li>静态方法没有隐式的this传递，</li>
+<li>静态方法不能直接访问实例成员</li>
+<li>何时用:方法的操作仅与参数相关而与对象无关</li>
+</ul>
+<h3 id="静态块"><a href="#静态块" class="headerlink" title="静态块"></a>静态块</h3><ul>
+<li>属于类的，在类被加载期间自动执行，</li>
+<li>因类只被加载一次，所以静态块只执行一次</li>
+<li>何时用:加载/初始化静态资源(图片、音频、视频等)</li>
+</ul>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>必须声明同时初始化</li>
+<li>类名点来访问，不能被改变</li>
+<li>建议:常量名所有字母都大写，多个单词由<code>_</code>分隔</li>
+<li>编译器在编译时将常量直接替换为具体的值，效率高</li>
+<li>何时用:数据永远不变，并且经常使用</li>
+</ul>
+<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><ul>
+<li>由<code>abstract</code>修饰</li>
+<li>只有方法的定义，没有具体的实现</li>
+</ul>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>由abstract修饰</li>
+<li>包含抽象方法的类必须是抽象类</li>
+<li>不包含抽象方法的类也可以声明为抽象类</li>
+<li>抽象类不能被实例化</li>
+</ul>
+<h3 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h3><ul>
+<li>抽象类是需要被继承的</li>
+</ul>
+<blockquote>
+<p>重写所有抽象方法<br>也声明为抽象类</p>
+</blockquote>
+<h3 id="抽象类的意义"><a href="#抽象类的意义" class="headerlink" title="抽象类的意义"></a>抽象类的意义</h3><ul>
+<li>封装派生类共有的属性和行为（代码复用）</li>
+<li>为所有派生类提供统一的类型（向上造型）</li>
+<li>可以包含抽象方法，为所有派生类提供统一的入口，派生类的具体行为不同，但入口是一致的</li>
+</ul>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><ul>
+<li>类中套类，外面的称为Outer外部类，里面的称为Inner内部类</li>
+<li>内部类通常只服务于外部类，对外不具备可见性</li>
+<li>内部类对象通常是在外部类中创建的</li>
+<li>内部类中可以直接访问外部类的成员(包括私有的)</li>
+<li>内部类中有个隐式的引用指向了创建它的外部类对象</li>
+</ul>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><ul>
+<li>若想创建一个类(派生类)的对象，并且对象只被创建一次，此时该类不必命名，称为匿名内部类</li>
+<li><code>jdk1.7</code>及之前，想访问匿名内部类外面的变量，该变量必须是final的</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>是一种数据类型(引用类型)</li>
+<li>由interface定义</li>
+<li>只能包含常量和抽象方法</li>
+<li>不能被实例化</li>
+<li>接口是需要被实现/继承的，实现类/派生类 必须重写接口中的所有抽象方法</li>
+<li>一个类可以实现多个接口，用逗号分隔，若又继承又实现时，应先继承后实现</li>
+<li>接口可以继承接口(多个)</li>
+</ul>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><ul>
+<li>同一类型的引用，指向不同的对象时，有不同的实现</li>
+<li>同一个对象，被造型为不同的类型时，有不同的功能</li>
+</ul>
+<h3 id="向上造型-1"><a href="#向上造型-1" class="headerlink" title="向上造型"></a>向上造型</h3><p>自动类型转换</p>
+<ul>
+<li>超类型的引用指向派生类的对象</li>
+<li>能造型成为的数据类型有: 超类+所实现的接口</li>
+<li>能点出来什么，看引用的类型</li>
+</ul>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><ul>
+<li><p>引用所指向的对象，就是该类型</p>
+</li>
+<li><p>引用所指向的对象，实现了该接口或继承了该类</p>
+</li>
+<li><p>强转时若不符合如上条件，则发生ClassCastException类型转换异常<br>建议：强转之前先通过instanceof判断引用指向的对象是否是该类型</p>
+</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>达内学习视频</p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/20/VCD%E8%A7%86%E9%A2%91%E5%AF%BC%E5%87%BA/" rel="next" title="【笔记】VCD 视频导出">
+                  <i class="fa fa-chevron-left"></i> 【笔记】VCD 视频导出
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/01/25/JDBC%E6%8A%A5%E9%94%99Loading-class-com-mysql-jdbc-Driver/" rel="prev" title="【踩坑】JDBC 报错 Loading class `com.mysql.jdbc.Driver' ...">
+                  【踩坑】JDBC 报错 Loading class `com.mysql.jdbc.Driver' ... <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类-对象"><span class="nav-number">2.</span> <span class="nav-text">类 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类中可以包含"><span class="nav-number">2.2.</span> <span class="nav-text">类中可以包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">2.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的签名"><span class="nav-number">3.1.</span> <span class="nav-text">方法的签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的重载"><span class="nav-number">3.2.</span> <span class="nav-text">方法的重载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数列表类型相同数量不同"><span class="nav-number">3.2.1.</span> <span class="nav-text">参数列表类型相同数量不同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">3.3.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this"><span class="nav-number">3.4.</span> <span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this的用法"><span class="nav-number">3.4.1.</span> <span class="nav-text">this的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#访问成员变量"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">访问成员变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用方法-一般不用"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">调用方法(一般不用)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用构造方法"><span class="nav-number">3.4.1.3.</span> <span class="nav-text">调用构造方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型变量"><span class="nav-number">5.</span> <span class="nav-text">引用类型变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本类型变量"><span class="nav-number">6.</span> <span class="nav-text">基本类型变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型数组"><span class="nav-number">7.</span> <span class="nav-text">引用类型数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">8.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">8.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">8.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性行为范围"><span class="nav-number">8.3.</span> <span class="nav-text">属性行为范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">8.4.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规定"><span class="nav-number">8.5.</span> <span class="nav-text">规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#super"><span class="nav-number">8.6.</span> <span class="nav-text">super()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#super-1"><span class="nav-number">9.</span> <span class="nav-text">super</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#super的用法"><span class="nav-number">9.1.</span> <span class="nav-text">super的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#访问超类的成员变量"><span class="nav-number">9.1.1.</span> <span class="nav-text">访问超类的成员变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#访问超类的成员变量-1"><span class="nav-number">9.1.1.1.</span> <span class="nav-text">访问超类的成员变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用超类的方法"><span class="nav-number">9.1.1.2.</span> <span class="nav-text">调用超类的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用超类的构造方法"><span class="nav-number">9.1.1.3.</span> <span class="nav-text">调用超类的构造方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向上造型"><span class="nav-number">10.</span> <span class="nav-text">向上造型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法的重写"><span class="nav-number">11.</span> <span class="nav-text">方法的重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遵循原则"><span class="nav-number">11.1.</span> <span class="nav-text">遵循原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两同"><span class="nav-number">11.1.1.</span> <span class="nav-text">两同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两小"><span class="nav-number">11.1.2.</span> <span class="nav-text">两小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一大"><span class="nav-number">11.1.3.</span> <span class="nav-text">一大</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package"><span class="nav-number">12.</span> <span class="nav-text">package</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用-1"><span class="nav-number">12.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-2"><span class="nav-number">12.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的全称"><span class="nav-number">12.3.</span> <span class="nav-text">类的全称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议"><span class="nav-number">12.4.</span> <span class="nav-text">建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import"><span class="nav-number">13.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问控制修饰符"><span class="nav-number">14.</span> <span class="nav-text">访问控制修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">15.</span> <span class="nav-text">final</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰变量"><span class="nav-number">15.1.</span> <span class="nav-text">修饰变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰方法"><span class="nav-number">15.2.</span> <span class="nav-text">修饰方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰类"><span class="nav-number">15.3.</span> <span class="nav-text">修饰类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">16.</span> <span class="nav-text">static</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态变量"><span class="nav-number">16.1.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-number">16.2.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态块"><span class="nav-number">16.3.</span> <span class="nav-text">静态块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量"><span class="nav-number">17.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象方法"><span class="nav-number">18.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">19.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承关系"><span class="nav-number">19.1.</span> <span class="nav-text">继承关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类的意义"><span class="nav-number">19.2.</span> <span class="nav-text">抽象类的意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类"><span class="nav-number">20.</span> <span class="nav-text">成员内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">21.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">22.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">23.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">23.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上造型-1"><span class="nav-number">23.2.</span> <span class="nav-text">向上造型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制类型转换"><span class="nav-number">23.3.</span> <span class="nav-text">强制类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">24.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

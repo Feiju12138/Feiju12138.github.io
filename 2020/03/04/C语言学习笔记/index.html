@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言C是一种通用的编程语言，广泛用于系统软件与应用软件的开发。于1969年至1973年间，为了移植与开发UNIX操作系统，由丹尼斯·里奇与肯·汤普逊，以B语言为基础，在贝尔实验室设计、开发出来。 C语言具有高效、灵活、功能丰富、表达力强和较高的可移植性等特点，在程序设计中备受青睐，成为最近25年使用最为广泛的编程语言。（维基百科）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】C语言学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/03/04/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言C是一种通用的编程语言，广泛用于系统软件与应用软件的开发。于1969年至1973年间，为了移植与开发UNIX操作系统，由丹尼斯·里奇与肯·汤普逊，以B语言为基础，在贝尔实验室设计、开发出来。 C语言具有高效、灵活、功能丰富、表达力强和较高的可移植性等特点，在程序设计中备受青睐，成为最近25年使用最为广泛的编程语言。（维基百科）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-04T08:14:46.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:13.622Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/03/04/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】C语言学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/03/04/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】C语言学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-04 16:14:46" itemprop="dateCreated datePublished" datetime="2020-03-04T16:14:46+08:00">2020-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>C是一种通用的编程语言，广泛用于系统软件与应用软件的开发。于1969年至1973年间，为了移植与开发UNIX操作系统，由丹尼斯·里奇与肯·汤普逊，以B语言为基础，在贝尔实验室设计、开发出来。 C语言具有高效、灵活、功能丰富、表达力强和较高的可移植性等特点，在程序设计中备受青睐，成为最近25年使用最为广泛的编程语言。（<a href="https://wiki.hk.wjbk.site/zh-hans/C语言" target="_blank" rel="noopener">维基百科</a>）</p>
+<a id="more"></a>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h3 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h3><ul>
+<li><code>//</code>后的文字均为单行注视</li>
+</ul>
+<h3 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h3><ul>
+<li><code>/* code */</code></li>
+</ul>
+<h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><ul>
+<li>导入C/C++语言函数库</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h2><ul>
+<li>应用程序入口，操作系统调用程序的接口</li>
+<li>一个项目只能有一个main函数</li>
+</ul>
+<h3 id="常见的五种主函数"><a href="#常见的五种主函数" class="headerlink" title="常见的五种主函数"></a>常见的五种主函数</h3><h4 id="C语言标准主函数形式"><a href="#C语言标准主函数形式" class="headerlink" title="C语言标准主函数形式"></a>C语言标准主函数形式</h4><ul>
+<li>void表示不接收任何参数</li>
+<li>无void表示参数类型和数量不确定</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="C-C-标准主函数形式，使用命令行参数"><a href="#C-C-标准主函数形式，使用命令行参数" class="headerlink" title="C/C++标准主函数形式，使用命令行参数"></a>C/C++标准主函数形式，使用命令行参数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="C-标准主函数形式"><a href="#C-标准主函数形式" class="headerlink" title="C++标准主函数形式"></a>C++标准主函数形式</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="老版本"><a href="#老版本" class="headerlink" title="老版本"></a>老版本</h4><ul>
+<li>老标准支持的写法，现在的C语言还支持这种写法，但尽量不要这么写</li>
+<li>C++不支持这种写法</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="不提倡"><a href="#不提倡" class="headerlink" title="不提倡"></a>不提倡</h4><ul>
+<li>C++之父说，这种形式的主函数，在C/C++语言中都没有被定义</li>
+<li>书上说，这种主函数写法逻辑上符合，而且有很多系统支持，但是考虑到代码的移植性，建议用标准型式，标准型式所有系统都支持</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p><code>&lt;type&gt;</code>：数据类型<br><code>&lt;name&gt;</code>：数据名<br><code>&lt;value&gt;</code>：数据值</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt; &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>常量名全部大写，多个单词用<code>_</code>隔开</li>
+</ul>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> <span class="meta-string">&lt;name&gt; &lt;value&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;type&gt; &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="无符号数据类型"><a href="#无符号数据类型" class="headerlink" title="无符号数据类型"></a>无符号数据类型</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> &lt;type&gt; &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他进制数据"><a href="#其他进制数据" class="headerlink" title="其他进制数据"></a>其他进制数据</h4><h5 id="2进制数据"><a href="#2进制数据" class="headerlink" title="2进制数据"></a>2进制数据</h5><ul>
+<li>以<code>0b</code>开头</li>
+</ul>
+<h5 id="8进制数据"><a href="#8进制数据" class="headerlink" title="8进制数据"></a>8进制数据</h5><ul>
+<li>以<code>0</code>开头</li>
+</ul>
+<h5 id="16进制数据"><a href="#16进制数据" class="headerlink" title="16进制数据"></a>16进制数据</h5><ul>
+<li>以<code>0x</code>开头</li>
+</ul>
+<h4 id="不同系统下的相同数据"><a href="#不同系统下的相同数据" class="headerlink" title="不同系统下的相同数据"></a>不同系统下的相同数据</h4><ul>
+<li>以<code>&lt;num&gt;_t</code>结尾为特定位平台数据</li>
+<li>以<code>u_</code>开头为无符号数据</li>
+</ul>
+<h5 id="8位系统"><a href="#8位系统" class="headerlink" title="8位系统"></a>8位系统</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int8_t</span> &lt;name&gt; = &lt;value&gt;;</span><br><span class="line"><span class="keyword">u_int8_t</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="16位系统"><a href="#16位系统" class="headerlink" title="16位系统"></a>16位系统</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int16_t</span> &lt;name&gt; = &lt;value&gt;;</span><br><span class="line"><span class="keyword">u_int16_t</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="32位系统"><a href="#32位系统" class="headerlink" title="32位系统"></a>32位系统</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int32_t</span> &lt;name&gt; = &lt;value&gt;;</span><br><span class="line"><span class="keyword">u_int32_t</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="64位系统"><a href="#64位系统" class="headerlink" title="64位系统"></a>64位系统</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int64_t</span> &lt;name&gt; = &lt;value&gt;;</span><br><span class="line"><span class="keyword">u_int64_t</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="长整型"><a href="#长整型" class="headerlink" title="长整型"></a>长整型</h4><ul>
+<li>32位系统，占4字节</li>
+<li>64位系统，占8字节</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无论32位系统还是64位系统，都占8字节</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实数类型"><a href="#实数类型" class="headerlink" title="实数类型"></a>实数类型</h3><h4 id="单精度"><a href="#单精度" class="headerlink" title="单精度"></a>单精度</h4><ul>
+<li>4字节，32位</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="双精度"><a href="#双精度" class="headerlink" title="双精度"></a>双精度</h4><ul>
+<li>8字节，64位</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="长双精度"><a href="#长双精度" class="headerlink" title="长双精度"></a>长双精度</h4><ul>
+<li>16字节，128位</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> <span class="keyword">double</span> &lt;name&gt; = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><h4 id="字符常量"><a href="#字符常量" class="headerlink" title="字符常量"></a>字符常量</h4><h5 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h5><ul>
+<li><code>\n</code></li>
+</ul>
+<h5 id="回车符"><a href="#回车符" class="headerlink" title="回车符"></a>回车符</h5><ul>
+<li><code>\r</code></li>
+</ul>
+<h5 id="退格符"><a href="#退格符" class="headerlink" title="退格符"></a>退格符</h5><ul>
+<li><code>\b</code>，相当于<code>back space</code></li>
+</ul>
+<h5 id="制表符"><a href="#制表符" class="headerlink" title="制表符"></a>制表符</h5><ul>
+<li><code>\t</code></li>
+</ul>
+<h5 id="换页符"><a href="#换页符" class="headerlink" title="换页符"></a>换页符</h5><ul>
+<li><code>\f</code></li>
+</ul>
+<h5 id="其他转义字符"><a href="#其他转义字符" class="headerlink" title="其他转义字符"></a>其他转义字符</h5><table>
+<thead>
+<tr>
+<th>转义前</th>
+<th>转义后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|\</td>
+<td></td>
+</tr>
+<tr>
+<td>“</td>
+<td>&quot;</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>&#39;</td>
+</tr>
+</tbody></table>
+<h4 id="字符变量"><a href="#字符变量" class="headerlink" title="字符变量"></a>字符变量</h4><h5 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h5><ul>
+<li>用单引号引起来</li>
+</ul>
+<h3 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h3><h4 id="为数据类型起别名"><a href="#为数据类型起别名" class="headerlink" title="为数据类型起别名"></a>为数据类型起别名</h4><blockquote>
+<p><code>&lt;type_old&gt;</code>：起名前<br><code>&lt;type_new&gt;</code>：起名后</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> &lt;type_old&gt; &lt;type_new&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><blockquote>
+<p><code>&lt;boolean&gt;</code>：布尔值</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (&lt;<span class="keyword">boolean</span>&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (&lt;<span class="keyword">boolean</span>&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (&lt;<span class="keyword">boolean</span>&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (&lt;<span class="keyword">boolean</span>&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><blockquote>
+<p><code>&lt;name&gt;</code>：变量名<br><code>&lt;value_1&gt;</code>：第一种值<br><code>&lt;value_2&gt;</code>：第二种值</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (&lt;name&gt;) &#123;</span><br><span class="line">    <span class="keyword">case</span> &lt;value_1&gt;:</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> &lt;value_2&gt;:</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h2><ul>
+<li>到达goto语句时，执行跳转到指定的标签</li>
+</ul>
+<blockquote>
+<p><code>&lt;label&gt;</code>：标签</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;label&gt;:</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">goto</span> &lt;label&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h3><ul>
+<li>跳出循环</li>
+</ul>
+<h3 id="continue语句"><a href="#continue语句" class="headerlink" title="continue语句"></a>continue语句</h3><ul>
+<li>终止本次循环</li>
+</ul>
+<h3 id="嵌套循环"><a href="#嵌套循环" class="headerlink" title="嵌套循环"></a>嵌套循环</h3><ul>
+<li>九九乘法表小案例</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i ++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j ++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d * %d = %d \t"</span>, i, j, i*j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (&lt;<span class="keyword">boolean</span>&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; <span class="keyword">while</span> (&lt;<span class="keyword">boolean</span>&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出字符和字符串"><a href="#输出字符和字符串" class="headerlink" title="输出字符和字符串"></a>输出字符和字符串</h2><h3 id="输出字符"><a href="#输出字符" class="headerlink" title="输出字符"></a>输出字符</h3><blockquote>
+<p><code>&lt;num&gt;</code>：0~255的int数，或一个字符</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">putchar</span>(&lt;num&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出字符串"><a href="#输出字符串" class="headerlink" title="输出字符串"></a>输出字符串</h3><blockquote>
+<p><code>&lt;string&gt;</code>：字符串，或一个字符数组</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">puts</span>(&lt;<span class="built_in">string</span>&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><table>
+<thead>
+<tr>
+<th>输出前</th>
+<th>输出后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%d</td>
+<td>整形</td>
+</tr>
+<tr>
+<td>%03d</td>
+<td>在<code>%</code>后加<code>&lt;num_1&gt;&lt;num_2&gt;</code>，表示在改值不足<code>&lt;num_2&gt;</code>位数前补<code>&lt;num_1&gt;</code>，如果<code>&lt;num_1&gt;</code>为空，则在数前补空格</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>无符号整数</td>
+</tr>
+<tr>
+<td>&amp;o</td>
+<td>8进制数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>16进制数（英文小写）</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>16进制数（英文大写）</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点数（双精度）</td>
+</tr>
+<tr>
+<td>%.2f</td>
+<td>在<code>%</code>后加<code>.&lt;num&gt;</code>，表示保留小数点后<code>&lt;num&gt;</code>个有效数字</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>字符</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>%ld</td>
+<td>长整型</td>
+</tr>
+<tr>
+<td>%Lf</td>
+<td>长浮点数（双精度）</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>指针</td>
+</tr>
+</tbody></table>
+<h2 id="输入字符"><a href="#输入字符" class="headerlink" title="输入字符"></a>输入字符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> inputChar = getchar();</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式化输入"><a href="#格式化输入" class="headerlink" title="格式化输入"></a>格式化输入</h2><ul>
+<li><code>&amp;</code>用于取数据的内存地址</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> dist;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;dist);</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入字符串"><a href="#输入字符串" class="headerlink" title="输入字符串"></a>输入字符串</h3><ul>
+<li>输入字符串不需要<code>&amp;</code>，因为字符数组本身就为内存地址</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> buf[<span class="number">10</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%c"</span>, buf);</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>数组下标从0开始</li>
+<li>C语言的数组创建的时候，其实是直接使用的其他被遗弃的内存空间，所以默认会有数值且不确定，使用之前可以进行清零操作</li>
+</ul>
+<h3 id="创建时仅初始化"><a href="#创建时仅初始化" class="headerlink" title="创建时仅初始化"></a>创建时仅初始化</h3><blockquote>
+<p><code>&lt;num&gt;</code>：数组长度</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt; &lt;name&gt;[&lt;num&gt;];</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建时添加数据"><a href="#创建时添加数据" class="headerlink" title="创建时添加数据"></a>创建时添加数据</h3><blockquote>
+<p><code>&lt;value_1&gt;</code>：值</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt; &lt;name&gt;[] = &#123;&lt;value_1&gt;, &lt;value_2&gt;, ...&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><h3 id="创建时仅初始化-1"><a href="#创建时仅初始化-1" class="headerlink" title="创建时仅初始化"></a>创建时仅初始化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt; &lt;name&gt;[&lt;num&gt;][&lt;num&gt;];</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建时添加数据-1"><a href="#创建时添加数据-1" class="headerlink" title="创建时添加数据"></a>创建时添加数据</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt; &lt;name&gt;[&lt;num&gt;][&lt;&lt;num&gt;&gt;] = &#123;&#123;&lt;value_1&gt;, &lt;value_2&gt;&#125;, &#123;&lt;value_3&gt;, &lt;value_4&gt;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a>字符数组</h2><h3 id="引入头文件"><a href="#引入头文件" class="headerlink" title="引入头文件"></a>引入头文件</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[&lt;num&gt;];</span><br><span class="line"><span class="built_in">strlen</span>(str);</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串初始化"><a href="#字符串初始化" class="headerlink" title="字符串初始化"></a>字符串初始化</h3><blockquote>
+<p><code>&lt;string&gt;</code>：字符串<br><code>&lt;char_1&gt;</code>、<code>&lt;char_2&gt;</code>：字符</p>
+</blockquote>
+<blockquote>
+<p><code>&#39;\0&#39;</code>：字符串结尾字符</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[&lt;num&gt;] = <span class="string">"&lt;string&gt;"</span>;</span><br><span class="line"><span class="keyword">char</span> * str = <span class="string">"&lt;string&gt;"</span>;</span><br><span class="line">char str[&lt;num&gt;] = &#123;'&lt;char_1&gt;', '&lt;char_2&gt;', '\0'&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="清零字符串"><a href="#清零字符串" class="headerlink" title="清零字符串"></a>清零字符串</h3><blockquote>
+<p><code>&lt;num&gt;</code>：格式化后的数字，值为<code>0</code>时为清零操作<br><code>&lt;len&gt;</code>：格式化的长度，通常为字符串长度</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>(&lt;<span class="built_in">string</span>&gt;, &lt;num&gt;, &lt;len&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h2><h3 id="引入头文件-1"><a href="#引入头文件-1" class="headerlink" title="引入头文件"></a>引入头文件</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="完整连接"><a href="#完整连接" class="headerlink" title="完整连接"></a>完整连接</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个字符串作为缓冲区</span></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清零字符串</span></span><br><span class="line"><span class="built_in">memset</span>(str, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义两个需要连接的字符串</span></span><br><span class="line"><span class="keyword">char</span> * str1 = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">char</span> * str2 = <span class="string">"World"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接字符串</span></span><br><span class="line"><span class="built_in">strcat</span>(str, str1);</span><br><span class="line"><span class="built_in">strcat</span>(str, str2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="片段连接"><a href="#片段连接" class="headerlink" title="片段连接"></a>片段连接</h3><blockquote>
+<p><code>&lt;num&gt;</code>：指明需要连接的长度</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strncat</span>(str, str1, &lt;num&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><ul>
+<li>将多个其他类型的数据转化为字符串</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * str = <span class="string">"s"</span>;</span><br><span class="line"><span class="keyword">int</span> num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个字符串作为缓冲区</span></span><br><span class="line"><span class="keyword">char</span> dist[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化字符串</span></span><br><span class="line"><span class="built_in">memset</span>(dist, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并为一个字符串</span></span><br><span class="line"><span class="built_in">sprintf</span>(dist, <span class="string">"%s%d"</span>, str, num);</span><br></pre></td></tr></table></figure>
+
+<h3 id="反向格式化"><a href="#反向格式化" class="headerlink" title="反向格式化"></a>反向格式化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * str = <span class="string">"m100"</span>;</span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> num;</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(buf, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">sscanf</span>(str, <span class="string">"%1s%d"</span>, buf, &amp;num);</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串转换为其他类型"><a href="#字符串转换为其他类型" class="headerlink" title="字符串转换为其他类型"></a>字符串转换为其他类型</h2><blockquote>
+<p><code>&lt;str&gt;</code>：需要转换的字符串</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>转化之前的类型</th>
+<th>使用到的函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>转化为浮点类型</td>
+<td><code>atof(&lt;str&gt;);</code></td>
+</tr>
+<tr>
+<td>转化为int类型</td>
+<td><code>atoi(&lt;str&gt;);</code></td>
+</tr>
+<tr>
+<td>转化为long int类型</td>
+<td><code>atol(&lt;str&gt;);</code></td>
+</tr>
+<tr>
+<td>转化为long long int类型</td>
+<td><code>atoll(&lt;str&gt;);</code></td>
+</tr>
+</tbody></table>
+<h2 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h2><ul>
+<li>如果直接用<code>==</code>做比较，实际上是比较存储字符串的内存地址</li>
+<li><code>strcmp</code>函数会返回两个字符串的“计算结果”，结果为0则相等，结果不为0则不相等</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = <span class="built_in">strcmp</span>(&lt;str_1&gt;, &lt;str_2&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h2><ul>
+<li>区分大小写</li>
+<li>如果搜索不到，就返回<code>(null)</code></li>
+</ul>
+<h3 id="通过比较截取"><a href="#通过比较截取" class="headerlink" title="通过比较截取"></a>通过比较截取</h3><h4 id="从前往后搜索"><a href="#从前往后搜索" class="headerlink" title="从前往后搜索"></a>从前往后搜索</h4><ul>
+<li>从第一次出现指定字符的位置截取字符串到结尾</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * strNew = <span class="built_in">strchr</span>(<span class="string">"Hello World"</span>, <span class="string">'o'</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="从后往前搜索"><a href="#从后往前搜索" class="headerlink" title="从后往前搜索"></a>从后往前搜索</h4><ul>
+<li>从最后一次出现指定字符的位置截取字符串到结尾</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * str = <span class="built_in">strrchr</span>(<span class="string">"Hello World"</span>, <span class="string">'o'</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="搜索字符串"><a href="#搜索字符串" class="headerlink" title="搜索字符串"></a>搜索字符串</h4><ul>
+<li>从第一次出现指定字符串的位置截取字符串到结尾</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * str = <span class="built_in">strstr</span>(<span class="string">"Hello World"</span>, <span class="string">"Wo"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过位置截取"><a href="#通过位置截取" class="headerlink" title="通过位置截取"></a>通过位置截取</h3><h4 id="指定结束位置"><a href="#指定结束位置" class="headerlink" title="指定结束位置"></a>指定结束位置</h4><ul>
+<li>从开始位置截取到指定位置</li>
+</ul>
+<blockquote>
+<p><code>&lt;num&gt;</code>：截取截止位置，字符串下标从1开始</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line"><span class="built_in">strncpy</span>(str, <span class="string">"Hello World"</span>, &lt;num&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过指针截取"><a href="#通过指针截取" class="headerlink" title="通过指针截取"></a>通过指针截取</h3><ul>
+<li>将指针向后增加，直接截取指针位置到结尾的字符串</li>
+</ul>
+<blockquote>
+<p><code>&lt;num&gt;</code>：截取起始位置</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * str = <span class="string">"Hello World"</span></span><br><span class="line"><span class="keyword">char</span> * strNew = str + &lt;num&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过指针和位置共同截取"><a href="#通过指针和位置共同截取" class="headerlink" title="通过指针和位置共同截取"></a>通过指针和位置共同截取</h3><ul>
+<li>为了从指定位置截取到指定位置，可以先使用<code>通过指针截取</code>指定截取起始位置，再用<code>通过位置截取</code>指定截取截止位置</li>
+</ul>
+<blockquote>
+<p><code>&lt;num_1&gt;</code>：截取起始位置<br><code>&lt;num_2&gt;</code>：截取截止位置</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * str = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="keyword">char</span> * str1 = str + &lt;num_1&gt;;</span><br><span class="line"><span class="keyword">char</span> str2[<span class="number">10</span>];</span><br><span class="line"><span class="built_in">strncpy</span>(str2, str1, &lt;num_2&gt;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><blockquote>
+<p><code>&lt;fun_name&gt;</code>：函数名</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> &lt;fun_name&gt;() &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    &lt;fun_name&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义有参数传入的函数"><a href="#定义有参数传入的函数" class="headerlink" title="定义有参数传入的函数"></a>定义有参数传入的函数</h3><blockquote>
+<p><code>&lt;para_type&gt;</code>：参数类型<br><code>&lt;para_name&gt;</code>：参数名</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> &lt;fun_name&gt;(&lt;para_type&gt; &lt;para_name&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="调用函数-1"><a href="#调用函数-1" class="headerlink" title="调用函数"></a>调用函数</h4><blockquote>
+<p><code>&lt;para_value&gt;</code>：对应类型的值</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    &lt;fun_name&gt;(&lt;para_value&gt;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="传入多个参数"><a href="#传入多个参数" class="headerlink" title="传入多个参数"></a>传入多个参数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> &lt;fun_name&gt;(&lt;para_type_1&gt; &lt;para_name_1&gt;, &lt;para_type_2&gt; &lt;para_name_2&gt;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义有返回值的函数"><a href="#定义有返回值的函数" class="headerlink" title="定义有返回值的函数"></a>定义有返回值的函数</h3><blockquote>
+<p><code>&lt;type&gt;</code>：返回值类型</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt; &lt;fun_name&gt;() &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="调用函数-2"><a href="#调用函数-2" class="headerlink" title="调用函数"></a>调用函数</h4><blockquote>
+<p><code>&lt;name&gt;</code>：变量名</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    &lt;type&gt; &lt;name&gt; = &lt;fun_name&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于main函数"><a href="#关于main函数" class="headerlink" title="关于main函数"></a>关于main函数</h3><h4 id="main函数的参数"><a href="#main函数的参数" class="headerlink" title="main函数的参数"></a>main函数的参数</h4><ul>
+<li>在命令行执行程序时，main函数传入了两个参数，这两个函数分别是<code>执行程序传入的参数数量</code>和<code>执行程序传入的参数值</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行C语言程序</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>：文件名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./&lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>事实上，执行这个程序时，默认会传入<code>1</code>和<code>./&lt;name&gt;</code>参数</li>
+</ul>
+<h4 id="main函数的返回值"><a href="#main函数的返回值" class="headerlink" title="main函数的返回值"></a>main函数的返回值</h4><ul>
+<li>main函数返回值类型为int类型</li>
+<li>当返回为<code>0</code>时，表示程序正常退出</li>
+<li>当返回其他值，表示程序异常退出</li>
+</ul>
+<h3 id="定义有可变参数传入的函数"><a href="#定义有可变参数传入的函数" class="headerlink" title="定义有可变参数传入的函数"></a>定义有可变参数传入的函数</h3><h4 id="头文件-1"><a href="#头文件-1" class="headerlink" title="头文件"></a>头文件</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="定义函数-1"><a href="#定义函数-1" class="headerlink" title="定义函数"></a>定义函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n, ...)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="开始可变参数的获取"><a href="#开始可变参数的获取" class="headerlink" title="开始可变参数的获取"></a>开始可变参数的获取</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">va_list args;</span><br><span class="line">va_start(args, n);</span><br></pre></td></tr></table></figure>
+
+<h4 id="遍历每个值"><a href="#遍历每个值" class="headerlink" title="遍历每个值"></a>遍历每个值</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> arg = va_arg(args, <span class="keyword">int</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="结束可变参数的获取"><a href="#结束可变参数的获取" class="headerlink" title="结束可变参数的获取"></a>结束可变参数的获取</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">va_end(args);</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义私有的函数"><a href="#定义私有的函数" class="headerlink" title="定义私有的函数"></a>定义私有的函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="预设常量"><a href="#预设常量" class="headerlink" title="预设常量"></a>预设常量</h2><ul>
+<li>通过编译器传常量</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>：文件名<br><code>&lt;value&gt;</code>：常量名和常量值</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc &lt;name&gt;.c -D&lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="平台判断"><a href="#平台判断" class="headerlink" title="平台判断"></a>平台判断</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WIN 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LINUX 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAC 3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> PLATFORM==WIN</span></span><br><span class="line">    ...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> PLATFORM==LINUX</span></span><br><span class="line">    ...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> PLATFORM==MAC</span></span><br><span class="line">    ...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    ...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="防止头文件重复引用"><a href="#防止头文件重复引用" class="headerlink" title="防止头文件重复引用"></a>防止头文件重复引用</h2><blockquote>
+<p><code>&lt;name&gt;</code>：此<code>.h</code>文件名</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> <span class="meta-string">&lt;name&gt;_H_</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> <span class="meta-string">&lt;name&gt;_H_</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新型方式"><a href="#新型方式" class="headerlink" title="新型方式"></a>新型方式</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="宏函数"><a href="#宏函数" class="headerlink" title="宏函数"></a>宏函数</h2><ul>
+<li>宏函数内不用写类型</li>
+<li>结尾不用写”;”</li>
+<li>换行需要在本行行末写”&quot;</li>
+</ul>
+<h3 id="定义一个宏函数"><a href="#定义一个宏函数" class="headerlink" title="定义一个宏函数"></a>定义一个宏函数</h3><ul>
+<li>定义一个判断大小的宏函数</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(A, B) A&gt;B?A:B</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多行宏函数"><a href="#多行宏函数" class="headerlink" title="多行宏函数"></a>多行宏函数</h3><ul>
+<li>定义一个循环执行代码的函数</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOP(FROM, TO, CONTENT)\</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = FORM; i &lt; TO; i++) &#123;\</span><br><span class="line">        CONTENT\</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行宏函数"><a href="#执行宏函数" class="headerlink" title="执行宏函数"></a>执行宏函数</h4><ul>
+<li>循环10次执行输出下标代码</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOP(<span class="number">0</span>, <span class="number">10</span>, <span class="built_in">printf</span>(<span class="string">"Index is %d\n"</span>, i););</span><br></pre></td></tr></table></figure>
+
+<h3 id="宏函数参数连接"><a href="#宏函数参数连接" class="headerlink" title="宏函数参数连接"></a>宏函数参数连接</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">jikexueyuanSayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> calljkxy(NAME) jikexueyuan##NAME()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    calljkxy(SayHello);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="未完待更"><a href="#未完待更" class="headerlink" title="未完待更"></a>未完待更</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/av29473098" target="_blank" rel="noopener">哔哩哔哩——C3程序猿</a><br><a href="https://www.bilibili.com/video/BV1ds411T7bj" target="_blank" rel="noopener">哔哩哔哩——HACK学习</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/03/03/%E5%9C%A8Mac%E4%B8%8A%E6%90%AD%E5%BB%BAMinecraft%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="【笔记】在Mac上搭建Minecraft服务器">
+                  <i class="fa fa-chevron-left"></i> 【笔记】在Mac上搭建Minecraft服务器
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/03/12/%E5%88%B7%E5%85%A5EdXposed/" rel="prev" title="【笔记】刷入 EdXposed">
+                  【笔记】刷入 EdXposed <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">2.</span> <span class="nav-text">注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单行注释"><span class="nav-number">2.1.</span> <span class="nav-text">单行注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行注释"><span class="nav-number">2.2.</span> <span class="nav-text">多行注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#头文件"><span class="nav-number">3.</span> <span class="nav-text">头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主函数"><span class="nav-number">4.</span> <span class="nav-text">主函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的五种主函数"><span class="nav-number">4.1.</span> <span class="nav-text">常见的五种主函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C语言标准主函数形式"><span class="nav-number">4.1.1.</span> <span class="nav-text">C语言标准主函数形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-C-标准主函数形式，使用命令行参数"><span class="nav-number">4.1.2.</span> <span class="nav-text">C&#x2F;C++标准主函数形式，使用命令行参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-标准主函数形式"><span class="nav-number">4.1.3.</span> <span class="nav-text">C++标准主函数形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#老版本"><span class="nav-number">4.1.4.</span> <span class="nav-text">老版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不提倡"><span class="nav-number">4.1.5.</span> <span class="nav-text">不提倡</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量和常量"><span class="nav-number">5.</span> <span class="nav-text">变量和常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">5.2.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一"><span class="nav-number">5.2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二"><span class="nav-number">5.2.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">6.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无符号数据类型"><span class="nav-number">6.1.</span> <span class="nav-text">无符号数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整型"><span class="nav-number">6.2.</span> <span class="nav-text">整型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他进制数据"><span class="nav-number">6.2.1.</span> <span class="nav-text">其他进制数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2进制数据"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">2进制数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8进制数据"><span class="nav-number">6.2.1.2.</span> <span class="nav-text">8进制数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16进制数据"><span class="nav-number">6.2.1.3.</span> <span class="nav-text">16进制数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同系统下的相同数据"><span class="nav-number">6.2.2.</span> <span class="nav-text">不同系统下的相同数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8位系统"><span class="nav-number">6.2.2.1.</span> <span class="nav-text">8位系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16位系统"><span class="nav-number">6.2.2.2.</span> <span class="nav-text">16位系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#32位系统"><span class="nav-number">6.2.2.3.</span> <span class="nav-text">32位系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#64位系统"><span class="nav-number">6.2.2.4.</span> <span class="nav-text">64位系统</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#长整型"><span class="nav-number">6.2.3.</span> <span class="nav-text">长整型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实数类型"><span class="nav-number">6.3.</span> <span class="nav-text">实数类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单精度"><span class="nav-number">6.3.1.</span> <span class="nav-text">单精度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双精度"><span class="nav-number">6.3.2.</span> <span class="nav-text">双精度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#长双精度"><span class="nav-number">6.3.3.</span> <span class="nav-text">长双精度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符型"><span class="nav-number">6.4.</span> <span class="nav-text">字符型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符常量"><span class="nav-number">6.4.1.</span> <span class="nav-text">字符常量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#换行符"><span class="nav-number">6.4.1.1.</span> <span class="nav-text">换行符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#回车符"><span class="nav-number">6.4.1.2.</span> <span class="nav-text">回车符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#退格符"><span class="nav-number">6.4.1.3.</span> <span class="nav-text">退格符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#制表符"><span class="nav-number">6.4.1.4.</span> <span class="nav-text">制表符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#换页符"><span class="nav-number">6.4.1.5.</span> <span class="nav-text">换页符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他转义字符"><span class="nav-number">6.4.1.6.</span> <span class="nav-text">其他转义字符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符变量"><span class="nav-number">6.4.2.</span> <span class="nav-text">字符变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">字符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义类型"><span class="nav-number">6.5.</span> <span class="nav-text">自定义类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为数据类型起别名"><span class="nav-number">6.5.1.</span> <span class="nav-text">为数据类型起别名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if语句"><span class="nav-number">7.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch语句"><span class="nav-number">8.</span> <span class="nav-text">switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goto语句"><span class="nav-number">9.</span> <span class="nav-text">goto语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for循环"><span class="nav-number">10.</span> <span class="nav-text">for循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break语句"><span class="nav-number">10.1.</span> <span class="nav-text">break语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue语句"><span class="nav-number">10.2.</span> <span class="nav-text">continue语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套循环"><span class="nav-number">10.3.</span> <span class="nav-text">嵌套循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while循环"><span class="nav-number">11.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出字符和字符串"><span class="nav-number">12.</span> <span class="nav-text">输出字符和字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出字符"><span class="nav-number">12.1.</span> <span class="nav-text">输出字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出字符串"><span class="nav-number">12.2.</span> <span class="nav-text">输出字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化输出"><span class="nav-number">13.</span> <span class="nav-text">格式化输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入字符"><span class="nav-number">14.</span> <span class="nav-text">输入字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化输入"><span class="nav-number">15.</span> <span class="nav-text">格式化输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入字符串"><span class="nav-number">15.1.</span> <span class="nav-text">输入字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">16.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建时仅初始化"><span class="nav-number">16.1.</span> <span class="nav-text">创建时仅初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建时添加数据"><span class="nav-number">16.2.</span> <span class="nav-text">创建时添加数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组"><span class="nav-number">17.</span> <span class="nav-text">二维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建时仅初始化-1"><span class="nav-number">17.1.</span> <span class="nav-text">创建时仅初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建时添加数据-1"><span class="nav-number">17.2.</span> <span class="nav-text">创建时添加数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符数组"><span class="nav-number">18.</span> <span class="nav-text">字符数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入头文件"><span class="nav-number">18.1.</span> <span class="nav-text">引入头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串长度"><span class="nav-number">18.2.</span> <span class="nav-text">字符串长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串初始化"><span class="nav-number">18.3.</span> <span class="nav-text">字符串初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清零字符串"><span class="nav-number">18.4.</span> <span class="nav-text">清零字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接字符串"><span class="nav-number">19.</span> <span class="nav-text">连接字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入头文件-1"><span class="nav-number">19.1.</span> <span class="nav-text">引入头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整连接"><span class="nav-number">19.2.</span> <span class="nav-text">完整连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#片段连接"><span class="nav-number">19.3.</span> <span class="nav-text">片段连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化字符串"><span class="nav-number">20.</span> <span class="nav-text">格式化字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反向格式化"><span class="nav-number">20.1.</span> <span class="nav-text">反向格式化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串转换为其他类型"><span class="nav-number">21.</span> <span class="nav-text">字符串转换为其他类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较"><span class="nav-number">22.</span> <span class="nav-text">字符串比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串截取"><span class="nav-number">23.</span> <span class="nav-text">字符串截取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过比较截取"><span class="nav-number">23.1.</span> <span class="nav-text">通过比较截取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从前往后搜索"><span class="nav-number">23.1.1.</span> <span class="nav-text">从前往后搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从后往前搜索"><span class="nav-number">23.1.2.</span> <span class="nav-text">从后往前搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索字符串"><span class="nav-number">23.1.3.</span> <span class="nav-text">搜索字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过位置截取"><span class="nav-number">23.2.</span> <span class="nav-text">通过位置截取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指定结束位置"><span class="nav-number">23.2.1.</span> <span class="nav-text">指定结束位置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过指针截取"><span class="nav-number">23.3.</span> <span class="nav-text">通过指针截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过指针和位置共同截取"><span class="nav-number">23.4.</span> <span class="nav-text">通过指针和位置共同截取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">24.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义函数"><span class="nav-number">24.1.</span> <span class="nav-text">定义函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调用函数"><span class="nav-number">24.1.1.</span> <span class="nav-text">调用函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义有参数传入的函数"><span class="nav-number">24.2.</span> <span class="nav-text">定义有参数传入的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调用函数-1"><span class="nav-number">24.2.1.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传入多个参数"><span class="nav-number">24.2.2.</span> <span class="nav-text">传入多个参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义有返回值的函数"><span class="nav-number">24.3.</span> <span class="nav-text">定义有返回值的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调用函数-2"><span class="nav-number">24.3.1.</span> <span class="nav-text">调用函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于main函数"><span class="nav-number">24.4.</span> <span class="nav-text">关于main函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main函数的参数"><span class="nav-number">24.4.1.</span> <span class="nav-text">main函数的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main函数的返回值"><span class="nav-number">24.4.2.</span> <span class="nav-text">main函数的返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义有可变参数传入的函数"><span class="nav-number">24.5.</span> <span class="nav-text">定义有可变参数传入的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#头文件-1"><span class="nav-number">24.5.1.</span> <span class="nav-text">头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义函数-1"><span class="nav-number">24.5.2.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开始可变参数的获取"><span class="nav-number">24.5.3.</span> <span class="nav-text">开始可变参数的获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历每个值"><span class="nav-number">24.5.4.</span> <span class="nav-text">遍历每个值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结束可变参数的获取"><span class="nav-number">24.5.5.</span> <span class="nav-text">结束可变参数的获取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义私有的函数"><span class="nav-number">24.6.</span> <span class="nav-text">定义私有的函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预设常量"><span class="nav-number">25.</span> <span class="nav-text">预设常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平台判断"><span class="nav-number">26.</span> <span class="nav-text">平台判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防止头文件重复引用"><span class="nav-number">27.</span> <span class="nav-text">防止头文件重复引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新型方式"><span class="nav-number">27.1.</span> <span class="nav-text">新型方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宏函数"><span class="nav-number">28.</span> <span class="nav-text">宏函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义一个宏函数"><span class="nav-number">28.1.</span> <span class="nav-text">定义一个宏函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行宏函数"><span class="nav-number">28.2.</span> <span class="nav-text">多行宏函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行宏函数"><span class="nav-number">28.2.1.</span> <span class="nav-text">执行宏函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏函数参数连接"><span class="nav-number">28.3.</span> <span class="nav-text">宏函数参数连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待更"><span class="nav-number">29.</span> <span class="nav-text">未完待更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">30.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言Nmap（网络映射器）是一款用于网络发现和安全审计的网络安全工具，它是自由软件。软件名字Nmap是Network Mapper的简称。（维基百科） 本文仅用于网络信息防御学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Nmap学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2021/04/01/Nmap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言Nmap（网络映射器）是一款用于网络发现和安全审计的网络安全工具，它是自由软件。软件名字Nmap是Network Mapper的简称。（维基百科） 本文仅用于网络信息防御学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-01T03:22:48.000Z">
+<meta property="article:modified_time" content="2021-04-01T04:01:36.137Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2021/04/01/Nmap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】Nmap学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2021/04/01/Nmap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Nmap学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-01 11:22:48 / 修改时间：12:01:36" itemprop="dateCreated datePublished" datetime="2021-04-01T11:22:48+08:00">2021-04-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Penetration-Tests/" itemprop="url" rel="index">
+                    <span itemprop="name">Penetration Tests</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nmap（网络映射器）是一款用于网络发现和安全审计的网络安全工具，它是自由软件。软件名字Nmap是Network Mapper的简称。（<a href="https://zh.wikipedia.org/wiki/Nmap" target="_blank" rel="noopener">维基百科</a>）</p>
+<p><font color="red">本文仅用于网络信息防御学习</font></p>
+<a id="more"></a>
+
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ul>
+<li>普通扫描如果是普通用户，使用TCP方式扫描，扫描速度快，不安全</li>
+<li>普通扫描如果是ROOT用户，使用SYN方式扫描，扫描速度慢，安全</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap &lt;ip&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<p><code>&lt;ip&gt;</code>：扫描的ip地址</p>
+<p><code>-p &lt;port&gt;</code>：指定端口号扫描，指定一个范围，用<code>-</code>相连<br><code>-T4</code>：指定扫描过程使用的时序，总有6个级别（0-5），级别越高，扫描速度越快，但也容易被防火墙或IDS检测并屏蔽掉，在网络通讯状况较好的情况下推荐使用T4<br><code>-v</code>：显示扫描过程<br><code>-O</code> ：指定Nmap进行系统版本扫描<br><code>-A</code>：全面的系统扫描<br><code>-V</code>：系统扫描<br><code>-F</code>：快速模式，仅扫描TOP 100的端口</p>
+<p><code>-iL &lt;name.txt&gt;</code>：批量扫描txt中的目标地址<br><code>-e eth0</code>：指定使用eth0网卡进行探测<br><code>-f</code>：指定使用分片<br><code>-b &lt;FTP relay host&gt;</code>：使用<code>FTP bounce scan</code>扫描方式<br><code>-g</code>：指定发送的端口号<br><code>-r</code>：不进行端口随机打乱的操作（如无该参数，nmap会将要扫描的端口以随机顺序方式扫描，以让nmap的扫描不易被对方防火墙检测到）</p>
+<p><code>--mtu &lt;val&gt;</code>：指定数据包的 MTU<br><code>--ttl &lt;val&gt;</code>：设置 time-to-live 时间<br><code>--badsum</code>：使用错误的 checksum 来发送数据包（正常情况下，该类数据包被抛弃，如果收到回复，说明回复来自防火墙或 IDS/IPS）<br><code>--dns-servers</code>：指定DNS服务器<br><code>--system-dns</code>：指定使用系统的DNS服务器<br><code>--traceroute</code>：追踪每个路由节点<br><code>--scanflags &lt;flags&gt;</code>：定制TCP包的flags<br><code>--top-ports &lt;number&gt;</code> :扫描开放概率最高的number个端口<br><code>--port-ratio &lt;ratio&gt;</code>：扫描指定频率以上的端口。与上述–top-ports类似，这里以概率作为参数<br><code>--version-trace</code>：显示出详细的版本侦测过程信息<br><code>--osscan-limit</code>：限制Nmap只对确定的主机的进行OS探测（至少需确知该主机分别有一个open和closed的端口）<br><code>--osscan-guess</code>：大胆猜测对方的主机的系统类型。由此准确性会下降不少，但会尽可能多为用户提供潜在的操作系统<br><code>--data-length &lt;num&gt;</code>：填充随机数据让数据包长度达到 Num<br><code>--ip-options &lt;options&gt;</code>：使用指定的 IP 选项来发送数据包<br><code>--spoof-mac &lt;mac address/prefix/vendor name&gt;</code>：伪装 MAC 地址<br><code>--version-intensity &lt;level&gt;</code>：指定版本侦测强度（0-9），默认为7。数值越高，探测出的服务越准确，但是运行时间会比较长。<br><code>--version-light</code>：指定使用轻量侦测方式 (intensity 2)<br><code>--version-all</code>：尝试使用所有的probes进行侦测 (intensity 9)<br><code>--version-trace</code>：显示出详细的版本侦测过程信息</p>
+<p><code>-sS</code>：指定使用 <code>TCP SYN</code>的方式来对目标主机进行扫描<br><code>-sT</code>：指定使用 <code>Connect()</code>的方式来对目标主机进行扫描<br><code>-sA</code>：指定使用<code>ACK</code>的方式来对目标主机进行扫描<br><code>-sW</code>：指定使用 <code>Window</code>的方式来对目标主机进行扫描<br><code>-sM</code>：指定使用 <code>Maimon scans</code>的方式来对目标主机进行扫描<br><code>-sU</code>：指定使用<code>UDP</code>扫描方式确定目标主机的UDP端口状况<br><code>-sY</code>：指定使用<code>SCTP INIT</code>来扫描SCTP协议端口的开放的情况<br><code>-sZ</code>：指定使用<code>COOKIE-ECHO</code>来扫描SCTP协议端口的开放的情况<br><code>-sO</code>：指定使用<code>IP protocol</code>扫描确定目标机支持的协议类型<br><code>-sN</code>：指定使用<code>TCP Null</code>秘密扫描方式来协助探测对方的TCP端口状态<br><code>-sF</code>：指定使用 <code>FIN</code>秘密扫描方式来协助探测对方的TCP端口状态<br><code>-sX</code>：指定使用 <code>and Xmas scans</code>秘密扫描方式来协助探测对方的TCP端口状态<br><code>-sn</code>： 只进行主机发现，不进行端口扫描<br><code>-sL</code>：List Scan 列表扫描，仅将指定的目标的IP列举出来，不进行主机发现<br><code>-sV</code>：指定Nmap进行服务版本扫描</p>
+<p><code>-PO</code>：使用IP协议包探测对方主机是否开启<br><code>-Pn</code>：不进行ping扫描（穿透防火墙扫描）<br><code>-PE</code> ：使用<code>ICMP echo</code>请求包发现主机<br><code>-PP</code> ：使用<code>ICMP timestamp</code>请求包发现主机<br><code>-PM</code> ：使用<code>ICMP netmask</code>请求包发现主机<br><code>-PS</code>：使用<code>TCP SYN</code>方式进行发现<br><code>-PA</code> ：使用<code>TCP ACK</code>方式进行发现<br><code>-PU</code> ：使用<code>SCTP INIT</code>方式进行发现<br><code>-PY</code> ：使用<code>ECHO</code>方式进行发现</p>
+<p><code>-n</code>：不进行DNS解析<br><code>-R</code>：总是进行DNS解析</p>
+<p><code>-S &lt;IP_Address&gt;</code>：伪装成其他 IP 地址<br><code>-D &lt;decoy1,decoy2,ME,...&gt;</code>：用一组 IP 地址掩盖真实地址，其中 ME 填入自己的 IP 地址</p>
+<p><code>-oX &lt;name.xml&gt;</code>：将扫描结果生成 xml 文件<br><code>-oN &lt;name.txt&gt;</code>、<code>-oG &lt;name.txt&gt;</code>：将扫描结果生成 txt 文件</p>
+<p><code>--script=&lt;name&gt;</code>：使用脚本扫描<br><code>&lt;name&gt;</code>：脚本名称<br><code>vuln</code>：负责检查目标机是否有常见的漏洞（Vulnerability）<br><code>auth</code>：负责处理鉴权证书（绕开鉴权）的脚本<br><code>broadcast</code>：在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务<br><code>brute</code>：提供暴力破解方式，针对常见的应用如http/snmp等<br><code>default</code>：使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力<br><code>discovery</code>：对网络进行更多的信息，如SMB枚举、SNMP查询等<br><code>dos</code>：用于进行拒绝服务攻击<br><code>exploit</code>：利用已知的漏洞入侵系统<br><code>external</code>：利用第三方的数据库或资源，例如进行whois解析<br><code>fuzzer</code>：模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞 intrusive：入侵性的脚本，此类脚本可能引发对方的IDS/IPS的记录或屏蔽<br><code>malware</code>：探测目标机是否感染了病毒、开启了后门等信息<br><code>safe</code>：此类与intrusive相反，属于安全性脚本<br><code>version</code>：负责增强服务与版本扫描（Version Detection）功能的脚本<br><code>whois-domain</code>：whoami信息扫描（<code>&lt;ip&gt;</code>改为域名）<br><code>dns-brute</code>：DNS解析扫描（<code>&lt;ip&gt;</code>改为域名）</p>
+<h2 id="端口状态"><a href="#端口状态" class="headerlink" title="端口状态"></a>端口状态</h2><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>open</td>
+<td>端口打开</td>
+</tr>
+<tr>
+<td>close</td>
+<td>端口关闭</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>端口被过滤，数据不能到达主机</td>
+</tr>
+<tr>
+<td>unfilter</td>
+<td>端口未被过滤，数据能到主机，但是不能识别端口</td>
+</tr>
+</tbody></table>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/av22757067?from=search&seid=13943888877523056337" target="_blank" rel="noopener">哔哩哔哩——窝草丶五弦都能断</a><br><a href="https://www.bilibili.com/video/av58853797?t=3572&spm_id_from=333.337.b_62696c692d6865616465722d6d.25" target="_blank" rel="noopener">哔哩哔哩——腾讯掌控安全学院</a><br><a href="https://mp.weixin.qq.com/s/ZaPgS0zwsJ-zj46itRVXIg" target="_blank" rel="noopener">微信公众号——Web安全工具库</a><br><a href="https://mp.weixin.qq.com/s/8sqd1OdrreIAE093oSvw6Q" target="_blank" rel="noopener">微信公众号——暗网黑客</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/04/01/brewserviceslist%E6%8A%A5%E9%94%99error/" rel="next" title="【踩坑】brew services list 报错 error">
+                  <i class="fa fa-chevron-left"></i> 【踩坑】brew services list 报错 error
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/04/02/Php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】Php学习笔记">
+                  【笔记】Php学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">2.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口状态"><span class="nav-number">3.</span> <span class="nav-text">端口状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">4.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

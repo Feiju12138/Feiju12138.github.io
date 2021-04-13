@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言Shiro框架学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Shiro学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/10/26/Shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言Shiro框架学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-26T11:54:09.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:13.800Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/10/26/Shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】Shiro学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/10/26/Shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Shiro学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-26 19:54:09" itemprop="dateCreated datePublished" datetime="2020-10-26T19:54:09+08:00">2020-10-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring-Family/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring Family</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Shiro框架学习笔记</p>
+<a id="more"></a>
+
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.6.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shiro配置类"><a href="#Shiro配置类" class="headerlink" title="Shiro配置类"></a>Shiro配置类</h2><ul>
+<li><p>也可以在配置文件进行配置</p>
+</li>
+<li><p>新建一个类作为Shiro的配置类，并由<code>@Configuration</code>注解标注</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringShiroConfig</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shiro核心配置对象"><a href="#Shiro核心配置对象" class="headerlink" title="Shiro核心配置对象"></a>Shiro核心配置对象</h2><ul>
+<li>在配置类中创建配置Shiro核心对象的方法，并交给Spring管理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">()</span></span>&#123;</span><br><span class="line">    DefaultWebSecurityManager securityManager=<span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">    <span class="keyword">return</span> securityManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shiro访问规则配置"><a href="#Shiro访问规则配置" class="headerlink" title="Shiro访问规则配置"></a>Shiro访问规则配置</h2><ul>
+<li>在配置类中创建配置Shiro访问规则的方法，配置匿名访问的资源和认证的访问的资源，并交给Spring管理</li>
+</ul>
+<blockquote>
+<p>Shiro中默认过滤器</p>
+<blockquote>
+<p><code>anon</code>：允许匿名访问<br><code>authc</code>：需要认证后访问<br><code>logout</code>：退出过滤器，一旦执行了退出操作，底层会将系统服务端存储的用户信息进行清除并且直接跳转到登陆页面</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>**</code>：表示当前目录所有文件及其所有子目录</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ShiroFilterFactoryBean <span class="title">shiroFilterFactory</span><span class="params">( SecurityManager securityManager)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    ShiroFilterFactoryBean factoryBean = <span class="keyword">new</span> ShiroFilterFactoryBean();</span><br><span class="line">    <span class="comment">// securityManager对象负责去检测这个请求是否已经认证</span></span><br><span class="line">    factoryBean.setSecurityManager(securityManager);</span><br><span class="line">    <span class="comment">// 配置登陆页面的访问路径</span></span><br><span class="line">    factoryBean.setLoginUrl(<span class="string">"/doLoginUI"</span>);</span><br><span class="line"></span><br><span class="line">    Map&lt;String,String&gt; filterMap=<span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// 配置允许匿名访问的资源（通常为所有的静态资源）</span></span><br><span class="line">    filterMap.put(<span class="string">"/build/**"</span>,<span class="string">"anon"</span>);</span><br><span class="line">    <span class="comment">// 配置登陆</span></span><br><span class="line">    filterMap.put(<span class="string">"/user/doLogin"</span>,<span class="string">"anon"</span>);</span><br><span class="line">    <span class="comment">// 配置退出</span></span><br><span class="line">    filterMap.put(<span class="string">"/doLogout"</span>,<span class="string">"logout"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 除了匿名访问的资源,其它都要认证后访问</span></span><br><span class="line">    filterMap.put(<span class="string">"/**"</span>,<span class="string">"authc"</span>);</span><br><span class="line">    </span><br><span class="line">    factoryBean.setFilterChainDefinitionMap(filterMap);<span class="comment">//过滤链的定义</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> factoryBean;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现认证"><a href="#实现认证" class="headerlink" title="实现认证"></a>实现认证</h2><h3 id="创建Realm类"><a href="#创建Realm类" class="headerlink" title="创建Realm类"></a>创建Realm类</h3><ul>
+<li>在<code>service.impl</code>包下创建一个Realm类，继承AuthorizingRealm类并重写抽象方法，为这个类标注<code>@Component</code>注解定义为组建交给Spring管理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShiroUserRealm</span> <span class="keyword">extends</span> <span class="title">AuthorizingRealm</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取并封装授权信息（做授权业务时写此方法）</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthorizationInfo <span class="title">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principalCollection)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取并封装认证信息</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthenticationInfo <span class="title">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken authenticationToken)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">        <span class="comment">// 获取登录时输入的用户名</span></span><br><span class="line">        UsernamePasswordToken uToken = (UsernamePasswordToken) authenticationToken;</span><br><span class="line">        String username = uToken.getUsername();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 基于用户名查询数据库中的用户信息</span></span><br><span class="line">        SysUser user = sysUserDao.findUserByUserName(username);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 校验用户是否存在</span></span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> UnknownAccountException();</span><br><span class="line">        <span class="comment">// 校验用户是否已被禁用</span></span><br><span class="line">        <span class="keyword">if</span> (user.getValid() == <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> LockedAccountException();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 封装用户信息由底层进行密码校验</span></span><br><span class="line">        ByteSource credentialsSalt = ByteSource.Util.bytes(user.getSalt());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SimpleAuthenticationInfo(user,<span class="comment">//principal 身份</span></span><br><span class="line">                user.getPassword(),<span class="comment">//hashedCredentials 已加密的密码</span></span><br><span class="line">                credentialsSalt,<span class="comment">//credentialsSalt 凭证盐</span></span><br><span class="line">                getName());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="对用户输入的密码进行加密"><a href="#对用户输入的密码进行加密" class="headerlink" title="对用户输入的密码进行加密"></a>对用户输入的密码进行加密</h3><ul>
+<li>重写getCredentialsMatcher方法或setCredentialsMatcher方法其中一个，用于返回凭证加密对象，基于此对象对用户输入的密码进行加密操作</li>
+</ul>
+<h4 id="重写getCredentialsMatcher方法"><a href="#重写getCredentialsMatcher方法" class="headerlink" title="重写getCredentialsMatcher方法"></a>重写getCredentialsMatcher方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CredentialsMatcher <span class="title">getCredentialsMatcher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    HashedCredentialsMatcher credentialsMatcher = <span class="keyword">new</span> HashedCredentialsMatcher();</span><br><span class="line">    <span class="comment">// 定义加密类型</span></span><br><span class="line">    credentialsMatcher.setHashAlgorithmName(<span class="string">"MD5"</span>);</span><br><span class="line">    <span class="comment">// 定义加密次数</span></span><br><span class="line">    credentialsMatcher.setHashIterations(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> credentialsMatcher;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="重写getCredentialsMatcher方法-1"><a href="#重写getCredentialsMatcher方法-1" class="headerlink" title="重写getCredentialsMatcher方法"></a>重写getCredentialsMatcher方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCredentialsMatcher</span><span class="params">(CredentialsMatcher credentialsMatcher)</span> </span>&#123;</span><br><span class="line">    HashedCredentialsMatcher cMatcher = <span class="keyword">new</span> HashedCredentialsMatcher();</span><br><span class="line">    <span class="comment">// 定义加密类型</span></span><br><span class="line">    cMatcher.setHashAlgorithmName(<span class="string">"MD5"</span>);</span><br><span class="line">    <span class="comment">// 定义加密次数</span></span><br><span class="line">    cMatcher.setHashIterations(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">super</span>.setCredentialsMatcher(cMatcher);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将Realm添加到配置类"><a href="#将Realm添加到配置类" class="headerlink" title="将Realm添加到配置类"></a>将Realm添加到配置类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">(Realm realm)</span> </span>&#123;</span><br><span class="line">    DefaultWebSecurityManager sManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">    sManager.setRealm(realm);</span><br><span class="line">    <span class="keyword">return</span> sManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现授权"><a href="#实现授权" class="headerlink" title="实现授权"></a>实现授权</h2><h3 id="在配置类配置授权检测顾问"><a href="#在配置类配置授权检测顾问" class="headerlink" title="在配置类配置授权检测顾问"></a>在配置类配置授权检测顾问</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AuthorizationAttributeSourceAdvisor <span class="title">authorizationAttributeSourceAdvisor</span><span class="params">(SecurityManager securityManager)</span></span>&#123;</span><br><span class="line">      AuthorizationAttributeSourceAdvisor advisor=<span class="keyword">new</span> AuthorizationAttributeSourceAdvisor();</span><br><span class="line">      advisor.setSecurityManager(securityManager);</span><br><span class="line">      <span class="keyword">return</span> advisor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shiro配置缓存（Cache）"><a href="#Shiro配置缓存（Cache）" class="headerlink" title="Shiro配置缓存（Cache）"></a>Shiro配置缓存（Cache）</h2><h3 id="在配置类配置缓存"><a href="#在配置类配置缓存" class="headerlink" title="在配置类配置缓存"></a>在配置类配置缓存</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CacheManager <span class="title">shiroCacheManager</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MemoryConstrainedCacheManager();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将Cache配置添加到核心对象"><a href="#将Cache配置添加到核心对象" class="headerlink" title="将Cache配置添加到核心对象"></a>将Cache配置添加到核心对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">(CacheManager cacheManager)</span> </span>&#123;</span><br><span class="line">    DefaultWebSecurityManager sManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">    sManager.setCacheManager(cacheManager);</span><br><span class="line">    <span class="keyword">return</span> sManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现记住我"><a href="#实现记住我" class="headerlink" title="实现记住我"></a>实现记住我</h2><h3 id="在配置类配置记住我"><a href="#在配置类配置记住我" class="headerlink" title="在配置类配置记住我"></a>在配置类配置记住我</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RememberMeManager <span class="title">rememberMeManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CookieRememberMeManager cManager = <span class="keyword">new</span> CookieRememberMeManager();</span><br><span class="line">    SimpleCookie cookie=<span class="keyword">new</span> SimpleCookie(<span class="string">"rememberMe"</span>);</span><br><span class="line">    cookie.setMaxAge(<span class="number">7</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>);</span><br><span class="line">    cManager.setCookie(cookie);</span><br><span class="line">    <span class="keyword">return</span> cManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在核心对象配置记住我"><a href="#在核心对象配置记住我" class="headerlink" title="在核心对象配置记住我"></a>在核心对象配置记住我</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">(RememberMeManager rememberManager)</span> </span>&#123;</span><br><span class="line">    DefaultWebSecurityManager sManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">    sManager.setRememberMeManager(rememberManager);</span><br><span class="line">    <span class="keyword">return</span> sManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改访问规则"><a href="#修改访问规则" class="headerlink" title="修改访问规则"></a>修改访问规则</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//filterMap.put("/**","authc");</span></span><br><span class="line">filterMap.put(<span class="string">"/**"</span>,<span class="string">"user"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置会话（Session）"><a href="#配置会话（Session）" class="headerlink" title="配置会话（Session）"></a>配置会话（Session）</h2><h3 id="在配置类配置会话"><a href="#在配置类配置会话" class="headerlink" title="在配置类配置会话"></a>在配置类配置会话</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> SessionManager <span class="title">sessionManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    DefaultWebSessionManager sManager = <span class="keyword">new</span> DefaultWebSessionManager();</span><br><span class="line">    sManager.setGlobalSessionTimeout(<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> sManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将Session配置添加到核心配置对象"><a href="#将Session配置添加到核心配置对象" class="headerlink" title="将Session配置添加到核心配置对象"></a>将Session配置添加到核心配置对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">(SessionManager sessionManager)</span> </span>&#123;</span><br><span class="line">    DefaultWebSecurityManager sManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">    sManager.setSessionManager(sessionManager);</span><br><span class="line">    <span class="keyword">return</span> sManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2>
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/10/26/Spring%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="next" title="【笔记】Spring框架中的线程池">
+                  <i class="fa fa-chevron-left"></i> 【笔记】Spring框架中的线程池
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/10/28/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/" rel="prev" title="【笔记】Spring MVC 拦截器">
+                  【笔记】Spring MVC 拦截器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加依赖"><span class="nav-number">2.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro配置类"><span class="nav-number">3.</span> <span class="nav-text">Shiro配置类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro核心配置对象"><span class="nav-number">4.</span> <span class="nav-text">Shiro核心配置对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro访问规则配置"><span class="nav-number">5.</span> <span class="nav-text">Shiro访问规则配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现认证"><span class="nav-number">6.</span> <span class="nav-text">实现认证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Realm类"><span class="nav-number">6.1.</span> <span class="nav-text">创建Realm类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对用户输入的密码进行加密"><span class="nav-number">6.2.</span> <span class="nav-text">对用户输入的密码进行加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重写getCredentialsMatcher方法"><span class="nav-number">6.2.1.</span> <span class="nav-text">重写getCredentialsMatcher方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写getCredentialsMatcher方法-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">重写getCredentialsMatcher方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Realm添加到配置类"><span class="nav-number">6.3.</span> <span class="nav-text">将Realm添加到配置类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现授权"><span class="nav-number">7.</span> <span class="nav-text">实现授权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在配置类配置授权检测顾问"><span class="nav-number">7.1.</span> <span class="nav-text">在配置类配置授权检测顾问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro配置缓存（Cache）"><span class="nav-number">8.</span> <span class="nav-text">Shiro配置缓存（Cache）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在配置类配置缓存"><span class="nav-number">8.1.</span> <span class="nav-text">在配置类配置缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Cache配置添加到核心对象"><span class="nav-number">8.2.</span> <span class="nav-text">将Cache配置添加到核心对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现记住我"><span class="nav-number">9.</span> <span class="nav-text">实现记住我</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在配置类配置记住我"><span class="nav-number">9.1.</span> <span class="nav-text">在配置类配置记住我</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在核心对象配置记住我"><span class="nav-number">9.2.</span> <span class="nav-text">在核心对象配置记住我</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改访问规则"><span class="nav-number">9.3.</span> <span class="nav-text">修改访问规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置会话（Session）"><span class="nav-number">10.</span> <span class="nav-text">配置会话（Session）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在配置类配置会话"><span class="nav-number">10.1.</span> <span class="nav-text">在配置类配置会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Session配置添加到核心配置对象"><span class="nav-number">10.2.</span> <span class="nav-text">将Session配置添加到核心配置对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">11.</span> <span class="nav-text">完成</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

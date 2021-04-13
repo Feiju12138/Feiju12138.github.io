@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言经过不懈的努力，终于将多种操作系统安装在同一硬盘下，并成功用四叶草引导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【踩坑】利用四叶草安装并引导多系统">
+<meta property="og:url" content="https://feiju12138.github.io/2019/12/10/%E5%88%A9%E7%94%A8%E5%9B%9B%E5%8F%B6%E8%8D%89%E5%AE%89%E8%A3%85%E5%B9%B6%E5%BC%95%E5%AF%BC%E5%A4%9A%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言经过不懈的努力，终于将多种操作系统安装在同一硬盘下，并成功用四叶草引导">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://feiju12138.github.io/images/20191210195043/01.gif">
+<meta property="og:image" content="https://feiju12138.github.io/images/20191210195043/02.gif">
+<meta property="article:published_time" content="2019-12-10T11:50:43.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:13.912Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://feiju12138.github.io/images/20191210195043/01.gif">
+
+<link rel="canonical" href="https://feiju12138.github.io/2019/12/10/%E5%88%A9%E7%94%A8%E5%9B%9B%E5%8F%B6%E8%8D%89%E5%AE%89%E8%A3%85%E5%B9%B6%E5%BC%95%E5%AF%BC%E5%A4%9A%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【踩坑】利用四叶草安装并引导多系统 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2019/12/10/%E5%88%A9%E7%94%A8%E5%9B%9B%E5%8F%B6%E8%8D%89%E5%AE%89%E8%A3%85%E5%B9%B6%E5%BC%95%E5%AF%BC%E5%A4%9A%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【踩坑】利用四叶草安装并引导多系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-10 19:50:43" itemprop="dateCreated datePublished" datetime="2019-12-10T19:50:43+08:00">2019-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System-Installation/" itemprop="url" rel="index">
+                    <span itemprop="name">System Installation</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经过不懈的努力，终于将多种操作系统安装在同一硬盘下，并成功用四叶草引导</p>
+<a id="more"></a>
+
+<h2 id="安装前的预算"><a href="#安装前的预算" class="headerlink" title="安装前的预算"></a>安装前的预算</h2><ul>
+<li>我使用机器为机房的戴尔台式机，硬盘大小为1T，所以我决定先做4种系统的安装测试，硬盘分配及安装顺序，如下表：</li>
+</ul>
+<p>因为仅作为实验用，而不用于办公，所以硬盘分配大小稍微较小</p>
+<table>
+<thead>
+<tr>
+<th>安装顺序</th>
+<th>系统</th>
+<th>硬盘分配大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>MacOS</td>
+<td>128G</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Windows8</td>
+<td>128G</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ubuntu</td>
+<td>64G</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CentOS</td>
+<td>64G</td>
+</tr>
+</tbody></table>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li><p>8G以上的用于烧录各种系统安装盘的U盘（最好不含8G）</p>
+</li>
+<li><p>制作好大白菜系统维护盘的U盘（WindowsPE）</p>
+</li>
+<li><p>额外的可以开机联网查资料的电脑（任何我未提及的坑，请自行查百度）</p>
+</li>
+</ul>
+<h2 id="第一次分区"><a href="#第一次分区" class="headerlink" title="第一次分区"></a>第一次分区</h2><ul>
+<li><p>插入系统维护U盘，进入WindowsPE系统，使用<code>DiskGenius</code>工具，全盘删除分区</p>
+</li>
+<li><p>创建ESP分区，分区大小512M</p>
+</li>
+</ul>
+<p>其实可以分更小的区，我只是为了确保足够用</p>
+<ul>
+<li>创建NTFS分区128G用于安装黑苹果，保存并格式化</li>
+</ul>
+<h2 id="安装黑苹果"><a href="#安装黑苹果" class="headerlink" title="安装黑苹果"></a>安装黑苹果</h2><ul>
+<li><p>首先安装黑苹果，是因为我使用的黑苹果安装包为懒人包（系统映像+四叶草引导），四叶草引导已经写入安装包，所以优先安装可以便于引导其他系统</p>
+</li>
+<li><p>在上一个步骤分盘时，应分出128GNTFS格式的硬盘，然后进入MacOS实用工具，再使用实用工具格式化成MacOS（日志式）格式，不要直接使用<code>DiskGenius</code>分出128GMacOS（日志式）分区</p>
+</li>
+</ul>
+<p><a href="https://feiju12138.github.io/2019/11/15/安装黑苹果系统/">传送门</a></p>
+<ul>
+<li>安装完成的第一件事就是将四叶草引导加入系统的EFI分区</li>
+</ul>
+<p><a href="https://feiju12138.github.io/2019/11/15/将四叶草引导植入硬盘/">传送门</a></p>
+<h2 id="第二次分区"><a href="#第二次分区" class="headerlink" title="第二次分区"></a>第二次分区</h2><ul>
+<li>创建128G新分区，格式为NTFS，保存并格式化</li>
+</ul>
+<h2 id="安装Windows"><a href="#安装Windows" class="headerlink" title="安装Windows"></a>安装Windows</h2><ul>
+<li>第二个安装的是Windows操作系统，我第一次实验的时候安装的Windows10，但由于中途研究其他系统时引导被自动替换，所以第二次实验的时候安装的Windows8</li>
+</ul>
+<p>不是说Windows10不能成功，只是说我想尽可能多的多尝试新系统的安装，而后记录笔记</p>
+<p><a href="https://feiju12138.github.io/2019/12/10/安装Windows8系统/">传送门</a></p>
+<ul>
+<li>安装完后，为了便于分盘操作，我下载了Windows UEFI版大白菜，使用了将WindowsPE系统安装在电脑上</li>
+</ul>
+<p>事实上<code>大白菜</code>安装到系统后，并不是独立一个分区通过引导启动，而是融入Windows系统中，所以在引导到Windows启动之后，再选择<code>大白菜</code>进入PE系统</p>
+<ul>
+<li>此时四叶草的引导，不需要修改任何内容，仍然可以自动识别到黑苹果和Windows，为了安全起见，使用<code>DiskGenius</code>工具进入EFI分区，点击<code>浏览文件</code>，进入EFI文件夹，此时可以看到如下文件夹，将他们保存到U盘备份以防止覆盖</li>
+</ul>
+<blockquote>
+<p><code>APPLE</code>：MacOS的引导<br><code>BOOT</code>：普通UEFI引导<br><code>CLOVER</code>：四叶草引导<br><code>Microsoft</code>：Windows的引导</p>
+</blockquote>
+<h2 id="第三次分区"><a href="#第三次分区" class="headerlink" title="第三次分区"></a>第三次分区</h2><ul>
+<li>新建一个64G的分区，格式为ext4（或者仍然格式化为NTFS，等到安装Ubuntu的时候再重新格式化）</li>
+</ul>
+<h2 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p><a href="https://feiju12138.github.io/2019/11/16/安装UbuntuLinux系统/">传送门</a></p>
+<ul>
+<li><p>在<code>安装类型</code>阶段选择<code>其他选项</code>，至少设置一个挂在点为<code>/</code>根目录，格式为ext4</p>
+</li>
+<li><p>安装Ubuntu成功后可能会遇到引导无效，进入PE，使用<code>DiskGenius</code>工具</p>
+</li>
+<li><p>插入可存储文件的U盘（可以是大白菜U盘）</p>
+</li>
+<li><p>找到四叶草的配置文件<code>config.plist</code></p>
+</li>
+</ul>
+<p>/EFI分区/EFI文件夹/CLOVER/config.plist</p>
+<ul>
+<li><p>复制<code>config.plist</code>，拷贝到其他能正常使用的电脑上</p>
+</li>
+<li><p>编辑<code>config.plist</code>，找到<code>GUI</code>关键字，修改内容案例如下</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;GUI&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;Theme&lt;/key&gt;</span><br><span class="line">        &lt;string&gt;SimpleThemeDark&lt;/string&gt;</span><br><span class="line">        &lt;key&gt;Custom&lt;/key&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Entries&lt;/key&gt;</span><br><span class="line">            &lt;array&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Disabled&lt;/key&gt;</span><br><span class="line">                    &lt;<span class="literal">false</span>/&gt;</span><br><span class="line">                    &lt;key&gt;Ignore&lt;/key&gt;</span><br><span class="line">                    &lt;<span class="literal">false</span>/&gt;</span><br><span class="line">                    &lt;key&gt;Path&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;\EFI\MICROSOFT\BOOT\BOOTMGFW.EFI&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Title&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;Windows&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Type&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;Windows&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;VolumeType&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;Internal&lt;/string&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">            &lt;/array&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制<code>&lt;dict&gt;&lt;/dict&gt;</code>标签，修改<code>string&lt;&gt;&lt;/string&gt;</code>标签内容为ubuntu的EFI参数</li>
+</ul>
+<p>\EFI\ubuntu\grubx64.efi</p>
+<ul>
+<li>将修改后的文件覆盖系统上的原文件</li>
+</ul>
+<h2 id="第四次分区"><a href="#第四次分区" class="headerlink" title="第四次分区"></a>第四次分区</h2><ul>
+<li>创建64G新分区，格式为ext4</li>
+</ul>
+<h2 id="安装CentOS"><a href="#安装CentOS" class="headerlink" title="安装CentOS"></a>安装CentOS</h2><p><a href="https://feiju12138.github.io/2019/12/10/安装CentOSLinux系统/">传送门</a></p>
+<ul>
+<li><p>和Ubuntu大同小异，在<code>安装目标位置</code>步骤，在<code>存储配置</code>选项选择<code>自定义</code>，至少设置一个根目录的挂载点<code>/</code>，并且可以设置<code>efi</code>存放位置<code>/boot/efi</code></p>
+</li>
+<li><p>遇到的问题仍然是可能会出现EFI被覆盖，记得在安装前备份EFI分区的所有内容，安装过后修改四叶草的配置文件</p>
+</li>
+</ul>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><ul>
+<li><p>此次多系统安装之旅告一段落，所有系统经测试均能正常使用，以上是最基本的4种操作系统（换句话说是3种操作系统，其中两个都是Linux系统，只不过所属类别不同，仍然有差异），更多的操作系统例如<code>Red Hat</code>，几乎是操作相同，所以仍然可以继续安装</p>
+</li>
+<li><p>最后附上成功案例截图（使用的<code>黑果小兵</code>制作的四叶草中F10截图功能），希望大家都能折腾成功</p>
+</li>
+</ul>
+<p><img src="/images/20191210195043/01.gif" alt="01.gif"></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ul>
+<li>继续使用四叶草引导，安装更多系统</li>
+</ul>
+<p><img src="/images/20191210195043/02.gif" alt="02.gif"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://blog.daliansky.net/clover-user-manual.html" target="_blank" rel="noopener">黑果小兵部落阁</a><br><a href="https://www.cnblogs.com/Orcim/p/11065755.html" target="_blank" rel="noopener">Orcim的博客</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/10/%E5%AE%89%E8%A3%85CentOSLinux%E7%B3%BB%E7%BB%9F/" rel="next" title="【笔记】安装 CentOS Linux 系统">
+                  <i class="fa fa-chevron-left"></i> 【笔记】安装 CentOS Linux 系统
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/11/Atom%E6%8A%A5%E9%94%99%EF%BC%9ACannot-load-the/" rel="prev" title="【踩坑】Atom报错：Cannot load the ...">
+                  【踩坑】Atom报错：Cannot load the ... <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前的预算"><span class="nav-number">2.</span> <span class="nav-text">安装前的预算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次分区"><span class="nav-number">4.</span> <span class="nav-text">第一次分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装黑苹果"><span class="nav-number">5.</span> <span class="nav-text">安装黑苹果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二次分区"><span class="nav-number">6.</span> <span class="nav-text">第二次分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Windows"><span class="nav-number">7.</span> <span class="nav-text">安装Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三次分区"><span class="nav-number">8.</span> <span class="nav-text">第三次分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Ubuntu"><span class="nav-number">9.</span> <span class="nav-text">安装Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四次分区"><span class="nav-number">10.</span> <span class="nav-text">第四次分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装CentOS"><span class="nav-number">11.</span> <span class="nav-text">安装CentOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">12.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">13.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">14.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言用户和组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】用户和组">
+<meta property="og:url" content="https://feiju12138.github.io/2020/06/22/%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言用户和组">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-22T11:37:48.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:14.055Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/06/22/%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】用户和组 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/06/22/%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】用户和组
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-22 19:37:48" itemprop="dateCreated datePublished" datetime="2020-06-22T19:37:48+08:00">2020-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:14" itemprop="dateModified" datetime="2021-03-21T17:21:14+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用户和组</p>
+<a id="more"></a>
+
+<h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><h3 id="用户信息文件"><a href="#用户信息文件" class="headerlink" title="用户信息文件"></a>用户信息文件</h3><h4 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h4><ul>
+<li><code>/etc/passwd</code></li>
+</ul>
+<h4 id="每一行表达含义"><a href="#每一行表达含义" class="headerlink" title="每一行表达含义"></a>每一行表达含义</h4><ul>
+<li><code>用户名:密码占位符:UID:基本组GID:用户描述信息:家目录:解释器</code></li>
+</ul>
+<h3 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h3><blockquote>
+<p><code>&lt;user&gt;</code>：用户名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="指定参数"><a href="#指定参数" class="headerlink" title="指定参数"></a>指定参数</h4><blockquote>
+<p><code>&lt;option&gt;</code>：选项，可有可无</p>
+<blockquote>
+<p><code>-u &lt;uid&gt;</code>：指定UID<br><code>-g &lt;group&gt;</code>：指定基本组<br><code>-G &lt;group&gt;</code>：指定附加组<br><code>-d &lt;home&gt;</code>：指定家目录位置<br><code>-s &lt;shell&gt;</code>：指定默认解释器</p>
+<blockquote>
+<p><code>-s /sbin/nologin</code>：指定解释器为空</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd &lt;option&gt; &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主目录一同删除"><a href="#主目录一同删除" class="headerlink" title="主目录一同删除"></a>主目录一同删除</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel -r &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改用户信息"><a href="#修改用户信息" class="headerlink" title="修改用户信息"></a>修改用户信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod &lt;option&gt; &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="用户密码"><a href="#用户密码" class="headerlink" title="用户密码"></a>用户密码</h2><h3 id="密码信息文件"><a href="#密码信息文件" class="headerlink" title="密码信息文件"></a>密码信息文件</h3><h4 id="路径-1"><a href="#路径-1" class="headerlink" title="路径"></a>路径</h4><ul>
+<li><code>/etc/shadow</code></li>
+</ul>
+<h4 id="每一行表达含义-1"><a href="#每一行表达含义-1" class="headerlink" title="每一行表达含义"></a>每一行表达含义</h4><ul>
+<li><code>用户名:密码加密后的字符串:上一次修改密码的时间（从1970年1月1日开始算的天数）:密码最早能更改密码的时间（默认为0，表示任何时候都可以更改）:有效天数:距离有效时间x天时进行提醒（默认为7）:::</code></li>
+</ul>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><ul>
+<li>root用户修改任何用户密码，可以不限制密码复杂度，但是会出现提示，无视即可</li>
+</ul>
+<blockquote>
+<p><code>&lt;option&gt;</code>：选项，可有可无</p>
+<blockquote>
+<p><code>-l</code>：锁定账号<br><code>-u</code>：解锁账号<br><code>-d</code>：无密码<br><code>-f</code>：强制用户下次登录时修改密码</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd &lt;option&gt; &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改自己密码"><a href="#修改自己密码" class="headerlink" title="修改自己密码"></a>修改自己密码</h4><ul>
+<li>其他用户修改自己密码时，需要限制密码复杂度</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+
+<h4 id="取消交互式"><a href="#取消交互式" class="headerlink" title="取消交互式"></a>取消交互式</h4><blockquote>
+<p><code>&lt;pwd&gt;</code>：密码</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> &lt;<span class="built_in">pwd</span>&gt; | passwd --stdin &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组"><a href="#组" class="headerlink" title="组"></a>组</h2><h3 id="组信息文件"><a href="#组信息文件" class="headerlink" title="组信息文件"></a>组信息文件</h3><h4 id="路径-2"><a href="#路径-2" class="headerlink" title="路径"></a>路径</h4><ul>
+<li><code>/etc/group</code></li>
+</ul>
+<h4 id="每一行表达含义-2"><a href="#每一行表达含义-2" class="headerlink" title="每一行表达含义"></a>每一行表达含义</h4><ul>
+<li><code>组名:组密码占位符:GID:组成员列表</code></li>
+</ul>
+<h3 id="新建组"><a href="#新建组" class="headerlink" title="新建组"></a>新建组</h3><blockquote>
+<p><code>&lt;group&gt;</code>：组名<br><code>&lt;option&gt;</code>：选项，可有可无</p>
+<blockquote>
+<p><code>-g &lt;gid&gt;</code>：指定GID<br><code>-o</code>：与<code>-g</code>同时使用，表示新用户组的GID可以与系统已有用户组的GID相同</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd &lt;option&gt; &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除组"><a href="#删除组" class="headerlink" title="删除组"></a>删除组</h3><ul>
+<li>不能删除用户的基本组</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupdel &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改组信息"><a href="#修改组信息" class="headerlink" title="修改组信息"></a>修改组信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod &lt;option&gt; &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改组名"><a href="#修改组名" class="headerlink" title="修改组名"></a>修改组名</h4><blockquote>
+<p><code>&lt;name_new&gt;</code>：新组名<br><code>&lt;name_old&gt;</code>：旧组名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod -n &lt;name_new&gt; &lt;name_old&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换组"><a href="#切换组" class="headerlink" title="切换组"></a>切换组</h3><ul>
+<li>如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限</li>
+</ul>
+<h4 id="切换当前用户所在的组"><a href="#切换当前用户所在的组" class="headerlink" title="切换当前用户所在的组"></a>切换当前用户所在的组</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newgrp &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="组成员信息文件"><a href="#组成员信息文件" class="headerlink" title="组成员信息文件"></a>组成员信息文件</h3><h4 id="路径-3"><a href="#路径-3" class="headerlink" title="路径"></a>路径</h4><ul>
+<li><code>/etc/gshadow</code></li>
+</ul>
+<h3 id="管理组内成员"><a href="#管理组内成员" class="headerlink" title="管理组内成员"></a>管理组内成员</h3><h4 id="添加组成员"><a href="#添加组成员" class="headerlink" title="添加组成员"></a>添加组成员</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd -a &lt;user&gt; &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除组成员"><a href="#删除组成员" class="headerlink" title="删除组成员"></a>删除组成员</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd -d &lt;user&gt; &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.runoob.com/linux/linux-user-manage.html" target="_blank" rel="noopener">菜鸟笔记</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/06/21/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/" rel="next" title="【笔记】跨平台查看系统信息">
+                  <i class="fa fa-chevron-left"></i> 【笔记】跨平台查看系统信息
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/06/23/%E4%B8%89%E6%98%9F%E6%89%8B%E6%9C%BA%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD%E4%BB%98%E8%B4%B9%E4%B8%BB%E9%A2%98/" rel="prev" title="【笔记】三星手机免费下载付费主题">
+                  【笔记】三星手机免费下载付费主题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户"><span class="nav-number">2.</span> <span class="nav-text">用户</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户信息文件"><span class="nav-number">2.1.</span> <span class="nav-text">用户信息文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径"><span class="nav-number">2.1.1.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#每一行表达含义"><span class="nav-number">2.1.2.</span> <span class="nav-text">每一行表达含义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建用户"><span class="nav-number">2.2.</span> <span class="nav-text">新建用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指定参数"><span class="nav-number">2.2.1.</span> <span class="nav-text">指定参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看用户信息"><span class="nav-number">2.3.</span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除用户"><span class="nav-number">2.4.</span> <span class="nav-text">删除用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主目录一同删除"><span class="nav-number">2.4.1.</span> <span class="nav-text">主目录一同删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改用户信息"><span class="nav-number">2.5.</span> <span class="nav-text">修改用户信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户密码"><span class="nav-number">3.</span> <span class="nav-text">用户密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密码信息文件"><span class="nav-number">3.1.</span> <span class="nav-text">密码信息文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#每一行表达含义-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">每一行表达含义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改密码"><span class="nav-number">3.2.</span> <span class="nav-text">修改密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改自己密码"><span class="nav-number">3.2.1.</span> <span class="nav-text">修改自己密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取消交互式"><span class="nav-number">3.2.2.</span> <span class="nav-text">取消交互式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组"><span class="nav-number">4.</span> <span class="nav-text">组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组信息文件"><span class="nav-number">4.1.</span> <span class="nav-text">组信息文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#每一行表达含义-2"><span class="nav-number">4.1.2.</span> <span class="nav-text">每一行表达含义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建组"><span class="nav-number">4.2.</span> <span class="nav-text">新建组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除组"><span class="nav-number">4.3.</span> <span class="nav-text">删除组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改组信息"><span class="nav-number">4.4.</span> <span class="nav-text">修改组信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改组名"><span class="nav-number">4.4.1.</span> <span class="nav-text">修改组名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换组"><span class="nav-number">4.5.</span> <span class="nav-text">切换组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切换当前用户所在的组"><span class="nav-number">4.5.1.</span> <span class="nav-text">切换当前用户所在的组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组成员信息文件"><span class="nav-number">4.6.</span> <span class="nav-text">组成员信息文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径-3"><span class="nav-number">4.6.1.</span> <span class="nav-text">路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理组内成员"><span class="nav-number">4.7.</span> <span class="nav-text">管理组内成员</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加组成员"><span class="nav-number">4.7.1.</span> <span class="nav-text">添加组成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除组成员"><span class="nav-number">4.7.2.</span> <span class="nav-text">删除组成员</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">5.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

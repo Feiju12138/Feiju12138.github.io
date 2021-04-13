@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言Kubernetes（常简称为K8s）是用于自动部署、扩展和管理“容器化（containerized）应用程序”的开源系统。该系统由Google设计并捐赠给Cloud Native Computing Foundation（今属Linux基金会）来使用。（维基百科）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Kubernetes学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2020/12/04/Kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言Kubernetes（常简称为K8s）是用于自动部署、扩展和管理“容器化（containerized）应用程序”的开源系统。该系统由Google设计并捐赠给Cloud Native Computing Foundation（今属Linux基金会）来使用。（维基百科）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-04T03:00:41.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:13.710Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/12/04/Kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】Kubernetes学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/12/04/Kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Kubernetes学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-04 11:00:41" itemprop="dateCreated datePublished" datetime="2020-12-04T11:00:41+08:00">2020-12-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Computing</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Kubernetes（常简称为K8s）是用于自动部署、扩展和管理“容器化（containerized）应用程序”的开源系统。该系统由Google设计并捐赠给Cloud Native Computing Foundation（今属Linux基金会）来使用。（<a href="https://zh.wikipedia.org/wiki/Kubernetes" target="_blank" rel="noopener">维基百科</a>）</p>
+<a id="more"></a>
+
+<h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><ul>
+<li><a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster" target="_blank" rel="noopener">手把手安装k8s</a></li>
+<li><a href="https://github.com/easzlab/kubeasz" target="_blank" rel="noopener">一键安装脚本</a></li>
+</ul>
+<h2 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h2><h3 id="集群方案"><a href="#集群方案" class="headerlink" title="集群方案"></a>集群方案</h3><ul>
+<li><p>单机（两台虚拟机）：一个主控节点+工作节点，一个工作节点</p>
+</li>
+<li><p>每台至少CUP2核，内存2G</p>
+</li>
+</ul>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ul>
+<li><p>下载<a href="https://github.com/easzlab/kubeasz/releases" target="_blank" rel="noopener">easzup</a>脚本</p>
+</li>
+<li><p>上传<code>easzup</code>脚本，并添加执行权限</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x easzup</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过脚本，下载离线安装文件<code>/etc/ansible</code>，并安装配置docker</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easzup -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过脚本，使用临时容器</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easzup -S</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进入容器</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kubeasz sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在容器内制定配置命令，改为离线安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ansible</span><br><span class="line">sed -i <span class="string">'s/^INSTALL_SOURCE.*$/INSTALL_SOURCE: "offline"/g'</span> roles/chrony/defaults/main.yml</span><br><span class="line">sed -i <span class="string">'s/^INSTALL_SOURCE.*$/INSTALL_SOURCE: "offline"/g'</span> roles/ex-lb/defaults/main.yml</span><br><span class="line">sed -i <span class="string">'s/^INSTALL_SOURCE.*$/INSTALL_SOURCE: "offline"/g'</span> roles/kube-node/defaults/main.yml</span><br><span class="line">sed -i <span class="string">'s/^INSTALL_SOURCE.*$/INSTALL_SOURCE: "offline"/g'</span> roles/prepare/defaults/main.yml</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装python，pip，ansible</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install python -y</span><br><span class="line"></span><br><span class="line">wget -O /etc/yum.repos.d/epel-7.repo https://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">yum install git python-pip -y</span><br><span class="line"></span><br><span class="line">pip install pip --upgrade -i https://mirrors.aliyun.com/pypi/simple/</span><br><span class="line"><span class="comment"># 阿里云镜像</span></span><br><span class="line"><span class="comment"># pip install ansible==2.6.12 netaddr==0.7.19 -i https://mirrors.aliyun.com/pypi/simple/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加载容器</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i images.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置主控"><a href="#配置主控" class="headerlink" title="配置主控"></a>配置主控</h3><ul>
+<li>生成ssh密钥对，向工作节点复制ssh公钥</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -N <span class="string">''</span> -f ~/.ssh/id_ed25519</span><br><span class="line">ssh-copy-id 192.168.64.192</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置hosts</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ansible</span><br><span class="line">cp example/hosts.multi-node hosts</span><br><span class="line">vim hosts</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在hosts文件中配置<code>集群节点</code>、<code>主控节点</code>、<code>工作节点</code></li>
+<li>集群节点会参加选举，所以通常配置奇数个</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[etcd]</span><br><span class="line">192.168.64.191 NODE_NAME&#x3D;etcd1</span><br><span class="line"></span><br><span class="line">[kube-master]</span><br><span class="line">192.168.64.191</span><br><span class="line"></span><br><span class="line">[kube-node]</span><br><span class="line">192.168.64.191</span><br><span class="line">192.168.64.192</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>检查所有主机状态，有<code>ping</code>有<code>pong</code>即为成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible all -m ping</span><br></pre></td></tr></table></figure>
+
+<h3 id="一键安装k8s集群"><a href="#一键安装k8s集群" class="headerlink" title="一键安装k8s集群"></a>一键安装k8s集群</h3><ul>
+<li>在主控节点执行一键安装命令</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ansible</span><br><span class="line">ansible-playbook 90.setup.yml</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证环境"><a href="#验证环境" class="headerlink" title="验证环境"></a>验证环境</h2><h3 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h3><blockquote>
+<p><code>cs</code>：Cluster集群</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get cs</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看节点服务器"><a href="#查看节点服务器" class="headerlink" title="查看节点服务器"></a>查看节点服务器</h3><blockquote>
+<p><code>no</code>：Node节点</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl get no</span><br><span class="line"></span><br><span class="line">kubectl get node</span><br></pre></td></tr></table></figure>
+
+<h2 id="对控制器的操作"><a href="#对控制器的操作" class="headerlink" title="对控制器的操作"></a>对控制器的操作</h2><ul>
+<li>控制器可以自动控制容器的部署和销毁</li>
+</ul>
+<h3 id="由控制器自动创建一个容器"><a href="#由控制器自动创建一个容器" class="headerlink" title="由控制器自动创建一个容器"></a>由控制器自动创建一个容器</h3><blockquote>
+<p><code>--image=&lt;img&gt;</code>：指定镜像<br><code>--port=&lt;port&gt;</code>：指定对外暴露的端口<br><code>--generator=run/v1</code>：指定api版本<br><code>&lt;rc_name&gt;</code>：控制器名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl run --image=&lt;img&gt; --port=&lt;port&gt; --generator=run/v1 &lt;rc_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ReplicationController"><a href="#ReplicationController" class="headerlink" title="ReplicationController"></a>ReplicationController</h3><ul>
+<li>RC可以自动化维护多个pod，只需指定pod副本的数量，就可以轻松实现自动扩容缩容</li>
+<li>当一个pod宕机，RC可以自动关闭pod，并启动一个新的pod替代它</li>
+<li>标签的完整匹配</li>
+</ul>
+<blockquote>
+<p><code>apiVersion: v1</code>：api版本<br><code>kind:</code>：定义配置文件类型（核心配置）</p>
+<blockquote>
+<p><code>ReplicationController</code>：用于创建RC控制器的配置文件</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>metadata.name</code>：定义名称<br><code>spec.replicas</code>：容器副本的数量<br><code>spec.selector</code>：根据选择器来选择RC管理的容器</p>
+<blockquote>
+<p><code>&lt;key&gt;</code>：标签键<br><code>&lt;value&gt;</code>：标签值</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.template</code>：定义容器的模版<br><code>spec.template.metadata.labels</code>：创建容器时为容器贴标签</p>
+<blockquote>
+<p><code>&lt;key&gt;</code>：标签键<br><code>&lt;value&gt;</code>：标签值</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.containers</code>：对容器的配置</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicationController</span></span><br><span class="line"><span class="attr">metadata:</span>   </span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">luksa/kubia</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ReplicaSet"><a href="#ReplicaSet" class="headerlink" title="ReplicaSet"></a>ReplicaSet</h3><ul>
+<li>标签选择可以使用运算符</li>
+<li>是ReplcationController的新版控制器</li>
+</ul>
+<h4 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h4><h5 id="matchLabels"><a href="#matchLabels" class="headerlink" title="matchLabels"></a>matchLabels</h5><blockquote>
+<p><code>apiVersion: v1</code>：api版本<br><code>kind:</code>：定义配置文件类型（核心配置）</p>
+<blockquote>
+<p><code>ReplicationController</code>：用于创建RS控制器的配置文件</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.selector.matchLabels</code>：使用label选择器，对标签进行完整匹配</p>
+<blockquote>
+<p><code>&lt;key&gt;</code>：标签键<br><code>&lt;value&gt;</code>：标签值</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicaSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">luksa/kubia</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="matchExpressions"><a href="#matchExpressions" class="headerlink" title="matchExpressions"></a>matchExpressions</h5><blockquote>
+<p><code>apiVersion: v1</code>：api版本<br><code>kind:</code>：定义配置文件类型（核心配置）</p>
+<blockquote>
+<p><code>ReplicationController</code>：用于创建RS控制器的配置文件</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.selector.matchLabels</code>：表达式匹配选择器<br><code>spec.selector.matchLabels.key</code>：指定标签键<br><code>spec.selector.matchLabels.operator</code>：运算符</p>
+<blockquote>
+<p><code>In</code>：label与其中一个值匹配<br><code>NotIn</code>：label与任何一个值都不匹配<br><code>Exists</code>：包含指定labet名称，值任意<br><code>DoesNotExeists</code>：不包含指定label名称，值任意</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.selector.matchLabels.values</code>：指定标签值，label值列表</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicaSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">4</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchExpressions:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">&lt;key&gt;</span></span><br><span class="line">        <span class="attr">operator:</span> <span class="string">In</span></span><br><span class="line">        <span class="attr">values:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&lt;value_1&gt;</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&lt;value_2&gt;</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">luksa/kubia</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="DaemonSet"><a href="#DaemonSet" class="headerlink" title="DaemonSet"></a>DaemonSet</h3><ul>
+<li>在每个节点上运行一个 pod，包括主控服务器</li>
+<li>主要用途：资源监控，kube-proxy等</li>
+<li>DaemonSet不指定pod数量，它会在每个节点上部署一个pod</li>
+</ul>
+<h4 id="不含节点选择器"><a href="#不含节点选择器" class="headerlink" title="不含节点选择器"></a>不含节点选择器</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">DaemonSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">ssd-monitor</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">luksa/ssd-monitor</span></span><br><span class="line">          <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="包含节点选择器"><a href="#包含节点选择器" class="headerlink" title="包含节点选择器"></a>包含节点选择器</h4><blockquote>
+<p><code>spec.template.spec.nodeSelector</code>：节点选择器</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">DaemonSet</span>                       </span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">ssd-monitor</span>                   </span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">nodeSelector:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">luksa/ssd-monitor</span></span><br><span class="line">          <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h3><ul>
+<li>Job 用来运行单个任务，任务结束后pod不再重启</li>
+</ul>
+<h4 id="单个运行运行单次"><a href="#单个运行运行单次" class="headerlink" title="单个运行运行单次"></a>单个运行运行单次</h4><blockquote>
+<p><code>spec.template.spec.restartPolicy</code>：重启策略</p>
+<blockquote>
+<p><code>OnFailure</code>：任务失败时</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">batch-job</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span> </span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">luksa/batch-job</span></span><br><span class="line">          <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="单个运行运行多次"><a href="#单个运行运行多次" class="headerlink" title="单个运行运行多次"></a>单个运行运行多次</h4><blockquote>
+<p><code>sepc.completions</code>：指定任务执行总次数</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">multi-completion-batch-job</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">completions:</span> <span class="number">5</span></span><br><span class="line">  <span class="attr">template:</span> </span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">luksa/batch-job</span></span><br><span class="line">          <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="并行运行运行共多少次"><a href="#并行运行运行共多少次" class="headerlink" title="并行运行运行共多少次"></a>并行运行运行共多少次</h4><blockquote>
+<p><code>spec.parallelism</code>：并行运行任务数量</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">multi-completion-parallel-batch-job</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">completions:</span> <span class="number">5</span></span><br><span class="line">  <span class="attr">parallelism:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">template:</span> </span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">luksa/batch-job</span></span><br><span class="line">          <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Cronjob"><a href="#Cronjob" class="headerlink" title="Cronjob"></a>Cronjob</h3><blockquote>
+<p><code>spec.schedule</code>：定义cron的定时任务格式</p>
+<blockquote>
+<p>每个单位数用空格隔开，每组单位数用逗号隔开，如果该单位数每个单位都执行用<code>*</code>表示<br><code>第一个单位</code>：分钟<br><code>第二个单位</code>：小时<br><code>第二个单位</code>：月中的天<br><code>第二个单位</code>：月<br><code>第二个单位</code>：周中的天</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1beta1</span>                <span class="comment"># api版本</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">CronJob</span>                            <span class="comment"># 资源类型</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">batch-job-every-fifteen-minutes</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">schedule:</span> <span class="string">"0,15,30,45 * * * *"</span></span><br><span class="line">  <span class="attr">jobTemplate:</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">template:</span></span><br><span class="line">        <span class="attr">metadata:</span></span><br><span class="line">          <span class="attr">labels:</span></span><br><span class="line">            <span class="attr">app:</span> <span class="string">periodic-batch-job</span></span><br><span class="line">        <span class="attr">spec:</span></span><br><span class="line">          <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br><span class="line">          <span class="attr">containers:</span> </span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main</span></span><br><span class="line">            <span class="attr">image:</span> <span class="string">luksa/batch-job</span></span><br><span class="line">            <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过配置文件创建控制器"><a href="#通过配置文件创建控制器" class="headerlink" title="通过配置文件创建控制器"></a>通过配置文件创建控制器</h3><blockquote>
+<p><code>&lt;yml&gt;</code>：配置文件</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f &lt;yml&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看控制器"><a href="#查看控制器" class="headerlink" title="查看控制器"></a>查看控制器</h3><blockquote>
+<p><code>&lt;para_1&gt;</code>：操作的对象</p>
+<blockquote>
+<p><code>rc</code>：对RC控制器的操作<br><code>rs</code>：对RS控制器的操作<br><code>ds</code>：对DS控制器的操作<br><code>job</code>：对Job控制器的操作<br><code>cj</code>：对CJ控制器的操作<br><code>ns</code>：对Namespace操作<br><code>po</code>：对容器的操作<br><code>all</code>：对控制器、命名空间、容器同时操作</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get &lt;para_1&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改控制器配置"><a href="#修改控制器配置" class="headerlink" title="修改控制器配置"></a>修改控制器配置</h3><ul>
+<li>如果模版中标签数量有变动，只会在创建新容器时使用新的模版</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl edit &lt;para_1&gt; &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><blockquote>
+<p><code>--cascade</code>：不级联删除容器</p>
+</blockquote>
+<blockquote>
+<p><code>&lt;para_2&gt;</code>：过滤方式</p>
+<blockquote>
+<p><code>&lt;name&gt;</code>：指定操作的对象名<br><code>-l &lt;key&gt;=&lt;value&gt;</code>：指定标签<br><code>--all</code>：没有任何过滤</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete &lt;para_1&gt; &lt;para_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对容器的操作"><a href="#对容器的操作" class="headerlink" title="对容器的操作"></a>对容器的操作</h2><ul>
+<li>k8s以pod为单位来部署容器</li>
+<li>pod为docker容器的封装对象</li>
+<li>一个pod可以封装多个docker容器</li>
+</ul>
+<h3 id="创建配置文件-1"><a href="#创建配置文件-1" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><ul>
+<li>创建并编辑<code>.yml</code>配置文件</li>
+</ul>
+<blockquote>
+<p><code>apiVersion: v1</code>：api版本<br><code>kind:</code>：定义配置文件类型（核心配置）</p>
+<blockquote>
+<p><code>Pod</code>：用于创建容器的配置文件<br><code>Namespace</code>：用于创建命名空间的配置文件</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>metadata.name</code>：定义名称。如果是Pod类型，会自动在末尾生成随机字符串用于区分<br><code>spec.containers</code>：对容器的配置<br><code>spec.containers.image</code>：docker镜像名（核心配置）<br><code>spec.containers.imagePullPolicy</code>：是否联网下载镜像</p>
+<blockquote>
+<p><code>Never</code>：不联网下载镜像</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.containers.name</code>：定义镜像名<br><code>spec.containers.ports.containerPort</code>：容器暴露的端口（可选）</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia-manual</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/kubia</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">8080</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过配置文件创建容器"><a href="#通过配置文件创建容器" class="headerlink" title="通过配置文件创建容器"></a>通过配置文件创建容器</h3><blockquote>
+<p><code>&lt;yml&gt;</code>：指定配置文件<br><code>-n &lt;namespace&gt;</code>：指定部署的命名空间</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f &lt;yml&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="包含节点选择器-1"><a href="#包含节点选择器-1" class="headerlink" title="包含节点选择器"></a>包含节点选择器</h3><ul>
+<li>部署到指定服务器</li>
+<li>修改pod配置文件</li>
+</ul>
+<blockquote>
+<p><code>spec.nodeSelector</code>：节点选择器</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia-manual</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">nodeSelector:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/kubia</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">8080</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h3><blockquote>
+<p><code>po</code>：pod容器<br><code>-o wide</code>：查看更多信息<br><code>-n &lt;namespace&gt;</code>：查看指定命名空间的容器<br><code>--show-labels</code>：展示标签</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看容器描述"><a href="#查看容器描述" class="headerlink" title="查看容器描述"></a>查看容器描述</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe po &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><ul>
+<li>查看当前容器</li>
+</ul>
+<blockquote>
+<p><code>--previous</code>：查看上一个容器</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl logs &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入容器内部"><a href="#进入容器内部" class="headerlink" title="进入容器内部"></a>进入容器内部</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">exec</span> -it &lt;name&gt; bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete po &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除多个容器"><a href="#删除多个容器" class="headerlink" title="删除多个容器"></a>删除多个容器</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete po &lt;name_1&gt; &lt;name_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="按标签删除"><a href="#按标签删除" class="headerlink" title="按标签删除"></a>按标签删除</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete po -l &lt;key&gt;=&lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除当前命名空间的所有pod"><a href="#删除当前命名空间的所有pod" class="headerlink" title="删除当前命名空间的所有pod"></a>删除当前命名空间的所有pod</h4><ul>
+<li>删除后控制器会自动重建新的pod</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete po --all</span><br></pre></td></tr></table></figure>
+
+<h2 id="对服务的操作"><a href="#对服务的操作" class="headerlink" title="对服务的操作"></a>对服务的操作</h2><ul>
+<li>服务控制容器的访问</li>
+<li>提供一个不变的访问地址，可以向所有容器转发调用，类似于SpringCloudZuul</li>
+</ul>
+<h3 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h3><blockquote>
+<p><code>rc &lt;rc_name&gt;</code>：指定控制器类型及控制器名<br><code>&lt;svc_name&gt;</code>：Service名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl expose rc &lt;rc_name&gt; --<span class="built_in">type</span>=NodePort --name &lt;svc_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建配置文件-2"><a href="#创建配置文件-2" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><ul>
+<li>创建并编辑yml配置文件</li>
+</ul>
+<blockquote>
+<p><code>spec.ports.port</code>：服务向外暴露的端口<br><code>spec.ports.targetPort</code>：容器的端口</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过配置文件创建服务"><a href="#通过配置文件创建服务" class="headerlink" title="通过配置文件创建服务"></a>通过配置文件创建服务</h3><blockquote>
+<p><code>&lt;yml&gt;</code>：配置文件</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">kubectl</span> <span class="string">create</span> <span class="string">-f</span> <span class="string">&lt;yml&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过服务扩容和缩容"><a href="#通过服务扩容和缩容" class="headerlink" title="通过服务扩容和缩容"></a>通过服务扩容和缩容</h3><ul>
+<li>通过服务调整容器的数量</li>
+</ul>
+<blockquote>
+<p><code>&lt;num&gt;</code>：根据指定的数量自动调整，如果为0，自动销毁所有容器</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl scale rc &lt;rc_name&gt; --replicas=&lt;num&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h3><blockquote>
+<p><code>svc</code>：Service服务</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get svc</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看服务详细信息"><a href="#查看服务详细信息" class="headerlink" title="查看服务详细信息"></a>查看服务详细信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe svc &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="手动创建Endpoints对象"><a href="#手动创建Endpoints对象" class="headerlink" title="手动创建Endpoints对象"></a>手动创建Endpoints对象</h3><ul>
+<li><p>Endpoint是在Service和pod之间的一种资源</p>
+</li>
+<li><p>一个Endpoint资源,包含一组pod的地址列表</p>
+</li>
+<li><p>创建于Service同名的Endpoints即可建立关联</p>
+</li>
+</ul>
+<blockquote>
+<p><code>subsets.addresses</code>：包含的地址列表</p>
+<blockquote>
+<p><code>ip: &lt;ip&gt;</code>：访问地址</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>subsets.ports.port</code>：目标服务的端口</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Endpoints</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">subsets:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">addresses:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">ip:</span> <span class="number">120.52</span><span class="number">.99</span><span class="number">.224</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">ip:</span> <span class="number">117.136</span><span class="number">.190</span><span class="number">.162</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对外暴露"><a href="#对外暴露" class="headerlink" title="对外暴露"></a>对外暴露</h3><h4 id="NodePort"><a href="#NodePort" class="headerlink" title="NodePort"></a>NodePort</h4><ul>
+<li>每个节点都开放一个端口</li>
+</ul>
+<h5 id="部署一个新的服务"><a href="#部署一个新的服务" class="headerlink" title="部署一个新的服务"></a>部署一个新的服务</h5><h6 id="创建配置文件-3"><a href="#创建配置文件-3" class="headerlink" title="创建配置文件"></a>创建配置文件</h6><ul>
+<li>创建并编辑yml配置文件</li>
+</ul>
+<blockquote>
+<p><code>spec.type</code>：对外暴露类型</p>
+<blockquote>
+<p><code>NodePort</code>：在每个节电上开放访问端口</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.ports.nodePort</code>：外部访问端口</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia-nodeport</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">8080</span></span><br><span class="line">    <span class="attr">nodePort:</span> <span class="number">30123</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="LoadBalance"><a href="#LoadBalance" class="headerlink" title="LoadBalance"></a>LoadBalance</h4><ul>
+<li>NodePort的一种扩展，负载均衡器需要云基础设施来提供</li>
+</ul>
+<h4 id="Ingress"><a href="#Ingress" class="headerlink" title="Ingress"></a>Ingress</h4><ul>
+<li>一种特殊的方式</li>
+</ul>
+<h2 id="对命名空间的操作"><a href="#对命名空间的操作" class="headerlink" title="对命名空间的操作"></a>对命名空间的操作</h2><h3 id="创建配置文件-4"><a href="#创建配置文件-4" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><ul>
+<li>创建并编辑<code>.yml</code>配置文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Namespace</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">custom-namespace</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过配置文件创建命名空间"><a href="#通过配置文件创建命名空间" class="headerlink" title="通过配置文件创建命名空间"></a>通过配置文件创建命名空间</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f &lt;yml&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看命名空间"><a href="#查看命名空间" class="headerlink" title="查看命名空间"></a>查看命名空间</h3><ul>
+<li>不同命名空间可以出现同名pod</li>
+</ul>
+<blockquote>
+<p><code>ns</code>：Namespace命名空间</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get ns</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除命名空间"><a href="#删除命名空间" class="headerlink" title="删除命名空间"></a>删除命名空间</h3><ul>
+<li>删除命名空间及其包含的所有pod</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete ns &lt;namespace&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除所有对象"><a href="#删除所有对象" class="headerlink" title="删除所有对象"></a>删除所有对象</h2><ul>
+<li>删除容器、控制器、服务，不包括pv和pvc</li>
+<li>这个操作会删除一个系统Service kubernetes,它被删除后会立即被自动重建</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete all --all</span><br></pre></td></tr></table></figure>
+
+<h2 id="对标签的操作"><a href="#对标签的操作" class="headerlink" title="对标签的操作"></a>对标签的操作</h2><ul>
+<li>为每个pod贴不同的标签，service根据不同的标签掌管不同的pod</li>
+</ul>
+<h3 id="新建容器时，为新容器贴标签"><a href="#新建容器时，为新容器贴标签" class="headerlink" title="新建容器时，为新容器贴标签"></a>新建容器时，为新容器贴标签</h3><ul>
+<li>编辑配置</li>
+</ul>
+<blockquote>
+<p><code>metadate.labels</code>：标签设置，键值对形式，每个标签占一行</p>
+<blockquote>
+<p><code>&lt;key&gt;</code>：标签键<br><code>&lt;value&gt;</code>：标签值</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><ul>
+<li>列出所有的pod，并显示pod的标签</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po --show-labels</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看指定标签"><a href="#查看指定标签" class="headerlink" title="查看指定标签"></a>查看指定标签</h4><ul>
+<li>列出所有的pod，并显示指定的标签</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><blockquote>
+<p><code>po &lt;pod&gt;</code>：对容器的操作<br><code>no &lt;ip&gt;</code>：对节点的操作</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label po &lt;pod&gt; &lt;key&gt;=&lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加多个标签"><a href="#添加多个标签" class="headerlink" title="添加多个标签"></a>添加多个标签</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label po &lt;pod&gt; &lt;key_1&gt;=&lt;value_1&gt; &lt;key_2&gt;=&lt;value_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h3><blockquote>
+<p><code>&lt;key&gt;-</code>：根据标签键删除标签</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label po &lt;pod&gt; &lt;key&gt;-</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改标签"><a href="#修改标签" class="headerlink" title="修改标签"></a>修改标签</h3><blockquote>
+<p><code>&lt;pod&gt;</code>：指定pod名<br><code>--overwrite</code>：修改标签，防止误修改，确认修改而不是添加<br><code>po</code>：为容器贴标签<br><code>no</code>：为服务器贴标签</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label po &lt;pod&gt; &lt;key&gt;=&lt;value&gt; --overwrite</span><br></pre></td></tr></table></figure>
+
+<h3 id="根据标签查询容器"><a href="#根据标签查询容器" class="headerlink" title="根据标签查询容器"></a>根据标签查询容器</h3><blockquote>
+<p><code>-l</code>：查询标签</p>
+</blockquote>
+<ul>
+<li>根据标签为<code>&lt;key&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l &lt;key&gt; -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据标签为<code>&lt;key&gt;=&lt;value&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息  </li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l &lt;key&gt;=&lt;value&gt; -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据标签为<code>&lt;key_1&gt;=&lt;value_1&gt;</code>并且<code>&lt;key_2&gt;=&lt;value_2&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l &lt;key_1&gt;=&lt;value_1&gt;,&lt;key_2&gt;=&lt;value_2&gt; -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据标签不为<code>&lt;key&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l <span class="string">'!&lt;key&gt;'</span> -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据标签不为<code>&lt;key&gt;=&lt;value&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l <span class="string">'&lt;key&gt;!=&lt;value&gt;'</span> -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据标签键<code>&lt;key&gt;</code>包含<code>&lt;value_1&gt;</code>和<code>&lt;value_2&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l <span class="string">'&lt;key&gt; in (&lt;value_1&gt;,&lt;value_2&gt;)'</span> -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据标签键<code>&lt;key&gt;</code>不包含<code>&lt;value_1&gt;</code>和<code>&lt;value_2&gt;</code>的pod，查看pod的详细信息，并展示<key_1>和<key_2>的标签信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -l <span class="string">'&lt;key&gt; notin (&lt;value_1&gt;,&lt;value_2&gt;)'</span> -L &lt;key_1&gt;,&lt;key_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="存活探针"><a href="#存活探针" class="headerlink" title="存活探针"></a>存活探针</h2><ul>
+<li>在部署文件中,我们添加探针,来探测容器的健康状态.</li>
+<li>探针默认每10秒探测一次,连续三次探测失败后重启容器</li>
+</ul>
+<h3 id="存活探针的类型"><a href="#存活探针的类型" class="headerlink" title="存活探针的类型"></a>存活探针的类型</h3><h4 id="HTTP-GET"><a href="#HTTP-GET" class="headerlink" title="HTTP GET"></a>HTTP GET</h4><ul>
+<li>返回2xx或3xx响应码则认为探测成功</li>
+</ul>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><ul>
+<li>与指定端口建立TCP连接，连接成功则为探测成功</li>
+</ul>
+<h4 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h4><ul>
+<li>在容器内执行指定的任意命令，并检查命令的退出码，退出码为0则为探测成功</li>
+</ul>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><ul>
+<li>修改pod配置文件</li>
+</ul>
+<blockquote>
+<p><code>spec.containers.livenessProbe</code>：存活探针配置<br><code>spec.containers.livenessProbe.httpGet</code>：存活探针类型为HttpGet<br><code>spec.containers.livenessProbe.httpGet.path</code>：探测路径<br><code>spec.containers.livenessProbe.httpGet.port</code>：探测端口<br><code>spec.containers.livenessProbe.initialDelaySeconds</code>：第一次探测的延迟时间</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">      <span class="attr">livenessProbe:</span></span><br><span class="line">        <span class="attr">httpGet:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">          <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">        <span class="attr">initialDelaySeconds:</span> <span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="探针的描述"><a href="#探针的描述" class="headerlink" title="探针的描述"></a>探针的描述</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe po &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>Liveness</code>：存货探针的参数</p>
+<blockquote>
+<p><code>http-get</code>：探测类型<br><code>http://:8080/</code>：探测路径<br><code>delay</code>：第一次探测间隔<br><code>timeout</code>：超时时间<br><code>period</code>：探测间隔<br><code>success</code>：探测成功次数<br><code>failure</code>：探测失败次数</p>
+</blockquote>
+</blockquote>
+<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><h3 id="emptyDir"><a href="#emptyDir" class="headerlink" title="emptyDir"></a>emptyDir</h3><blockquote>
+<p><code>spec.containers.volumeMounts</code>：容器中数据卷的配置</p>
+<blockquote>
+<p><code>spec.containers.volumeMounts.name</code>：指定容器使用的数据卷名<br><code>spec.containers.volumeMounts.mountPath</code>：容器中的挂载路径<br><code>spec.containers.volumeMounts.readOnly</code>：是否为只读</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>spec.volums</code>：数据卷的配置</p>
+<blockquote>
+<p><code>spec.volums.name</code>：定义数据卷名<br><code>spec.volums.emptyDir</code>：定义数据卷类型为emptyDir类型</p>
+<blockquote>
+<p><code>emptyDir</code>：简单的空目录<br><code>hostPath</code>：工作节点中的磁盘路径<br><code>gitRepo</code>：从git克隆的本地仓库<br><code>nfs</code>：nfs共享文件系统</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">fortune</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/fortune</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">html-genrator</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/var/htdocs</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">nginx:alpine</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">web-server</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/usr/share/nginx/html</span></span><br><span class="line">      <span class="attr">readOnly:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">emptyDir:</span> <span class="string">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nfs"><a href="#nfs" class="headerlink" title="nfs"></a>nfs</h3><h4 id="准备一个目录"><a href="#准备一个目录" class="headerlink" title="准备一个目录"></a>准备一个目录</h4><ul>
+<li><p>准备一个目录作为共享目录</p>
+</li>
+<li><p>编辑<code>exports</code>配置文件</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/exports</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>exports</code>配置文件</li>
+</ul>
+<blockquote>
+<p><code>/etc/nfs_data</code>：指定共享的目录<br><code>192.168.64.0/24</code>：配置共享的网络，<code>0.0.0.0</code>表示不限制网段<br><code>rw</code>读写权限<br><code>async</code>：异步写入<br><code>no_root_squash</code>：访问时不降级root身份的权限</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/nfs_data    192.168.64.0/24(rw,async,no_root_squash)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在客户端挂载nfs目录</li>
+</ul>
+<blockquote>
+<p><code>192.168.64.191:/etc/nfs_data</code>：远端nfs路径<br><code>/etc/web_dir</code>：客户端路径</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t nfs 192.168.64.191:/etc/nfs_data /etc/web_dir</span><br></pre></td></tr></table></figure>
+
+<h3 id="持久卷"><a href="#持久卷" class="headerlink" title="持久卷"></a>持久卷</h3><h4 id="持久数据卷"><a href="#持久数据卷" class="headerlink" title="持久数据卷"></a>持久数据卷</h4><blockquote>
+<p><code>apec.capacity.storage</code>：定义持久卷大小<br><code>apec.accessModes</code>：持久卷的权限</p>
+<blockquote>
+<p><code>ReadWriteOnce</code>：只允许被一个客户端挂载为读写模式<br><code>ReadOnlyMany</code>：可以被多个客户端挂载为只读模式</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>apec.persistentVolumeReclaimPolicy</code>：持久卷声明被释放时的配置</p>
+<blockquote>
+<p><code>Retain</code>：持久卷声明被释放时，保留持久卷</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>apec.nfs</code>：配置nfs数据卷</p>
+<blockquote>
+<p><code>apec.nfs.path</code>：远端数据卷的目录路径<br><code>apec.nfs.path</code>：远端数据卷的访问路径</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolume</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">mongodb-pv</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">capacity:</span></span><br><span class="line">    <span class="attr">storage:</span> <span class="string">1Gi</span></span><br><span class="line">  <span class="attr">accessModes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ReadWriteOnce</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ReadOnlyMany</span></span><br><span class="line">  <span class="attr">persistentVolumeReclaimPolicy:</span> <span class="string">Retain</span></span><br><span class="line">  <span class="attr">nfs:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">/etc/nfs_data</span></span><br><span class="line">    <span class="attr">server:</span> <span class="number">192.168</span><span class="number">.64</span><span class="number">.191</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="持久卷声明"><a href="#持久卷声明" class="headerlink" title="持久卷声明"></a>持久卷声明</h4><ul>
+<li>根据配置自动匹配持久卷</li>
+</ul>
+<blockquote>
+<p><code>spec.resources.requests.store</code>：申请存储空间大小<br><code>spec.accessModes</code>：读写权限</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">mongodb-pvc</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="attr">requests:</span></span><br><span class="line">      <span class="attr">storage:</span> <span class="string">1Gi</span></span><br><span class="line">  <span class="attr">accessModes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ReadWriteOnce</span></span><br><span class="line">  <span class="attr">storageClassName:</span> <span class="string">""</span>       <span class="comment"># 参考动态配置章节</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="挂载持久数据卷声明"><a href="#挂载持久数据卷声明" class="headerlink" title="挂载持久数据卷声明"></a>挂载持久数据卷声明</h4><blockquote>
+<p><code>spec.volumes.name</code>：定义持久卷名<br><code>spec.volumes.persistentVolumeClaim.claimName</code>：引用持久卷声明名称</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">mongodb</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">mongo</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">mongodb</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">securityContext:</span></span><br><span class="line">      <span class="attr">runAsUser:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mongodb-data</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/data/db</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">27017</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mongodb-data</span></span><br><span class="line">    <span class="attr">persistentVolumeClaim:</span></span><br><span class="line">      <span class="attr">claimName:</span> <span class="string">mongodb-pvc</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看持久卷"><a href="#查看持久卷" class="headerlink" title="查看持久卷"></a>查看持久卷</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pv</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看持久卷声明"><a href="#查看持久卷声明" class="headerlink" title="查看持久卷声明"></a>查看持久卷声明</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pvc</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除持久卷"><a href="#删除持久卷" class="headerlink" title="删除持久卷"></a>删除持久卷</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete pv --all</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除持久卷声明"><a href="#删除持久卷声明" class="headerlink" title="删除持久卷声明"></a>删除持久卷声明</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete pvc --all</span><br></pre></td></tr></table></figure>
+
+<h2 id="覆盖docker启动命令和启动参数"><a href="#覆盖docker启动命令和启动参数" class="headerlink" title="覆盖docker启动命令和启动参数"></a>覆盖docker启动命令和启动参数</h2><blockquote>
+<p><code>spec.containers.command</code>：覆盖ENTRYPOINT启动命令<br><code>spec.containers.args</code>：覆盖CMD启动参数</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">fortune</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">fortune</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/fortune:args</span></span><br><span class="line">    <span class="attr">args:</span> <span class="string">["2"]</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">html-genrator</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/var/htdocs</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><h3 id="直接设置环境变量"><a href="#直接设置环境变量" class="headerlink" title="直接设置环境变量"></a>直接设置环境变量</h3><blockquote>
+<p><code>spec.containers.env</code>：设置环境变量</p>
+<blockquote>
+<p><code>spec.containers.env.name</code>：环境变量名<br><code>spec.containers.env.value</code>：环境变量值</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">fortune</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">fortune</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/fortune:env</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">INTERVAL</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">"5"</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">html-genrator</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/var/htdocs</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">emptyDir:</span> <span class="string">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引用Map中的值作为环境变量"><a href="#引用Map中的值作为环境变量" class="headerlink" title="引用Map中的值作为环境变量"></a>引用Map中的值作为环境变量</h3><h4 id="创建一个ConfigMap"><a href="#创建一个ConfigMap" class="headerlink" title="创建一个ConfigMap"></a>创建一个ConfigMap</h4><blockquote>
+<p><code>data</code>：Map中的键值对</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">fortune-config</span></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用ConfigMap作为环境变量"><a href="#使用ConfigMap作为环境变量" class="headerlink" title="使用ConfigMap作为环境变量"></a>使用ConfigMap作为环境变量</h4><blockquote>
+<p><code>spec.containers.env.valueFrom.configMapKeyRef</code>：通过ConfigMap设置环境变量</p>
+<blockquote>
+<p><code>spec.containers.env.valueFrom.configMapKeyRef.name</code>：指定ConfigMap的名称<br><code>spec.containers.env.valueFrom.configMapKeyRef.key</code>：指定对应名称ConfigMap中的键名，使用该键值对作为环境变量</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">fortune</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="string">&lt;key&gt;:</span> <span class="string">&lt;value&gt;</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/fortune:env</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">INTERVAL</span></span><br><span class="line">      <span class="attr">valueFrom:</span></span><br><span class="line">        <span class="attr">configMapKeyRef:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">fortune-config</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">&lt;key&gt;</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">html-genrator</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/var/htdocs</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">emptyDir:</span> <span class="string">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="通过目录及文件的方式生成ConfigMap"><a href="#通过目录及文件的方式生成ConfigMap" class="headerlink" title="通过目录及文件的方式生成ConfigMap"></a>通过目录及文件的方式生成ConfigMap</h5><ul>
+<li><p>创建一个目录，目录名即为ConfigMap名</p>
+</li>
+<li><p>在目录下创建文件，每个文件的文件名，即为ConfigMap中的键</p>
+</li>
+<li><p>每个文件中包含的文本内容，即为对应文件名的键所对应的值</p>
+</li>
+<li><p>通过这个目录生成ConfigMap</p>
+</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>：目录名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create configmap fortune-config --from-file=&lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看ConfigMap"><a href="#查看ConfigMap" class="headerlink" title="查看ConfigMap"></a>查看ConfigMap</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get cm &lt;name&gt; -o yaml</span><br></pre></td></tr></table></figure>
+
+<h2 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h2><ul>
+<li><p>Deployment 是一种更高级的资源，用于部署或升级应用</p>
+</li>
+<li><p>创建Deployment时，ReplicaSet资源会随之创建，实际Pod是由ReplicaSet创建和管理，而不是由Deployment直接管理</p>
+</li>
+<li><p>Deployment可以在应用滚动升级过程中,，引入另一个RepliaSet,，并协调两个ReplicaSet</p>
+</li>
+<li><p>配置文件与RS相似，因为Deploy会自动启动RS做滚动升级操作</p>
+</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/kubia:v1</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">nodejs</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看Deploy"><a href="#查看Deploy" class="headerlink" title="查看Deploy"></a>查看Deploy</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="为Deploy打补丁"><a href="#为Deploy打补丁" class="headerlink" title="为Deploy打补丁"></a>为Deploy打补丁</h3><ul>
+<li>修改Deploy属性</li>
+</ul>
+<h4 id="添加间隔时间"><a href="#添加间隔时间" class="headerlink" title="添加间隔时间"></a>添加间隔时间</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl patch deploy &lt;name&gt; -p <span class="string">'&#123;"spec": &#123;"minReadySeconds": 10&#125;&#125;'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看滚动升级的状态"><a href="#查看滚动升级的状态" class="headerlink" title="查看滚动升级的状态"></a>查看滚动升级的状态</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout status deploy &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="回滚上一个版本"><a href="#回滚上一个版本" class="headerlink" title="回滚上一个版本"></a>回滚上一个版本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout undo deploy &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="改变滚动升级速率"><a href="#改变滚动升级速率" class="headerlink" title="改变滚动升级速率"></a>改变滚动升级速率</h3><blockquote>
+<p><code>spec.strategy.rollingUpdate.maxSurge</code>：允许超出容器的数量，可以为百分比或数值，默认值为25%<br><code>spec.strategy.rollingUpdate.maxUnavailable</code>：允许不可用容器的数量，可以为百分比或数值，默认值为25%</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">25</span><span class="string">%</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">25</span><span class="string">%</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/kubia:v1</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">nodejs</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="暂停滚动升级"><a href="#暂停滚动升级" class="headerlink" title="暂停滚动升级"></a>暂停滚动升级</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout pause deploy &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="继续滚动升级"><a href="#继续滚动升级" class="headerlink" title="继续滚动升级"></a>继续滚动升级</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout resume deploy &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="就绪探针"><a href="#就绪探针" class="headerlink" title="就绪探针"></a>就绪探针</h3><ul>
+<li>通过就绪探针判定是否就绪，未就绪会阻塞，阻塞10分钟，升级不再执行</li>
+</ul>
+<blockquote>
+<p><code>spec.minReadySeconds</code>：判定就绪的时间（单位：秒）</p>
+</blockquote>
+<blockquote>
+<p><code>spec.template.spec.containers.readinessProbe</code>：配置就绪探针</p>
+<blockquote>
+<p><code>spec.template.spec.containers.readinessProbe.periodSeconds</code>：间隔时间<br><code>spec.template.spec.containers.readinessProbe.httpGet.path</code>：探测路径<br><code>spec.template.spec.containers.readinessProbe.httpGet.port</code>：探测端口</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">  <span class="attr">minReadySeconds:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">RollingUpdate</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">kubia</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">kubia</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">luksa/kubia:v3</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">nodejs</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">        <span class="attr">readinessProbe:</span></span><br><span class="line">          <span class="attr">periodSeconds:</span> <span class="number">1</span></span><br><span class="line">          <span class="attr">httpGet:</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">            <span class="attr">port:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="仪表盘"><a href="#仪表盘" class="headerlink" title="仪表盘"></a>仪表盘</h2><h3 id="查看仪表盘容器"><a href="#查看仪表盘容器" class="headerlink" title="查看仪表盘容器"></a>查看仪表盘容器</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -n kube-system | grep dashboard</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仪表盘服务"><a href="#查看仪表盘服务" class="headerlink" title="查看仪表盘服务"></a>查看仪表盘服务</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get svc -n kube-system | grep dashboard</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仪表盘访问地址"><a href="#查看仪表盘访问地址" class="headerlink" title="查看仪表盘访问地址"></a>查看仪表盘访问地址</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl cluster-info | grep dashboard</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首次访问未认证，需要通过CA生成证书，并在浏览器安装证书</li>
+</ul>
+<h3 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h3><ul>
+<li>进入ssl目录</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/kubernetes/ssl</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在当前目录下生成证书</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -<span class="keyword">in</span> admin.pem -inkey admin-key.pem -out kube-admin.p12</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>设置密码，如果不需要密码直接回车</p>
+</li>
+<li><p>下载证书</p>
+</li>
+</ul>
+<h3 id="导入证书"><a href="#导入证书" class="headerlink" title="导入证书"></a>导入证书</h3><ul>
+<li><p>在Chrome浏览器设置搜索<code>证书</code>-&gt;<code>安全</code>-&gt;<code>管理证书</code>-&gt;<code>个人</code>-&gt;<code>导入</code>-&gt;选择<code>p12后缀</code>-&gt;导入</p>
+</li>
+<li><p>导入成功后重启Chrome浏览器</p>
+</li>
+</ul>
+<h3 id="登陆仪表盘"><a href="#登陆仪表盘" class="headerlink" title="登陆仪表盘"></a>登陆仪表盘</h3><ul>
+<li>通过Token登陆</li>
+</ul>
+<h4 id="在服务器生成令牌"><a href="#在服务器生成令牌" class="headerlink" title="在服务器生成令牌"></a>在服务器生成令牌</h4><ul>
+<li><p>令牌过期会失效</p>
+</li>
+<li><p>生成令牌</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f /etc/ansible/manifests/dashboard/admin-user-sa-rbac.yaml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取令牌</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk <span class="string">'&#123;print $1&#125;'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过得到的令牌进行登陆</li>
+</ul>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2>
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/12/03/%E9%80%9A%E8%BF%87%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6/" rel="next" title="【笔记】通过输出重定向编辑文件">
+                  <i class="fa fa-chevron-left"></i> 【笔记】通过输出重定向编辑文件
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/12/06/Python%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" rel="prev" title="【代码】Python发送邮件">
+                  【代码】Python发送邮件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源项目"><span class="nav-number">2.</span> <span class="nav-text">开源项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群部署"><span class="nav-number">3.</span> <span class="nav-text">集群部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集群方案"><span class="nav-number">3.1.</span> <span class="nav-text">集群方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境搭建"><span class="nav-number">3.2.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置主控"><span class="nav-number">3.3.</span> <span class="nav-text">配置主控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一键安装k8s集群"><span class="nav-number">3.4.</span> <span class="nav-text">一键安装k8s集群</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证环境"><span class="nav-number">4.</span> <span class="nav-text">验证环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看集群状态"><span class="nav-number">4.1.</span> <span class="nav-text">查看集群状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看节点服务器"><span class="nav-number">4.2.</span> <span class="nav-text">查看节点服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对控制器的操作"><span class="nav-number">5.</span> <span class="nav-text">对控制器的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#由控制器自动创建一个容器"><span class="nav-number">5.1.</span> <span class="nav-text">由控制器自动创建一个容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplicationController"><span class="nav-number">5.2.</span> <span class="nav-text">ReplicationController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplicaSet"><span class="nav-number">5.3.</span> <span class="nav-text">ReplicaSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建配置文件"><span class="nav-number">5.3.1.</span> <span class="nav-text">创建配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#matchLabels"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">matchLabels</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#matchExpressions"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">matchExpressions</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DaemonSet"><span class="nav-number">5.4.</span> <span class="nav-text">DaemonSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不含节点选择器"><span class="nav-number">5.4.1.</span> <span class="nav-text">不含节点选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包含节点选择器"><span class="nav-number">5.4.2.</span> <span class="nav-text">包含节点选择器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Job"><span class="nav-number">5.5.</span> <span class="nav-text">Job</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单个运行运行单次"><span class="nav-number">5.5.1.</span> <span class="nav-text">单个运行运行单次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单个运行运行多次"><span class="nav-number">5.5.2.</span> <span class="nav-text">单个运行运行多次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行运行运行共多少次"><span class="nav-number">5.5.3.</span> <span class="nav-text">并行运行运行共多少次</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cronjob"><span class="nav-number">5.6.</span> <span class="nav-text">Cronjob</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过配置文件创建控制器"><span class="nav-number">5.7.</span> <span class="nav-text">通过配置文件创建控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看控制器"><span class="nav-number">5.8.</span> <span class="nav-text">查看控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改控制器配置"><span class="nav-number">5.9.</span> <span class="nav-text">修改控制器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">5.10.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对容器的操作"><span class="nav-number">6.</span> <span class="nav-text">对容器的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建配置文件-1"><span class="nav-number">6.1.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过配置文件创建容器"><span class="nav-number">6.2.</span> <span class="nav-text">通过配置文件创建容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含节点选择器-1"><span class="nav-number">6.3.</span> <span class="nav-text">包含节点选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器"><span class="nav-number">6.4.</span> <span class="nav-text">查看容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器描述"><span class="nav-number">6.5.</span> <span class="nav-text">查看容器描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看日志"><span class="nav-number">6.6.</span> <span class="nav-text">查看日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入容器内部"><span class="nav-number">6.7.</span> <span class="nav-text">进入容器内部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除容器"><span class="nav-number">6.8.</span> <span class="nav-text">删除容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除多个容器"><span class="nav-number">6.8.1.</span> <span class="nav-text">删除多个容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按标签删除"><span class="nav-number">6.8.2.</span> <span class="nav-text">按标签删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除当前命名空间的所有pod"><span class="nav-number">6.8.3.</span> <span class="nav-text">删除当前命名空间的所有pod</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对服务的操作"><span class="nav-number">7.</span> <span class="nav-text">对服务的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建服务"><span class="nav-number">7.1.</span> <span class="nav-text">创建服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建配置文件-2"><span class="nav-number">7.2.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过配置文件创建服务"><span class="nav-number">7.3.</span> <span class="nav-text">通过配置文件创建服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过服务扩容和缩容"><span class="nav-number">7.4.</span> <span class="nav-text">通过服务扩容和缩容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看服务"><span class="nav-number">7.5.</span> <span class="nav-text">查看服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看服务详细信息"><span class="nav-number">7.6.</span> <span class="nav-text">查看服务详细信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动创建Endpoints对象"><span class="nav-number">7.7.</span> <span class="nav-text">手动创建Endpoints对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对外暴露"><span class="nav-number">7.8.</span> <span class="nav-text">对外暴露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NodePort"><span class="nav-number">7.8.1.</span> <span class="nav-text">NodePort</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#部署一个新的服务"><span class="nav-number">7.8.1.1.</span> <span class="nav-text">部署一个新的服务</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建配置文件-3"><span class="nav-number">7.8.1.1.1.</span> <span class="nav-text">创建配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LoadBalance"><span class="nav-number">7.8.2.</span> <span class="nav-text">LoadBalance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ingress"><span class="nav-number">7.8.3.</span> <span class="nav-text">Ingress</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对命名空间的操作"><span class="nav-number">8.</span> <span class="nav-text">对命名空间的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建配置文件-4"><span class="nav-number">8.1.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过配置文件创建命名空间"><span class="nav-number">8.2.</span> <span class="nav-text">通过配置文件创建命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看命名空间"><span class="nav-number">8.3.</span> <span class="nav-text">查看命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除命名空间"><span class="nav-number">8.4.</span> <span class="nav-text">删除命名空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除所有对象"><span class="nav-number">9.</span> <span class="nav-text">删除所有对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对标签的操作"><span class="nav-number">10.</span> <span class="nav-text">对标签的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建容器时，为新容器贴标签"><span class="nav-number">10.1.</span> <span class="nav-text">新建容器时，为新容器贴标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看标签"><span class="nav-number">10.2.</span> <span class="nav-text">查看标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看指定标签"><span class="nav-number">10.2.1.</span> <span class="nav-text">查看指定标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签"><span class="nav-number">10.3.</span> <span class="nav-text">添加标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加多个标签"><span class="nav-number">10.3.1.</span> <span class="nav-text">添加多个标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除标签"><span class="nav-number">10.4.</span> <span class="nav-text">删除标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改标签"><span class="nav-number">10.5.</span> <span class="nav-text">修改标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据标签查询容器"><span class="nav-number">10.6.</span> <span class="nav-text">根据标签查询容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存活探针"><span class="nav-number">11.</span> <span class="nav-text">存活探针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存活探针的类型"><span class="nav-number">11.1.</span> <span class="nav-text">存活探针的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-GET"><span class="nav-number">11.1.1.</span> <span class="nav-text">HTTP GET</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP"><span class="nav-number">11.1.2.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exec"><span class="nav-number">11.1.3.</span> <span class="nav-text">Exec</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置文件"><span class="nav-number">11.2.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#探针的描述"><span class="nav-number">11.3.</span> <span class="nav-text">探针的描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据卷"><span class="nav-number">12.</span> <span class="nav-text">数据卷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#emptyDir"><span class="nav-number">12.1.</span> <span class="nav-text">emptyDir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nfs"><span class="nav-number">12.2.</span> <span class="nav-text">nfs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备一个目录"><span class="nav-number">12.2.1.</span> <span class="nav-text">准备一个目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持久卷"><span class="nav-number">12.3.</span> <span class="nav-text">持久卷</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#持久数据卷"><span class="nav-number">12.3.1.</span> <span class="nav-text">持久数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#持久卷声明"><span class="nav-number">12.3.2.</span> <span class="nav-text">持久卷声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载持久数据卷声明"><span class="nav-number">12.3.3.</span> <span class="nav-text">挂载持久数据卷声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看持久卷"><span class="nav-number">12.3.4.</span> <span class="nav-text">查看持久卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看持久卷声明"><span class="nav-number">12.3.5.</span> <span class="nav-text">查看持久卷声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除持久卷"><span class="nav-number">12.3.6.</span> <span class="nav-text">删除持久卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除持久卷声明"><span class="nav-number">12.3.7.</span> <span class="nav-text">删除持久卷声明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖docker启动命令和启动参数"><span class="nav-number">13.</span> <span class="nav-text">覆盖docker启动命令和启动参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置环境变量"><span class="nav-number">14.</span> <span class="nav-text">设置环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接设置环境变量"><span class="nav-number">14.1.</span> <span class="nav-text">直接设置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用Map中的值作为环境变量"><span class="nav-number">14.2.</span> <span class="nav-text">引用Map中的值作为环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个ConfigMap"><span class="nav-number">14.2.1.</span> <span class="nav-text">创建一个ConfigMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用ConfigMap作为环境变量"><span class="nav-number">14.2.2.</span> <span class="nav-text">使用ConfigMap作为环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过目录及文件的方式生成ConfigMap"><span class="nav-number">14.2.2.1.</span> <span class="nav-text">通过目录及文件的方式生成ConfigMap</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看ConfigMap"><span class="nav-number">14.2.3.</span> <span class="nav-text">查看ConfigMap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deployment"><span class="nav-number">15.</span> <span class="nav-text">Deployment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看Deploy"><span class="nav-number">15.1.</span> <span class="nav-text">查看Deploy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为Deploy打补丁"><span class="nav-number">15.2.</span> <span class="nav-text">为Deploy打补丁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加间隔时间"><span class="nav-number">15.2.1.</span> <span class="nav-text">添加间隔时间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看滚动升级的状态"><span class="nav-number">15.3.</span> <span class="nav-text">查看滚动升级的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回滚上一个版本"><span class="nav-number">15.4.</span> <span class="nav-text">回滚上一个版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变滚动升级速率"><span class="nav-number">15.5.</span> <span class="nav-text">改变滚动升级速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暂停滚动升级"><span class="nav-number">15.6.</span> <span class="nav-text">暂停滚动升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继续滚动升级"><span class="nav-number">15.7.</span> <span class="nav-text">继续滚动升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#就绪探针"><span class="nav-number">15.8.</span> <span class="nav-text">就绪探针</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仪表盘"><span class="nav-number">16.</span> <span class="nav-text">仪表盘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看仪表盘容器"><span class="nav-number">16.1.</span> <span class="nav-text">查看仪表盘容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看仪表盘服务"><span class="nav-number">16.2.</span> <span class="nav-text">查看仪表盘服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看仪表盘访问地址"><span class="nav-number">16.3.</span> <span class="nav-text">查看仪表盘访问地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成证书"><span class="nav-number">16.4.</span> <span class="nav-text">生成证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入证书"><span class="nav-number">16.5.</span> <span class="nav-text">导入证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登陆仪表盘"><span class="nav-number">16.6.</span> <span class="nav-text">登陆仪表盘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在服务器生成令牌"><span class="nav-number">16.6.1.</span> <span class="nav-text">在服务器生成令牌</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">17.</span> <span class="nav-text">完成</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

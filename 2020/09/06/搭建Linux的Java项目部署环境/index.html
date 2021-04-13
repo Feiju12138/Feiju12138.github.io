@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言在CentOS Linux 7虚拟机上搭建Java项目部署环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】搭建Linux的Java项目部署环境">
+<meta property="og:url" content="https://feiju12138.github.io/2020/09/06/%E6%90%AD%E5%BB%BALinux%E7%9A%84Java%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言在CentOS Linux 7虚拟机上搭建Java项目部署环境">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-06T06:44:26.000Z">
+<meta property="article:modified_time" content="2021-03-21T09:21:14.017Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://feiju12138.github.io/2020/09/06/%E6%90%AD%E5%BB%BALinux%E7%9A%84Java%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】搭建Linux的Java项目部署环境 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/09/06/%E6%90%AD%E5%BB%BALinux%E7%9A%84Java%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】搭建Linux的Java项目部署环境
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-06 14:44:26" itemprop="dateCreated datePublished" datetime="2020-09-06T14:44:26+08:00">2020-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 17:21:14" itemprop="dateModified" datetime="2021-03-21T17:21:14+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Computing</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<code>CentOS Linux 7</code>虚拟机上搭建Java项目部署环境</p>
+<a id="more"></a>
+
+<h2 id="安装CentOS-Linux系统"><a href="#安装CentOS-Linux系统" class="headerlink" title="安装CentOS Linux系统"></a>安装CentOS Linux系统</h2><ul>
+<li><a href="/2019/12/10/安装CentOSLinux系统/">传送门</a></li>
+</ul>
+<h2 id="配置更新源"><a href="#配置更新源" class="headerlink" title="配置更新源"></a>配置更新源</h2><ul>
+<li><a href="/2020/01/31/更换CentOSLinux更新源/">传送门</a></li>
+</ul>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看版本号检测安装成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html" target="_blank" rel="noopener">官网</a>下载<code>Linux x64 Compressed Archive</code></p>
+</li>
+<li><p>检查并删除所有<code>open jdk</code>相关软件包</p>
+</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>：软件包名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep java</span><br><span class="line">yum remove &lt;name&gt; -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建java存放目录</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mkdir java</span><br><span class="line"><span class="built_in">cd</span> java</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tar.gz</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u261-linux-x64.tar.gz</span><br><span class="line">rm -f jdk-8u261-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制路径保留备用</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> jdk1.8.0_261/</span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>编辑<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/java/jdk1.8.0_261</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib/</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新配置文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><ul>
+<li>查看版本号检测安装成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="noopener">官网</a>下载<code>Linux 二进制文件 (x64)</code></p>
+</li>
+<li><p>创建node存放目录</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mkdir node</span><br><span class="line"><span class="built_in">cd</span> node/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tar.xz</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xJvf node-v12.18.3-linux-x64.tar.xz</span><br><span class="line">rm -f node-v12.18.3-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制路径保留备用</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> node-v12.18.3-linux-x64/</span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量-1"><a href="#配置环境变量-1" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>编辑<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/node/node-v12.18.3-linux-x64/bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新配置文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成-1"><a href="#完成-1" class="headerlink" title="完成"></a>完成</h3><ul>
+<li>查看版本号检测安装成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line">npm --version</span><br><span class="line">npx --version</span><br><span class="line">npm version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装python3"><a href="#安装python3" class="headerlink" title="安装python3"></a>安装python3</h2><ul>
+<li>系统自带python2，需要再安装python3</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><a href="https://www.python.org/downloads/source/" target="_blank" rel="noopener">官网</a>下载<code>Latest Python 3 Release - Python 3.8.5</code></p>
+</li>
+<li><p>创建python3存放目录</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mkdir python3</span><br><span class="line"><span class="built_in">cd</span> python3/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装编译环境</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tgz</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf Python-3.8.5.tgz</span><br><span class="line">rm -f Python-3.8.5.tgz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译并安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Python-3.8.5/</span><br><span class="line">./configure prefix=/usr/<span class="built_in">local</span>/python3</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加软链接</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/python3/bin/python3 /usr/bin/python3</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/python3/bin/pip3 /usr/bin/pip3</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成-2"><a href="#完成-2" class="headerlink" title="完成"></a>完成</h3><ul>
+<li>查看版本号检测安装成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 --version</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装maven"><a href="#安装maven" class="headerlink" title="安装maven"></a>安装maven</h2><h3 id="安装-3"><a href="#安装-3" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">官网</a>下载<code>apache-maven-3.6.3-bin.tar.gz</code></p>
+</li>
+<li><p>创建maven存放目录</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/</span><br><span class="line">mkdir maven</span><br><span class="line"><span class="built_in">cd</span> maven/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tar.gz</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-maven-3.6.3-bin.tar.gz</span><br><span class="line">rm -f apache-maven-3.6.3-bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制路径保留备用</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> apache-maven-3.6.3/</span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置maven"><a href="#配置maven" class="headerlink" title="配置maven"></a>配置maven</h3><ul>
+<li>编辑<code>setting.xml</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/maven/apache-maven-3.6.3/conf/settings.xml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>setting.xml</code>文件</li>
+</ul>
+<p><a href="/2020/08/17/Maven配置远程仓库/">传送门</a></p>
+<h3 id="配置环境变量-2"><a href="#配置环境变量-2" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>编辑<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> MAVEN_HOME=/opt/maven/apache-maven-3.6.3</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新配置文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成-3"><a href="#完成-3" class="headerlink" title="完成"></a>完成</h3><ul>
+<li>查看版本号检测安装成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><h3 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h3><ul>
+<li><p><a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">官网</a>下载<code>5.7.30</code>、<code>Linux - Generic</code>、<code>Linux - Generic(glibc 2.12)(x86,64-bit)</code>、<code>TAR</code></p>
+</li>
+<li><p>检查并删除所有<code>mariadb</code>相关软件包</p>
+</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>：软件包名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br><span class="line">yum remove &lt;name&gt; -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建mysql存放目录</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mkdir mysql</span><br><span class="line"><span class="built_in">cd</span> mysql/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tar</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf mysql-5.7.30-linux-glibc2.12-x86_64.tar</span><br><span class="line">tar -zxvf mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line">rm -f mysql-5.7.30-linux-glibc2.12-x86_64.tar</span><br><span class="line">rm -f mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line">rm -f mysql-test-5.7.30-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将所有mysql文件挪到<code>/usr/local/mysql</code>目录中</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv mysql-5.7.30-linux-glibc2.12-x86_64/* .</span><br><span class="line">rm -rf mysql-5.7.30-linux-glibc2.12-x86_64/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建用户和用户组</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -g mysql mysql</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改mysql目录的归属用户</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql ./</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h3><ul>
+<li>新建并编辑<code>my.cnf</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>my.cnf</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line">default-character-set = utf8</span><br><span class="line">socket = /var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">skip-name-resolve</span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line">port = 3306</span><br><span class="line">socket = /var/lib/mysql/mysql.sock</span><br><span class="line"><span class="comment"># 设置mysql的安装目录</span></span><br><span class="line">basedir = /usr/<span class="built_in">local</span>/mysql</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录</span></span><br><span class="line">datadir = /usr/<span class="built_in">local</span>/mysql/data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line">max_connections = 200</span><br><span class="line"><span class="comment"># 服务端使用的字符集（默认为8比特编码的latin1字符集）</span></span><br><span class="line">character-set-server = utf8</span><br><span class="line"><span class="comment"># 创建新表时使用的默认存储引擎</span></span><br><span class="line">default-storage-engine = INNODB</span><br><span class="line">lower_case_table_names = 1</span><br><span class="line">max_allowed_packet = 16M</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建相关目录并修改权限</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/mysql</span><br><span class="line">chmod 777 /var/lib/mysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="正式安装mysql"><a href="#正式安装mysql" class="headerlink" title="正式安装mysql"></a>正式安装mysql</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/mysqld --initialize --user=mysql --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/usr/<span class="built_in">local</span>/mysql/data</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>完成后会生成临时密码：<code>root@localhost: y8stx3ad&gt;1Yy</code></p>
+</li>
+<li><p>复制启动脚本到资源目录</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./support-files/mysql.server /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑配置</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改配置，为<code>basedir</code>和<code>datadir</code>指定实际对应目录</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/<span class="built_in">local</span>/mysql</span><br><span class="line">datadir=/usr/<span class="built_in">local</span>/mysql/data</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置mysql为系统服务并开机自启"><a href="#设置mysql为系统服务并开机自启" class="headerlink" title="设置mysql为系统服务并开机自启"></a>设置mysql为系统服务并开机自启</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/init.d/mysqld</span><br><span class="line">chkconfig --add mysqld</span><br><span class="line">chkconfig --list mysqld</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2，3，4，5均为开即可</li>
+</ul>
+<h3 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量-3"><a href="#配置环境变量-3" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>编辑<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> path=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/mysql/bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新配置文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成-4"><a href="#完成-4" class="headerlink" title="完成"></a>完成</h3><ul>
+<li>查看版本号检测安装成功</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用临时密码登陆"><a href="#使用临时密码登陆" class="headerlink" title="使用临时密码登陆"></a>使用临时密码登陆</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter user user() identified by &quot;123456&quot;;</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置远程登陆主机"><a href="#配置远程登陆主机" class="headerlink" title="配置远程登陆主机"></a>配置远程登陆主机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">mysql&gt; update user set user.Host&#x3D;&#39;%&#39; where user.User&#x3D;&#39;root&#39;;</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h2><h3 id="安装-4"><a href="#安装-4" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>安装软件源</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过软件源安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动redis</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start redis</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置redis"><a href="#配置redis" class="headerlink" title="配置redis"></a>配置redis</h3><ul>
+<li>编辑<code>redis.conf</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis.conf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>redis.cnf</code>文件，为<code>bind 127.0.0.1</code>这一行加上注释</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#bind 127.0.0.1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解除<code>requirepass</code>这一行注释，并修改默认密码</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass 123456</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启redis</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置开机启动redis</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> redis.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h2><h3 id="安装-5"><a href="#安装-5" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">官网</a>下载<code>9.0.37</code>-&gt;<code>Core</code>-&gt;<code>.tar.gz</code></p>
+</li>
+<li><p>创建tomcat存放目录</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mkdir tomcat</span><br><span class="line"><span class="built_in">cd</span> tomcat/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tar.gz</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-tomcat-9.0.37.tar.gz</span><br><span class="line">rm -f apache-tomcat-9.0.37.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动tomcat</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> apache-tomcat-9.0.37/</span><br><span class="line">./bin/startup.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置快捷操作和开机自启"><a href="#配置快捷操作和开机自启" class="headerlink" title="配置快捷操作和开机自启"></a>配置快捷操作和开机自启</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/rc.d/init.d/</span><br><span class="line">touch tomcat</span><br><span class="line">chmod +x tomcat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑脚本</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim tomcat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改脚本</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#chkconfig:- 20 90</span></span><br><span class="line"><span class="comment">#description:tomcat</span></span><br><span class="line"><span class="comment">#processname:tomcat</span></span><br><span class="line">TOMCAT_HOME=/usr/<span class="built_in">local</span>/tomcat/apache-tomcat-9.0.37</span><br><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">    start) su root <span class="variable">$TOMCAT_HOME</span>/bin/startup.sh;;</span><br><span class="line">    stop) su root <span class="variable">$TOMCAT_HOME</span>/bin/shutdown.sh;;</span><br><span class="line">    *) <span class="built_in">echo</span> <span class="string">"require start|stop"</span>;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用脚本</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service tomcat start</span><br><span class="line">service tomcat stop</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加入开机自启</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add tomcat</span><br><span class="line">chkconfig tomcat on</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量使用自带脚本（可选）"><a href="#配置环境变量使用自带脚本（可选）" class="headerlink" title="配置环境变量使用自带脚本（可选）"></a>配置环境变量使用自带脚本（可选）</h3><ul>
+<li>编辑<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>profile</code>文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/tomcat/apache-tomcat-9.0.37/bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新配置文件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自带脚本操作</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">catalina.sh start</span><br><span class="line">catalina.sh stop</span><br><span class="line">catalina.sh restart</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看版本</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">catalina.sh version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><h3 id="安装-6"><a href="#安装-6" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">官网</a>下载<code>nginx-1.18.0</code></p>
+</li>
+<li><p>创建tomcat存放目录</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mkdir nginx</span><br><span class="line"><span class="built_in">cd</span> nginx/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将<code>.tar.gz</code>压缩包通过ftp工具上传到服务器并解压</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.18.0.tar.gz</span><br><span class="line">rm -f nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装编译环境</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install pcrl-devel openssl openssl-devel -y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> nginx-1.18.0/</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动nginx</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭nginx</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s stop</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重载nginx配置</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><ul>
+<li>关闭防火墙并关闭开机自启防火墙</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成-5"><a href="#完成-5" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>程序羊公众号——CodeSheep<br><a href="https://stackoverflow.com/questions/61694459/installing-redis-use-install-server-sh" target="_blank" rel="noopener">stackoverflow——Ocean Chou</a><br><a href="https://zhuanlan.zhihu.com/p/34527270" target="_blank" rel="noopener">知乎——王小鱼</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/09/05/jQuery%E5%AE%9E%E7%8E%B0AJAX/" rel="next" title="【代码】jQuery实现AJAX">
+                  <i class="fa fa-chevron-left"></i> 【代码】jQuery实现AJAX
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/09/07/%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F/" rel="prev" title="【笔记】格式化时间格式">
+                  【笔记】格式化时间格式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装CentOS-Linux系统"><span class="nav-number">2.</span> <span class="nav-text">安装CentOS Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置更新源"><span class="nav-number">3.</span> <span class="nav-text">配置更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装git"><span class="nav-number">4.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装jdk"><span class="nav-number">5.</span> <span class="nav-text">安装jdk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">5.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量"><span class="nav-number">5.2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成"><span class="nav-number">5.3.</span> <span class="nav-text">完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nodejs"><span class="nav-number">6.</span> <span class="nav-text">安装nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">6.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量-1"><span class="nav-number">6.2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成-1"><span class="nav-number">6.3.</span> <span class="nav-text">完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装python3"><span class="nav-number">7.</span> <span class="nav-text">安装python3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-2"><span class="nav-number">7.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成-2"><span class="nav-number">7.2.</span> <span class="nav-text">完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装maven"><span class="nav-number">8.</span> <span class="nav-text">安装maven</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-3"><span class="nav-number">8.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置maven"><span class="nav-number">8.2.</span> <span class="nav-text">配置maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量-2"><span class="nav-number">8.3.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成-3"><span class="nav-number">8.4.</span> <span class="nav-text">完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装mysql"><span class="nav-number">9.</span> <span class="nav-text">安装mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装准备"><span class="nav-number">9.1.</span> <span class="nav-text">安装准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置mysql"><span class="nav-number">9.2.</span> <span class="nav-text">配置mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式安装mysql"><span class="nav-number">9.3.</span> <span class="nav-text">正式安装mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置mysql为系统服务并开机自启"><span class="nav-number">9.4.</span> <span class="nav-text">设置mysql为系统服务并开机自启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动mysql"><span class="nav-number">9.5.</span> <span class="nav-text">启动mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量-3"><span class="nav-number">9.6.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成-4"><span class="nav-number">9.7.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用临时密码登陆"><span class="nav-number">9.8.</span> <span class="nav-text">使用临时密码登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改密码"><span class="nav-number">9.9.</span> <span class="nav-text">修改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置远程登陆主机"><span class="nav-number">9.10.</span> <span class="nav-text">配置远程登陆主机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装redis"><span class="nav-number">10.</span> <span class="nav-text">安装redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-4"><span class="nav-number">10.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置redis"><span class="nav-number">10.2.</span> <span class="nav-text">配置redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装tomcat"><span class="nav-number">11.</span> <span class="nav-text">安装tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-5"><span class="nav-number">11.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置快捷操作和开机自启"><span class="nav-number">11.2.</span> <span class="nav-text">配置快捷操作和开机自启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量使用自带脚本（可选）"><span class="nav-number">11.3.</span> <span class="nav-text">配置环境变量使用自带脚本（可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nginx"><span class="nav-number">12.</span> <span class="nav-text">安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-6"><span class="nav-number">12.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭防火墙"><span class="nav-number">13.</span> <span class="nav-text">关闭防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成-5"><span class="nav-number">14.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">15.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">626k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:24</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
