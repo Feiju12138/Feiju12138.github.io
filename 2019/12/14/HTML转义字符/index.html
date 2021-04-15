@@ -56,13 +56,13 @@
 
   <meta name="description" content="前言转义字符串也称字符实体。在HTML中，定义转义字符串的原因有两个：第一个原因是像“&lt;”和“&gt;”这类符号已经用来表示HTML标签，因此就不能直接当做文本中的符号来使用。为了在HTML文档中使用这些符号，就需要定义它的转义字符串。当解释程序遇到这类字符串时就把它解释为真实的字符。在输入转义字符串时，要严格遵守字母大小写的规则。第二个原因是，有些字符在ASCII字符集中没有定义，因此需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【笔记】HTML 转义字符">
+<meta property="og:title" content="【笔记】HTML转义字符">
 <meta property="og:url" content="https://feiju12138.github.io/2019/12/14/HTML%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="绯鞠的博客">
 <meta property="og:description" content="前言转义字符串也称字符实体。在HTML中，定义转义字符串的原因有两个：第一个原因是像“&lt;”和“&gt;”这类符号已经用来表示HTML标签，因此就不能直接当做文本中的符号来使用。为了在HTML文档中使用这些符号，就需要定义它的转义字符串。当解释程序遇到这类字符串时就把它解释为真实的字符。在输入转义字符串时，要严格遵守字母大小写的规则。第二个原因是，有些字符在ASCII字符集中没有定义，因此需要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-14T08:31:16.000Z">
-<meta property="article:modified_time" content="2021-03-21T09:21:13.650Z">
+<meta property="article:modified_time" content="2021-04-15T09:01:21.314Z">
 <meta property="article:author" content="绯鞠">
 <meta name="twitter:card" content="summary">
 
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>【笔记】HTML 转义字符 | 绯鞠的博客</title>
+  <title>【笔记】HTML转义字符 | 绯鞠的博客</title>
   
 
 
@@ -234,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【笔记】HTML 转义字符
+          【笔记】HTML转义字符
         </h1>
 
         <div class="post-meta">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
+                <time title="修改时间：2021-04-15 17:01:21" itemprop="dateModified" datetime="2021-04-15T17:01:21+08:00">2021-04-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,8 +259,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS-JS/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML/CSS/JS</span>
+                  <a href="/categories/Chart/" itemprop="url" rel="index">
+                    <span itemprop="name">Chart</span>
                   </a>
                 </span>
             </span>
@@ -277,348 +277,1011 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>转义字符串</code>也称<code>字符实体</code>。在HTML中，定义转义字符串的原因有两个：第一个原因是像“&lt;”和“&gt;”这类符号已经用来表示HTML标签，因此就不能直接当做文本中的符号来使用。为了在HTML文档中使用这些符号，就需要定义它的转义字符串。当解释程序遇到这类字符串时就把它解释为真实的字符。在输入转义字符串时，要严格遵守字母大小写的规则。第二个原因是，有些字符在ASCII字符集中没有定义，因此需要使用转义字符串来表示。（<a href="https://baike.baidu.com/item/转义字符#6" target="_blank" rel="noopener">百度百科</a>）</p>
+<p>Markdown转义字符可以直接参考HTML转义字符</p>
 <a id="more"></a>
 
-<h2 id="常用转义字符"><a href="#常用转义字符" class="headerlink" title="常用转义字符"></a>常用转义字符</h2><h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><ul>
-<li><code>&amp;amp;</code></li>
-</ul>
-<h3 id="lt"><a href="#lt" class="headerlink" title="&lt;"></a>&lt;</h3><ul>
-<li><code>&amp;lt;</code></li>
-</ul>
-<h3 id="gt"><a href="#gt" class="headerlink" title="&gt;"></a>&gt;</h3><ul>
-<li><code>&amp;gt;</code></li>
-</ul>
-<h3 id="“"><a href="#“" class="headerlink" title="“"></a>“</h3><ul>
-<li><code>quot</code></li>
-</ul>
-<h3 id="不换行空格"><a href="#不换行空格" class="headerlink" title="不换行空格"></a>不换行空格</h3><ul>
-<li><code>&amp;nbsp;</code></li>
-</ul>
-<h3 id="¥"><a href="#¥" class="headerlink" title="¥"></a>¥</h3><ul>
-<li><code>&amp;yen;</code></li>
-</ul>
-<h3 id="§"><a href="#§" class="headerlink" title="§"></a>§</h3><ul>
-<li><code>&amp;sect;</code></li>
-</ul>
-<h3 id="©"><a href="#©" class="headerlink" title="©"></a>©</h3><ul>
-<li><code>&amp;copy;</code></li>
-</ul>
-<h3 id="®"><a href="#®" class="headerlink" title="®"></a>®</h3><ul>
-<li><code>&amp;reg;</code></li>
-</ul>
-<h3 id="°"><a href="#°" class="headerlink" title="°"></a>°</h3><ul>
-<li><code>&amp;deg;</code></li>
-</ul>
-<h3 id="±"><a href="#±" class="headerlink" title="±"></a>±</h3><ul>
-<li><code>&amp;plusmn;</code></li>
-</ul>
-<h3 id="×"><a href="#×" class="headerlink" title="×"></a>×</h3><ul>
-<li><code>&amp;times;</code></li>
-</ul>
-<h2 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h2><h3 id="←"><a href="#←" class="headerlink" title="←"></a>←</h3><ul>
-<li><code>&amp;larr;</code></li>
-</ul>
-<h3 id="↑"><a href="#↑" class="headerlink" title="↑"></a>↑</h3><ul>
-<li><code>&amp;uarr;</code></li>
-</ul>
-<h3 id="→"><a href="#→" class="headerlink" title="→"></a>→</h3><ul>
-<li><code>&amp;rarr;</code></li>
-</ul>
-<h3 id="↓"><a href="#↓" class="headerlink" title="↓"></a>↓</h3><ul>
-<li><code>&amp;darr;</code></li>
-</ul>
-<h3 id="↔"><a href="#↔" class="headerlink" title="↔"></a>↔</h3><ul>
-<li><code>&amp;harr;</code></li>
-</ul>
-<h3 id="↵"><a href="#↵" class="headerlink" title="↵"></a>↵</h3><ul>
-<li><code>&amp;crarr;</code></li>
-</ul>
-<h3 id="⇐"><a href="#⇐" class="headerlink" title="⇐"></a>⇐</h3><ul>
-<li><code>&amp;lArr;</code></li>
-</ul>
-<h3 id="⇑"><a href="#⇑" class="headerlink" title="⇑"></a>⇑</h3><ul>
-<li><code>&amp;uArr;</code></li>
-</ul>
-<h3 id="⇒"><a href="#⇒" class="headerlink" title="⇒"></a>⇒</h3><ul>
-<li><code>&amp;rArr;</code></li>
-</ul>
-<h3 id="⇓"><a href="#⇓" class="headerlink" title="⇓"></a>⇓</h3><ul>
-<li><code>&amp;dArr;</code></li>
-</ul>
-<h3 id="⇔"><a href="#⇔" class="headerlink" title="⇔"></a>⇔</h3><ul>
-<li><code>&amp;hArr;</code></li>
-</ul>
-<h2 id="数学字符"><a href="#数学字符" class="headerlink" title="数学字符"></a>数学字符</h2><h3 id="∀"><a href="#∀" class="headerlink" title="∀"></a>∀</h3><ul>
-<li><code>&amp;forall;</code></li>
-</ul>
-<h3 id="∂"><a href="#∂" class="headerlink" title="∂"></a>∂</h3><ul>
-<li><code>&amp;part;</code></li>
-</ul>
-<h3 id="∃"><a href="#∃" class="headerlink" title="∃"></a>∃</h3><ul>
-<li><code>&amp;exist;</code></li>
-</ul>
-<h3 id="∅"><a href="#∅" class="headerlink" title="∅"></a>∅</h3><ul>
-<li><code>&amp;empty;</code></li>
-</ul>
-<h3 id="∇"><a href="#∇" class="headerlink" title="∇"></a>∇</h3><ul>
-<li><code>&amp;nabla;</code></li>
-</ul>
-<h3 id="∈"><a href="#∈" class="headerlink" title="∈"></a>∈</h3><ul>
-<li><code>&amp;isin;</code></li>
-</ul>
-<h3 id="∉"><a href="#∉" class="headerlink" title="∉"></a>∉</h3><ul>
-<li><code>&amp;notin;</code></li>
-</ul>
-<h3 id="∋"><a href="#∋" class="headerlink" title="∋"></a>∋</h3><ul>
-<li><code>&amp;ni;</code></li>
-</ul>
-<h3 id="∏"><a href="#∏" class="headerlink" title="∏"></a>∏</h3><ul>
-<li><code>&amp;prod;</code></li>
-</ul>
-<h3 id="∑"><a href="#∑" class="headerlink" title="∑"></a>∑</h3><ul>
-<li><p>−</p>
-</li>
-<li><p><code>&amp;minus;</code></p>
-</li>
-</ul>
-<h3 id="∗"><a href="#∗" class="headerlink" title="∗"></a><code>∗</code></h3><ul>
-<li><code>&amp;lowast;</code></li>
-</ul>
-<h3 id="√"><a href="#√" class="headerlink" title="√"></a>√</h3><ul>
-<li><code>&amp;radic;</code></li>
-</ul>
-<h3 id="∝"><a href="#∝" class="headerlink" title="∝"></a>∝</h3><ul>
-<li><code>&amp;prop;</code></li>
-</ul>
-<h3 id="∞"><a href="#∞" class="headerlink" title="∞"></a>∞</h3><ul>
-<li><code>&amp;infin;</code></li>
-</ul>
-<h3 id="∠"><a href="#∠" class="headerlink" title="∠"></a>∠</h3><ul>
-<li><code>&amp;ang;</code></li>
-</ul>
-<h3 id="∧"><a href="#∧" class="headerlink" title="∧"></a>∧</h3><ul>
-<li><code>&amp;and;</code></li>
-</ul>
-<h3 id="∨"><a href="#∨" class="headerlink" title="∨"></a>∨</h3><ul>
-<li><code>&amp;or;</code></li>
-</ul>
-<h3 id="∩"><a href="#∩" class="headerlink" title="∩"></a>∩</h3><ul>
-<li><code>&amp;cap;</code></li>
-</ul>
-<h3 id="∪"><a href="#∪" class="headerlink" title="∪"></a>∪</h3><ul>
-<li><code>&amp;cup;</code></li>
-</ul>
-<h3 id="∫"><a href="#∫" class="headerlink" title="∫"></a>∫</h3><ul>
-<li><code>&amp;int;</code></li>
-</ul>
-<h3 id="∴"><a href="#∴" class="headerlink" title="∴"></a>∴</h3><ul>
-<li><code>&amp;there4;</code></li>
-</ul>
-<h3 id="∼"><a href="#∼" class="headerlink" title="∼"></a>∼</h3><ul>
-<li><code>&amp;sim;</code></li>
-</ul>
-<h3 id="≅"><a href="#≅" class="headerlink" title="≅"></a>≅</h3><ul>
-<li><code>&amp;cong;</code></li>
-</ul>
-<h3 id="≈"><a href="#≈" class="headerlink" title="≈"></a>≈</h3><ul>
-<li><code>&amp;asymp;</code></li>
-</ul>
-<h3 id="≠"><a href="#≠" class="headerlink" title="≠"></a>≠</h3><ul>
-<li><code>&amp;ne;</code></li>
-</ul>
-<h3 id="≡"><a href="#≡" class="headerlink" title="≡"></a>≡</h3><ul>
-<li><code>&amp;equiv;</code></li>
-</ul>
-<h3 id="≤"><a href="#≤" class="headerlink" title="≤"></a>≤</h3><ul>
-<li><code>&amp;le;</code></li>
-</ul>
-<h3 id="≥"><a href="#≥" class="headerlink" title="≥"></a>≥</h3><ul>
-<li><code>&amp;ge;</code></li>
-</ul>
-<h3 id="⊂"><a href="#⊂" class="headerlink" title="⊂"></a>⊂</h3><ul>
-<li><code>&amp;sub;</code></li>
-</ul>
-<h3 id="⊃"><a href="#⊃" class="headerlink" title="⊃"></a>⊃</h3><ul>
-<li><code>&amp;sup;</code></li>
-</ul>
-<h3 id="⊄"><a href="#⊄" class="headerlink" title="⊄"></a>⊄</h3><ul>
-<li><code>&amp;nsub;</code></li>
-</ul>
-<h3 id="⊆"><a href="#⊆" class="headerlink" title="⊆"></a>⊆</h3><ul>
-<li><code>&amp;sube;</code></li>
-</ul>
-<h3 id="⊇"><a href="#⊇" class="headerlink" title="⊇"></a>⊇</h3><ul>
-<li><code>&amp;supe;</code></li>
-</ul>
-<h3 id="⊕"><a href="#⊕" class="headerlink" title="⊕"></a>⊕</h3><ul>
-<li><code>&amp;oplus;</code></li>
-</ul>
-<h3 id="⊗"><a href="#⊗" class="headerlink" title="⊗"></a>⊗</h3><ul>
-<li><code>&amp;otimes;</code></li>
-</ul>
-<h3 id="⊥"><a href="#⊥" class="headerlink" title="⊥"></a>⊥</h3><ul>
-<li><code>&amp;perp;</code></li>
-</ul>
-<h3 id="⋅"><a href="#⋅" class="headerlink" title="⋅"></a>⋅</h3><ul>
-<li><code>&amp;sdot;</code></li>
-</ul>
-<h2 id="希腊字母（大写）"><a href="#希腊字母（大写）" class="headerlink" title="希腊字母（大写）"></a>希腊字母（大写）</h2><h3 id="Α"><a href="#Α" class="headerlink" title="Α"></a>Α</h3><ul>
-<li><code>&amp;Alpha;</code></li>
-</ul>
-<h3 id="Β"><a href="#Β" class="headerlink" title="Β"></a>Β</h3><ul>
-<li><code>&amp;Beta;</code></li>
-</ul>
-<h3 id="Γ"><a href="#Γ" class="headerlink" title="Γ"></a>Γ</h3><ul>
-<li><code>&amp;Gamma;</code></li>
-</ul>
-<h3 id="Δ"><a href="#Δ" class="headerlink" title="Δ"></a>Δ</h3><ul>
-<li><code>&amp;Delta;</code></li>
-</ul>
-<h3 id="Ε"><a href="#Ε" class="headerlink" title="Ε"></a>Ε</h3><ul>
-<li><code>&amp;Epsilon;</code></li>
-</ul>
-<h3 id="Ζ"><a href="#Ζ" class="headerlink" title="Ζ"></a>Ζ</h3><ul>
-<li><code>&amp;Zeta;</code></li>
-</ul>
-<h3 id="Η"><a href="#Η" class="headerlink" title="Η"></a>Η</h3><ul>
-<li><code>&amp;Eta;</code></li>
-</ul>
-<h3 id="Θ"><a href="#Θ" class="headerlink" title="Θ"></a>Θ</h3><ul>
-<li><code>&amp;Theta;</code></li>
-</ul>
-<h3 id="Ι"><a href="#Ι" class="headerlink" title="Ι"></a>Ι</h3><ul>
-<li><code>&amp;Iota;</code></li>
-</ul>
-<h3 id="Κ"><a href="#Κ" class="headerlink" title="Κ"></a>Κ</h3><ul>
-<li><code>&amp;Kappa;</code></li>
-</ul>
-<h3 id="Λ"><a href="#Λ" class="headerlink" title="Λ"></a>Λ</h3><ul>
-<li><code>&amp;Lambda;</code></li>
-</ul>
-<h3 id="Μ"><a href="#Μ" class="headerlink" title="Μ"></a>Μ</h3><ul>
-<li><code>&amp;Mu;</code></li>
-</ul>
-<h3 id="Ν"><a href="#Ν" class="headerlink" title="Ν"></a>Ν</h3><ul>
-<li><code>&amp;Nu;</code></li>
-</ul>
-<h3 id="Ξ"><a href="#Ξ" class="headerlink" title="Ξ"></a>Ξ</h3><ul>
-<li><code>&amp;Xi;</code></li>
-</ul>
-<h3 id="Ο"><a href="#Ο" class="headerlink" title="Ο"></a>Ο</h3><ul>
-<li><code>&amp;Omicron;</code></li>
-</ul>
-<h3 id="Π"><a href="#Π" class="headerlink" title="Π"></a>Π</h3><ul>
-<li><code>&amp;Pi;</code></li>
-</ul>
-<h3 id="Ρ"><a href="#Ρ" class="headerlink" title="Ρ"></a>Ρ</h3><ul>
-<li><code>&amp;Rho;</code></li>
-</ul>
-<h3 id="Σ"><a href="#Σ" class="headerlink" title="Σ"></a>Σ</h3><ul>
-<li><code>&amp;Sigma;</code></li>
-</ul>
-<h3 id="Τ"><a href="#Τ" class="headerlink" title="Τ"></a>Τ</h3><ul>
-<li><code>&amp;Tau;</code></li>
-</ul>
-<h3 id="Υ"><a href="#Υ" class="headerlink" title="Υ"></a>Υ</h3><ul>
-<li><code>&amp;Upsilon;</code></li>
-</ul>
-<h3 id="Φ"><a href="#Φ" class="headerlink" title="Φ"></a>Φ</h3><ul>
-<li><code>&amp;Phi;</code></li>
-</ul>
-<h3 id="Χ"><a href="#Χ" class="headerlink" title="Χ"></a>Χ</h3><ul>
-<li><code>&amp;Chi;</code></li>
-</ul>
-<h3 id="Ψ"><a href="#Ψ" class="headerlink" title="Ψ"></a>Ψ</h3><ul>
-<li><code>&amp;Psi;</code></li>
-</ul>
-<h3 id="Ω"><a href="#Ω" class="headerlink" title="Ω"></a>Ω</h3><ul>
-<li><code>&amp;Omega;</code></li>
-</ul>
-<h2 id="希腊字母（小写）"><a href="#希腊字母（小写）" class="headerlink" title="希腊字母（小写）"></a>希腊字母（小写）</h2><h3 id="α"><a href="#α" class="headerlink" title="α"></a>α</h3><ul>
-<li><code>&amp;alpha;</code></li>
-</ul>
-<h3 id="β"><a href="#β" class="headerlink" title="β"></a>β</h3><ul>
-<li><code>&amp;beta;</code></li>
-</ul>
-<h3 id="γ"><a href="#γ" class="headerlink" title="γ"></a>γ</h3><ul>
-<li><code>&amp;gamma;</code></li>
-</ul>
-<h3 id="δ"><a href="#δ" class="headerlink" title="δ"></a>δ</h3><ul>
-<li><code>&amp;delta;</code></li>
-</ul>
-<h3 id="ε"><a href="#ε" class="headerlink" title="ε"></a>ε</h3><ul>
-<li><code>&amp;epsilon;</code></li>
-</ul>
-<h3 id="ζ"><a href="#ζ" class="headerlink" title="ζ"></a>ζ</h3><ul>
-<li><code>&amp;zeta;</code></li>
-</ul>
-<h3 id="η"><a href="#η" class="headerlink" title="η"></a>η</h3><ul>
-<li><code>&amp;eta;</code></li>
-</ul>
-<h3 id="θ"><a href="#θ" class="headerlink" title="θ"></a>θ</h3><ul>
-<li><code>&amp;theta;</code></li>
-</ul>
-<h3 id="ι"><a href="#ι" class="headerlink" title="ι"></a>ι</h3><ul>
-<li><code>&amp;iota;</code></li>
-</ul>
-<h3 id="κ"><a href="#κ" class="headerlink" title="κ"></a>κ</h3><ul>
-<li><code>&amp;kappa;</code></li>
-</ul>
-<h3 id="λ"><a href="#λ" class="headerlink" title="λ"></a>λ</h3><ul>
-<li><code>&amp;lambda;</code></li>
-</ul>
-<h3 id="μ"><a href="#μ" class="headerlink" title="μ"></a>μ</h3><ul>
-<li><code>&amp;mu;</code></li>
-</ul>
-<h3 id="ν"><a href="#ν" class="headerlink" title="ν"></a>ν</h3><ul>
-<li><code>&amp;nu;</code></li>
-</ul>
-<h3 id="ξ"><a href="#ξ" class="headerlink" title="ξ"></a>ξ</h3><ul>
-<li><code>&amp;xi;</code></li>
-</ul>
-<h3 id="ο"><a href="#ο" class="headerlink" title="ο"></a>ο</h3><ul>
-<li><code>&amp;omicron;</code></li>
-</ul>
-<h3 id="π"><a href="#π" class="headerlink" title="π"></a>π</h3><ul>
-<li><code>&amp;pi;</code></li>
-</ul>
-<h3 id="ρ"><a href="#ρ" class="headerlink" title="ρ"></a>ρ</h3><ul>
-<li><code>&amp;rho;</code></li>
-</ul>
-<h3 id="ς"><a href="#ς" class="headerlink" title="ς"></a>ς</h3><ul>
-<li><code>&amp;sigmaf;</code></li>
-</ul>
-<h3 id="σ"><a href="#σ" class="headerlink" title="σ"></a>σ</h3><ul>
-<li><code>&amp;sigma;</code></li>
-</ul>
-<h3 id="τ"><a href="#τ" class="headerlink" title="τ"></a>τ</h3><ul>
-<li><code>&amp;tau;</code></li>
-</ul>
-<h3 id="υ"><a href="#υ" class="headerlink" title="υ"></a>υ</h3><ul>
-<li><code>&amp;upsilon;</code></li>
-</ul>
-<h3 id="φ"><a href="#φ" class="headerlink" title="φ"></a>φ</h3><ul>
-<li><code>&amp;phi;</code></li>
-</ul>
-<h3 id="χ"><a href="#χ" class="headerlink" title="χ"></a>χ</h3><ul>
-<li><code>&amp;chi;</code></li>
-</ul>
-<h3 id="ψ"><a href="#ψ" class="headerlink" title="ψ"></a>ψ</h3><ul>
-<li><code>&amp;psi;</code></li>
-</ul>
-<h3 id="ω"><a href="#ω" class="headerlink" title="ω"></a>ω</h3><ul>
-<li><code>&amp;omega;</code></li>
-</ul>
-<h3 id="ϑ"><a href="#ϑ" class="headerlink" title="ϑ"></a>ϑ</h3><ul>
-<li><code>&amp;thetasym;</code></li>
-</ul>
-<h3 id="ϒ"><a href="#ϒ" class="headerlink" title="ϒ"></a>ϒ</h3><ul>
-<li><code>&amp;upsih;</code></li>
-</ul>
-<h3 id="ϖ"><a href="#ϖ" class="headerlink" title="ϖ"></a>ϖ</h3><ul>
-<li><code>&amp;piv;</code></li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://blog.csdn.net/qq_42374362/article/details/80867292" target="_blank" rel="noopener">CSDN——唐诗洪</a></p>
+<h2 id="常用符号转义字符"><a href="#常用符号转义字符" class="headerlink" title="常用符号转义字符"></a>常用符号转义字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义字符（根据名称）</th>
+<th>转义字符（根据编号）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td><code>&amp;amp;</code></td>
+<td><code>&amp;#38;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td><code>&amp;lt;</code></td>
+<td><code>&amp;#60;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td><code>&amp;gt;</code></td>
+<td><code>&amp;#62;</code></td>
+</tr>
+<tr>
+<td>“</td>
+<td><code>quot</code></td>
+<td><code>&amp;#34;</code></td>
+</tr>
+<tr>
+<td>(空格)</td>
+<td><code>&amp;nbsp;</code></td>
+<td><code>&amp;#160;</code></td>
+</tr>
+</tbody></table>
+<h2 id="特殊符号转义字符"><a href="#特殊符号转义字符" class="headerlink" title="特殊符号转义字符"></a>特殊符号转义字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义字符（根据名称）</th>
+<th>转义字符（根据编号）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>￠</td>
+<td><code>&amp;cent;</code></td>
+<td><code>&amp;#162;</code></td>
+</tr>
+<tr>
+<td>£</td>
+<td><code>&amp;pound</code></td>
+<td><code>&amp;#163;</code></td>
+</tr>
+<tr>
+<td>¥</td>
+<td><code>&amp;yen;</code></td>
+<td><code>&amp;#165;</code></td>
+</tr>
+<tr>
+<td>§</td>
+<td><code>&amp;sect;</code></td>
+<td><code>&amp;#167;</code></td>
+</tr>
+<tr>
+<td>©</td>
+<td><code>&amp;copy;</code></td>
+<td><code>&amp;#169;</code></td>
+</tr>
+<tr>
+<td>®</td>
+<td><code>&amp;reg;</code></td>
+<td><code>&amp;#174;</code></td>
+</tr>
+<tr>
+<td>°</td>
+<td><code>&amp;deg;</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>±</td>
+<td><code>&amp;plusmn;</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>×</td>
+<td><code>&amp;times;</code></td>
+<td><code>&amp;#215;</code></td>
+</tr>
+<tr>
+<td>÷</td>
+<td><code>&amp;divide;</code></td>
+<td><code>&amp;#247;</code></td>
+</tr>
+</tbody></table>
+<h2 id="数学符号转义字符"><a href="#数学符号转义字符" class="headerlink" title="数学符号转义字符"></a>数学符号转义字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义字符（根据名称）</th>
+<th>转义字符（根据编号）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>∀</td>
+<td><code>&amp;forall;</code></td>
+<td><code>&amp;#8704;</code></td>
+</tr>
+<tr>
+<td>∂</td>
+<td><code>&amp;part;</code></td>
+<td><code>&amp;#8706;</code></td>
+</tr>
+<tr>
+<td>∃</td>
+<td><code>&amp;exists;</code></td>
+<td><code>&amp;#8707;</code></td>
+</tr>
+<tr>
+<td>∅</td>
+<td><code>&amp;empty;</code></td>
+<td><code>&amp;#8709;</code></td>
+</tr>
+<tr>
+<td>∇</td>
+<td><code>&amp;nabla;</code></td>
+<td><code>&amp;#8711;</code></td>
+</tr>
+<tr>
+<td>∈</td>
+<td><code>&amp;isin;</code></td>
+<td><code>&amp;#8712;</code></td>
+</tr>
+<tr>
+<td>∉</td>
+<td><code>&amp;notin;</code></td>
+<td><code>&amp;#8713;</code></td>
+</tr>
+<tr>
+<td>∋</td>
+<td><code>&amp;ni;</code></td>
+<td><code>&amp;#8715;</code></td>
+</tr>
+<tr>
+<td>∏</td>
+<td><code>&amp;prod;</code></td>
+<td><code>&amp;#8719;</code></td>
+</tr>
+<tr>
+<td>∑</td>
+<td><code>&amp;sum;</code></td>
+<td><code>&amp;#8721;</code></td>
+</tr>
+<tr>
+<td>−</td>
+<td><code>&amp;minus;</code></td>
+<td><code>&amp;#8722;</code></td>
+</tr>
+<tr>
+<td>∗</td>
+<td><code>&amp;lowast;</code></td>
+<td><code>&amp;#8727;</code></td>
+</tr>
+<tr>
+<td>√</td>
+<td><code>&amp;radic;</code></td>
+<td><code>&amp;#8730;</code></td>
+</tr>
+<tr>
+<td>∝</td>
+<td><code>&amp;prop;</code></td>
+<td><code>&amp;#8733;</code></td>
+</tr>
+<tr>
+<td>∞</td>
+<td><code>&amp;infin;</code></td>
+<td><code>&amp;#8734;</code></td>
+</tr>
+<tr>
+<td>∠</td>
+<td><code>&amp;ang;</code></td>
+<td><code>&amp;#8736;</code></td>
+</tr>
+<tr>
+<td>∧</td>
+<td><code>&amp;and;</code></td>
+<td><code>&amp;#8743;</code></td>
+</tr>
+<tr>
+<td>∨</td>
+<td><code>&amp;or;</code></td>
+<td><code>&amp;#8744;</code></td>
+</tr>
+<tr>
+<td>∩</td>
+<td><code>&amp;cap;</code></td>
+<td><code>&amp;#8745;</code></td>
+</tr>
+<tr>
+<td>∪</td>
+<td><code>&amp;cup;</code></td>
+<td><code>&amp;#8746;</code></td>
+</tr>
+<tr>
+<td>∫</td>
+<td><code>&amp;int;</code></td>
+<td><code>&amp;#8747;</code></td>
+</tr>
+<tr>
+<td>∴</td>
+<td>-</td>
+<td><code>&amp;#8756;</code></td>
+</tr>
+<tr>
+<td>∼</td>
+<td>-</td>
+<td><code>&amp;#8764;</code></td>
+</tr>
+<tr>
+<td>≅</td>
+<td><code>&amp;cong;</code></td>
+<td><code>&amp;#8773;</code></td>
+</tr>
+<tr>
+<td>≈</td>
+<td>-</td>
+<td><code>&amp;#8776;</code></td>
+</tr>
+<tr>
+<td>≠</td>
+<td>-</td>
+<td><code>&amp;#8800;</code></td>
+</tr>
+<tr>
+<td>≡</td>
+<td>-</td>
+<td><code>&amp;#8801;</code></td>
+</tr>
+<tr>
+<td>≤</td>
+<td>-</td>
+<td><code>&amp;#8804;</code></td>
+</tr>
+<tr>
+<td>≥</td>
+<td><code>&amp;ge;</code></td>
+<td><code>&amp;#8805;</code></td>
+</tr>
+<tr>
+<td>⊂</td>
+<td><code>&amp;sub;</code></td>
+<td><code>&amp;#8834;</code></td>
+</tr>
+<tr>
+<td>⊃</td>
+<td><code>&amp;sup;</code></td>
+<td><code>&amp;#8835;</code></td>
+</tr>
+<tr>
+<td>⊄</td>
+<td><code>&amp;nsub;</code></td>
+<td><code>&amp;#8836;</code></td>
+</tr>
+<tr>
+<td>⊆</td>
+<td><code>&amp;sube;</code></td>
+<td><code>&amp;#8838;</code></td>
+</tr>
+<tr>
+<td>⊇</td>
+<td><code>&amp;supe;</code></td>
+<td><code>&amp;#8839;</code></td>
+</tr>
+<tr>
+<td>⊕</td>
+<td><code>&amp;oplus;</code></td>
+<td><code>&amp;#8853;</code></td>
+</tr>
+<tr>
+<td>⊗</td>
+<td><code>&amp;otimes;</code></td>
+<td><code>&amp;#8855;</code></td>
+</tr>
+<tr>
+<td>⊥</td>
+<td><code>&amp;perp;</code></td>
+<td><code>&amp;#8869;</code></td>
+</tr>
+<tr>
+<td>⋅</td>
+<td><code>&amp;sdot;</code></td>
+<td><code>&amp;#8901;</code></td>
+</tr>
+</tbody></table>
+<h2 id="箭头符号转义字符"><a href="#箭头符号转义字符" class="headerlink" title="箭头符号转义字符"></a>箭头符号转义字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义字符（根据名称）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>←</td>
+<td><code>&amp;larr;</code></td>
+</tr>
+<tr>
+<td>↑</td>
+<td><code>&amp;uarr;</code></td>
+</tr>
+<tr>
+<td>→</td>
+<td><code>&amp;rarr;</code></td>
+</tr>
+<tr>
+<td>↓</td>
+<td><code>&amp;darr;</code></td>
+</tr>
+<tr>
+<td>↔</td>
+<td><code>&amp;harr;</code></td>
+</tr>
+<tr>
+<td>↵</td>
+<td><code>&amp;crarr;</code></td>
+</tr>
+<tr>
+<td>⇐</td>
+<td><code>&amp;lArr;</code></td>
+</tr>
+<tr>
+<td>⇑</td>
+<td><code>&amp;uArr;</code></td>
+</tr>
+<tr>
+<td>⇒</td>
+<td><code>&amp;rArr;</code></td>
+</tr>
+<tr>
+<td>⇓</td>
+<td><code>&amp;dArr;</code></td>
+</tr>
+<tr>
+<td>⇔</td>
+<td><code>&amp;hArr;</code></td>
+</tr>
+</tbody></table>
+<h2 id="希腊字母转义字符"><a href="#希腊字母转义字符" class="headerlink" title="希腊字母转义字符"></a>希腊字母转义字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义字符（根据名称）</th>
+<th>转义字符（根据编号）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Α</td>
+<td><code>&amp;Alpha;</code></td>
+<td><code>&amp;#913;</code></td>
+</tr>
+<tr>
+<td>Β</td>
+<td><code>&amp;Beta;</code></td>
+<td><code>&amp;#914;</code></td>
+</tr>
+<tr>
+<td>Γ</td>
+<td><code>&amp;Gamma;</code></td>
+<td><code>&amp;#915;</code></td>
+</tr>
+<tr>
+<td>Δ</td>
+<td><code>&amp;Delta;</code></td>
+<td><code>&amp;#916;</code></td>
+</tr>
+<tr>
+<td>Ε</td>
+<td><code>&amp;Epsilon;</code></td>
+<td><code>&amp;#917;</code></td>
+</tr>
+<tr>
+<td>Ζ</td>
+<td><code>&amp;Zeta;</code></td>
+<td><code>&amp;#918;</code></td>
+</tr>
+<tr>
+<td>Η</td>
+<td><code>&amp;Eta;</code></td>
+<td><code>&amp;#919;</code></td>
+</tr>
+<tr>
+<td>Θ</td>
+<td><code>&amp;Theta;</code></td>
+<td><code>&amp;#920;</code></td>
+</tr>
+<tr>
+<td>Ι</td>
+<td><code>&amp;Iota;</code></td>
+<td><code>&amp;#921;</code></td>
+</tr>
+<tr>
+<td>Κ</td>
+<td><code>&amp;Kappa;</code></td>
+<td><code>&amp;#922;</code></td>
+</tr>
+<tr>
+<td>Λ</td>
+<td><code>&amp;Lambda;</code></td>
+<td><code>&amp;#923;</code></td>
+</tr>
+<tr>
+<td>Μ</td>
+<td><code>&amp;Mu;</code></td>
+<td><code>&amp;#924;</code></td>
+</tr>
+<tr>
+<td>Ν</td>
+<td><code>&amp;Nu;</code></td>
+<td><code>&amp;#925;</code></td>
+</tr>
+<tr>
+<td>Ξ</td>
+<td><code>&amp;Xi;</code></td>
+<td><code>&amp;#926;</code></td>
+</tr>
+<tr>
+<td>Ο</td>
+<td><code>&amp;Omicron;</code></td>
+<td><code>&amp;#927;</code></td>
+</tr>
+<tr>
+<td>Π</td>
+<td><code>&amp;Pi;</code></td>
+<td><code>&amp;#928;</code></td>
+</tr>
+<tr>
+<td>Ρ</td>
+<td><code>&amp;Rho;</code></td>
+<td><code>&amp;#929;</code></td>
+</tr>
+<tr>
+<td>Σa</td>
+<td><code>&amp;Sigma;</code></td>
+<td><code>&amp;#931;</code></td>
+</tr>
+<tr>
+<td>Τ</td>
+<td><code>&amp;Tau;</code></td>
+<td><code>&amp;#932;</code></td>
+</tr>
+<tr>
+<td>Υ</td>
+<td><code>&amp;Upsilon;</code></td>
+<td><code>&amp;#933;</code></td>
+</tr>
+<tr>
+<td>Φ</td>
+<td><code>&amp;Phi;</code></td>
+<td><code>&amp;#934;</code></td>
+</tr>
+<tr>
+<td>Χ</td>
+<td><code>&amp;Chi;</code></td>
+<td><code>&amp;#935;</code></td>
+</tr>
+<tr>
+<td>Ψ</td>
+<td><code>&amp;Psi;</code></td>
+<td><code>&amp;#936;</code></td>
+</tr>
+<tr>
+<td>Ω</td>
+<td><code>&amp;Omega;</code></td>
+<td><code>&amp;#937;</code></td>
+</tr>
+<tr>
+<td>α</td>
+<td><code>&amp;alpha;</code></td>
+<td><code>&amp;#945;</code></td>
+</tr>
+<tr>
+<td>β</td>
+<td><code>&amp;beta;</code></td>
+<td><code>&amp;#946;</code></td>
+</tr>
+<tr>
+<td>γ</td>
+<td><code>&amp;gamma;</code></td>
+<td><code>&amp;#947;</code></td>
+</tr>
+<tr>
+<td>δ</td>
+<td><code>&amp;delta;</code></td>
+<td><code>&amp;#948;</code></td>
+</tr>
+<tr>
+<td>ε</td>
+<td><code>&amp;epsilon;</code></td>
+<td><code>&amp;#949;</code></td>
+</tr>
+<tr>
+<td>ζ</td>
+<td><code>&amp;zeta;</code></td>
+<td><code>&amp;#950;</code></td>
+</tr>
+<tr>
+<td>η</td>
+<td><code>&amp;eta;</code></td>
+<td><code>&amp;#951;</code></td>
+</tr>
+<tr>
+<td>θ</td>
+<td><code>&amp;theta;</code></td>
+<td><code>&amp;#952;</code></td>
+</tr>
+<tr>
+<td>ι</td>
+<td><code>&amp;iota;</code></td>
+<td><code>&amp;#953;</code></td>
+</tr>
+<tr>
+<td>κ</td>
+<td><code>&amp;kappa;</code></td>
+<td><code>&amp;#954;</code></td>
+</tr>
+<tr>
+<td>λ</td>
+<td><code>&amp;lambda;</code></td>
+<td><code>&amp;#923;</code></td>
+</tr>
+<tr>
+<td>μ</td>
+<td><code>&amp;mu;</code></td>
+<td><code>&amp;#956;</code></td>
+</tr>
+<tr>
+<td>ν</td>
+<td><code>&amp;nu;</code></td>
+<td><code>&amp;#925;</code></td>
+</tr>
+<tr>
+<td>ξ</td>
+<td><code>&amp;xi;</code></td>
+<td><code>&amp;#958;</code></td>
+</tr>
+<tr>
+<td>ο</td>
+<td><code>&amp;omicron;</code></td>
+<td><code>&amp;#959;</code></td>
+</tr>
+<tr>
+<td>π</td>
+<td><code>&amp;pi;</code></td>
+<td><code>&amp;#960;</code></td>
+</tr>
+<tr>
+<td>ρ</td>
+<td><code>&amp;rho;</code></td>
+<td><code>&amp;#961;</code></td>
+</tr>
+<tr>
+<td>ς</td>
+<td><code>&amp;sigmaf;</code></td>
+<td><code>&amp;#962;</code></td>
+</tr>
+<tr>
+<td>σ</td>
+<td><code>&amp;sigma;</code></td>
+<td><code>&amp;#963;</code></td>
+</tr>
+<tr>
+<td>τ</td>
+<td><code>&amp;tau;</code></td>
+<td><code>&amp;#964;</code></td>
+</tr>
+<tr>
+<td>υ</td>
+<td><code>&amp;upsilon;</code></td>
+<td><code>&amp;#965;</code></td>
+</tr>
+<tr>
+<td>φ</td>
+<td><code>&amp;phi;</code></td>
+<td><code>&amp;#966;</code></td>
+</tr>
+<tr>
+<td>χ</td>
+<td><code>&amp;chi;</code></td>
+<td><code>&amp;#967;</code></td>
+</tr>
+<tr>
+<td>ψ</td>
+<td><code>&amp;psi;</code></td>
+<td><code>&amp;#968;</code></td>
+</tr>
+<tr>
+<td>ω</td>
+<td><code>&amp;omega;</code></td>
+<td><code>&amp;#969;</code></td>
+</tr>
+<tr>
+<td>ϑ</td>
+<td><code>&amp;thetasym;</code></td>
+<td><code>&amp;#977;</code></td>
+</tr>
+<tr>
+<td>ϒ</td>
+<td><code>&amp;upsih;</code></td>
+<td><code>&amp;#978;</code></td>
+</tr>
+<tr>
+<td>ϖ</td>
+<td><code>&amp;piv;</code></td>
+<td><code>&amp;#982;</code></td>
+</tr>
+</tbody></table>
+<h2 id="ASCII码转义字符"><a href="#ASCII码转义字符" class="headerlink" title="ASCII码转义字符"></a>ASCII码转义字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义字符（根据编号）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(空格)</td>
+<td><code>&amp;#32;</code></td>
+</tr>
+<tr>
+<td>!</td>
+<td><code>&amp;#33;</code></td>
+</tr>
+<tr>
+<td>“</td>
+<td><code>&amp;#34;</code></td>
+</tr>
+<tr>
+<td>#</td>
+<td><code>&amp;#35;</code></td>
+</tr>
+<tr>
+<td>$</td>
+<td><code>&amp;#36;</code></td>
+</tr>
+<tr>
+<td>%</td>
+<td><code>&amp;#37;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td><code>&amp;#38;</code></td>
+</tr>
+<tr>
+<td>’</td>
+<td><code>&amp;#39;</code></td>
+</tr>
+<tr>
+<td>(</td>
+<td><code>&amp;#40;</code></td>
+</tr>
+<tr>
+<td>)</td>
+<td><code>&amp;#41;</code></td>
+</tr>
+<tr>
+<td>&#42;</td>
+<td><code>&amp;#42;</code></td>
+</tr>
+<tr>
+<td>+</td>
+<td><code>&amp;#43;</code></td>
+</tr>
+<tr>
+<td>,</td>
+<td><code>&amp;#44;</code></td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>&amp;#45;</code></td>
+</tr>
+<tr>
+<td>.</td>
+<td><code>&amp;#46;</code></td>
+</tr>
+<tr>
+<td>/</td>
+<td><code>&amp;#47;</code></td>
+</tr>
+<tr>
+<td>0</td>
+<td><code>&amp;#48;</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>&amp;#49;</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>&amp;#50;</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>&amp;#51;</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>&amp;#52;</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>&amp;#53;</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>&amp;#54;</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>&amp;#55;</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>&amp;#56;</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>&amp;#57;</code></td>
+</tr>
+<tr>
+<td>:</td>
+<td><code>&amp;#58;</code></td>
+</tr>
+<tr>
+<td>;</td>
+<td><code>&amp;#59;</code></td>
+</tr>
+<tr>
+<td>&#60;</td>
+<td><code>&amp;#60;</code></td>
+</tr>
+<tr>
+<td>=</td>
+<td><code>&amp;#61;</code></td>
+</tr>
+<tr>
+<td>&#62;</td>
+<td><code>&amp;#62;</code></td>
+</tr>
+<tr>
+<td>?</td>
+<td><code>&amp;#63;</code></td>
+</tr>
+<tr>
+<td>@</td>
+<td><code>&amp;#64;</code></td>
+</tr>
+<tr>
+<td>A</td>
+<td><code>&amp;#65;</code></td>
+</tr>
+<tr>
+<td>B</td>
+<td><code>&amp;#66;</code></td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>&amp;#67;</code></td>
+</tr>
+<tr>
+<td>D</td>
+<td><code>&amp;#68;</code></td>
+</tr>
+<tr>
+<td>E</td>
+<td><code>&amp;#69;</code></td>
+</tr>
+<tr>
+<td>F</td>
+<td><code>&amp;#70;</code></td>
+</tr>
+<tr>
+<td>G</td>
+<td><code>&amp;#71;</code></td>
+</tr>
+<tr>
+<td>H</td>
+<td><code>&amp;#72;</code></td>
+</tr>
+<tr>
+<td>I</td>
+<td><code>&amp;#73;</code></td>
+</tr>
+<tr>
+<td>J</td>
+<td><code>&amp;#74;</code></td>
+</tr>
+<tr>
+<td>K</td>
+<td><code>&amp;#75;</code></td>
+</tr>
+<tr>
+<td>L</td>
+<td><code>&amp;#76;</code></td>
+</tr>
+<tr>
+<td>M</td>
+<td><code>&amp;#77;</code></td>
+</tr>
+<tr>
+<td>N</td>
+<td><code>&amp;#78;</code></td>
+</tr>
+<tr>
+<td>O</td>
+<td><code>&amp;#79;</code></td>
+</tr>
+<tr>
+<td>P</td>
+<td><code>&amp;#80;</code></td>
+</tr>
+<tr>
+<td>Q</td>
+<td><code>&amp;#81;</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td><code>&amp;#82;</code></td>
+</tr>
+<tr>
+<td>S</td>
+<td><code>&amp;#83;</code></td>
+</tr>
+<tr>
+<td>T</td>
+<td><code>&amp;#84;</code></td>
+</tr>
+<tr>
+<td>U</td>
+<td><code>&amp;#85;</code></td>
+</tr>
+<tr>
+<td>V</td>
+<td><code>&amp;#86;</code></td>
+</tr>
+<tr>
+<td>W</td>
+<td><code>&amp;#87;</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td><code>&amp;#88;</code></td>
+</tr>
+<tr>
+<td>Y</td>
+<td><code>&amp;#89;</code></td>
+</tr>
+<tr>
+<td>Z</td>
+<td><code>&amp;#90;</code></td>
+</tr>
+<tr>
+<td>[</td>
+<td><code>&amp;#91;</code></td>
+</tr>
+<tr>
+<td>|<code>&amp;#92;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>]</td>
+<td><code>&amp;#93;</code></td>
+</tr>
+<tr>
+<td>^</td>
+<td><code>&amp;#94;</code></td>
+</tr>
+<tr>
+<td>_</td>
+<td><code>&amp;#95;</code></td>
+</tr>
+<tr>
+<td>&#96;</td>
+<td><code>&amp;#96;</code></td>
+</tr>
+<tr>
+<td>a</td>
+<td><code>&amp;#97;</code></td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>&amp;#98;</code></td>
+</tr>
+<tr>
+<td>c</td>
+<td><code>&amp;#99;</code></td>
+</tr>
+<tr>
+<td>d</td>
+<td><code>&amp;#100;</code></td>
+</tr>
+<tr>
+<td>e</td>
+<td><code>&amp;#101;</code></td>
+</tr>
+<tr>
+<td>f</td>
+<td><code>&amp;#102;</code></td>
+</tr>
+<tr>
+<td>g</td>
+<td><code>&amp;#103;</code></td>
+</tr>
+<tr>
+<td>h</td>
+<td><code>&amp;#104;</code></td>
+</tr>
+<tr>
+<td>i</td>
+<td><code>&amp;#105;</code></td>
+</tr>
+<tr>
+<td>j</td>
+<td><code>&amp;#106;</code></td>
+</tr>
+<tr>
+<td>k</td>
+<td><code>&amp;#107;</code></td>
+</tr>
+<tr>
+<td>l</td>
+<td><code>&amp;#108;</code></td>
+</tr>
+<tr>
+<td>m</td>
+<td><code>&amp;#109;</code></td>
+</tr>
+<tr>
+<td>n</td>
+<td><code>&amp;#110;</code></td>
+</tr>
+<tr>
+<td>o</td>
+<td><code>&amp;#111;</code></td>
+</tr>
+<tr>
+<td>p</td>
+<td><code>&amp;#112;</code></td>
+</tr>
+<tr>
+<td>q</td>
+<td><code>&amp;#113;</code></td>
+</tr>
+<tr>
+<td>r</td>
+<td><code>&amp;#114;</code></td>
+</tr>
+<tr>
+<td>s</td>
+<td><code>&amp;#115;</code></td>
+</tr>
+<tr>
+<td>t</td>
+<td><code>&amp;#116;</code></td>
+</tr>
+<tr>
+<td>u</td>
+<td><code>&amp;#117;</code></td>
+</tr>
+<tr>
+<td>v</td>
+<td><code>&amp;#118;</code></td>
+</tr>
+<tr>
+<td>w</td>
+<td><code>&amp;#119;</code></td>
+</tr>
+<tr>
+<td>x</td>
+<td><code>&amp;#120;</code></td>
+</tr>
+<tr>
+<td>y</td>
+<td><code>&amp;#121;</code></td>
+</tr>
+<tr>
+<td>z</td>
+<td><code>&amp;#122;</code></td>
+</tr>
+<tr>
+<td>{</td>
+<td><code>&amp;#123;</code></td>
+</tr>
+<tr>
+<td>&#124;</td>
+<td><code>&amp;#124;</code></td>
+</tr>
+<tr>
+<td>}</td>
+<td><code>&amp;#125;</code></td>
+</tr>
+<tr>
+<td>~</td>
+<td><code>&amp;#126;</code></td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://blog.csdn.net/qq_42374362/article/details/80867292" target="_blank" rel="noopener">CSDN——唐诗洪</a><br><a href="https://blog.csdn.net/weixin_43360896/article/details/113768858" target="_blank" rel="noopener">CSDN——买猫咪的小鱼干</a></p>
 
     </div>
 
@@ -709,7 +1372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用转义字符"><span class="nav-number">2.</span> <span class="nav-text">常用转义字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#amp"><span class="nav-number">2.1.</span> <span class="nav-text">&amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt"><span class="nav-number">2.2.</span> <span class="nav-text">&lt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gt"><span class="nav-number">2.3.</span> <span class="nav-text">&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“"><span class="nav-number">2.4.</span> <span class="nav-text">“</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不换行空格"><span class="nav-number">2.5.</span> <span class="nav-text">不换行空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#¥"><span class="nav-number">2.6.</span> <span class="nav-text">¥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#§"><span class="nav-number">2.7.</span> <span class="nav-text">§</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#©"><span class="nav-number">2.8.</span> <span class="nav-text">©</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#®"><span class="nav-number">2.9.</span> <span class="nav-text">®</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#°"><span class="nav-number">2.10.</span> <span class="nav-text">°</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#±"><span class="nav-number">2.11.</span> <span class="nav-text">±</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#×"><span class="nav-number">2.12.</span> <span class="nav-text">×</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头"><span class="nav-number">3.</span> <span class="nav-text">箭头</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#←"><span class="nav-number">3.1.</span> <span class="nav-text">←</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#↑"><span class="nav-number">3.2.</span> <span class="nav-text">↑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#→"><span class="nav-number">3.3.</span> <span class="nav-text">→</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#↓"><span class="nav-number">3.4.</span> <span class="nav-text">↓</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#↔"><span class="nav-number">3.5.</span> <span class="nav-text">↔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#↵"><span class="nav-number">3.6.</span> <span class="nav-text">↵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⇐"><span class="nav-number">3.7.</span> <span class="nav-text">⇐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⇑"><span class="nav-number">3.8.</span> <span class="nav-text">⇑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⇒"><span class="nav-number">3.9.</span> <span class="nav-text">⇒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⇓"><span class="nav-number">3.10.</span> <span class="nav-text">⇓</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⇔"><span class="nav-number">3.11.</span> <span class="nav-text">⇔</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学字符"><span class="nav-number">4.</span> <span class="nav-text">数学字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#∀"><span class="nav-number">4.1.</span> <span class="nav-text">∀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∂"><span class="nav-number">4.2.</span> <span class="nav-text">∂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∃"><span class="nav-number">4.3.</span> <span class="nav-text">∃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∅"><span class="nav-number">4.4.</span> <span class="nav-text">∅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∇"><span class="nav-number">4.5.</span> <span class="nav-text">∇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∈"><span class="nav-number">4.6.</span> <span class="nav-text">∈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∉"><span class="nav-number">4.7.</span> <span class="nav-text">∉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∋"><span class="nav-number">4.8.</span> <span class="nav-text">∋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∏"><span class="nav-number">4.9.</span> <span class="nav-text">∏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∑"><span class="nav-number">4.10.</span> <span class="nav-text">∑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∗"><span class="nav-number">4.11.</span> <span class="nav-text">∗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#√"><span class="nav-number">4.12.</span> <span class="nav-text">√</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∝"><span class="nav-number">4.13.</span> <span class="nav-text">∝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∞"><span class="nav-number">4.14.</span> <span class="nav-text">∞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∠"><span class="nav-number">4.15.</span> <span class="nav-text">∠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∧"><span class="nav-number">4.16.</span> <span class="nav-text">∧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∨"><span class="nav-number">4.17.</span> <span class="nav-text">∨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∩"><span class="nav-number">4.18.</span> <span class="nav-text">∩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∪"><span class="nav-number">4.19.</span> <span class="nav-text">∪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∫"><span class="nav-number">4.20.</span> <span class="nav-text">∫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∴"><span class="nav-number">4.21.</span> <span class="nav-text">∴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#∼"><span class="nav-number">4.22.</span> <span class="nav-text">∼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#≅"><span class="nav-number">4.23.</span> <span class="nav-text">≅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#≈"><span class="nav-number">4.24.</span> <span class="nav-text">≈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#≠"><span class="nav-number">4.25.</span> <span class="nav-text">≠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#≡"><span class="nav-number">4.26.</span> <span class="nav-text">≡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#≤"><span class="nav-number">4.27.</span> <span class="nav-text">≤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#≥"><span class="nav-number">4.28.</span> <span class="nav-text">≥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊂"><span class="nav-number">4.29.</span> <span class="nav-text">⊂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊃"><span class="nav-number">4.30.</span> <span class="nav-text">⊃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊄"><span class="nav-number">4.31.</span> <span class="nav-text">⊄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊆"><span class="nav-number">4.32.</span> <span class="nav-text">⊆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊇"><span class="nav-number">4.33.</span> <span class="nav-text">⊇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊕"><span class="nav-number">4.34.</span> <span class="nav-text">⊕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊗"><span class="nav-number">4.35.</span> <span class="nav-text">⊗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊥"><span class="nav-number">4.36.</span> <span class="nav-text">⊥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⋅"><span class="nav-number">4.37.</span> <span class="nav-text">⋅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希腊字母（大写）"><span class="nav-number">5.</span> <span class="nav-text">希腊字母（大写）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Α"><span class="nav-number">5.1.</span> <span class="nav-text">Α</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Β"><span class="nav-number">5.2.</span> <span class="nav-text">Β</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Γ"><span class="nav-number">5.3.</span> <span class="nav-text">Γ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Δ"><span class="nav-number">5.4.</span> <span class="nav-text">Δ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ε"><span class="nav-number">5.5.</span> <span class="nav-text">Ε</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ζ"><span class="nav-number">5.6.</span> <span class="nav-text">Ζ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Η"><span class="nav-number">5.7.</span> <span class="nav-text">Η</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Θ"><span class="nav-number">5.8.</span> <span class="nav-text">Θ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ι"><span class="nav-number">5.9.</span> <span class="nav-text">Ι</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Κ"><span class="nav-number">5.10.</span> <span class="nav-text">Κ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Λ"><span class="nav-number">5.11.</span> <span class="nav-text">Λ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Μ"><span class="nav-number">5.12.</span> <span class="nav-text">Μ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ν"><span class="nav-number">5.13.</span> <span class="nav-text">Ν</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ξ"><span class="nav-number">5.14.</span> <span class="nav-text">Ξ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ο"><span class="nav-number">5.15.</span> <span class="nav-text">Ο</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Π"><span class="nav-number">5.16.</span> <span class="nav-text">Π</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ρ"><span class="nav-number">5.17.</span> <span class="nav-text">Ρ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Σ"><span class="nav-number">5.18.</span> <span class="nav-text">Σ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Τ"><span class="nav-number">5.19.</span> <span class="nav-text">Τ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Υ"><span class="nav-number">5.20.</span> <span class="nav-text">Υ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Φ"><span class="nav-number">5.21.</span> <span class="nav-text">Φ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Χ"><span class="nav-number">5.22.</span> <span class="nav-text">Χ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ψ"><span class="nav-number">5.23.</span> <span class="nav-text">Ψ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ω"><span class="nav-number">5.24.</span> <span class="nav-text">Ω</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希腊字母（小写）"><span class="nav-number">6.</span> <span class="nav-text">希腊字母（小写）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#α"><span class="nav-number">6.1.</span> <span class="nav-text">α</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#β"><span class="nav-number">6.2.</span> <span class="nav-text">β</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#γ"><span class="nav-number">6.3.</span> <span class="nav-text">γ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#δ"><span class="nav-number">6.4.</span> <span class="nav-text">δ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ε"><span class="nav-number">6.5.</span> <span class="nav-text">ε</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ζ"><span class="nav-number">6.6.</span> <span class="nav-text">ζ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#η"><span class="nav-number">6.7.</span> <span class="nav-text">η</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#θ"><span class="nav-number">6.8.</span> <span class="nav-text">θ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ι"><span class="nav-number">6.9.</span> <span class="nav-text">ι</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#κ"><span class="nav-number">6.10.</span> <span class="nav-text">κ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#λ"><span class="nav-number">6.11.</span> <span class="nav-text">λ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#μ"><span class="nav-number">6.12.</span> <span class="nav-text">μ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ν"><span class="nav-number">6.13.</span> <span class="nav-text">ν</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ξ"><span class="nav-number">6.14.</span> <span class="nav-text">ξ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ο"><span class="nav-number">6.15.</span> <span class="nav-text">ο</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#π"><span class="nav-number">6.16.</span> <span class="nav-text">π</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ρ"><span class="nav-number">6.17.</span> <span class="nav-text">ρ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ς"><span class="nav-number">6.18.</span> <span class="nav-text">ς</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#σ"><span class="nav-number">6.19.</span> <span class="nav-text">σ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#τ"><span class="nav-number">6.20.</span> <span class="nav-text">τ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#υ"><span class="nav-number">6.21.</span> <span class="nav-text">υ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#φ"><span class="nav-number">6.22.</span> <span class="nav-text">φ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#χ"><span class="nav-number">6.23.</span> <span class="nav-text">χ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ψ"><span class="nav-number">6.24.</span> <span class="nav-text">ψ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ω"><span class="nav-number">6.25.</span> <span class="nav-text">ω</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ϑ"><span class="nav-number">6.26.</span> <span class="nav-text">ϑ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ϒ"><span class="nav-number">6.27.</span> <span class="nav-text">ϒ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ϖ"><span class="nav-number">6.28.</span> <span class="nav-text">ϖ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用符号转义字符"><span class="nav-number">2.</span> <span class="nav-text">常用符号转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊符号转义字符"><span class="nav-number">3.</span> <span class="nav-text">特殊符号转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学符号转义字符"><span class="nav-number">4.</span> <span class="nav-text">数学符号转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头符号转义字符"><span class="nav-number">5.</span> <span class="nav-text">箭头符号转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希腊字母转义字符"><span class="nav-number">6.</span> <span class="nav-text">希腊字母转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII码转义字符"><span class="nav-number">7.</span> <span class="nav-text">ASCII码转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">8.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -774,13 +1437,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">626k</span>
+    <span title="站点总字数">637k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">17:24</span>
+    <span title="站点阅读时长">17:41</span>
 </div>
 
         
