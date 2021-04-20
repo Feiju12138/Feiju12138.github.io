@@ -62,7 +62,7 @@
 <meta property="og:description" content="前言Node.js 是能够在服务器端运行 JavaScript 的开放源代码、跨平台 JavaScript 运行环境。Node.js 由Node.js Foundation（已与JS Foundation合并为OpenJS Foundation）持有和维护，亦为 Linux 基金会的项目。Node.js采用Google开发的V8运行代码，使用事件驱动、非阻塞和异步输入输出模型等技术来提高性能，可优">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-13T11:05:55.000Z">
-<meta property="article:modified_time" content="2021-04-15T05:49:03.770Z">
+<meta property="article:modified_time" content="2021-04-20T00:52:09.422Z">
 <meta property="article:author" content="绯鞠">
 <meta name="twitter:card" content="summary">
 
@@ -164,9 +164,19 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
 
   </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>小猫</a>
+
+  </li>
         <li class="menu-item menu-item-links">
 
     <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-typesetting">
+
+    <a href="/typesetting" rel="section"><i class="fa fa-fw fa-sitemap"></i>排版</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -251,7 +261,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-15 13:49:03" itemprop="dateModified" datetime="2021-04-15T13:49:03+08:00">2021-04-15</time>
+                <time title="修改时间：2021-04-20 08:52:09" itemprop="dateModified" datetime="2021-04-20T08:52:09+08:00">2021-04-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,6 +276,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -292,7 +309,7 @@
 <h2 id="访问服务器"><a href="#访问服务器" class="headerlink" title="访问服务器"></a>访问服务器</h2><ul>
 <li>浏览器访问当前地址的监听端口</li>
 </ul>
-<h2 id="设置响应类型"><a href="#设置响应类型" class="headerlink" title="设置响应类型"></a>设置响应类型</h2><h3 id="设置响应类型为文字，并设置字符集"><a href="#设置响应类型为文字，并设置字符集" class="headerlink" title="设置响应类型为文字，并设置字符集"></a>设置响应类型为文字，并设置字符集</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=UTF8"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="设置响应类型"><a href="#设置响应类型" class="headerlink" title="设置响应类型"></a>设置响应类型</h2><h3 id="设置响应类型为文字，并设置字符集"><a href="#设置响应类型为文字，并设置字符集" class="headerlink" title="设置响应类型为文字，并设置字符集"></a>设置响应类型为文字，并设置字符集</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=utf-8"</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="设置相应类型为图片"><a href="#设置相应类型为图片" class="headerlink" title="设置相应类型为图片"></a>设置相应类型为图片</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"image/jpg"</span>);</span><br></pre></td></tr></table></figure>
 
@@ -328,9 +345,9 @@
 <blockquote>
 <p><code>&lt;url&gt;</code>：地址栏的地址字符串</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=UTF8"</span>);</span><br><span class="line">  <span class="keyword">if</span> (request.url === <span class="string">"/&lt;url&gt;"</span>) &#123;</span><br><span class="line">    fs.readFile(<span class="string">"&lt;file&gt;"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      response.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    response.end(<span class="string">"页面不存在"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">  <span class="keyword">if</span> (request.url === <span class="string">"/&lt;url&gt;"</span>) &#123;</span><br><span class="line">    fs.readFile(<span class="string">"&lt;file&gt;"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      response.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    response.end(<span class="string">"页面不存在"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="模拟知乎路由设计（案例）"><a href="#模拟知乎路由设计（案例）" class="headerlink" title="模拟知乎路由设计（案例）"></a>模拟知乎路由设计（案例）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset-UTF8"</span>);</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">   * 获取地址</span></span><br><span class="line"><span class="comment">   * 地址举例：127.0.0.1:80/user/plate</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">let</span> url = request.url;</span><br><span class="line">  <span class="comment">// 用正则表达式获取信息</span></span><br><span class="line">  <span class="keyword">let</span> arr = url.match(<span class="regexp">/\/(.+)\/(.+)$/</span>);</span><br><span class="line">  <span class="comment">// console.log(arr);</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (!arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"访问出错"</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 正则获取的第一项参数</span></span><br><span class="line">    <span class="keyword">let</span> user = arr[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 正则获取的第二项参数</span></span><br><span class="line">    <span class="keyword">let</span> plate = arr[<span class="number">2</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 模拟数据</span></span><br><span class="line">    <span class="keyword">let</span> userList = &#123;</span><br><span class="line">      user01: <span class="string">"用户01"</span>,</span><br><span class="line">      user02: <span class="string">"用户02"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> plateList = &#123;</span><br><span class="line">      plate01: <span class="string">"版块01"</span>,</span><br><span class="line">      plate02: <span class="string">"版块02"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`用户-<span class="subst">$&#123;userList[user]&#125;</span>，板块-<span class="subst">$&#123;plateList[plate]&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="模拟知乎路由设计（案例）"><a href="#模拟知乎路由设计（案例）" class="headerlink" title="模拟知乎路由设计（案例）"></a>模拟知乎路由设计（案例）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset-utf-8"</span>);</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">   * 获取地址</span></span><br><span class="line"><span class="comment">   * 地址举例：127.0.0.1:80/user/plate</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">let</span> url = request.url;</span><br><span class="line">  <span class="comment">// 用正则表达式获取信息</span></span><br><span class="line">  <span class="keyword">let</span> arr = url.match(<span class="regexp">/\/(.+)\/(.+)$/</span>);</span><br><span class="line">  <span class="comment">// console.log(arr);</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (!arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"访问出错"</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 正则获取的第一项参数</span></span><br><span class="line">    <span class="keyword">let</span> user = arr[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 正则获取的第二项参数</span></span><br><span class="line">    <span class="keyword">let</span> plate = arr[<span class="number">2</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 模拟数据</span></span><br><span class="line">    <span class="keyword">let</span> userList = &#123;</span><br><span class="line">      user01: <span class="string">"用户01"</span>,</span><br><span class="line">      user02: <span class="string">"用户02"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> plateList = &#123;</span><br><span class="line">      plate01: <span class="string">"版块01"</span>,</span><br><span class="line">      plate02: <span class="string">"版块02"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`用户-<span class="subst">$&#123;userList[user]&#125;</span>，板块-<span class="subst">$&#123;plateList[plate]&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>通过使用Nodejs的路由，可以配合fs实现跳转指定网页</li>
@@ -341,12 +358,101 @@
 <blockquote>
 <p><code>&lt;img&gt;</code>：图片位置</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (request.url === <span class="string">"/hello"</span>) &#123;</span><br><span class="line">    response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=UTF8"</span>);</span><br><span class="line">    fs.readFile(<span class="string">"./hello.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      response.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(request.url === <span class="string">"/img/WallPaper01.jpg"</span>) &#123;</span><br><span class="line">    <span class="comment">// 指定相应类型为图片</span></span><br><span class="line">    response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"image/jpg"</span>);</span><br><span class="line">    fs.readFile(<span class="string">"&lt;img&gt;"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      response.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=UTF8"</span>);</span><br><span class="line">    response.end(<span class="string">"页面不存在"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (request.url === <span class="string">"/hello"</span>) &#123;</span><br><span class="line">    response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">    fs.readFile(<span class="string">"./hello.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      response.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(request.url === <span class="string">"/img/WallPaper01.jpg"</span>) &#123;</span><br><span class="line">    <span class="comment">// 指定相应类型为图片</span></span><br><span class="line">    response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"image/jpg"</span>);</span><br><span class="line">    fs.readFile(<span class="string">"&lt;img&gt;"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      response.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">    response.end(<span class="string">"页面不存在"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="自动渲染所有静态资源"><a href="#自动渲染所有静态资源" class="headerlink" title="自动渲染所有静态资源"></a>自动渲染所有静态资源</h3><ul>
 <li>使用express的中间件来静态化一个目录</li>
 </ul>
-<h2 id="未完待更"><a href="#未完待更" class="headerlink" title="未完待更"></a>未完待更</h2><h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1kv411W73u" target="_blank" rel="noopener">哔哩哔哩——Python小清风</a></p>
+<h2 id="模块（module）"><a href="#模块（module）" class="headerlink" title="模块（module）"></a>模块（module）</h2><ul>
+<li>当一个<code>.js</code>文件可以独立完成一个功能的时候，这个<code>.js</code>文件就是一个模块</li>
+<li>当一些<code>.js</code>文件可以共同完成一个功能的时候，这些<code>.js</code>文件就是一个模块</li>
+</ul>
+<h3 id="暴露"><a href="#暴露" class="headerlink" title="暴露"></a>暴露</h3><ul>
+<li>Nodejs中js文件作用域隔离，因为Nodejs没有window对象</li>
+<li>如果我们需要让js文件之间相互通信，需要让js文件自己暴露</li>
+</ul>
+<h4 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h4><ul>
+<li>将<code>file.js</code>文件内的变量暴露出来，在app.js调用暴露出来的变量</li>
+</ul>
+<p><em>file.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">100</span>;</span><br><span class="line"><span class="comment">// 将num变量，通过exports暴露出来</span></span><br><span class="line">exports.num = num; <span class="comment">// 规范：暴露的变量名与局部变量名相同</span></span><br></pre></td></tr></table></figure>
+
+<p><em>app.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入其他js文件</span></span><br><span class="line"><span class="keyword">let</span> file = <span class="built_in">require</span>(<span class="string">"./file.js"</span>); <span class="comment">// 规范：引入的变量名与文件名相同</span></span><br><span class="line"><span class="comment">// 打印其他js文件中的变量</span></span><br><span class="line"><span class="built_in">console</span>.log(file.num);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+
+<h4 id="module-exports"><a href="#module-exports" class="headerlink" title="module.exports"></a>module.exports</h4><ul>
+<li>将<code>People.js</code>的构造函数暴露出来，在app.js通过People.js暴露出来的构造函数创建对象</li>
+</ul>
+<p><em>People.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age, sex</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">  <span class="keyword">this</span>.sex = sex;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`name=<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>-age=<span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>-sex=<span class="subst">$&#123;<span class="keyword">this</span>.sex&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = People;</span><br></pre></td></tr></table></figure>
+
+<p><em>app.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> People = <span class="built_in">require</span>(<span class="string">"./People.js"</span>);</span><br><span class="line"><span class="keyword">let</span> xiaoming = <span class="keyword">new</span> People(<span class="string">"小明"</span>, <span class="number">18</span>, <span class="string">"男"</span>);</span><br><span class="line">xiaoming.sayHello();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+
+<p>如果要暴露多个参数，使用exports<br>如果只暴露一个参数，并且是构造函数，使用module.exports</p>
+<h4 id="exports与module-exports"><a href="#exports与module-exports" class="headerlink" title="exports与module.exports"></a>exports与module.exports</h4><ul>
+<li>exports是module.exports的一个引用</li>
+<li>module.exports可以直接赋值，它将修改暴露的本质（暴露一个对象），也就是说暴露的数据类型是什么，得到的数据数据类型就是什么</li>
+<li>exports直接赋值，不会修改暴露的本质（还是一个对象），也就是说不管暴露的时候是什么数据类型，得到的数据数据类型还是对象，如果暴露的时候不是对象，那么得到的将是一个空对象</li>
+</ul>
+<h3 id="引用目录"><a href="#引用目录" class="headerlink" title="引用目录"></a>引用目录</h3><ul>
+<li>如果require()参数没有<code>.js</code>后缀，则Nodejs认为引入了一个目录，并执行这个目录内部的<code>index.js</code>文件</li>
+</ul>
+<p><em>目录结构</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- app.js</span><br><span class="line">+ modules</span><br><span class="line">  - index.js</span><br><span class="line">  - file.js</span><br><span class="line">  - People.js</span><br></pre></td></tr></table></figure>
+
+<p><em>index.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> file = <span class="built_in">require</span>(<span class="string">"./file.js"</span>);</span><br><span class="line">exports.num = file.num;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> People = <span class="built_in">require</span>(<span class="string">"./People.js"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = People;</span><br></pre></td></tr></table></figure>
+
+<p><em>app.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> modules = <span class="built_in">require</span>(<span class="string">"./modules"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="node-modules目录"><a href="#node-modules目录" class="headerlink" title="node_modules目录"></a>node_modules目录</h3><ul>
+<li>如果当前目录包含名称为<code>node_modules</code>放入目录，则引入的时候不需要写<code>./</code></li>
+</ul>
+<p><em>目录结构</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- app.js</span><br><span class="line">+ node_modules</span><br><span class="line">  - result.js</span><br><span class="line">  + modules</span><br><span class="line">    - index.js</span><br><span class="line">    - file.js</span><br><span class="line">    - People.js</span><br></pre></td></tr></table></figure>
+
+<p><em>app.js</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> modules = <span class="built_in">require</span>(<span class="string">"modules"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="built_in">require</span>(<span class="string">"result.js"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Npm"><a href="#Npm" class="headerlink" title="Npm"></a>Npm</h2><ul>
+<li>Npm是一个Nodejs的模块管理工具，可以<a href="https://www.npmjs.com" target="_blank" rel="noopener">Npm社区</a>查找需要的Nodejs模块，下载并引用</li>
+</ul>
+<p><a href="/2020/09/23/Npm学习笔记/">传送门</a></p>
+<h3 id="下载模块"><a href="#下载模块" class="headerlink" title="下载模块"></a>下载模块</h3><blockquote>
+<p><code>&lt;name&gt;</code>：模块名</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置文件和依赖"><a href="#配置文件和依赖" class="headerlink" title="配置文件和依赖"></a>配置文件和依赖</h3><ul>
+<li>从npm上下载的node_modules目录内容称之为依赖，可以使用<code>package.json</code>文件区管理这些依赖</li>
+</ul>
+<h4 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h4><ul>
+<li><code>package.json</code>配置文件用于管理依赖</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>按需输入表单，什么也不输入就是默认值或留空</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package name: # npm包名</span><br><span class="line">version: # 版本号，默认1.0.0</span><br><span class="line">descripthon: # 描述</span><br><span class="line">entry point: # 入口文件，默认index.js</span><br><span class="line">test command: # 测试命令</span><br><span class="line">git repository: # Git仓库地址</span><br><span class="line">keywords: # 搜索关键字</span><br><span class="line">author: # 作者</span><br><span class="line">license: # 版权协议，默认ISC</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><ul>
+<li>有了身份证后，添加依赖的时候需要<code>--save</code>参数</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过配置文件下载依赖"><a href="#通过配置文件下载依赖" class="headerlink" title="通过配置文件下载依赖"></a>通过配置文件下载依赖</h3><ul>
+<li>在<code>package.json</code>文件同级目录下执行</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1kv411W73u" target="_blank" rel="noopener">哔哩哔哩——Python小清风</a></p>
 
     </div>
 
@@ -437,7 +543,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建服务器"><span class="nav-number">2.</span> <span class="nav-text">创建服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务器"><span class="nav-number">3.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问服务器"><span class="nav-number">4.</span> <span class="nav-text">访问服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置响应类型"><span class="nav-number">5.</span> <span class="nav-text">设置响应类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置响应类型为文字，并设置字符集"><span class="nav-number">5.1.</span> <span class="nav-text">设置响应类型为文字，并设置字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置相应类型为图片"><span class="nav-number">5.2.</span> <span class="nav-text">设置相应类型为图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出语句"><span class="nav-number">6.</span> <span class="nav-text">输出语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#end"><span class="nav-number">6.1.</span> <span class="nav-text">end()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#write"><span class="nav-number">6.2.</span> <span class="nav-text">write()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制台输出"><span class="nav-number">6.3.</span> <span class="nav-text">控制台输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步读取文件"><span class="nav-number">7.</span> <span class="nav-text">异步读取文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取地址栏的地址"><span class="nav-number">8.</span> <span class="nav-text">获取地址栏的地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶层路由设计"><span class="nav-number">9.</span> <span class="nav-text">顶层路由设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟知乎路由设计（案例）"><span class="nav-number">9.1.</span> <span class="nav-text">模拟知乎路由设计（案例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染图片"><span class="nav-number">9.2.</span> <span class="nav-text">渲染图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动渲染所有静态资源"><span class="nav-number">9.3.</span> <span class="nav-text">自动渲染所有静态资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待更"><span class="nav-number">10.</span> <span class="nav-text">未完待更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">11.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">12.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建服务器"><span class="nav-number">2.</span> <span class="nav-text">创建服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务器"><span class="nav-number">3.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问服务器"><span class="nav-number">4.</span> <span class="nav-text">访问服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置响应类型"><span class="nav-number">5.</span> <span class="nav-text">设置响应类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置响应类型为文字，并设置字符集"><span class="nav-number">5.1.</span> <span class="nav-text">设置响应类型为文字，并设置字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置相应类型为图片"><span class="nav-number">5.2.</span> <span class="nav-text">设置相应类型为图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出语句"><span class="nav-number">6.</span> <span class="nav-text">输出语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#end"><span class="nav-number">6.1.</span> <span class="nav-text">end()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#write"><span class="nav-number">6.2.</span> <span class="nav-text">write()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制台输出"><span class="nav-number">6.3.</span> <span class="nav-text">控制台输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步读取文件"><span class="nav-number">7.</span> <span class="nav-text">异步读取文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取地址栏的地址"><span class="nav-number">8.</span> <span class="nav-text">获取地址栏的地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶层路由设计"><span class="nav-number">9.</span> <span class="nav-text">顶层路由设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟知乎路由设计（案例）"><span class="nav-number">9.1.</span> <span class="nav-text">模拟知乎路由设计（案例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染图片"><span class="nav-number">9.2.</span> <span class="nav-text">渲染图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动渲染所有静态资源"><span class="nav-number">9.3.</span> <span class="nav-text">自动渲染所有静态资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块（module）"><span class="nav-number">10.</span> <span class="nav-text">模块（module）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#暴露"><span class="nav-number">10.1.</span> <span class="nav-text">暴露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#exports"><span class="nav-number">10.1.1.</span> <span class="nav-text">exports</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#module-exports"><span class="nav-number">10.1.2.</span> <span class="nav-text">module.exports</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exports与module-exports"><span class="nav-number">10.1.3.</span> <span class="nav-text">exports与module.exports</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用目录"><span class="nav-number">10.2.</span> <span class="nav-text">引用目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-modules目录"><span class="nav-number">10.3.</span> <span class="nav-text">node_modules目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Npm"><span class="nav-number">11.</span> <span class="nav-text">Npm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载模块"><span class="nav-number">11.1.</span> <span class="nav-text">下载模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件和依赖"><span class="nav-number">11.2.</span> <span class="nav-text">配置文件和依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建配置文件"><span class="nav-number">11.2.1.</span> <span class="nav-text">创建配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加依赖"><span class="nav-number">11.3.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过配置文件下载依赖"><span class="nav-number">11.4.</span> <span class="nav-text">通过配置文件下载依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">12.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">13.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -502,16 +608,36 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">637k</span>
+    <span title="站点总字数">644k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">17:41</span>
+    <span title="站点阅读时长">17:54</span>
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
