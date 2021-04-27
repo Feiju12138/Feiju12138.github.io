@@ -25,8 +25,8 @@ const ap = new APlayer({
       lrc: '/media/lrc_03.lrc'
     },
     {
-      name: '卡布奇诺',
-      artist: '6诗人',
+      name: '笑纳',
+      artist: '花僮',
       url: '/media/music_04.mp3',
       cover: '/media/img_04.jpg',
       lrc: '/media/lrc_04.lrc'
@@ -37,13 +37,6 @@ const ap = new APlayer({
       url: '/media/music_05.mp3',
       cover: '/media/img_05.jpg',
       lrc: '/media/lrc_05.lrc'
-    },
-    {
-      name: '笑纳',
-      artist: '花僮',
-      url: '/media/music_06.mp3',
-      cover: '/media/img_06.jpg',
-      lrc: '/media/lrc_06.lrc'
     }
   ]
 });
