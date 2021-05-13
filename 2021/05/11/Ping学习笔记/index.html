@@ -54,19 +54,19 @@
   };
 </script>
 
-  <meta name="description" content="前言Windows根据端口号查看进程">
+  <meta name="description" content="前言ping（呯）是一种计算机网络工具，用来测试数据包能否透过IP协议到达特定主机。ping的运作原理是向目标主机传出一个ICMP的请求回显数据包，并等待接收回显回应数据包。程序会按时间和成功响应的次数估算丢失数据包率（丢包率）和数据包往返时间（网络时延，Round-trip delay time）。（维基百科）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【笔记】Windows根据端口号查看进程">
-<meta property="og:url" content="https://feiju12138.github.io/2020/11/16/Windows%E6%A0%B9%E6%8D%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B/index.html">
+<meta property="og:title" content="【命令】Ping学习笔记">
+<meta property="og:url" content="https://feiju12138.github.io/2021/05/11/Ping%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="绯鞠的博客">
-<meta property="og:description" content="前言Windows根据端口号查看进程">
+<meta property="og:description" content="前言ping（呯）是一种计算机网络工具，用来测试数据包能否透过IP协议到达特定主机。ping的运作原理是向目标主机传出一个ICMP的请求回显数据包，并等待接收回显回应数据包。程序会按时间和成功响应的次数估算丢失数据包率（丢包率）和数据包往返时间（网络时延，Round-trip delay time）。（维基百科）">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-16T11:05:59.000Z">
-<meta property="article:modified_time" content="2021-03-21T09:21:13.867Z">
+<meta property="article:published_time" content="2021-05-11T05:43:07.000Z">
+<meta property="article:modified_time" content="2021-05-11T05:58:43.118Z">
 <meta property="article:author" content="绯鞠">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://feiju12138.github.io/2020/11/16/Windows%E6%A0%B9%E6%8D%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B/">
+<link rel="canonical" href="https://feiju12138.github.io/2021/05/11/Ping%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>【笔记】Windows根据端口号查看进程 | 绯鞠的博客</title>
+  <title>【命令】Ping学习笔记 | 绯鞠的博客</title>
   
 
 
@@ -231,7 +231,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2020/11/16/Windows%E6%A0%B9%E6%8D%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2021/05/11/Ping%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -244,7 +244,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【笔记】Windows根据端口号查看进程
+          【命令】Ping学习笔记
         </h1>
 
         <div class="post-meta">
@@ -253,24 +253,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-16 19:05:59" itemprop="dateCreated datePublished" datetime="2020-11-16T19:05:59+08:00">2020-11-16</time>
+              <time title="创建时间：2021-05-11 13:43:07 / 修改时间：13:58:43" itemprop="dateCreated datePublished" datetime="2021-05-11T13:43:07+08:00">2021-05-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-21 17:21:13" itemprop="dateModified" datetime="2021-03-21T17:21:13+08:00">2021-03-21</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index">
-                    <span itemprop="name">Windows</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
             </span>
@@ -293,18 +287,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Windows根据端口号查看进程</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ping（呯）是一种计算机网络工具，用来测试数据包能否透过IP协议到达特定主机。ping的运作原理是向目标主机传出一个ICMP的请求回显数据包，并等待接收回显回应数据包。程序会按时间和成功响应的次数估算丢失数据包率（丢包率）和数据包往返时间（网络时延，Round-trip delay time）。（<a href="https://zh.wikipedia.org/wiki/Ping" target="_blank" rel="noopener">维基百科</a>）</p>
 <a id="more"></a>
 
-<h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><ul>
-<li>打开<code>CMD</code></li>
-</ul>
-<blockquote>
-<p><code>80</code>：端口号</p>
+<h2 id="探测"><a href="#探测" class="headerlink" title="探测"></a>探测</h2><blockquote>
+<p><code>&lt;ip&gt;</code>：需要探测的IP地址。如果是域名，会自动访问DNS服务器获取IP地址</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr <span class="string">"80"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-l &lt;num&gt;</code>：指定数据包大小（默认阀值65500，通用阀值1471）<br><code>-n</code>：一直探测（Windows）<br><code>-n &lt;num&gt;</code>：制定数据包数量，缺省值4</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping &lt;ip&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1Lf4y1t7Mc" target="_blank" rel="noopener">哔哩哔哩——千锋教育网络安全学院</a></p>
+
     </div>
 
     
@@ -338,16 +333,16 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/11/16/Redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="next" title="【笔记】Redis集群搭建">
-                  <i class="fa fa-chevron-left"></i> 【笔记】Redis集群搭建
+                <a href="/2021/05/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="next" title="【笔记】计算机网络知识点">
+                  <i class="fa fa-chevron-left"></i> 【笔记】计算机网络知识点
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/11/16/Vim%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E6%9C%AC/" rel="prev" title="【笔记】Vim批量修改文本">
-                  【笔记】Vim批量修改文本 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/05/11/Nslookup%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【命令】Nslookup学习笔记">
+                  【命令】Nslookup学习笔记 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -394,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程"><span class="nav-number">2.</span> <span class="nav-text">查看进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">3.</span> <span class="nav-text">完成</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探测"><span class="nav-number">2.</span> <span class="nav-text">探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">3.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -457,13 +452,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">656k</span>
+    <span title="站点总字数">663k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">18:14</span>
+    <span title="站点阅读时长">18:26</span>
 </div>
 
         
