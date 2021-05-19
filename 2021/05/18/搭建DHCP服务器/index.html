@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/rss2.xml" title="绯鞠的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=DroidSansChinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-fill-left.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.3',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言使用WindowsServer2003搭建DHCP服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】搭建DHCP服务器">
+<meta property="og:url" content="https://feiju12138.github.io/2021/05/18/%E6%90%AD%E5%BB%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言使用WindowsServer2003搭建DHCP服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/01.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/02.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/03.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/04.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/05.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/06.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/07.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/08.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/09.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/10.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/11.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/12.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/13.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/14.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/15.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/16.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/17.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/18.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/19.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/20.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/21.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/22.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/23.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/24.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/25.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/26.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/27.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/28.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/29.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/30.png">
+<meta property="og:image" content="https://feiju12138.github.io/images/20210518144631/31.png">
+<meta property="article:published_time" content="2021-05-18T06:46:31.000Z">
+<meta property="article:modified_time" content="2021-05-18T12:26:48.119Z">
+<meta property="article:author" content="绯鞠">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://feiju12138.github.io/images/20210518144631/01.png">
+
+<link rel="canonical" href="https://feiju12138.github.io/2021/05/18/%E6%90%AD%E5%BB%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>【笔记】搭建DHCP服务器 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">绯鞠的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>小猫</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-typesetting">
+
+    <a href="/typesetting" rel="section"><i class="fa fa-fw fa-sitemap"></i>排版</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://feiju12138.github.io/2021/05/18/%E6%90%AD%E5%BB%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】搭建DHCP服务器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-18 14:46:31 / 修改时间：20:26:48" itemprop="dateCreated datePublished" datetime="2021-05-18T14:46:31+08:00">2021-05-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Operation-And-Maintenance/" itemprop="url" rel="index">
+                    <span itemprop="name">Operation And Maintenance</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用WindowsServer2003搭建DHCP服务器</p>
+<a id="more"></a>
+
+<h2 id="WindowsServer2003"><a href="#WindowsServer2003" class="headerlink" title="WindowsServer2003"></a>WindowsServer2003</h2><h3 id="连接WindowsServer2003安装盘"><a href="#连接WindowsServer2003安装盘" class="headerlink" title="连接WindowsServer2003安装盘"></a>连接WindowsServer2003安装盘</h3><ul>
+<li><code>虚拟机</code>-&gt;<code>CD/DVD</code>-&gt;<code>连接CD/DVD</code></li>
+</ul>
+<p><img src="/images/20210518144631/01.png" alt="01.png"></p>
+<h3 id="安装服务器端的软件"><a href="#安装服务器端的软件" class="headerlink" title="安装服务器端的软件"></a>安装服务器端的软件</h3><ul>
+<li><code>安装可选的Windows组件</code></li>
+</ul>
+<p><img src="/images/20210518144631/02.png" alt="02.png"></p>
+<ul>
+<li>双击打开<code>网络服务</code></li>
+</ul>
+<p><img src="/images/20210518144631/03.png" alt="03.png"></p>
+<ul>
+<li>勾选<code>动态主机配置协议（DHCP）</code>-&gt;<code>确定</code></li>
+</ul>
+<p><img src="/images/20210518144631/04.png" alt="04.png"></p>
+<ul>
+<li><code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/05.png" alt="05.png"></p>
+<ul>
+<li><code>确定</code></li>
+</ul>
+<p><img src="/images/20210518144631/06.png" alt="06.png"></p>
+<ul>
+<li><code>Internet协议（TCP/IP）</code>-&gt;<code>属性</code></li>
+</ul>
+<p><img src="/images/20210518144631/07.png" alt="07.png"></p>
+<ul>
+<li>配置服务器的IP地址和子网掩码-&gt;<code>确定</code></li>
+</ul>
+<p><img src="/images/20210518144631/08.png" alt="08.png"></p>
+<ul>
+<li><code>关闭</code></li>
+</ul>
+<p><img src="/images/20210518144631/09.png" alt="09.png"></p>
+<ul>
+<li><code>完成</code></li>
+</ul>
+<p><img src="/images/20210518144631/10.png" alt="10.png"></p>
+<h3 id="检测端口号"><a href="#检测端口号" class="headerlink" title="检测端口号"></a>检测端口号</h3><ul>
+<li>此时会开放UDP的<code>67</code>和<code>68</code>端口</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/20210518144631/11.png" alt="11.png"></p>
+<h3 id="配置DHCP"><a href="#配置DHCP" class="headerlink" title="配置DHCP"></a>配置DHCP</h3><ul>
+<li><code>开始</code>-&gt;<code>所有程序</code>-&gt;<code>管理工具</code>-&gt;<code>DHCP</code></li>
+</ul>
+<p><img src="/images/20210518144631/12.png" alt="12.png"></p>
+<ul>
+<li>右键计算机名-&gt;<code>新建作用域</code></li>
+</ul>
+<p><img src="/images/20210518144631/13.png" alt="13.png"></p>
+<ul>
+<li><code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/14.png" alt="14.png"></p>
+<ul>
+<li>填写<code>名称</code>-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/15.png" alt="15.png"></p>
+<ul>
+<li>填写IP范围和子网掩码-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/16.png" alt="16.png"></p>
+<ul>
+<li>填写IP范围内需要排除的地址，没有可以不写-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/17.png" alt="17.png"></p>
+<ul>
+<li>填写租约-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/18.png" alt="18.png"></p>
+<ul>
+<li>选择<code>是，现在配置这些选项</code>来配置其他配置-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/19.png" alt="19.png"></p>
+<ul>
+<li>配置网关-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/20.png" alt="20.png"></p>
+<ul>
+<li>配置DNS-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/21.png" alt="21.png"></p>
+<ul>
+<li>配置WINS服务器-&gt;直接<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/22.png" alt="22.png"></p>
+<ul>
+<li>选择<code>是，我想现在激活此作用域</code>-&gt;<code>下一步</code></li>
+</ul>
+<p><img src="/images/20210518144631/23.png" alt="23.png"></p>
+<ul>
+<li><code>完成</code></li>
+</ul>
+<p><img src="/images/20210518144631/24.png" alt="24.png"></p>
+<h3 id="关闭-开启DHCP服务器"><a href="#关闭-开启DHCP服务器" class="headerlink" title="关闭/开启DHCP服务器"></a>关闭/开启DHCP服务器</h3><ul>
+<li>右键计算机名-&gt;<code>所有任务</code>-&gt;<code>停止</code>（或<code>启动</code>）</li>
+</ul>
+<p><img src="/images/20210518144631/25.png" alt="25.png"></p>
+<h3 id="保留"><a href="#保留" class="headerlink" title="保留"></a>保留</h3><ul>
+<li><p>当需要DHCP服务器根据MAC地址固定客户机IP地址时，可以使用保留</p>
+</li>
+<li><p>右键<code>保留</code>-&gt;<code>新建保留</code></p>
+</li>
+</ul>
+<p><img src="/images/20210518144631/26.png" alt="26.png"></p>
+<ul>
+<li>编辑保留的信息-&gt;<code>确定</code></li>
+</ul>
+<p><img src="/images/20210518144631/27.png" alt="27.png"></p>
+<h3 id="备份和还原"><a href="#备份和还原" class="headerlink" title="备份和还原"></a>备份和还原</h3><h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><ul>
+<li>右键地址池-&gt;<code>备份</code></li>
+</ul>
+<p><img src="/images/20210518144631/28.png" alt="28.png"></p>
+<ul>
+<li>选择要保存的位置-&gt;<code>确定</code></li>
+</ul>
+<p><img src="/images/20210518144631/29.png" alt="29.png"></p>
+<h4 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h4><ul>
+<li>右键地址池-&gt;<code>还原</code></li>
+</ul>
+<p><img src="/images/20210518144631/30.png" alt="30.png"></p>
+<ul>
+<li>选择备份文件和文件夹的父级目录-&gt;<code>确定</code></li>
+</ul>
+<p><img src="/images/20210518144631/31.png" alt="31.png"></p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1Lf4y1t7Mc" target="_blank" rel="noopener">哔哩哔哩——千锋教育网络安全学院</a></p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    支持
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="绯鞠 微信/QQ/支付宝">
+        <p>微信/QQ/支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/bitcoin.png" alt="绯鞠 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/05/18/Telnet%E6%8A%A5%E9%94%99%EF%BC%9AFailure-in-initializing/" rel="next" title="【踩坑】Telnet报错：Failure in initializing ...">
+                  <i class="fa fa-chevron-left"></i> 【踩坑】Telnet报错：Failure in initializing ...
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/05/18/%E6%94%AF%E6%8C%81%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E7%9A%84Markdown%E4%BB%A3%E7%A0%81%E5%9D%97/" rel="prev" title="【笔记】支持语法高亮的Markdown代码块">
+                  【笔记】支持语法高亮的Markdown代码块 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <link rel="stylesheet" href="/dist/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+        <script type="text/javascript" src="/dist/music.js"></script>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WindowsServer2003"><span class="nav-number">2.</span> <span class="nav-text">WindowsServer2003</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接WindowsServer2003安装盘"><span class="nav-number">2.1.</span> <span class="nav-text">连接WindowsServer2003安装盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装服务器端的软件"><span class="nav-number">2.2.</span> <span class="nav-text">安装服务器端的软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测端口号"><span class="nav-number">2.3.</span> <span class="nav-text">检测端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置DHCP"><span class="nav-number">2.4.</span> <span class="nav-text">配置DHCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭-开启DHCP服务器"><span class="nav-number">2.5.</span> <span class="nav-text">关闭&#x2F;开启DHCP服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留"><span class="nav-number">2.6.</span> <span class="nav-text">保留</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份和还原"><span class="nav-number">2.7.</span> <span class="nav-text">备份和还原</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#备份"><span class="nav-number">2.7.1.</span> <span class="nav-text">备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还原"><span class="nav-number">2.7.2.</span> <span class="nav-text">还原</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">3.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="绯鞠"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Feiju12138" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Feiju12138" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=903749471&site=qq&menu=yes" title="QQ &amp;rarr; http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;903749471&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:feijuxiaogege@icloud.com" title="E-Mail &amp;rarr; mailto:feijuxiaogege@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <!-- 雪花飞舞特效 -->
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/snow.js"></script>
+    <style type="text/css">
+      .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+    </style>
+    <div class="snow-container"></div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">绯鞠</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">685k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">19:02</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <!--网站运行时间统计-->
+        <span id="sitetime"></span>
+        <script language="javascript">
+          function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year - 作为date对象的年份，为4位年份值
+            month - 0-11之间的整数，做为date对象的月份
+            day - 1-31之间的整数，做为date对象的天数
+            hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes - 0-59之间的整数，做为date对象的分钟数
+            seconds - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+                */
+            var t1 = Date.UTC(2019,11,22,15,53,18); //北京时间2018-2-13 00:00:00
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML=" 本站已稳定运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+          }
+          siteTime();
+        </script>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
