@@ -545,14 +545,23 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">691k</span>
+    <span title="站点总字数">695k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">19:12</span>
+    <span title="站点阅读时长">19:18</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -675,7 +684,7 @@
 if (document.querySelectorAll('pre.mermaid').length) {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
     mermaid.initialize({
-      theme: 'default',
+      theme: 'forest',
       logLevel: 3,
       flowchart: { curve: 'linear' },
       gantt: { axisFormat: '%m/%d/%Y' },
