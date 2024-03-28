@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2023/07/26/Harbor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2023/07/26/Harbor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2023/07/26/Harbor学习笔记/","title":"【英文】Harbor学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Harbor学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-number">1.</span> <span class="nav-text">Foreword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-number">2.</span> <span class="nav-text">Preparation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-the-automatic-installation-program"><span class="nav-number">3.</span> <span class="nav-text">Download the automatic installation program</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modify-the-configuration-file"><span class="nav-number">4.</span> <span class="nav-text">Modify the configuration file</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-a-copy-of-the-configuration-file"><span class="nav-number">4.1.</span> <span class="nav-text">Make a copy of the configuration file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modify-the-configuration-file-1"><span class="nav-number">4.2.</span> <span class="nav-text">Modify the configuration file</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Specify-the-server-address"><span class="nav-number">4.2.1.</span> <span class="nav-text">Specify the server address</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-HTTPS-support"><span class="nav-number">4.2.2.</span> <span class="nav-text">Remove HTTPS support</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-the-Harbor-password"><span class="nav-number">4.2.3.</span> <span class="nav-text">Set the Harbor password</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Automatically-deploy-Harbor"><span class="nav-number">5.</span> <span class="nav-text">Automatically deploy Harbor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-login"><span class="nav-number">6.</span> <span class="nav-text">First login</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-new-image-repository"><span class="nav-number">7.</span> <span class="nav-text">Create a new image repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Push-the-image-to-the-repository"><span class="nav-number">8.</span> <span class="nav-text">Push the image to the repository</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-the-image-repository-address"><span class="nav-number">8.1.</span> <span class="nav-text">Configure the image repository address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restart-the-Docker-service"><span class="nav-number">8.2.</span> <span class="nav-text">Restart the Docker service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rename-the-image-name"><span class="nav-number">8.3.</span> <span class="nav-text">Rename the image name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-in-to-the-image-repository"><span class="nav-number">8.4.</span> <span class="nav-text">Log in to the image repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Push-the-image"><span class="nav-number">8.5.</span> <span class="nav-text">Push the image</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pull-the-image"><span class="nav-number">9.</span> <span class="nav-text">Pull the image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-in-to-the-image-repository-1"><span class="nav-number">9.1.</span> <span class="nav-text">Log in to the image repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pull-the-image-1"><span class="nav-number">9.2.</span> <span class="nav-text">Pull the image</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Done"><span class="nav-number">10.</span> <span class="nav-text">Done</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">11.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2023/07/26/Harbor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Harbor学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Harbor学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-07-26 17:58:25" itemprop="dateCreated datePublished" datetime="2023-07-26T17:58:25+00:00">2023-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>Deploy the Harbor service of VMWare company through Docker to achieve a private Docker image repository.</p>
+<span id="more"></span>
+
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><ul>
+<li>docker</li>
+<li>docker-compose</li>
+</ul>
+<h2 id="Download-the-automatic-installation-program"><a href="#Download-the-automatic-installation-program" class="headerlink" title="Download the automatic installation program"></a>Download the automatic installation program</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor">https://github.com/goharbor/harbor</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/goharbor/harbor/releases/download/v2.8.2/harbor-offline-installer-v2.8.2.tgz</span><br><span class="line">tar -zxvf harbor-offline-installer-v2.8.2.tgz</span><br><span class="line">rm harbor-offline-installer-v2.8.2.tgz</span><br><span class="line">cd harbor</span><br></pre></td></tr></table></figure>
+
+<h2 id="Modify-the-configuration-file"><a href="#Modify-the-configuration-file" class="headerlink" title="Modify the configuration file"></a>Modify the configuration file</h2><h3 id="Make-a-copy-of-the-configuration-file"><a href="#Make-a-copy-of-the-configuration-file" class="headerlink" title="Make a copy of the configuration file"></a>Make a copy of the configuration file</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp harbor.yml.tmpl harbor.yml</span><br></pre></td></tr></table></figure>
+
+<h3 id="Modify-the-configuration-file-1"><a href="#Modify-the-configuration-file-1" class="headerlink" title="Modify the configuration file"></a>Modify the configuration file</h3><h4 id="Specify-the-server-address"><a href="#Specify-the-server-address" class="headerlink" title="Specify the server address"></a>Specify the server address</h4><ul>
+<li>Specify the IP address or domain name of the current server, do not use 127.0.0.1, because Harbor will be deployed in a Docker container</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>harbor.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname: 192.168.0.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="Remove-HTTPS-support"><a href="#Remove-HTTPS-support" class="headerlink" title="Remove HTTPS support"></a>Remove HTTPS support</h4><ul>
+<li>Comment out all configurations that support HTTPS as there is no certificate during the testing phase and HTTPS is not used</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">https:</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">https port <span class="keyword">for</span> harbor, default is 443</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">port: 443</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">The path of cert and key files <span class="keyword">for</span> nginx</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">certificate: /your/certificate/path</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">private_key: /your/private/key/path</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Set-the-Harbor-password"><a href="#Set-the-Harbor-password" class="headerlink" title="Set the Harbor password"></a>Set the Harbor password</h4><ul>
+<li>Modify the password, the default password is <code>Harbor12345</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">harbor_admin_password: Harbor12345</span><br></pre></td></tr></table></figure>
+
+<h2 id="Automatically-deploy-Harbor"><a href="#Automatically-deploy-Harbor" class="headerlink" title="Automatically deploy Harbor"></a>Automatically deploy Harbor</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="First-login"><a href="#First-login" class="headerlink" title="First login"></a>First login</h2><ul>
+<li>Access port 80 to enter the Harbor login page, the default username is <code>admin</code>, and the default password is <code>Harbor12345</code></li>
+</ul>
+<p><img src="/images/20230726175825/01.webp"></p>
+<h2 id="Create-a-new-image-repository"><a href="#Create-a-new-image-repository" class="headerlink" title="Create a new image repository"></a>Create a new image repository</h2><p><img src="/images/20230726175825/03.webp"></p>
+<h2 id="Push-the-image-to-the-repository"><a href="#Push-the-image-to-the-repository" class="headerlink" title="Push the image to the repository"></a>Push the image to the repository</h2><h3 id="Configure-the-image-repository-address"><a href="#Configure-the-image-repository-address" class="headerlink" title="Configure the image repository address"></a>Configure the image repository address</h3><ul>
+<li>If there is no <code>daemon.json</code> file in the <code>/etc/docker/</code> directory, create a new one</li>
+</ul>
+<blockquote>
+<p><code>192.168.0.1:80</code>: Address of Harbor</p>
+</blockquote>
+<figure class="highlight json"><figcaption><span>/etc/docker/daemon.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;192.168.0.1:80&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Restart-the-Docker-service"><a href="#Restart-the-Docker-service" class="headerlink" title="Restart the Docker service"></a>Restart the Docker service</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rename-the-image-name"><a href="#Rename-the-image-name" class="headerlink" title="Rename the image name"></a>Rename the image name</h3><ul>
+<li>Rename the docker image name in the format of <code>Harbor address/project name/image name:version</code></li>
+</ul>
+<blockquote>
+<p><code>&lt;id&gt;</code>: Image ID or container name<br><code>192.168.0.1:80</code>: Address of Harbor</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag &lt;id&gt; 192.168.0.1:80/demo/demo:v1.0.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="Log-in-to-the-image-repository"><a href="#Log-in-to-the-image-repository" class="headerlink" title="Log in to the image repository"></a>Log in to the image repository</h3><blockquote>
+<p><code>admin</code>: Harbor username<br><code>Harbor12345</code>: Harbor password<br><code>192.168.0.1:80</code>: Address of Harbor</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login -u admin -p Harbor12345 192.168.0.1:80</span><br></pre></td></tr></table></figure>
+
+<h3 id="Push-the-image"><a href="#Push-the-image" class="headerlink" title="Push the image"></a>Push the image</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push 192.168.0.1:80/demo/demo:v1.0.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pull-the-image"><a href="#Pull-the-image" class="headerlink" title="Pull the image"></a>Pull the image</h2><h3 id="Log-in-to-the-image-repository-1"><a href="#Log-in-to-the-image-repository-1" class="headerlink" title="Log in to the image repository"></a>Log in to the image repository</h3><ul>
+<li>If it is a public repository, there is no need to log in</li>
+</ul>
+<blockquote>
+<p><code>admin</code>: Harbor username<br><code>Harbor12345</code>: Harbor password<br><code>192.168.0.1:80</code>: Address of Harbor</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login -u admin -p Harbor12345 192.168.0.1:80</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pull-the-image-1"><a href="#Pull-the-image-1" class="headerlink" title="Pull the image"></a>Pull the image</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 192.168.0.1:80:8083/demo/demo:v1.0.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="Done"><a href="#Done" class="headerlink" title="Done"></a>Done</h2><ul>
+<li>Screenshot commemoration</li>
+</ul>
+<p><img src="/images/20230726175825/02.webp"></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="/302.html?target=https://www.bilibili.com/video/BV17x4y1o75G/">Bilibili - Cloud Native Technology Architecture</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/Harbor/" rel="tag"># Harbor</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/07/26/Harbor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】Harbor学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】Harbor学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/07/27/Docker%E5%AE%B9%E5%99%A8%E5%86%85%E9%83%A8%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84docker%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9CDocker/" rel="next" title="【笔记】Docker容器内部使用宿主机的docker命令操作Docker">
+                  【笔记】Docker容器内部使用宿主机的docker命令操作Docker <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2023/07/26/Harbor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2023/07/26/Harbor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

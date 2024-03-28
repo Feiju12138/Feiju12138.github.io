@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2021/03/24/Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2021/03/24/Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2021/03/24/Canvas学习笔记/","title":"【英文】Canvas学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Canvas学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-a-Canvas-tag"><span class="nav-number">2.</span> <span class="nav-text">Creating a Canvas tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">3.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawing-context-object"><span class="nav-number">4.</span> <span class="nav-text">Drawing context object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pixelation-of-Canvas"><span class="nav-number">5.</span> <span class="nav-text">Pixelation of Canvas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation-concept-in-Canvas"><span class="nav-number">6.</span> <span class="nav-text">Animation concept in Canvas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-Canvas-animation-using-object-oriented-programming"><span class="nav-number">7.</span> <span class="nav-text">Implementing Canvas animation using object-oriented programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas-API"><span class="nav-number">8.</span> <span class="nav-text">Canvas API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fill-shape"><span class="nav-number">8.1.</span> <span class="nav-text">Fill shape</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-color"><span class="nav-number">8.1.1.</span> <span class="nav-text">Set color</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fill-rectangle"><span class="nav-number">8.1.2.</span> <span class="nav-text">Fill rectangle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Draw-shape"><span class="nav-number">8.2.</span> <span class="nav-text">Draw shape</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-color-1"><span class="nav-number">8.2.1.</span> <span class="nav-text">Set color</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Draw-rectangle"><span class="nav-number">8.2.2.</span> <span class="nav-text">Draw rectangle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clear-screen"><span class="nav-number">8.3.</span> <span class="nav-text">Clear screen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Draw-path"><span class="nav-number">8.4.</span> <span class="nav-text">Draw path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arc"><span class="nav-number">8.5.</span> <span class="nav-text">Arc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-transparency"><span class="nav-number">8.6.</span> <span class="nav-text">Set transparency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Line-type"><span class="nav-number">8.7.</span> <span class="nav-text">Line type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-thickness"><span class="nav-number">8.7.1.</span> <span class="nav-text">Set thickness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-end-shape"><span class="nav-number">8.7.2.</span> <span class="nav-text">Set end shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-join-shape"><span class="nav-number">8.7.3.</span> <span class="nav-text">Set join shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-dashed-line"><span class="nav-number">8.7.4.</span> <span class="nav-text">Set dashed line</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Starting-offset"><span class="nav-number">8.7.5.</span> <span class="nav-text">Starting offset</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Draw-text"><span class="nav-number">8.8.</span> <span class="nav-text">Draw text</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-font"><span class="nav-number">8.8.1.</span> <span class="nav-text">Set font</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Draw-text-1"><span class="nav-number">8.8.2.</span> <span class="nav-text">Draw text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-text-alignment"><span class="nav-number">8.8.3.</span> <span class="nav-text">Set text alignment</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas%E7%9A%84API"><span class="nav-number">9.</span> <span class="nav-text">Canvas的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E5%9B%BE%E5%BD%A2"><span class="nav-number">9.1.</span> <span class="nav-text">填充图形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2"><span class="nav-number">9.1.1.</span> <span class="nav-text">设置颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E7%9F%A9%E5%BD%A2"><span class="nav-number">9.1.2.</span> <span class="nav-text">填充矩形</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2"><span class="nav-number">9.2.</span> <span class="nav-text">绘制图形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2-1"><span class="nav-number">9.2.1.</span> <span class="nav-text">设置颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E7%9F%A9%E5%BD%A2"><span class="nav-number">9.2.2.</span> <span class="nav-text">绘制矩形</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E5%B1%8F"><span class="nav-number">9.3.</span> <span class="nav-text">清屏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E8%B7%AF%E5%BE%84"><span class="nav-number">9.4.</span> <span class="nav-text">绘制路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%86%E5%BC%A7"><span class="nav-number">9.5.</span> <span class="nav-text">圆弧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="nav-number">9.6.</span> <span class="nav-text">设置透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E5%9E%8B"><span class="nav-number">9.7.</span> <span class="nav-text">线型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B2%97%E7%BB%86"><span class="nav-number">9.7.1.</span> <span class="nav-text">设置粗细</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%AB%E7%AB%AF%E7%9A%84%E5%BD%A2%E7%8A%B6"><span class="nav-number">9.8.</span> <span class="nav-text">设置末端的形状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%9B%B8%E8%BF%9E%E9%83%A8%E5%88%86%E7%9A%84%E5%BD%A2%E7%8A%B6"><span class="nav-number">9.9.</span> <span class="nav-text">设置相连部分的形状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%99%9A%E7%BA%BF"><span class="nav-number">9.10.</span> <span class="nav-text">设置虚线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%B7%E5%A7%8B%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">9.10.1.</span> <span class="nav-text">起始偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC"><span class="nav-number">9.11.</span> <span class="nav-text">绘制文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%BB%E7%AC%94"><span class="nav-number">9.11.1.</span> <span class="nav-text">设置画笔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC-1"><span class="nav-number">9.11.2.</span> <span class="nav-text">绘制文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%96%87%E6%9C%AC%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="nav-number">9.11.3.</span> <span class="nav-text">设置文本对齐方式</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2021/03/24/Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Canvas学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Canvas学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-24 22:21:39" itemprop="dateCreated datePublished" datetime="2021-03-24T22:21:39+00:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The Canvas tag can be used to draw graphics with JavaScript.</p>
+<span id="more"></span>
+
+<h2 id="Creating-a-Canvas-tag"><a href="#Creating-a-Canvas-tag" class="headerlink" title="Creating a Canvas tag"></a>Creating a Canvas tag</h2><ul>
+<li>Compatibility issue, only unsupported browsers will see the internal text in the Canvas tag, mainly targeting IE6, IE7, IE8</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span>&gt;</span>Your current browser version is not supported, please upgrade your browser<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><ul>
+<li>Canvas width and height</li>
+<li>Do not use CSS to set the width and height, as using CSS will stretch the canvas, causing it to distort</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">&quot;&quot;</span> <span class="attr">height</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Drawing-context-object"><a href="#Drawing-context-object" class="headerlink" title="Drawing context object"></a>Drawing context object</h2><blockquote>
+<p><code>2d</code>: There are two contexts, 2d and 3d</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pixelation-of-Canvas"><a href="#Pixelation-of-Canvas" class="headerlink" title="Pixelation of Canvas"></a>Pixelation of Canvas</h2><ul>
+<li>When we use Canvas to draw a shape, the Canvas will pixelate the shape. The Canvas does not have the ability to change the content already on the canvas, which is why Canvas is lightweight.</li>
+</ul>
+<h2 id="Animation-concept-in-Canvas"><a href="#Animation-concept-in-Canvas" class="headerlink" title="Animation concept in Canvas"></a>Animation concept in Canvas</h2><ul>
+<li>If we want the shape drawn in Canvas to move, we must program according to the logic of <code>clear</code> -&gt; <code>update</code> -&gt; <code>render</code>, in short, it is to redraw the shape</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the canvas</span></span><br><span class="line"><span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line"><span class="comment">// Get the context of the canvas, there are two contexts, 2d context and 3d context</span></span><br><span class="line"><span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line"><span class="comment">// Semaphore</span></span><br><span class="line"><span class="keyword">let</span> left = <span class="number">100</span>;</span><br><span class="line"><span class="comment">// Animation process</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// Clear the canvas</span></span><br><span class="line">  ctx.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, canvas.<span class="property">width</span>, canvas.<span class="property">height</span>);</span><br><span class="line">  <span class="comment">// Update the semaphore</span></span><br><span class="line">  left += <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// Draw a rectangle</span></span><br><span class="line">  ctx.<span class="title function_">fillRect</span>(left, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">&#125;, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Implementing-Canvas-animation-using-object-oriented-programming"><a href="#Implementing-Canvas-animation-using-object-oriented-programming" class="headerlink" title="Implementing Canvas animation using object-oriented programming"></a>Implementing Canvas animation using object-oriented programming</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the canvas</span></span><br><span class="line"><span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line"><span class="comment">// Get the context of the canvas, there are two contexts, 2d context and 3d context</span></span><br><span class="line"><span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line"><span class="comment">// Constructor function</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Rect</span>(<span class="params">x, y, w, h, color</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">x</span> = x;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">y</span> = y;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">w</span> = w;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">h</span> = h;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">color</span> = color;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Update function</span></span><br><span class="line"><span class="title class_">Rect</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">update</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">x</span> += <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Render function</span></span><br><span class="line"><span class="title class_">Rect</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">render</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// Set color</span></span><br><span class="line">  ctx.<span class="property">fillStyle</span> = <span class="variable language_">this</span>.<span class="property">color</span>;</span><br><span class="line">  <span class="comment">// Render</span></span><br><span class="line">  ctx.<span class="title function_">fillRect</span>(<span class="variable language_">this</span>.<span class="property">x</span>, <span class="variable language_">this</span>.<span class="property">y</span>, <span class="variable language_">this</span>.<span class="property">w</span>, <span class="variable language_">this</span>.<span class="property">h</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Instantiate</span></span><br><span class="line"><span class="keyword">let</span> r1 = <span class="keyword">new</span> <span class="title class_">Rect</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="string">&quot;black&quot;</span>);</span><br><span class="line"><span class="comment">// Animation process</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// Clear the screen</span></span><br><span class="line">  ctx.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, canvas.<span class="property">width</span>, canvas.<span class="property">height</span>);</span><br><span class="line">  <span class="comment">// Call the update function</span></span><br><span class="line">  r1.<span class="title function_">update</span>();</span><br><span class="line">  <span class="comment">// Call the render function</span></span><br><span class="line">  r1.<span class="title function_">render</span>();</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Canvas-API"><a href="#Canvas-API" class="headerlink" title="Canvas API"></a>Canvas API</h2><h3 id="Fill-shape"><a href="#Fill-shape" class="headerlink" title="Fill shape"></a>Fill shape</h3><h4 id="Set-color"><a href="#Set-color" class="headerlink" title="Set color"></a>Set color</h4><ul>
+<li>Color must be set before drawing shapes</li>
+</ul>
+<blockquote>
+<p><code>&lt;color&gt;</code>: Color name</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Fill-rectangle"><a href="#Fill-rectangle" class="headerlink" title="Fill rectangle"></a>Fill rectangle</h4><blockquote>
+<p><code>&lt;x&gt;</code>: Horizontal coordinate of the shape from the origin (top left corner)<br><code>&lt;y&gt;</code>: Vertical coordinate of the shape from the origin (top left corner)<br><code>&lt;w&gt;</code>: Length of the rectangle<br><code>&lt;h&gt;</code>: Width of the rectangle</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">fillRect</span>(&lt;x&gt;, &lt;y&gt;, &lt;w&gt;, &lt;h&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Draw-shape"><a href="#Draw-shape" class="headerlink" title="Draw shape"></a>Draw shape</h3><h4 id="Set-color-1"><a href="#Set-color-1" class="headerlink" title="Set color"></a>Set color</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">strokeStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Draw-rectangle"><a href="#Draw-rectangle" class="headerlink" title="Draw rectangle"></a>Draw rectangle</h4><ul>
+<li>Draw the border of the rectangle</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">strokeRect</span>(&lt;x&gt;, &lt;y&gt;, &lt;w&gt;, &lt;h&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Clear-screen"><a href="#Clear-screen" class="headerlink" title="Clear screen"></a>Clear screen</h3><blockquote>
+<p><code>&lt;w&gt;</code>: Length range to clear<br><code>&lt;h&gt;</code>: Width range to clear</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">clearRect</span>(&lt;x&gt;, &lt;y&gt;, &lt;w&gt;, &lt;h&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Draw-path"><a href="#Draw-path" class="headerlink" title="Draw path"></a>Draw path</h3><ul>
+<li>The purpose of drawing a path is to set an irregular polygon state. Paths are closed, and a certain sequence of steps must be followed when using paths for drawing.</li>
+</ul>
+<ol>
+<li>Set the starting point of the path</li>
+<li>Use drawing commands to draw the path</li>
+<li>Close the path</li>
+<li>Fill or draw the closed path shape</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a path</span></span><br><span class="line">ctx.<span class="title function_">beginPath</span>();</span><br><span class="line"><span class="comment">// Move to the drawing point</span></span><br><span class="line">ctx.<span class="title function_">moveTo</span>(&lt;x&gt;, &lt;y&gt;);</span><br><span class="line"><span class="comment">// Describe the path</span></span><br><span class="line">ctx.<span class="title function_">lineTo</span>(&lt;x&gt;, &lt;y&gt;);</span><br><span class="line">ctx.<span class="title function_">lineTo</span>(&lt;x&gt;, &lt;y&gt;); <span class="comment">// The path can be described multiple times</span></span><br><span class="line"><span class="comment">// Close the path</span></span><br><span class="line">ctx.<span class="title function_">closePath</span>();</span><br><span class="line"><span class="comment">// Draw irregular shape</span></span><br><span class="line">ctx.<span class="property">strokeStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// Set color (optional)</span></span><br><span class="line">ctx.<span class="title function_">stroke</span>();</span><br><span class="line"><span class="comment">// Fill shape (optional)</span></span><br><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// Set color (optional)</span></span><br><span class="line">ctx.<span class="title function_">fill</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Automatic closure</li>
+</ul>
+<p>For stroke, if closePath() is not used to close the drawing, the border will not automatically close<br>For fill, if closePath() is not used to close, the shape will automatically close</p>
+<h3 id="Arc"><a href="#Arc" class="headerlink" title="Arc"></a>Arc</h3><blockquote>
+<p><code>&lt;x&gt;</code>: Horizontal coordinate of the center<br><code>&lt;y&gt;</code>: Vertical coordinate of the center<br><code>&lt;radius&gt;</code>: Radius<br><code>&lt;startAngle&gt;</code>: Starting position. If it is a number, it represents the arc of the circle<br><code>&lt;endAngle&gt;</code>: Ending position. If it is a number, it represents the arc of the circle. When the value is <code>2*Math.PI</code>, <code>2*3.14</code>, or <code>7</code>, it represents a complete circle<br><code>anticlockwise</code>: Clockwise or counterclockwise state, true for clockwise, false for counterclockwise</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">beginPath</span>();</span><br><span class="line">ctx.<span class="title function_">arc</span>(&lt;x&gt;, &lt;y&gt;, &lt;radius&gt;, &lt;startAngle&gt;, &lt;endAngle&gt;, &lt;anticlockwise&gt;);</span><br><span class="line"><span class="comment">// Draw irregular shape</span></span><br><span class="line">ctx.<span class="property">strokeStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// Set color (optional)</span></span><br><span class="line">ctx.<span class="title function_">stroke</span>();</span><br><span class="line"><span class="comment">// Fill shape (optional)</span></span><br><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// Set color (optional)</span></span><br><span class="line">ctx.<span class="title function_">fill</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Set-transparency"><a href="#Set-transparency" class="headerlink" title="Set transparency"></a>Set transparency</h3><blockquote>
+<p><code>&lt;num&gt;</code>: A number between 1 and 0, 1 for opaque, 0 for transparent</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">globalAlpha</span> = &lt;num&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Line-type"><a href="#Line-type" class="headerlink" title="Line type"></a>Line type</h3><h4 id="Set-thickness"><a href="#Set-thickness" class="headerlink" title="Set thickness"></a>Set thickness</h4><blockquote>
+<p><code>&lt;num&gt;</code>: Thickness value, default is 1.0, representing 1 pixel</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">lineWidth</span> = &lt;num&gt;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Set-end-shape"><a href="#Set-end-shape" class="headerlink" title="Set end shape"></a>Set end shape</h4><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>butt</code>: Default value, end in square shape<br><code>round</code>: End in round shape<br><code>square</code>: End in square shape, but with an additional rectangle about 1&#x2F;2 the thickness of the line in height</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">lineCap</span> = <span class="string">&quot;&lt;value&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Set-join-shape"><a href="#Set-join-shape" class="headerlink" title="Set join shape"></a>Set join shape</h4><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>round</code>: Join shape is rounded<br><code>bevel</code>: Join shape is beveled<br><code>miter</code>: Default value, join shape is a sharp angle</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">line</span> = <span class="string">&quot;&lt;value&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Set-dashed-line"><a href="#Set-dashed-line" class="headerlink" title="Set dashed line"></a>Set dashed line</h4><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>[a,b]</code></p>
+<blockquote>
+<p><code>a</code>: Length of the line<br><code>b</code>: Distance of gap</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">setLineDash</span>(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Starting-offset"><a href="#Starting-offset" class="headerlink" title="Starting offset"></a>Starting offset</h4><blockquote>
+<p><code>&lt;value&gt;</code>: Offset value</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">lineDashOffset</span> = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Draw-text"><a href="#Draw-text" class="headerlink" title="Draw text"></a>Draw text</h3><h4 id="Set-font"><a href="#Set-font" class="headerlink" title="Set font"></a>Set font</h4><blockquote>
+<p><code>&lt;size&gt;</code>: Font size, in pixels<br><code>&lt;family&gt;</code>: Font name</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">font</span> = <span class="string">&quot;&lt;size&gt; &lt;family&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Draw-text-1"><a href="#Draw-text-1" class="headerlink" title="Draw text"></a>Draw text</h4><blockquote>
+<p><code>&lt;str&gt;</code>: Text content<br><code>&lt;x&gt;</code>: Horizontal position of the text<br><code>&lt;x&gt;</code>: Vertical position of the text</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">fillText</span>(&lt;str&gt;, &lt;x&gt;, &lt;y&gt;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Set-text-alignment"><a href="#Set-text-alignment" class="headerlink" title="Set text alignment"></a>Set text alignment</h4><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>left</code>: Align text to the left based on the x-axis</p>
+</blockquote>
+</blockquote>
+<h2 id="Canvas的API"><a href="#Canvas的API" class="headerlink" title="Canvas的API"></a>Canvas的API</h2><h3 id="填充图形"><a href="#填充图形" class="headerlink" title="填充图形"></a>填充图形</h3><h4 id="设置颜色"><a href="#设置颜色" class="headerlink" title="设置颜色"></a>设置颜色</h4><ul>
+<li>颜色要先设置，再绘制图形</li>
+</ul>
+<blockquote>
+<p><code>&lt;color&gt;</code>: 颜色名称</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="填充矩形"><a href="#填充矩形" class="headerlink" title="填充矩形"></a>填充矩形</h4><blockquote>
+<p><code>&lt;x&gt;</code>: 图形距离原点（左上角）的横坐标<br><code>&lt;y&gt;</code>: 图形距离原点（左上角）的纵坐标<br><code>&lt;w&gt;</code>: 矩形的长<br><code>&lt;h&gt;</code>: 矩形的宽</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">fillRect</span>(&lt;x&gt;, &lt;y&gt;, &lt;w&gt;, &lt;h&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h3><h4 id="设置颜色-1"><a href="#设置颜色-1" class="headerlink" title="设置颜色"></a>设置颜色</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">strokeStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h4><ul>
+<li>绘制矩形边框</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">strokeRect</span>(&lt;x&gt;, &lt;y&gt;, &lt;w&gt;, &lt;h&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a>清屏</h3><blockquote>
+<p><code>&lt;w&gt;</code>: 清屏的长范围<br><code>&lt;d&gt;</code>: 清屏的宽范围</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">clearRect</span>(&lt;x&gt;, &lt;y&gt;, &lt;w&gt;, &lt;h&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><ul>
+<li>绘制路径目的是设置一个不规则的多边形状态，路径都是闭合的，使用路径进行绘制的时候需要既定的步骤</li>
+</ul>
+<ol>
+<li>设置路径的起点</li>
+<li>使用画图命令，画出路径</li>
+<li>关闭封闭路径</li>
+<li>填充或者绘制已经封闭路径的形状</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个路径</span></span><br><span class="line">ctx.<span class="title function_">beginPath</span>();</span><br><span class="line"><span class="comment">// 移动绘制点</span></span><br><span class="line">ctx.<span class="title function_">moveTo</span>(&lt;x&gt;, &lt;y&gt;);</span><br><span class="line"><span class="comment">// 描述行进路径</span></span><br><span class="line">ctx.<span class="title function_">lineTo</span>(&lt;x&gt;, &lt;y&gt;);</span><br><span class="line">ctx.<span class="title function_">lineTo</span>(&lt;x&gt;, &lt;y&gt;); <span class="comment">// 行进路径可以多次描述</span></span><br><span class="line"><span class="comment">// 封闭路径</span></span><br><span class="line">ctx.<span class="title function_">closePath</span>();</span><br><span class="line"><span class="comment">// 绘制不规则图形</span></span><br><span class="line">ctx.<span class="property">strokeStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// 设置颜色（可选）</span></span><br><span class="line">ctx.<span class="title function_">stroke</span>();</span><br><span class="line"><span class="comment">// 填充图形（可选）</span></span><br><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// 设置颜色（可选）</span></span><br><span class="line">ctx.<span class="title function_">fill</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自动封闭</li>
+</ul>
+<p>对于stroke，如果不使用closePath()封闭绘制，则边框不会自动封闭<br>对于fill，如果不使用closePath()封闭填充，则图形会自动封闭</p>
+<h3 id="圆弧"><a href="#圆弧" class="headerlink" title="圆弧"></a>圆弧</h3><blockquote>
+<p><code>&lt;x&gt;</code>: 圆心横坐标<br><code>&lt;y&gt;</code>: 圆心纵坐标<br><code>&lt;radius&gt;</code>: 半径<br><code>&lt;startAngle&gt;</code>: 开始位置，如果是数字表示圆的弧度<br><code>&lt;endAngle&gt;</code>: 结束位置，如果是数字表示圆的弧度，值为<code>2*Math.PI</code>、<code>2*3.14</code>、<code>7</code>时表示一个完整的圆<br><code>anticlockwise</code>: 顺时针或逆时针状态，true表示顺时针，false表示逆时针</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">beginPath</span>();</span><br><span class="line">ctx.<span class="title function_">art</span>(&lt;x&gt;, &lt;y&gt;, &lt;radius&gt;, &lt;startAngle&gt;, &lt;endAngle&gt;, &lt;anticlockwise&gt;);</span><br><span class="line"><span class="comment">// 绘制不规则图形</span></span><br><span class="line">ctx.<span class="property">strokeStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// 设置颜色（可选）</span></span><br><span class="line">ctx.<span class="title function_">stroke</span>();</span><br><span class="line"><span class="comment">// 填充图形（可选）</span></span><br><span class="line">ctx.<span class="property">fillStyle</span> = <span class="string">&quot;&lt;color&gt;&quot;</span>; <span class="comment">// 设置颜色（可选）</span></span><br><span class="line">ctx.<span class="title function_">fill</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置透明度"><a href="#设置透明度" class="headerlink" title="设置透明度"></a>设置透明度</h3><blockquote>
+<p><code>&lt;num&gt;</code>: 1~0之间的数，1为不透明，0为透明</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">globalAlpha</span> = &lt;num&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线型"><a href="#线型" class="headerlink" title="线型"></a>线型</h3><h4 id="设置粗细"><a href="#设置粗细" class="headerlink" title="设置粗细"></a>设置粗细</h4><blockquote>
+<p><code>&lt;num&gt;</code>: 粗细值，默认为1.0，表示1像素</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">lineWidth</span> = &lt;num&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置末端的形状"><a href="#设置末端的形状" class="headerlink" title="设置末端的形状"></a>设置末端的形状</h3><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>butt</code>: 缺省值，末端以方形结束<br><code>round</code>: 末端以圆形结束<br><code>square</code>: 末端以方形结束，但是增加了一个__宽度是线段相同，高度是线段厚度一半__的矩形区域</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">lineCap</span> = <span class="string">&quot;&lt;value&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置相连部分的形状"><a href="#设置相连部分的形状" class="headerlink" title="设置相连部分的形状"></a>设置相连部分的形状</h3><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>round</code>: 相连部分为圆角<br><code>bevel</code>: 相连部分为平角<br><code>miter</code>: 缺省值，相连部分为尖角</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">line</span> = <span class="string">&quot;&lt;value&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置虚线"><a href="#设置虚线" class="headerlink" title="设置虚线"></a>设置虚线</h3><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>[a,b]</code></p>
+<blockquote>
+<p><code>a</code>: 线的长度<br><code>b</code>: 空的距离</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">setLineDash</span>(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="起始偏移量"><a href="#起始偏移量" class="headerlink" title="起始偏移量"></a>起始偏移量</h4><blockquote>
+<p><code>&lt;value&gt;</code>: 偏移量值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">lineDashOffset</span> = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h3><h4 id="设置画笔"><a href="#设置画笔" class="headerlink" title="设置画笔"></a>设置画笔</h4><blockquote>
+<p><code>&lt;size&gt;</code>: 字号，单位px<br><code>&lt;family&gt;</code> : 字体名</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">font</span> = <span class="string">&quot;&lt;size&gt; &lt;family&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="绘制文本-1"><a href="#绘制文本-1" class="headerlink" title="绘制文本"></a>绘制文本</h4><blockquote>
+<p><code>&lt;str&gt;</code>: 文本内容<br><code>&lt;x&gt;</code>: 文本位置横坐标<br><code>&lt;x&gt;</code>: 文本位置纵坐标</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">fillText</span>(&lt;str&gt;, &lt;x&gt;, &lt;y&gt;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置文本对齐方式"><a href="#设置文本对齐方式" class="headerlink" title="设置文本对齐方式"></a>设置文本对齐方式</h4><blockquote>
+<p><code>&lt;value&gt;</code></p>
+<blockquote>
+<p><code>left</code>: 基于x轴左对齐</p>
+</blockquote>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/03/24/Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】Canvas学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】Canvas学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/03/26/%E7%82%AB%E5%BD%A9%E5%B0%8F%E7%90%83%E6%95%88%E6%9E%9C/" rel="next" title="【代码】炫彩小球效果">
+                  【代码】炫彩小球效果 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2021/03/24/Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2021/03/24/Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

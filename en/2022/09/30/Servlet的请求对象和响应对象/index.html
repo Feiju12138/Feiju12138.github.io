@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2022/09/30/Servlet%E7%9A%84%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2022/09/30/Servlet%E7%9A%84%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1/","path":"en/2022/09/30/Servlet的请求对象和响应对象/","title":"【英文】Servlet的请求对象和响应对象"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Servlet的请求对象和响应对象 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request-Request-Object"><span class="nav-number">2.</span> <span class="nav-text">Request Request Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Parsing-Request-Line"><span class="nav-number">2.1.</span> <span class="nav-text">Parsing Request Line</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Request-Method"><span class="nav-number">2.1.1.</span> <span class="nav-text">Get Request Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Request-Path"><span class="nav-number">2.1.2.</span> <span class="nav-text">Get Request Path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Complete-Request-Path"><span class="nav-number">2.1.3.</span> <span class="nav-text">Get Complete Request Path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Request-Path-of-Current-Project"><span class="nav-number">2.1.4.</span> <span class="nav-text">Get Request Path of Current Project</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Request-Parameters"><span class="nav-number">2.1.5.</span> <span class="nav-text">Get Request Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Handling-Request-Parameters-with-Request"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">Handling Request Parameters with Request</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Get-All-Request-Parameters"><span class="nav-number">2.1.5.1.1.</span> <span class="nav-text">Get All Request Parameters</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Get-a-Parameter-Value-Based-on-a-Specified-Parameter-Name"><span class="nav-number">2.1.5.1.2.</span> <span class="nav-text">Get a Parameter Value Based on a Specified Parameter Name</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Get-All-Parameter-Values-Based-on-a-Specified-Parameter-Name"><span class="nav-number">2.1.5.1.3.</span> <span class="nav-text">Get All Parameter Values Based on a Specified Parameter Name</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Solving-Chinese-Garbled-Characters-in-Request-Parameters"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">Solving Chinese Garbled Characters in Request Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#For-GET-or-POST-Requests"><span class="nav-number">2.1.5.2.1.</span> <span class="nav-text">For GET or POST Requests</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#For-POST-Requests"><span class="nav-number">2.1.5.2.2.</span> <span class="nav-text">For POST Requests</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parsing-Request-Headers"><span class="nav-number">2.2.</span> <span class="nav-text">Parsing Request Headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parsing-Request-Body"><span class="nav-number">2.3.</span> <span class="nav-text">Parsing Request Body</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Character-Input-Stream"><span class="nav-number">2.3.1.</span> <span class="nav-text">Character Input Stream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Byte-Input-Stream"><span class="nav-number">2.3.2.</span> <span class="nav-text">Byte Input Stream</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Request-Forwarding"><span class="nav-number">2.4.</span> <span class="nav-text">Request Forwarding</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Carrying-Data-When-Request-Forwarding"><span class="nav-number">2.4.1.</span> <span class="nav-text">Carrying Data When Request Forwarding</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Storing-Data"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">Storing Data</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Getting-Data"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">Getting Data</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Removing-Data"><span class="nav-number">2.4.1.3.</span> <span class="nav-text">Removing Data</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response-Response-Object"><span class="nav-number">3.</span> <span class="nav-text">Response Response Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-Response-Line"><span class="nav-number">3.1.</span> <span class="nav-text">Setting Response Line</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-Status-Code"><span class="nav-number">3.1.1.</span> <span class="nav-text">Setting Status Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-Response-Headers"><span class="nav-number">3.2.</span> <span class="nav-text">Setting Response Headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-Response-Body"><span class="nav-number">3.3.</span> <span class="nav-text">Setting Response Body</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Character-Output-Stream"><span class="nav-number">3.3.1.</span> <span class="nav-text">Character Output Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Setting-Response-Headers-1"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Setting Response Headers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Solving-Chinese-Garbled-Characters"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">Solving Chinese Garbled Characters</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Byte-Output-Stream"><span class="nav-number">3.3.2.</span> <span class="nav-text">Byte Output Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Responding-with-Files"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">Responding with Files</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Using-Utility-Class"><span class="nav-number">3.3.2.1.1.</span> <span class="nav-text">Using Utility Class</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redirection"><span class="nav-number">3.4.</span> <span class="nav-text">Redirection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Finished"><span class="nav-number">4.</span> <span class="nav-text">Finished</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2022/09/30/Servlet%E7%9A%84%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Servlet的请求对象和响应对象 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Servlet的请求对象和响应对象
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-30 09:49:36" itemprop="dateCreated datePublished" datetime="2022-09-30T09:49:36+00:00">2022-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Servlet’s request object and response object</p>
+<span id="more"></span>
+
+<h2 id="Request-Request-Object"><a href="#Request-Request-Object" class="headerlink" title="Request Request Object"></a>Request Request Object</h2><ul>
+<li>Parse request data passed from the client</li>
+</ul>
+<blockquote>
+<p><code>req</code>: Request object</p>
+</blockquote>
+<h3 id="Parsing-Request-Line"><a href="#Parsing-Request-Line" class="headerlink" title="Parsing Request Line"></a>Parsing Request Line</h3><h4 id="Get-Request-Method"><a href="#Get-Request-Method" class="headerlink" title="Get Request Method"></a>Get Request Method</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getMethod();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-Request-Path"><a href="#Get-Request-Path" class="headerlink" title="Get Request Path"></a>Get Request Path</h4><ul>
+<li><code>/dir</code> in <code>http://example.com/dir/file?key=value</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getContextPath();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-Complete-Request-Path"><a href="#Get-Complete-Request-Path" class="headerlink" title="Get Complete Request Path"></a>Get Complete Request Path</h4><ul>
+<li><p>Return StringBuffer</p>
+</li>
+<li><p><code>http://example.com/dir/file</code> in <code>http://example.com/dir/file?key=value</code></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestURL();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-Request-Path-of-Current-Project"><a href="#Get-Request-Path-of-Current-Project" class="headerlink" title="Get Request Path of Current Project"></a>Get Request Path of Current Project</h4><ul>
+<li><code>/dir/file</code> in <code>http://example.com/dir/file?key=value</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestURI();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-Request-Parameters"><a href="#Get-Request-Parameters" class="headerlink" title="Get Request Parameters"></a>Get Request Parameters</h4><ul>
+<li><code>key=value</code> in <code>http://example.com/dir/file?key=value</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getQueryString();</span><br></pre></td></tr></table></figure>
+
+<h5 id="Handling-Request-Parameters-with-Request"><a href="#Handling-Request-Parameters-with-Request" class="headerlink" title="Handling Request Parameters with Request"></a>Handling Request Parameters with Request</h5><h6 id="Get-All-Request-Parameters"><a href="#Get-All-Request-Parameters" class="headerlink" title="Get All Request Parameters"></a>Get All Request Parameters</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String[]&gt; map = req.getParameterMap();</span><br></pre></td></tr></table></figure>
+
+<h6 id="Get-a-Parameter-Value-Based-on-a-Specified-Parameter-Name"><a href="#Get-a-Parameter-Value-Based-on-a-Specified-Parameter-Name" class="headerlink" title="Get a Parameter Value Based on a Specified Parameter Name"></a>Get a Parameter Value Based on a Specified Parameter Name</h6><blockquote>
+<p><code>&lt;key&gt;</code>: Request parameter name</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> req.getParameter(<span class="string">&quot;&lt;key&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="Get-All-Parameter-Values-Based-on-a-Specified-Parameter-Name"><a href="#Get-All-Parameter-Values-Based-on-a-Specified-Parameter-Name" class="headerlink" title="Get All Parameter Values Based on a Specified Parameter Name"></a>Get All Parameter Values Based on a Specified Parameter Name</h6><ul>
+<li>If there are multiple request parameters with the same name, all request values will be returned as a string array</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String[] values = req.getParameterValues(<span class="string">&quot;&lt;key&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Solving-Chinese-Garbled-Characters-in-Request-Parameters"><a href="#Solving-Chinese-Garbled-Characters-in-Request-Parameters" class="headerlink" title="Solving Chinese Garbled Characters in Request Parameters"></a>Solving Chinese Garbled Characters in Request Parameters</h5><ul>
+<li>Before Tomcat 8, the default URL decoding method is ISO-8859-1, while the front-end URL encoding method is UTF-8, resulting in Chinese garbled characters</li>
+<li>Starting from Tomcat 8, the default URL decoding method used is UTF-8, so there is no need to solve the Chinese garbled characters</li>
+</ul>
+<h6 id="For-GET-or-POST-Requests"><a href="#For-GET-or-POST-Requests" class="headerlink" title="For GET or POST Requests"></a>For GET or POST Requests</h6><ul>
+<li>First convert the ISO-8859-1 data to a byte array, and then convert the byte array to a string based on the UTF-8 coding</li>
+</ul>
+<blockquote>
+<p><code>value</code>: Parameter value with Chinese garbled characters obtained through <code>req.getParameter(&quot;&quot;)</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span>[] bytes = value.getBytes(<span class="string">&quot;ISO-8859-1&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes, <span class="string">&quot;utf-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span>[] bytes = value.getBytes(StandardCharsets.ISO_8859_1);</span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes, StandardCharsets.UTF_8 );</span><br></pre></td></tr></table></figure>
+
+<h6 id="For-POST-Requests"><a href="#For-POST-Requests" class="headerlink" title="For POST Requests"></a>For POST Requests</h6><ul>
+<li>Because the processing method of POST request parameters is character input stream, just set the character encoding of the character input stream to UTF-8 before processing the request parameters to solve Chinese garbled characters</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parsing-Request-Headers"><a href="#Parsing-Request-Headers" class="headerlink" title="Parsing Request Headers"></a>Parsing Request Headers</h3><blockquote>
+<p><code>&lt;key&gt;</code>: Get the value based on the header key</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getHeader(<span class="string">&quot;&lt;key&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parsing-Request-Body"><a href="#Parsing-Request-Body" class="headerlink" title="Parsing Request Body"></a>Parsing Request Body</h3><h4 id="Character-Input-Stream"><a href="#Character-Input-Stream" class="headerlink" title="Character Input Stream"></a>Character Input Stream</h4><ul>
+<li>Return a BufferedReader object</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> req.getReader();</span><br><span class="line"><span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> br.readLine();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Byte-Input-Stream"><a href="#Byte-Input-Stream" class="headerlink" title="Byte Input Stream"></a>Byte Input Stream</h4><ul>
+<li>Return a ServletInputStream object</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getInputStream();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Request-Forwarding"><a href="#Request-Forwarding" class="headerlink" title="Request Forwarding"></a>Request Forwarding</h3><ul>
+<li>When forwarding a request, the client’s address bar does not change</li>
+<li>Request forwarding can only forward to server internal resources</li>
+<li>The whole process undergoes 1 request and 1 response</li>
+<li>When forwarding a request, data can be carried via request</li>
+</ul>
+<blockquote>
+<p><code>&lt;url&gt;</code>: Target resource path for request forwarding, no need to add virtual directory<br><code>req</code>: Request object<br><code>resp</code>: Response object</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestDispatcher(<span class="string">&quot;&lt;url&gt;&quot;</span>).forward(req, resp);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Carrying-Data-When-Request-Forwarding"><a href="#Carrying-Data-When-Request-Forwarding" class="headerlink" title="Carrying Data When Request Forwarding"></a>Carrying Data When Request Forwarding</h4><h5 id="Storing-Data"><a href="#Storing-Data" class="headerlink" title="Storing Data"></a>Storing Data</h5><blockquote>
+<p><code>&lt;key&gt;</code>: Key<br><code>&lt;value&gt;</code>: Value</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setAttribute(<span class="string">&quot;&lt;key&gt;&quot;</span>, &lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Getting-Data"><a href="#Getting-Data" class="headerlink" title="Getting Data"></a>Getting Data</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getAttribute(<span class="string">&quot;&lt;key&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Removing-Data"><a href="#Removing-Data" class="headerlink" title="Removing Data"></a>Removing Data</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.removeAttribute(<span class="string">&quot;&lt;key&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Response-Response-Object"><a href="#Response-Response-Object" class="headerlink" title="Response Response Object"></a>Response Response Object</h2><ul>
+<li>Set response data sent to the client</li>
+</ul>
+<blockquote>
+<p><code>resp</code>: Response object</p>
+</blockquote>
+<h3 id="Setting-Response-Line"><a href="#Setting-Response-Line" class="headerlink" title="Setting Response Line"></a>Setting Response Line</h3><h4 id="Setting-Status-Code"><a href="#Setting-Status-Code" class="headerlink" title="Setting Status Code"></a>Setting Status Code</h4><blockquote>
+<p><code>&lt;code&gt;</code>: Integer status code</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.setStatus(&lt;code&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Setting-Response-Headers"><a href="#Setting-Response-Headers" class="headerlink" title="Setting Response Headers"></a>Setting Response Headers</h3><blockquote>
+<p><code>&lt;key&gt;</code>: Key<br><code>&lt;value&gt;</code>: Value</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setHeader(<span class="string">&quot;&lt;key&gt;&quot;</span>, <span class="string">&quot;&lt;value&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Setting-Response-Body"><a href="#Setting-Response-Body" class="headerlink" title="Setting Response Body"></a>Setting Response Body</h3><h4 id="Character-Output-Stream"><a href="#Character-Output-Stream" class="headerlink" title="Character Output Stream"></a>Character Output Stream</h4><blockquote>
+<p><code>&lt;str&gt;</code>: Data to be responded</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> getWriter();</span><br><span class="line">pw.write(<span class="string">&quot;&lt;str&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Output stream does not need to be closed. It will be automatically closed when the resp object is destroyed.</li>
+</ul>
+<h5 id="Setting-Response-Headers-1"><a href="#Setting-Response-Headers-1" class="headerlink" title="Setting Response Headers"></a>Setting Response Headers</h5><ul>
+<li>If the responded data needs to be rendered as HTML code, set the response headers in advance</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resp.setHeader(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html&quot;</span>);</span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> getWriter();</span><br><span class="line">pw.write(<span class="string">&quot;&lt;str&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> getWriter();</span><br><span class="line">pw.write(<span class="string">&quot;&lt;str&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Solving-Chinese-Garbled-Characters"><a href="#Solving-Chinese-Garbled-Characters" class="headerlink" title="Solving Chinese Garbled Characters"></a>Solving Chinese Garbled Characters</h5><ul>
+<li>The default encoding for Tomcat response data is ISO-8859-1, while the default encoding for the browser is UTF-8, resulting in Chinese garbled characters</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resp.setHeader(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> getWriter();</span><br><span class="line">pw.write(<span class="string">&quot;&lt;str&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resp.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> getWriter();</span><br><span class="line">pw.write(<span class="string">&quot;&lt;str&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Byte-Output-Stream"><a href="#Byte-Output-Stream" class="headerlink" title="Byte Output Stream"></a>Byte Output Stream</h4><blockquote>
+<p><code>&lt;value&gt;</code>: Byte data</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ServletOutputStream</span> <span class="variable">sos</span> <span class="operator">=</span> resp.getOutputStream();</span><br><span class="line">sos.write(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Responding-with-Files"><a href="#Responding-with-Files" class="headerlink" title="Responding with Files"></a>Responding with Files</h5><blockquote>
+<p><code>&lt;file&gt;</code>: File path</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;&lt;file&gt;&quot;</span>);</span><br><span class="line"><span class="type">ServletOutputStream</span> <span class="variable">sos</span> <span class="operator">=</span> resp.getOutputStream();</span><br><span class="line"><span class="type">byte</span>[] buff = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> ((len = fis.read(buff)) != -<span class="number">1</span>) &#123;</span><br><span class="line">    sos.write(buff, <span class="number">0</span>, len);</span><br><span class="line">&#125;</span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
+
+<h6 id="Using-Utility-Class"><a href="#Using-Utility-Class" class="headerlink" title="Using Utility Class"></a>Using Utility Class</h6><ul>
+<li>Use utility class to complete file copying</li>
+</ul>
+<figure class="highlight xml"><figcaption><span>pom.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.io.IOUtils</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;&lt;file&gt;&quot;</span>);</span><br><span class="line"><span class="type">ServletOutputStream</span> <span class="variable">sos</span> <span class="operator">=</span> resp.getOutputStream();</span><br><span class="line">IOUtils.copy(fis, os);</span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redirection"><a href="#Redirection" class="headerlink" title="Redirection"></a>Redirection</h3><ul>
+<li>When redirecting, the client’s address bar changes</li>
+<li>Both server internal resources and external resources can be redirected when redirecting</li>
+<li>The whole process undergoes 2 requests and 2 responses</li>
+<li>When redirecting, data cannot be carried via request</li>
+</ul>
+<blockquote>
+<p><code>&lt;url&gt;</code>: Target resource path for response redirection, needs to add virtual directory</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resp.setStatus(<span class="number">302</span>);</span><br><span class="line">resp.setHeader(<span class="string">&quot;location&quot;</span>, <span class="string">&quot;&lt;url&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.sendRedirect(<span class="string">&quot;&lt;url&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>To decouple, the virtual path can be dynamically concatenated</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.sendRedirect(req.getContextPath + <span class="string">&quot;&lt;url&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Finished"><a href="#Finished" class="headerlink" title="Finished"></a>Finished</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="/302.html?target=https://www.bilibili.com/video/BV1Qf4y1T7Hx/">Bilibili - Hei Ma Programmer</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Servlet/" rel="tag"># Servlet</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/09/30/Servlet%E7%9A%84%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1/" rel="prev" title="【笔记】Servlet的请求对象和响应对象">
+                  <i class="fa fa-angle-left"></i> 【笔记】Servlet的请求对象和响应对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/09/30/Sox%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【笔记】Sox学习笔记">
+                  【笔记】Sox学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2022/09/30/Servlet%E7%9A%84%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2022/09/30/Servlet%E7%9A%84%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

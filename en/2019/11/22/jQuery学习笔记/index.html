@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2019/11/22/jQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2019/11/22/jQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2019/11/22/jQuery学习笔记/","title":"【英文】jQuery 学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】jQuery 学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-Basics"><span class="nav-number">2.</span> <span class="nav-text">jQuery Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Downloaded-Versions"><span class="nav-number">2.1.</span> <span class="nav-text">Downloaded Versions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Development-Tools"><span class="nav-number">2.2.</span> <span class="nav-text">Development Tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preloading-Function"><span class="nav-number">2.3.</span> <span class="nav-text">Preloading Function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#First-method"><span class="nav-number">2.3.1.</span> <span class="nav-text">First method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Second-method"><span class="nav-number">2.3.2.</span> <span class="nav-text">Second method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Third-method"><span class="nav-number">2.3.3.</span> <span class="nav-text">Third method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fourth-method"><span class="nav-number">2.3.4.</span> <span class="nav-text">Fourth method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-between-Dom-Objects-and-jQuery-Objects"><span class="nav-number">2.4.</span> <span class="nav-text">Conversion between Dom Objects and jQuery Objects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-Selectors"><span class="nav-number">3.</span> <span class="nav-text">jQuery Selectors*</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Selectors"><span class="nav-number">3.1.</span> <span class="nav-text">Basic Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tag-selectors"><span class="nav-number">3.1.1.</span> <span class="nav-text">Tag selectors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-selectors"><span class="nav-number">3.1.2.</span> <span class="nav-text">Class selectors (.)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ID-selectors"><span class="nav-number">3.1.3.</span> <span class="nav-text">ID selectors (#)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Union-selectors"><span class="nav-number">3.1.4.</span> <span class="nav-text">Union selectors (,)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intersection-selectors-adjacent"><span class="nav-number">3.1.5.</span> <span class="nav-text">Intersection selectors (adjacent)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Global-selectors"><span class="nav-number">3.1.6.</span> <span class="nav-text">Global selectors (*)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hierarchical-selectors"><span class="nav-number">3.2.</span> <span class="nav-text">Hierarchical selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Adjacent-selector"><span class="nav-number">3.2.1.</span> <span class="nav-text">Adjacent selector (+)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sibling-selector"><span class="nav-number">3.2.2.</span> <span class="nav-text">Sibling selector (~)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Descendant-selector-space"><span class="nav-number">3.2.3.</span> <span class="nav-text">Descendant selector (space)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Child-selector-gt"><span class="nav-number">3.2.4.</span> <span class="nav-text">Child selector (&gt;)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sibling-selectors"><span class="nav-number">3.3.</span> <span class="nav-text">Sibling selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-the-immediately-following-sibling-element"><span class="nav-number">3.3.1.</span> <span class="nav-text">Select the immediately following sibling element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-the-immediately-preceding-sibling-element"><span class="nav-number">3.3.2.</span> <span class="nav-text">Select the immediately preceding sibling element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-all-following-sibling-elements"><span class="nav-number">3.3.3.</span> <span class="nav-text">Select all following sibling elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-all-preceding-sibling-elements"><span class="nav-number">3.3.4.</span> <span class="nav-text">Select all preceding sibling elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-all-preceding-and-following-sibling-elements"><span class="nav-number">3.3.5.</span> <span class="nav-text">Select all preceding and following sibling elements</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attribute-selectors-%E2%80%A6"><span class="nav-number">3.4.</span> <span class="nav-text">Attribute selectors ([…])</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-elements-with-the-specified-attribute-name"><span class="nav-number">3.4.1.</span> <span class="nav-text">Select elements with the specified attribute name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-elements-with-the-specified-attribute-name-and-value"><span class="nav-number">3.4.2.</span> <span class="nav-text">Select elements with the specified attribute name and value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-elements-with-the-specified-attribute-name-but-not-the-specified-value"><span class="nav-number">3.4.3.</span> <span class="nav-text">Select elements with the specified attribute name but not the specified value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-elements-with-the-specified-attribute-name-that-starts-with-the-specified-keyword"><span class="nav-number">3.4.4.</span> <span class="nav-text">Select elements with the specified attribute name that starts with the specified keyword</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-elements-with-the-specified-attribute-name-that-ends-with-the-specified-keyword"><span class="nav-number">3.4.5.</span> <span class="nav-text">Select elements with the specified attribute name that ends with the specified keyword</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-elements-with-the-specified-attribute-name-that-contains-the-specified-keyword"><span class="nav-number">3.4.6.</span> <span class="nav-text">Select elements with the specified attribute name that contains the specified keyword</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filter-selectors"><span class="nav-number">3.5.</span> <span class="nav-text">Filter selectors (:)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-first-one"><span class="nav-number">3.5.1.</span> <span class="nav-text">The first one</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-last-one"><span class="nav-number">3.5.2.</span> <span class="nav-text">The last one</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Even-ones"><span class="nav-number">3.5.3.</span> <span class="nav-text">Even ones</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Odd-ones"><span class="nav-number">3.5.4.</span> <span class="nav-text">Odd ones</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-element-at-the-specified-index"><span class="nav-number">3.5.5.</span> <span class="nav-text">The element at the specified index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#All-elements-greater-than-the-specified-index"><span class="nav-number">3.5.6.</span> <span class="nav-text">All elements greater than the specified index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#All-elements-less-than-the-specified-index"><span class="nav-number">3.5.7.</span> <span class="nav-text">All elements less than the specified index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Not-including-%E2%80%A6"><span class="nav-number">3.5.8.</span> <span class="nav-text">Not including …</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-all-heading-elements"><span class="nav-number">3.5.9.</span> <span class="nav-text">Select all heading elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-the-element-that-currently-has-focus"><span class="nav-number">3.5.10.</span> <span class="nav-text">Get the element that currently has focus</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visibility-selectors"><span class="nav-number">3.6.</span> <span class="nav-text">Visibility selectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form-selectors"><span class="nav-number">3.7.</span> <span class="nav-text">Form selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-%E2%80%9Cinput%E2%80%9D-%E2%80%9Ctextarea%E2%80%9D-%E2%80%9Cselect%E2%80%9D-%E2%80%9Cbutton%E2%80%9D-elements"><span class="nav-number">3.7.1.</span> <span class="nav-text">Match all “input”, “textarea”, “select”, “button” elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-single-line-text-fields"><span class="nav-number">3.7.2.</span> <span class="nav-text">Match all single-line text fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-password-fields"><span class="nav-number">3.7.3.</span> <span class="nav-text">Match all password fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-radio-buttons"><span class="nav-number">3.7.4.</span> <span class="nav-text">Match all radio buttons</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-checkboxes"><span class="nav-number">3.7.5.</span> <span class="nav-text">Match all checkboxes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-submit-buttons"><span class="nav-number">3.7.6.</span> <span class="nav-text">Match all submit buttons</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-images"><span class="nav-number">3.7.7.</span> <span class="nav-text">Match all images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-reset-buttons"><span class="nav-number">3.7.8.</span> <span class="nav-text">Match all reset buttons</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-buttons"><span class="nav-number">3.7.9.</span> <span class="nav-text">Match all buttons</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-file-fields"><span class="nav-number">3.7.10.</span> <span class="nav-text">Match all file fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-all-invisible-elements"><span class="nav-number">3.7.11.</span> <span class="nav-text">Match all invisible elements</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-Events"><span class="nav-number">4.</span> <span class="nav-text">jQuery Events</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Binding-Events-and-Removing-Events"><span class="nav-number">4.1.</span> <span class="nav-text">Binding Events and Removing Events</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2019/11/22/jQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】jQuery 学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】jQuery 学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-22 13:55:21" itemprop="dateCreated datePublished" datetime="2019-11-22T13:55:21+00:00">2019-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">前端学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>jQuery Learning Notes</p>
+<span id="more"></span>
+
+<h2 id="jQuery-Basics"><a href="#jQuery-Basics" class="headerlink" title="jQuery Basics"></a>jQuery Basics</h2><h3 id="Downloaded-Versions"><a href="#Downloaded-Versions" class="headerlink" title="Downloaded Versions"></a>Downloaded Versions</h3><ul>
+<li><p>jquery-3.3.1.min.js<br>Compressed version (release version)</p>
+</li>
+<li><p>jquery-3.3.1.js<br>Regular version (development version)</p>
+</li>
+</ul>
+<h3 id="Development-Tools"><a href="#Development-Tools" class="headerlink" title="Development Tools"></a>Development Tools</h3><ul>
+<li><a href="/302.html?target=https://dcloud.io">HBuilder</a>, <a target="_blank" rel="noopener" href="https://www.jetbrains.com/webstorm/">WebStorm</a>, <a target="_blank" rel="noopener" href="https://www.adobe.com/cn/products/dreamweaver.html">Dreamweaver</a>, <a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/">IDEA</a></li>
+</ul>
+<h3 id="Preloading-Function"><a href="#Preloading-Function" class="headerlink" title="Preloading Function"></a>Preloading Function</h3><ul>
+<li>Written inside <code>&lt;script&gt;&lt;/script&gt;</code> tags, if written inside <code>&lt;head&gt;&lt;/head&gt;</code> tags, the preloading function is needed.</li>
+</ul>
+<h4 id="First-method"><a href="#First-method" class="headerlink" title="First method"></a>First method</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-3.4.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="title function_">jQuery</span>(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            ...</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Second-method"><a href="#Second-method" class="headerlink" title="Second method"></a>Second method</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-3.4.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            ...</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Third-method"><a href="#Third-method" class="headerlink" title="Third method"></a>Third method</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-3.4.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="title function_">jQuery</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            ...</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Fourth-method"><a href="#Fourth-method" class="headerlink" title="Fourth method"></a>Fourth method</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-3.4.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            ...</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Conversion-between-Dom-Objects-and-jQuery-Objects"><a href="#Conversion-between-Dom-Objects-and-jQuery-Objects" class="headerlink" title="Conversion between Dom Objects and jQuery Objects"></a>Conversion between Dom Objects and jQuery Objects</h3><ul>
+<li>Dom object -&gt; jQuery object</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="title class_">Dom</span> object)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jQuery object -&gt; Dom object</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jquery object[<span class="number">0</span>]</span><br><span class="line">jquery object.<span class="title function_">get</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="jQuery-Selectors"><a href="#jQuery-Selectors" class="headerlink" title="jQuery Selectors*"></a>jQuery Selectors*</h2><h3 id="Basic-Selectors"><a href="#Basic-Selectors" class="headerlink" title="Basic Selectors"></a>Basic Selectors</h3><h4 id="Tag-selectors"><a href="#Tag-selectors" class="headerlink" title="Tag selectors"></a>Tag selectors</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;tag name&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Class-selectors"><a href="#Class-selectors" class="headerlink" title="Class selectors (.)"></a>Class selectors (.)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.class value&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="ID-selectors"><a href="#ID-selectors" class="headerlink" title="ID selectors (#)"></a>ID selectors (#)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#id value&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Union-selectors"><a href="#Union-selectors" class="headerlink" title="Union selectors (,)"></a>Union selectors (,)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.class value, #id value&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Intersection-selectors-adjacent"><a href="#Intersection-selectors-adjacent" class="headerlink" title="Intersection selectors (adjacent)"></a>Intersection selectors (adjacent)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.class value#id value&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Global-selectors"><a href="#Global-selectors" class="headerlink" title="Global selectors (*)"></a>Global selectors (*)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;*&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hierarchical-selectors"><a href="#Hierarchical-selectors" class="headerlink" title="Hierarchical selectors"></a>Hierarchical selectors</h3><h4 id="Adjacent-selector"><a href="#Adjacent-selector" class="headerlink" title="Adjacent selector (+)"></a>Adjacent selector (+)</h4><ul>
+<li>Select only the one that comes after</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;selector1 + selector2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Sibling-selector"><a href="#Sibling-selector" class="headerlink" title="Sibling selector (~)"></a>Sibling selector (~)</h4><ul>
+<li>Select only the one that comes after</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;selector1 ~ selector2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Descendant-selector-space"><a href="#Descendant-selector-space" class="headerlink" title="Descendant selector (space)"></a>Descendant selector (space)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;selector1 selector2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Child-selector-gt"><a href="#Child-selector-gt" class="headerlink" title="Child selector (&gt;)"></a>Child selector (&gt;)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;selector1 &gt; selector2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sibling-selectors"><a href="#Sibling-selectors" class="headerlink" title="Sibling selectors"></a>Sibling selectors</h3><h4 id="Select-the-immediately-following-sibling-element"><a href="#Select-the-immediately-following-sibling-element" class="headerlink" title="Select the immediately following sibling element"></a>Select the immediately following sibling element</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#example&quot;</span>).<span class="title function_">next</span>(<span class="string">&quot;span&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-the-immediately-preceding-sibling-element"><a href="#Select-the-immediately-preceding-sibling-element" class="headerlink" title="Select the immediately preceding sibling element"></a>Select the immediately preceding sibling element</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#example&quot;</span>).<span class="title function_">prev</span>(<span class="string">&quot;span&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-all-following-sibling-elements"><a href="#Select-all-following-sibling-elements" class="headerlink" title="Select all following sibling elements"></a>Select all following sibling elements</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#example&quot;</span>).<span class="title function_">nextAll</span>(<span class="string">&quot;span&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-all-preceding-sibling-elements"><a href="#Select-all-preceding-sibling-elements" class="headerlink" title="Select all preceding sibling elements"></a>Select all preceding sibling elements</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#example&quot;</span>).<span class="title function_">prevAll</span>(<span class="string">&quot;span&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-all-preceding-and-following-sibling-elements"><a href="#Select-all-preceding-and-following-sibling-elements" class="headerlink" title="Select all preceding and following sibling elements"></a>Select all preceding and following sibling elements</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#example&quot;</span>).<span class="title function_">siblings</span>(<span class="string">&quot;span&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Attribute-selectors-…"><a href="#Attribute-selectors-…" class="headerlink" title="Attribute selectors ([…])"></a>Attribute selectors ([…])</h3><blockquote>
+<p><code>&lt;key&gt;</code>: attribute name<br><code>&lt;value&gt;</code>: attribute value</p>
+</blockquote>
+<h4 id="Select-elements-with-the-specified-attribute-name"><a href="#Select-elements-with-the-specified-attribute-name" class="headerlink" title="Select elements with the specified attribute name"></a>Select elements with the specified attribute name</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[&lt;key&gt;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-elements-with-the-specified-attribute-name-and-value"><a href="#Select-elements-with-the-specified-attribute-name-and-value" class="headerlink" title="Select elements with the specified attribute name and value"></a>Select elements with the specified attribute name and value</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[&lt;key&gt;=&lt;value&gt;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-elements-with-the-specified-attribute-name-but-not-the-specified-value"><a href="#Select-elements-with-the-specified-attribute-name-but-not-the-specified-value" class="headerlink" title="Select elements with the specified attribute name but not the specified value"></a>Select elements with the specified attribute name but not the specified value</h4><ul>
+<li>Select elements with the specified attribute name but not the specified value</li>
+<li>Select elements without the specified attribute name</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[&lt;key&gt;!=&lt;value&gt;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-elements-with-the-specified-attribute-name-that-starts-with-the-specified-keyword"><a href="#Select-elements-with-the-specified-attribute-name-that-starts-with-the-specified-keyword" class="headerlink" title="Select elements with the specified attribute name that starts with the specified keyword"></a>Select elements with the specified attribute name that starts with the specified keyword</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[&lt;key&gt;^=&lt;value&gt;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-elements-with-the-specified-attribute-name-that-ends-with-the-specified-keyword"><a href="#Select-elements-with-the-specified-attribute-name-that-ends-with-the-specified-keyword" class="headerlink" title="Select elements with the specified attribute name that ends with the specified keyword"></a>Select elements with the specified attribute name that ends with the specified keyword</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[&lt;key&gt;$=&lt;value&gt;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-elements-with-the-specified-attribute-name-that-contains-the-specified-keyword"><a href="#Select-elements-with-the-specified-attribute-name-that-contains-the-specified-keyword" class="headerlink" title="Select elements with the specified attribute name that contains the specified keyword"></a>Select elements with the specified attribute name that contains the specified keyword</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[&lt;key&gt;*=&lt;value&gt;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Filter-selectors"><a href="#Filter-selectors" class="headerlink" title="Filter selectors (:)"></a>Filter selectors (:)</h3><h4 id="The-first-one"><a href="#The-first-one" class="headerlink" title="The first one"></a>The first one</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:first</span><br></pre></td></tr></table></figure>
+
+<h4 id="The-last-one"><a href="#The-last-one" class="headerlink" title="The last one"></a>The last one</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:last</span><br></pre></td></tr></table></figure>
+
+<h4 id="Even-ones"><a href="#Even-ones" class="headerlink" title="Even ones"></a>Even ones</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:even</span><br></pre></td></tr></table></figure>
+
+<h4 id="Odd-ones"><a href="#Odd-ones" class="headerlink" title="Odd ones"></a>Odd ones</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:odd</span><br></pre></td></tr></table></figure>
+
+<h4 id="The-element-at-the-specified-index"><a href="#The-element-at-the-specified-index" class="headerlink" title="The element at the specified index"></a>The element at the specified index</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="title function_">eq</span>(index)</span><br></pre></td></tr></table></figure>
+
+<h4 id="All-elements-greater-than-the-specified-index"><a href="#All-elements-greater-than-the-specified-index" class="headerlink" title="All elements greater than the specified index"></a>All elements greater than the specified index</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="title function_">gt</span>(index)</span><br></pre></td></tr></table></figure>
+
+<h4 id="All-elements-less-than-the-specified-index"><a href="#All-elements-less-than-the-specified-index" class="headerlink" title="All elements less than the specified index"></a>All elements less than the specified index</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="title function_">lt</span>(index)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Not-including-…"><a href="#Not-including-…" class="headerlink" title="Not including …"></a>Not including …</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="title function_">not</span>(selector)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-all-heading-elements"><a href="#Select-all-heading-elements" class="headerlink" title="Select all heading elements"></a>Select all heading elements</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:header</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-the-element-that-currently-has-focus"><a href="#Get-the-element-that-currently-has-focus" class="headerlink" title="Get the element that currently has focus"></a>Get the element that currently has focus</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:focus</span><br></pre></td></tr></table></figure>
+
+<h3 id="Visibility-selectors"><a href="#Visibility-selectors" class="headerlink" title="Visibility selectors"></a>Visibility selectors</h3><ul>
+<li>Select all visible elements</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:visible</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Select all hidden elements</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:hidden</span><br></pre></td></tr></table></figure>
+
+<h3 id="Form-selectors"><a href="#Form-selectors" class="headerlink" title="Form selectors"></a>Form selectors</h3><h4 id="Match-all-“input”-“textarea”-“select”-“button”-elements"><a href="#Match-all-“input”-“textarea”-“select”-“button”-elements" class="headerlink" title="Match all “input”, “textarea”, “select”, “button” elements"></a>Match all “input”, “textarea”, “select”, “button” elements</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">:input</span><br><span class="line">$(<span class="string">&quot;:input&quot;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params">index, elemet</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(index==<span class="number">0</span>)&#123;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(index==<span class="number">1</span>)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-single-line-text-fields"><a href="#Match-all-single-line-text-fields" class="headerlink" title="Match all single-line text fields"></a>Match all single-line text fields</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:text</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-password-fields"><a href="#Match-all-password-fields" class="headerlink" title="Match all password fields"></a>Match all password fields</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:password</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-radio-buttons"><a href="#Match-all-radio-buttons" class="headerlink" title="Match all radio buttons"></a>Match all radio buttons</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:radio</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-checkboxes"><a href="#Match-all-checkboxes" class="headerlink" title="Match all checkboxes"></a>Match all checkboxes</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:checkbox</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-submit-buttons"><a href="#Match-all-submit-buttons" class="headerlink" title="Match all submit buttons"></a>Match all submit buttons</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:submit</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-images"><a href="#Match-all-images" class="headerlink" title="Match all images"></a>Match all images</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:image</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-reset-buttons"><a href="#Match-all-reset-buttons" class="headerlink" title="Match all reset buttons"></a>Match all reset buttons</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:reset</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-buttons"><a href="#Match-all-buttons" class="headerlink" title="Match all buttons"></a>Match all buttons</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:button</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-file-fields"><a href="#Match-all-file-fields" class="headerlink" title="Match all file fields"></a>Match all file fields</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:file</span><br></pre></td></tr></table></figure>
+
+<h4 id="Match-all-invisible-elements"><a href="#Match-all-invisible-elements" class="headerlink" title="Match all invisible elements"></a>Match all invisible elements</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:hidden</span><br></pre></td></tr></table></figure>
+
+<h2 id="jQuery-Events"><a href="#jQuery-Events" class="headerlink" title="jQuery Events"></a>jQuery Events</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    $(selector).<span class="title function_">event</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binding-Events-and-Removing-Events"><a href="#Binding-Events-and-Removing-Events" class="headerlink" title="Binding Events and Removing Events"></a>Binding Events and Removing Events</h3><pre><code class="javascript">$(...).bind(&quot;event name&quot;, [data], function)
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+              <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/11/22/jQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】jQuery 学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】jQuery 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/11/22/%E5%B0%86%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%BD%9C%E4%B8%BA%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="【骚操作】将安卓手机作为一台服务器">
+                  【骚操作】将安卓手机作为一台服务器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2019/11/22/jQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2019/11/22/jQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

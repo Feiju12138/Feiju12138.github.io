@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2020/02/17/Java%E7%9A%84%E9%9B%86%E5%90%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2020/02/17/Java%E7%9A%84%E9%9B%86%E5%90%88/","path":"en/2020/02/17/Java的集合/","title":"【英文】Java的集合"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Java的集合 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inheritance-structure-of-Collections"><span class="nav-number">2.</span> <span class="nav-text">Inheritance structure of Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">2.2.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">2.3.</span> <span class="nav-text">Map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-methods"><span class="nav-number">3.</span> <span class="nav-text">Basic methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-ArrayList-object"><span class="nav-number">3.1.</span> <span class="nav-text">Create ArrayList object</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-using-generics"><span class="nav-number">3.1.1.</span> <span class="nav-text">Create using generics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shortcut"><span class="nav-number">3.1.2.</span> <span class="nav-text">Shortcut</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Assign-array-length-directly"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">Assign array length directly</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-elements-to-the-collection"><span class="nav-number">3.2.</span> <span class="nav-text">Add elements to the collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-of-collection-elements"><span class="nav-number">3.3.</span> <span class="nav-text">Number of collection elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-if-it-is-empty"><span class="nav-number">3.4.</span> <span class="nav-text">Determine if it is empty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Empty-the-collection"><span class="nav-number">3.5.</span> <span class="nav-text">Empty the collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-if-the-element-already-exists"><span class="nav-number">3.6.</span> <span class="nav-text">Determine if the element already exists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-an-element"><span class="nav-number">3.7.</span> <span class="nav-text">Remove an element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Union-of-collections"><span class="nav-number">3.8.</span> <span class="nav-text">Union of collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-if-the-current-collection-contains-the-given-collection"><span class="nav-number">3.9.</span> <span class="nav-text">Determine if the current collection contains the given collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-common-elements-from-two-collections"><span class="nav-number">3.10.</span> <span class="nav-text">Remove common elements from two collections</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator-traversal"><span class="nav-number">4.</span> <span class="nav-text">Iterator traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-iterator-for-the-current-collection"><span class="nav-number">4.1.</span> <span class="nav-text">Get the iterator for the current collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traverse-each-element"><span class="nav-number">4.2.</span> <span class="nav-text">Traverse each element</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#For-each-loop-traversal"><span class="nav-number">5.</span> <span class="nav-text">For each loop traversal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generics"><span class="nav-number">6.</span> <span class="nav-text">Generics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods-in-List"><span class="nav-number">7.</span> <span class="nav-text">Methods in List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Insert-an-element-at-the-specified-position"><span class="nav-number">7.1.</span> <span class="nav-text">Insert an element at the specified position</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-the-element-at-the-specified-position"><span class="nav-number">7.2.</span> <span class="nav-text">Remove the element at the specified position</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Take-a-subset"><span class="nav-number">7.3.</span> <span class="nav-text">Take a subset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-the-elements-in-the-given-range-from-the-collection"><span class="nav-number">7.4.</span> <span class="nav-text">Remove the elements in the given range from the collection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conversion"><span class="nav-number">8.</span> <span class="nav-text">Conversion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Convert-collection-to-array"><span class="nav-number">8.1.</span> <span class="nav-text">Convert collection to array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Convert-array-to-collection"><span class="nav-number">8.2.</span> <span class="nav-text">Convert array to collection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Modify-elements"><span class="nav-number">8.2.1.</span> <span class="nav-text">Modify elements</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Add-an-element-to-the-collection"><span class="nav-number">8.2.1.1.</span> <span class="nav-text">Add an element to the collection</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Modify-collection-elements"><span class="nav-number">8.2.1.2.</span> <span class="nav-text">Modify collection elements</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#If-you-want-to-add-or-delete-elements"><span class="nav-number">8.2.1.3.</span> <span class="nav-text">If you want to add or delete elements</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorting"><span class="nav-number">9.</span> <span class="nav-text">Sorting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Custom-sorting-rules"><span class="nav-number">9.1.</span> <span class="nav-text">Custom sorting rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overloaded-methods"><span class="nav-number">9.2.</span> <span class="nav-text">Overloaded methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-methods-in-LinkedList"><span class="nav-number">10.</span> <span class="nav-text">Additional methods in LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-first-and-last-elements"><span class="nav-number">10.1.</span> <span class="nav-text">Add first and last elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-first-and-last-elements"><span class="nav-number">10.2.</span> <span class="nav-text">Get the first and last elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modify-the-element-at-the-specified-index"><span class="nav-number">10.3.</span> <span class="nav-text">Modify the element at the specified index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-the-first-and-last-elements"><span class="nav-number">10.4.</span> <span class="nav-text">Remove the first and last elements</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-collection"><span class="nav-number">11.</span> <span class="nav-text">Map collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-key-value-pairs"><span class="nav-number">11.1.</span> <span class="nav-text">Add key-value pairs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Whether-there-is-a-specified-key"><span class="nav-number">11.2.</span> <span class="nav-text">Whether there is a specified key</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2020/02/17/Java%E7%9A%84%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Java的集合 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Java的集合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-02-17 21:58:46" itemprop="dateCreated datePublished" datetime="2020-02-17T21:58:46+00:00">2020-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Java后端学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Java Collection (java.util.Collection) study notes<br>Collection is used to store a group of elements. It provides related operations for maintaining collections.</p>
+<p>Whether the elements are duplicated depends on the result of comparing the elements’ equals method.</p>
+<span id="more"></span>
+
+<h2 id="Inheritance-structure-of-Collections"><a href="#Inheritance-structure-of-Collections" class="headerlink" title="Inheritance structure of Collections"></a>Inheritance structure of Collections</h2><pre><code class="highlight mermaid">graph TD
+A[Collection interface] --&gt; B[List interface]
+    A --&gt; C[Set interface]
+    A --&gt; D[Map interface]
+    B --&gt; E[ArrayList subclass]
+    B --&gt; F[LinkedList subclass]
+    C --&gt; G[HashSet subclass]
+    D --&gt; H[HashMap subclass]</code></pre>
+
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><ul>
+<li><p>It is a repeatable and ordered collection. The feature is that elements can be operated based on their index.</p>
+</li>
+<li><p>Common implementation classes:</p>
+</li>
+</ul>
+<p>ArrayList: It uses an array as the underlying implementation, which makes querying faster.<br>LinkedList: It uses a linked list as the underlying implementation, which makes insertion and deletion faster (the effect of insertion and deletion at the beginning and end is obvious).</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><ul>
+<li>A collection without duplicates</li>
+</ul>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><ul>
+<li>Also called a hash table or hash map</li>
+<li>Commonly used for storing data in key-value pairs</li>
+<li>The keys cannot be duplicated, but the values can be duplicated</li>
+</ul>
+<h2 id="Basic-methods"><a href="#Basic-methods" class="headerlink" title="Basic methods"></a>Basic methods</h2><h3 id="Create-ArrayList-object"><a href="#Create-ArrayList-object" class="headerlink" title="Create ArrayList object"></a>Create ArrayList object</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Collection</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-using-generics"><a href="#Create-using-generics" class="headerlink" title="Create using generics"></a>Create using generics</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;String&gt; c = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Shortcut"><a href="#Shortcut" class="headerlink" title="Shortcut"></a>Shortcut</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;String&gt; c = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<h5 id="Assign-array-length-directly"><a href="#Assign-array-length-directly" class="headerlink" title="Assign array length directly"></a>Assign array length directly</h5><ul>
+<li>Since ArrayList maintains an array internally, you can directly assign the array length when creating the object</li>
+</ul>
+<blockquote>
+<p><code>&lt;len&gt;</code>: Define the length of the array</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;String&gt; c = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(&lt;len&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Add-elements-to-the-collection"><a href="#Add-elements-to-the-collection" class="headerlink" title="Add elements to the collection"></a>Add elements to the collection</h3><ul>
+<li><p>Linear collection is appended to the end by default</p>
+</li>
+<li><p>The return value is a boolean</p>
+</li>
+</ul>
+<blockquote>
+<p><code>&lt;value&gt;</code>: Element</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.add(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Number-of-collection-elements"><a href="#Number-of-collection-elements" class="headerlink" title="Number of collection elements"></a>Number of collection elements</h3><ul>
+<li>The return value is an integer</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.size();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Determine-if-it-is-empty"><a href="#Determine-if-it-is-empty" class="headerlink" title="Determine if it is empty"></a>Determine if it is empty</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.isEmpty();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Empty-the-collection"><a href="#Empty-the-collection" class="headerlink" title="Empty the collection"></a>Empty the collection</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.clear();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Determine-if-the-element-already-exists"><a href="#Determine-if-the-element-already-exists" class="headerlink" title="Determine if the element already exists"></a>Determine if the element already exists</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.contains(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Remove-an-element"><a href="#Remove-an-element" class="headerlink" title="Remove an element"></a>Remove an element</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.remove(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Union-of-collections"><a href="#Union-of-collections" class="headerlink" title="Union of collections"></a>Union of collections</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Collection</span> <span class="variable">c1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"><span class="type">Collection</span> <span class="variable">c2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">c1.addAll(c2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Determine-if-the-current-collection-contains-the-given-collection"><a href="#Determine-if-the-current-collection-contains-the-given-collection" class="headerlink" title="Determine if the current collection contains the given collection"></a>Determine if the current collection contains the given collection</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c1.containsAll(a2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Remove-common-elements-from-two-collections"><a href="#Remove-common-elements-from-two-collections" class="headerlink" title="Remove common elements from two collections"></a>Remove common elements from two collections</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c1.removeAll(c2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Iterator-traversal"><a href="#Iterator-traversal" class="headerlink" title="Iterator traversal"></a>Iterator traversal</h2><h3 id="Get-the-iterator-for-the-current-collection"><a href="#Get-the-iterator-for-the-current-collection" class="headerlink" title="Get the iterator for the current collection"></a>Get the iterator for the current collection</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Iterator</span> <span class="variable">it</span> <span class="operator">=</span> c.iterator();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Traverse-each-element"><a href="#Traverse-each-element" class="headerlink" title="Traverse each element"></a>Traverse each element</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> it.next();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="For-each-loop-traversal"><a href="#For-each-loop-traversal" class="headerlink" title="For each loop traversal"></a>For each loop traversal</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Object obj:c) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h2><ul>
+<li><p>Generics, also known as parameterized types, give the definition of the type of the current class’s properties, method parameters, and method return values to the user. Users can pass the actual type of the generics while creating the current class.</p>
+</li>
+<li><p>The prototype of generics is Object, and the definition of generics is only for the compiler to do some validation work. When we set a generic type, it will check whether it meets the type requirements. When we get a value of a generic type, it will automatically perform type conversion.</p>
+</li>
+</ul>
+<h2 id="Methods-in-List"><a href="#Methods-in-List" class="headerlink" title="Methods in List"></a>Methods in List</h2><h3 id="Insert-an-element-at-the-specified-position"><a href="#Insert-an-element-at-the-specified-position" class="headerlink" title="Insert an element at the specified position"></a>Insert an element at the specified position</h3><ul>
+<li>The return value is a boolean</li>
+</ul>
+<blockquote>
+<p><code>&lt;index&gt;</code>: The index of the element to be operated on</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">list.add(&lt;index&gt;, &lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Remove-the-element-at-the-specified-position"><a href="#Remove-the-element-at-the-specified-position" class="headerlink" title="Remove the element at the specified position"></a>Remove the element at the specified position</h3><ul>
+<li>Returns the deleted element</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.remove(&lt;index&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Take-a-subset"><a href="#Take-a-subset" class="headerlink" title="Take a subset"></a>Take a subset</h3><ul>
+<li>The return value is a collection</li>
+</ul>
+<blockquote>
+<p><code>&lt;index_first&gt;</code>: The start index of the subset<br><code>&lt;index_last&gt;</code>: The end index of the subset</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.subList(&lt;index_first&gt;, &lt;index_last&gt;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Modifying the subset is actually modifying the content of the original collection</li>
+</ul>
+<h3 id="Remove-the-elements-in-the-given-range-from-the-collection"><a href="#Remove-the-elements-in-the-given-range-from-the-collection" class="headerlink" title="Remove the elements in the given range from the collection"></a>Remove the elements in the given range from the collection</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.subList(&lt;index_first&gt;, &lt;index_last&gt;).clear();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h2><h3 id="Convert-collection-to-array"><a href="#Convert-collection-to-array" class="headerlink" title="Convert collection to array"></a>Convert collection to array</h3><ul>
+<li>The return value is an array</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.toArray(<span class="keyword">new</span> <span class="title class_">Object</span>[c.size()]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Convert-array-to-collection"><a href="#Convert-array-to-collection" class="headerlink" title="Convert array to collection"></a>Convert array to collection</h3><ul>
+<li><p>Can only be converted to List collection</p>
+</li>
+<li><p>The return value is a collection</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object[] array = &#123;&#125;;</span><br><span class="line">Arrays.asList(array);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Modify-elements"><a href="#Modify-elements" class="headerlink" title="Modify elements"></a>Modify elements</h4><h5 id="Add-an-element-to-the-collection"><a href="#Add-an-element-to-the-collection" class="headerlink" title="Add an element to the collection"></a>Add an element to the collection</h5><ul>
+<li>In fact, the following code will throw an exception. The reason is that the collection is converted from an array, so the collection represents the original array. Therefore, operations on the collection are operations on the array. Adding an element will cause the original array to expand, so it cannot represent the original array. Therefore, it is not allowed to add a new element to the collection.</li>
+</ul>
+<h5 id="Modify-collection-elements"><a href="#Modify-collection-elements" class="headerlink" title="Modify collection elements"></a>Modify collection elements</h5><ul>
+<li>The array elements will also be modified</li>
+</ul>
+<h5 id="If-you-want-to-add-or-delete-elements"><a href="#If-you-want-to-add-or-delete-elements" class="headerlink" title="If you want to add or delete elements"></a>If you want to add or delete elements</h5><ul>
+<li>Need to create another collection</li>
+</ul>
+<h2 id="Sorting"><a href="#Sorting" class="headerlink" title="Sorting"></a>Sorting</h2><ul>
+<li><p>The sorting collection uses the static method sort of the collection’s utility class Collections</p>
+</li>
+<li><p>Sorting can only be performed on List collections</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(list);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Custom-sorting-rules"><a href="#Custom-sorting-rules" class="headerlink" title="Custom sorting rules"></a>Custom sorting rules</h3><ul>
+<li>After implementing the Comparable interface, you need to rewrite the following method. The purpose of this method is to define the rules for comparing the size between the current object and the given parameter object.</li>
+<li>The return value is an int value, which represents the size relationship. It does not care about the specific value, but focuses on the value range.</li>
+<li>When the return value &gt; 0: The current object is larger than the parameter object</li>
+<li>When the return &lt;0: The current object is smaller than the parameter object</li>
+<li>When the return value &#x3D; 0: The two objects are equal.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">()</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Overloaded-methods"><a href="#Overloaded-methods" class="headerlink" title="Overloaded methods"></a>Overloaded methods</h3><ul>
+<li>The sort method requires that the collection elements must implement the Comparable interface, which specifies that the implementation class can be compared. One of its abstract methods is used to define the size rules.</li>
+<li>We want to use the sort method to sort the collection, but this method requires that our collection elements must implement the Comparable interface and define comparison rules. This phenomenon that we want to use a certain function, but it requires us to modify the program is called “invasiveness”. The more code we modify, the greater the invasiveness, and the less conducive to program expansion.</li>
+<li>The overloaded sort method requires passing an additional comparator, which no longer requires the collection elements to implement the Comparable interface, nor does it use the collection elements’ own comparison rules to sort the class, but sorts the collection elements based on the comparison rules of the given additional comparator.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;String&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(list, <span class="keyword">new</span> <span class="title class_">MyComparator</span>());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>In actual development, it is also recommended to use this method to sort collection elements if the collection elements are custom. When creating a comparator, it is also recommended to use the form of anonymous inner class.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Comparator&lt;String&gt; comparator = <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;String&gt;() &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Collections.sort(list, comparator);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Additional-methods-in-LinkedList"><a href="#Additional-methods-in-LinkedList" class="headerlink" title="Additional methods in LinkedList"></a>Additional methods in LinkedList</h2><h3 id="Add-first-and-last-elements"><a href="#Add-first-and-last-elements" class="headerlink" title="Add first and last elements"></a>Add first and last elements</h3><blockquote>
+<p><code>&lt;value&gt;</code>: Element of the corresponding data type</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addFirst(&lt;value&gt;);</span><br><span class="line">addLast(&lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-first-and-last-elements"><a href="#Get-the-first-and-last-elements" class="headerlink" title="Get the first and last elements"></a>Get the first and last elements</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list.getFirst();</span><br><span class="line">list.getLast();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Modify-the-element-at-the-specified-index"><a href="#Modify-the-element-at-the-specified-index" class="headerlink" title="Modify the element at the specified index"></a>Modify the element at the specified index</h3><blockquote>
+<p><code>&lt;index&gt;</code>: Index value</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.setFirst(&lt;index&gt;, &lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Remove-the-first-and-last-elements"><a href="#Remove-the-first-and-last-elements" class="headerlink" title="Remove the first and last elements"></a>Remove the first and last elements</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list.removeFirst();</span><br><span class="line">list.removeLast();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Map-collection"><a href="#Map-collection" class="headerlink" title="Map collection"></a>Map collection</h2><h3 id="Add-key-value-pairs"><a href="#Add-key-value-pairs" class="headerlink" title="Add key-value pairs"></a>Add key-value pairs</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.put(&lt;key&gt;, &lt;value&gt;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Whether-there-is-a-specified-key"><a href="#Whether-there-is-a-specified-key" class="headerlink" title="Whether there is a specified key"></a>Whether there is a specified key</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/02/17/Java%E7%9A%84%E9%9B%86%E5%90%88/" rel="prev" title="【笔记】Java的集合">
+                  <i class="fa fa-angle-left"></i> 【笔记】Java的集合
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/02/18/%E5%8F%8D%E7%BC%96%E8%AF%91exe%E6%96%87%E4%BB%B6/" rel="next" title="【笔记】反编译 exe 文件">
+                  【笔记】反编译 exe 文件 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2020/02/17/Java%E7%9A%84%E9%9B%86%E5%90%88/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2020/02/17/Java%E7%9A%84%E9%9B%86%E5%90%88/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

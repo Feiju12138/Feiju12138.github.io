@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2021/04/02/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2021/04/02/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2021/04/02/PHP学习笔记/","title":"【英文】PHP学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】PHP学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-of-PHP"><span class="nav-number">2.</span> <span class="nav-text">Shell of PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-Character-Encoding"><span class="nav-number">2.1.</span> <span class="nav-text">Setting Character Encoding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">3.</span> <span class="nav-text">Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outputting-Data-to-HTML"><span class="nav-number">4.</span> <span class="nav-text">Outputting Data to HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables"><span class="nav-number">5.</span> <span class="nav-text">Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Declaring-Variables"><span class="nav-number">5.1.</span> <span class="nav-text">Declaring Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Calling-Variables"><span class="nav-number">5.2.</span> <span class="nav-text">Calling Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Releasing-Variables"><span class="nav-number">5.3.</span> <span class="nav-text">Releasing Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable-Variables"><span class="nav-number">5.4.</span> <span class="nav-text">Variable Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Assignment-by-Reference"><span class="nav-number">5.5.</span> <span class="nav-text">Assignment by Reference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Types"><span class="nav-number">6.</span> <span class="nav-text">Data Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean-bool"><span class="nav-number">6.1.</span> <span class="nav-text">Boolean bool</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Other-Values-Considered-as-false"><span class="nav-number">6.1.1.</span> <span class="nav-text">Other Values Considered as false</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-int"><span class="nav-number">6.2.</span> <span class="nav-text">Integer int</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Float"><span class="nav-number">6.3.</span> <span class="nav-text">Float</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">6.4.</span> <span class="nav-text">String</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constants"><span class="nav-number">7.</span> <span class="nav-text">Constants</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-Constants"><span class="nav-number">7.1.</span> <span class="nav-text">Defining Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Constants"><span class="nav-number">7.2.</span> <span class="nav-text">Using Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Predefined-Constants"><span class="nav-number">7.3.</span> <span class="nav-text">Predefined Constants</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operators"><span class="nav-number">8.</span> <span class="nav-text">Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Arithmetic-Operators"><span class="nav-number">8.1.</span> <span class="nav-text">Arithmetic Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Assignment-Operators"><span class="nav-number">8.2.</span> <span class="nav-text">Assignment Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-Operators"><span class="nav-number">8.3.</span> <span class="nav-text">String Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Increment-and-Decrement-Operators"><span class="nav-number">8.4.</span> <span class="nav-text">Increment and Decrement Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison-Operators"><span class="nav-number">8.5.</span> <span class="nav-text">Comparison Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logical-Operators"><span class="nav-number">8.6.</span> <span class="nav-text">Logical Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-Operators"><span class="nav-number">8.7.</span> <span class="nav-text">Array Operators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connecting-to-Database"><span class="nav-number">9.</span> <span class="nav-text">Connecting to Database</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Old-Version"><span class="nav-number">9.1.</span> <span class="nav-text">Old Version</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Establishing-a-Connection"><span class="nav-number">9.1.1.</span> <span class="nav-text">Establishing a Connection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Executing-SQL-Statements"><span class="nav-number">9.1.2.</span> <span class="nav-text">Executing SQL Statements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Handling-Results"><span class="nav-number">9.1.3.</span> <span class="nav-text">Handling Results</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-Handling"><span class="nav-number">10.</span> <span class="nav-text">Error Handling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-Errors"><span class="nav-number">10.1.</span> <span class="nav-text">Types of Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Suppressing-Errors"><span class="nav-number">10.2.</span> <span class="nav-text">Suppressing Errors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executing-System-Shell"><span class="nav-number">11.</span> <span class="nav-text">Executing System Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Completed"><span class="nav-number">12.</span> <span class="nav-text">Completed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">13.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2021/04/02/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】PHP学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】PHP学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-02 17:05:30" itemprop="dateCreated datePublished" datetime="2021-04-02T17:05:30+00:00">2021-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PHP%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">PHP学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>PHP (Hypertext Preprocessor) is an open-source general-purpose scripting language that is especially suitable for web development and can be embedded within HTML. PHP’s syntax borrows features from popular computer languages such as C, Java, and Perl, making it easy for developers to learn. The main goal of PHP is to enable web developers to write dynamic pages quickly, but PHP is also used in many other domains. (<a href="/302.html?target=https://en.wikipedia.org/wiki/PHP">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="Shell-of-PHP"><a href="#Shell-of-PHP" class="headerlink" title="Shell of PHP"></a>Shell of PHP</h2><ul>
+<li>The PHP shell cannot be nested.</li>
+<li>If not line breaks, there must be a space after the PHP keyword.</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Setting-Character-Encoding"><a href="#Setting-Character-Encoding" class="headerlink" title="Setting Character Encoding"></a>Setting Character Encoding</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Single-line comment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multi-line comment */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Outputting-Data-to-HTML"><a href="#Outputting-Data-to-HTML" class="headerlink" title="Outputting Data to HTML"></a>Outputting Data to HTML</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> data;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><ul>
+<li>PHP does not require specifying variable types when defining variables. PHP variables can hold data of any type.</li>
+<li>Rules for naming variables in PHP:<ul>
+<li>Start with <code>$</code></li>
+<li>Case-sensitive</li>
+<li>Can only contain letters, numbers, and underscores</li>
+<li>Cannot start with a number</li>
+<li>Avoid using PHP keywords as variable names</li>
+</ul>
+</li>
+</ul>
+<h3 id="Declaring-Variables"><a href="#Declaring-Variables" class="headerlink" title="Declaring Variables"></a>Declaring Variables</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$variable_name</span> = variable_value;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Calling-Variables"><a href="#Calling-Variables" class="headerlink" title="Calling Variables"></a>Calling Variables</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$variable_name</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Releasing-Variables"><a href="#Releasing-Variables" class="headerlink" title="Releasing Variables"></a>Releasing Variables</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unset</span>(<span class="variable">$variable_name</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Variable-Variables"><a href="#Variable-Variables" class="headerlink" title="Variable Variables"></a>Variable Variables</h3><ul>
+<li>Using the value of one variable as the variable name of another variable</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="string">&quot;b&quot;</span>;</span><br><span class="line"><span class="variable">$b</span> = <span class="string">&quot;c&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$$a</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Assignment-by-Reference"><a href="#Assignment-by-Reference" class="headerlink" title="Assignment by Reference"></a>Assignment by Reference</h3><ul>
+<li>Assignment by reference points to the same memory address as the original variable, rather than creating a new memory address</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Normal assignment</span></span><br><span class="line"><span class="variable">$b</span> = <span class="variable">$a</span>;</span><br><span class="line"><span class="variable">$b</span> = <span class="variable">$b</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$b</span>; <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Assignment by reference</span></span><br><span class="line"><span class="variable">$c</span> = &amp;<span class="variable">$a</span>;</span><br><span class="line"><span class="variable">$c</span> = <span class="variable">$c</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>; <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$c</span>; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h2><h3 id="Boolean-bool"><a href="#Boolean-bool" class="headerlink" title="Boolean bool"></a>Boolean bool</h3><ul>
+<li><code>true</code>, <code>false</code></li>
+</ul>
+<p>When using <code>echo</code> to output, <code>true</code> is output as <code>1</code>, and <code>false</code> is output as blank.<br>When using <code>var_dump()</code> to output, <code>true</code> is output as <code>true</code>, and <code>false</code> is output as <code>false</code>.</p>
+<h4 id="Other-Values-Considered-as-false"><a href="#Other-Values-Considered-as-false" class="headerlink" title="Other Values Considered as false"></a>Other Values Considered as false</h4><ul>
+<li>In PHP, values of other data types can be used to represent boolean values, and some values are considered false, while others are considered true.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Values Considered as false</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>String</td>
+<td>Empty string, string “0”</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>Empty array</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>NULL</td>
+</tr>
+</tbody></table>
+<h3 id="Integer-int"><a href="#Integer-int" class="headerlink" title="Integer int"></a>Integer int</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$variable_name</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$variable_name</span> = <span class="number">1.0</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ul>
+<li>Strings can be defined using single quotes or double quotes. However, if you want to parse variables that appear in the string, double quotes must be used. Strings defined using single quotes cannot parse variables.<ul>
+<li>When parsing variables, the variable name must be an assigned variable.</li>
+<li>If the variable name is followed by other strings, you can use a space to separate them.</li>
+<li>If the variable name is immediately followed by other strings, you can use <code>&#123;&#125;</code> to wrap the variable name.</li>
+<li>If you need to output the <code>$</code> symbol in double quotes, you need to escape it with <code>\</code>.</li>
+</ul>
+</li>
+<li>Symbols in strings defined using single or double quotes need to be escaped with <code>\</code>. If there are a large number of symbols, you can use a heredoc syntax. All strings within the heredoc will be treated as is, without any modification. There should be no other characters (including spaces and tabs) before or after the heredoc <strong>HTML keywords</strong>.</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$variable_name</span> = <span class="string">&quot;This is a string&quot;</span>;</span><br><span class="line"><span class="variable">$variable_name</span> = <span class="string">&#x27;This is a string&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$variable_name</span> = <span class="string">&quot;<span class="subst">$variable_name</span> This is a string&quot;</span>;</span><br><span class="line"><span class="variable">$variable_name</span> = <span class="string">&quot;<span class="subst">&#123;$variable_name&#125;</span>This is a string&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$variable_name</span> = <span class="string">&lt;&lt;&lt;HTML</span></span><br><span class="line"><span class="string">This is a string</span></span><br><span class="line"><span class="string">HTML</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><h3 id="Defining-Constants"><a href="#Defining-Constants" class="headerlink" title="Defining Constants"></a>Defining Constants</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&quot;constant_name&quot;</span>, <span class="string">&quot;constant_value&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Using-Constants"><a href="#Using-Constants" class="headerlink" title="Using Constants"></a>Using Constants</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constant_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Predefined-Constants"><a href="#Predefined-Constants" class="headerlink" title="Predefined Constants"></a>Predefined Constants</h3><table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__FILE__</code></td>
+<td>Current file name</td>
+</tr>
+<tr>
+<td><code>__LINE__</code></td>
+<td>Current code line number</td>
+</tr>
+<tr>
+<td><code>__FUNCTION__</code></td>
+<td>Current function name</td>
+</tr>
+<tr>
+<td><code>__CLASS__</code></td>
+<td>Current class name</td>
+</tr>
+<tr>
+<td><code>__METHOD__</code></td>
+<td>Current method name of the object</td>
+</tr>
+<tr>
+<td><code>PHP_OS</code></td>
+<td>Current operating system name</td>
+</tr>
+<tr>
+<td><code>PHP_VERSION</code></td>
+<td>Current PHP version</td>
+</tr>
+<tr>
+<td><code>DIRECTORY_SEPARATOR</code></td>
+<td>Path separator used by the current system (<code>\</code> or <code>/</code>)</td>
+</tr>
+</tbody></table>
+<h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2><h3 id="Arithmetic-Operators"><a href="#Arithmetic-Operators" class="headerlink" title="Arithmetic Operators"></a>Arithmetic Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>Division</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Modulo</td>
+</tr>
+</tbody></table>
+<h3 id="Assignment-Operators"><a href="#Assignment-Operators" class="headerlink" title="Assignment Operators"></a>Assignment Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>Direct assignment</td>
+</tr>
+<tr>
+<td>+&#x3D;</td>
+<td>Add and assign</td>
+</tr>
+<tr>
+<td>-&#x3D;</td>
+<td>Subtract and assign</td>
+</tr>
+<tr>
+<td>*&#x3D;</td>
+<td>Multiply and assign</td>
+</tr>
+<tr>
+<td>&#x2F;&#x3D;</td>
+<td>Divide and assign</td>
+</tr>
+<tr>
+<td>%&#x3D;</td>
+<td>Modulo and assign</td>
+</tr>
+</tbody></table>
+<h3 id="String-Operators"><a href="#String-Operators" class="headerlink" title="String Operators"></a>String Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>Concatenation</td>
+</tr>
+<tr>
+<td>.&#x3D;</td>
+<td>Concatenation and assignment</td>
+</tr>
+</tbody></table>
+<h3 id="Increment-and-Decrement-Operators"><a href="#Increment-and-Decrement-Operators" class="headerlink" title="Increment and Decrement Operators"></a>Increment and Decrement Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>++$variable_name</td>
+<td>Increment by 1 (pre-increment)</td>
+</tr>
+<tr>
+<td>$variable_name++</td>
+<td>Increment by 1 (post-increment)</td>
+</tr>
+<tr>
+<td>–$variable_name</td>
+<td>Decrement by 1 (pre-decrement)</td>
+</tr>
+<tr>
+<td>$variable_name–</td>
+<td>Decrement by 1 (post-decrement)</td>
+</tr>
+</tbody></table>
+<h3 id="Comparison-Operators"><a href="#Comparison-Operators" class="headerlink" title="Comparison Operators"></a>Comparison Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;&#x3D;</td>
+<td>Equal (excluding type)</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;&#x3D;</td>
+<td>Identical (including type)</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>Greater than or equal to</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>Less than or equal to</td>
+</tr>
+</tbody></table>
+<h3 id="Logical-Operators"><a href="#Logical-Operators" class="headerlink" title="Logical Operators"></a>Logical Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and</td>
+<td>And</td>
+</tr>
+<tr>
+<td>or</td>
+<td>Or</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>Exclusive or</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>And</td>
+</tr>
+<tr>
+<td>&amp;#124;&amp;#124;</td>
+<td>Or</td>
+</tr>
+<tr>
+<td>!</td>
+<td>Not</td>
+</tr>
+</tbody></table>
+<h3 id="Array-Operators"><a href="#Array-Operators" class="headerlink" title="Array Operators"></a>Array Operators</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>Union (do not override duplicate keys)</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>Equal (excluding order and type)</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;&#x3D;</td>
+<td>Identical (including order and type)</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td>!&#x3D;&#x3D;</td>
+<td>Not identical</td>
+</tr>
+</tbody></table>
+<h2 id="Connecting-to-Database"><a href="#Connecting-to-Database" class="headerlink" title="Connecting to Database"></a>Connecting to Database</h2><h3 id="Old-Version"><a href="#Old-Version" class="headerlink" title="Old Version"></a><del>Old Version</del></h3><h4 id="Establishing-a-Connection"><a href="#Establishing-a-Connection" class="headerlink" title="Establishing a Connection"></a><del>Establishing a Connection</del></h4><blockquote>
+<p><code>&lt;ip&gt;</code>: Database address<br><code>&lt;user&gt;</code>: Username<br><code>&lt;password&gt;</code>: Password<br><code>&lt;database&gt;</code>: Name of the database to connect to</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mysql_connect</span>(<span class="string">&quot;&lt;ip&gt;&quot;</span>, <span class="string">&quot;&lt;user&gt;&quot;</span>, <span class="string">&quot;&lt;password&gt;&quot;</span>);</span><br><span class="line"><span class="title function_ invoke__">mysql_selectdb</span>(<span class="string">&quot;&lt;database&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Executing-SQL-Statements"><a href="#Executing-SQL-Statements" class="headerlink" title="Executing SQL Statements"></a><del>Executing SQL Statements</del></h4><blockquote>
+<p><code>&lt;sql&gt;</code>: SQL statement</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span> = <span class="title function_ invoke__">mysql_query</span>(&lt;sql&gt;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Handling-Results"><a href="#Handling-Results" class="headerlink" title="Handling Results"></a><del>Handling Results</del></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr</span> = <span class="title function_ invoke__">mysql_fetch_array</span>(<span class="variable">$result</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$arr</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Error-Handling"><a href="#Error-Handling" class="headerlink" title="Error Handling"></a>Error Handling</h2><ul>
+<li>PHP errors are directly output on the webpage.</li>
+</ul>
+<h3 id="Types-of-Errors"><a href="#Types-of-Errors" class="headerlink" title="Types of Errors"></a>Types of Errors</h3><ul>
+<li><code>Error</code>: An error occurred, and the script execution ends.</li>
+<li><code>Warning</code>: A warning occurs, only prompting and does not affect execution.</li>
+<li><code>Notice</code>: Notice</li>
+</ul>
+<h3 id="Suppressing-Errors"><a href="#Suppressing-Errors" class="headerlink" title="Suppressing Errors"></a>Suppressing Errors</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@possibly_error_code;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Executing-System-Shell"><a href="#Executing-System-Shell" class="headerlink" title="Executing System Shell"></a>Executing System Shell</h2><ul>
+<li>Use backticks to execute system shell and use the <code>echo</code> keyword to output the result.</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> `shell_command`;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Completed"><a href="#Completed" class="headerlink" title="Completed"></a>Completed</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kv411W73u">Bilibili-Python小清风</a><br>[W3School](<a target="_blank" rel="noopener" href="https://www.w3/">https://www.w3</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/04/02/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】PHP学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】PHP学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/04/13/Nodejs%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="【笔记】Nodejs创建服务器">
+                  【笔记】Nodejs创建服务器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2021/04/02/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2021/04/02/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

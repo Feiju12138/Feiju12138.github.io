@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2019/12/30/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2019/12/30/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2019/12/30/CSS学习笔记/","title":"【英文】CSS学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】CSS学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax-Rules"><span class="nav-number">2.</span> <span class="nav-text">Syntax Rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">3.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Inline-Style"><span class="nav-number">3.0.1.</span> <span class="nav-text">Inline Style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Internal-Style"><span class="nav-number">3.0.2.</span> <span class="nav-text">Internal Style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#External-Style"><span class="nav-number">3.0.3.</span> <span class="nav-text">External Style</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Specificity"><span class="nav-number">4.</span> <span class="nav-text">Specificity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Specificity-Values-of-Selectors"><span class="nav-number">4.1.</span> <span class="nav-text">Specificity Values of Selectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjusting-Specificity"><span class="nav-number">4.2.</span> <span class="nav-text">Adjusting Specificity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selectors"><span class="nav-number">5.</span> <span class="nav-text">Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Selectors"><span class="nav-number">5.1.</span> <span class="nav-text">Basic Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Universal-Selector"><span class="nav-number">5.1.1.</span> <span class="nav-text">Universal Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tag-Selector-Element-Selector"><span class="nav-number">5.1.2.</span> <span class="nav-text">Tag Selector (Element Selector)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ID-Selector"><span class="nav-number">5.1.3.</span> <span class="nav-text">ID Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-Selector"><span class="nav-number">5.1.4.</span> <span class="nav-text">Class Selector</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Class-Naming-Convention"><span class="nav-number">5.1.4.1.</span> <span class="nav-text">Class Naming Convention</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Multiple-Class-Selectors"><span class="nav-number">5.1.4.2.</span> <span class="nav-text">Multiple Class Selectors</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Group-Selector"><span class="nav-number">5.1.5.</span> <span class="nav-text">Group Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Descendant-Selector"><span class="nav-number">5.1.6.</span> <span class="nav-text">Descendant Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Child-Selector"><span class="nav-number">5.1.7.</span> <span class="nav-text">Child Selector</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudo-class-Selectors"><span class="nav-number">5.2.</span> <span class="nav-text">Pseudo-class Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-unvisited-links-state"><span class="nav-number">5.2.1.</span> <span class="nav-text">Matching unvisited links state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-visited-links-state"><span class="nav-number">5.2.2.</span> <span class="nav-text">Matching visited links state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-hover-state"><span class="nav-number">5.2.3.</span> <span class="nav-text">Matching hover state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-active-state-of-elements"><span class="nav-number">5.2.4.</span> <span class="nav-text">Matching active state of elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-focus-state-of-elements"><span class="nav-number">5.2.5.</span> <span class="nav-text">Matching focus state of elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-disabled-form-elements"><span class="nav-number">5.2.6.</span> <span class="nav-text">Matching disabled form elements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-empty-tags"><span class="nav-number">5.2.7.</span> <span class="nav-text">Matching empty tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-activated-anchor-links"><span class="nav-number">5.2.8.</span> <span class="nav-text">Matching activated anchor links</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attribute-Selectors"><span class="nav-number">5.3.</span> <span class="nav-text">Attribute Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fuzzy-matching-of-attribute-values"><span class="nav-number">5.3.1.</span> <span class="nav-text">Fuzzy matching of attribute values</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Starts-with-fuzzy-value"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">Starts with fuzzy value</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ends-with-fuzzy-value"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">Ends with fuzzy value</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Contains-fuzzy-value"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">Contains fuzzy value</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Child-Selectors-Indifferent-to-Child-Element-Type"><span class="nav-number">5.4.</span> <span class="nav-text">Child Selectors (Indifferent to Child Element Type)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-first-child-of-parent"><span class="nav-number">5.4.1.</span> <span class="nav-text">Matching first child of parent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-last-child-of-parent"><span class="nav-number">5.4.2.</span> <span class="nav-text">Matching last child of parent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-element-at-specified-position-among-children"><span class="nav-number">5.4.3.</span> <span class="nav-text">Matching element at specified position among children</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-element-at-specified-reverse-position-among-children"><span class="nav-number">5.4.4.</span> <span class="nav-text">Matching element at specified reverse position among children</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Child-Selectors-Differentiating-Child-Element-Type"><span class="nav-number">5.5.</span> <span class="nav-text">Child Selectors (Differentiating Child Element Type)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-first-element-of-specified-type"><span class="nav-number">5.5.1.</span> <span class="nav-text">Matching first element of specified type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-last-element-of-specified-type"><span class="nav-number">5.5.2.</span> <span class="nav-text">Matching last element of specified type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-element-at-specified-position-of-specified-type"><span class="nav-number">5.5.3.</span> <span class="nav-text">Matching element at specified position of specified type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-element-at-specified-reverse-position-of-specified-type"><span class="nav-number">5.5.4.</span> <span class="nav-text">Matching element at specified reverse position of specified type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-child-that-is-the-only-child-of-its-parent"><span class="nav-number">5.5.5.</span> <span class="nav-text">Matching child that is the only child of its parent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relational-Selectors"><span class="nav-number">5.6.</span> <span class="nav-text">Relational Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Next-sibling-immediately-following"><span class="nav-number">5.6.1.</span> <span class="nav-text">Next sibling immediately following</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#All-siblings-immediately-following"><span class="nav-number">5.6.2.</span> <span class="nav-text">All siblings immediately following</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudo-element-Selectors"><span class="nav-number">5.7.</span> <span class="nav-text">Pseudo-element Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-the-first-character"><span class="nav-number">5.7.1.</span> <span class="nav-text">Matching the first character</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-the-first-line-of-text"><span class="nav-number">5.7.2.</span> <span class="nav-text">Matching the first line of text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matching-the-characters-selected-by-the-mouse"><span class="nav-number">5.7.3.</span> <span class="nav-text">Matching the characters selected by the mouse</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Negation-Pseudo-class"><span class="nav-number">5.8.</span> <span class="nav-text">Negation Pseudo-class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Generation"><span class="nav-number">5.9.</span> <span class="nav-text">Content Generation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-a-pseudo-element-at-the-very-beginning-of-the-element%E2%80%99s-content-area"><span class="nav-number">5.9.1.</span> <span class="nav-text">Add a pseudo-element at the very beginning of the element’s content area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-a-pseudo-element-at-the-very-end-of-the-element%E2%80%99s-content-area"><span class="nav-number">5.9.2.</span> <span class="nav-text">Add a pseudo-element at the very end of the element’s content area</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sizes"><span class="nav-number">6.</span> <span class="nav-text">Sizes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements-Allowed-to-Have-Set-Sizes-on-a-Page"><span class="nav-number">6.1.</span> <span class="nav-text">Elements Allowed to Have Set Sizes on a Page</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Units"><span class="nav-number">7.</span> <span class="nav-text">Units</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Absolute-Units"><span class="nav-number">7.1.</span> <span class="nav-text">Absolute Units</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relative-Units"><span class="nav-number">7.2.</span> <span class="nav-text">Relative Units</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2019/12/30/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】CSS学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】CSS学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-12-30 21:44:39" itemprop="dateCreated datePublished" datetime="2019-12-30T21:44:39+00:00">2019-12-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">前端学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Cascading Style Sheets is a computer language used to add style to structured documents, defined and maintained by W3C. The current latest version is CSS2.1, which is a W3C recommended standard. CSS3 is now supported by most modern browsers, while the next version CSS4 is still in development. (<a href="/302.html?target=https://en.wikipedia.org/wiki/Cascading_Style_Sheets">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="Syntax-Rules"><a href="#Syntax-Rules" class="headerlink" title="Syntax Rules"></a>Syntax Rules</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selector &#123;</span><br><span class="line">  style declaration;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h4 id="Inline-Style"><a href="#Inline-Style" class="headerlink" title="Inline Style"></a>Inline Style</h4><ul>
+<li>Written inside HTML tags</li>
+</ul>
+<blockquote>
+<p><code>style declaration</code>: <code>style property: style value</code></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;any style=&quot;style declaration&quot;&gt;&lt;/any&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Internal-Style"><a href="#Internal-Style" class="headerlink" title="Internal Style"></a>Internal Style</h4><ul>
+<li>Write styles inside <code>&lt;style&gt;&lt;/style&gt;</code> tags</li>
+<li><code>&lt;style&gt;&lt;/style&gt;</code> tags are placed inside <code>&lt;head&gt;&lt;/head&gt;</code> tags</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="External-Style"><a href="#External-Style" class="headerlink" title="External Style"></a>External Style</h4><ul>
+<li>Reference external <code>.css</code> file inside <code>&lt;head&gt;&lt;/head&gt;</code> tags</li>
+</ul>
+<blockquote>
+<p><code>href</code>: resource path</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><ul>
+<li>When multiple styles are applied to an element and there is a conflict, the styles are applied based on specificity rules</li>
+</ul>
+<blockquote>
+<p>Lowest: Browser default styles<br>Closest Priority: Whichever style is closest to the element is chosen<br>Highest: Inline styles</p>
+</blockquote>
+<h3 id="Specificity-Values-of-Selectors"><a href="#Specificity-Values-of-Selectors" class="headerlink" title="Specificity Values of Selectors"></a>Specificity Values of Selectors</h3><ul>
+<li>Indicates the importance of the selector, higher the value, higher the priority</li>
+<li>When a selector contains multiple selectors, the values are added and the selector with higher value is applied</li>
+<li>Same values, closest rule is followed</li>
+<li><code>!important</code> directly gets the highest priority, inline styles are not allowed to use <code>!important</code></li>
+<li>Group selector values are calculated individually and cannot be combined</li>
+<li>The calculation of selector values cannot exceed its maximum significant figure</li>
+</ul>
+<blockquote>
+<p><code>!important</code> &gt; 1000<br><code>Inline styles</code> &#x3D; 1000<br><code>ID selectors</code> &#x3D; 100<br><code>Class/Pseudo-class selectors</code> &#x3D; 10<br><code>Element selectors</code> &#x3D; 1<br><code>Universal selectors</code> &#x3D; 0<br><code>Inherited styles</code> &#x3D; null</p>
+</blockquote>
+<h3 id="Adjusting-Specificity"><a href="#Adjusting-Specificity" class="headerlink" title="Adjusting Specificity"></a>Adjusting Specificity</h3><ul>
+<li>Place it after the property, separated by a space from the property value, to adjust the specificity of that property to the highest level</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!important &lt;rule&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h2><h3 id="Basic-Selectors"><a href="#Basic-Selectors" class="headerlink" title="Basic Selectors"></a>Basic Selectors</h3><h4 id="Universal-Selector"><a href="#Universal-Selector" class="headerlink" title="Universal Selector"></a>Universal Selector</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Tag-Selector-Element-Selector"><a href="#Tag-Selector-Element-Selector" class="headerlink" title="Tag Selector (Element Selector)"></a>Tag Selector (Element Selector)</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element name &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ID-Selector"><a href="#ID-Selector" class="headerlink" title="ID Selector"></a>ID Selector</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#element&#x27;s id attribute value &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Class-Selector"><a href="#Class-Selector" class="headerlink" title="Class Selector"></a>Class Selector</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.element&#x27;s class attribute value &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Class-Naming-Convention"><a href="#Class-Naming-Convention" class="headerlink" title="Class Naming Convention"></a>Class Naming Convention</h5><ul>
+<li>Class names cannot start with a number</li>
+<li>Apart from <code>-_</code>, no other symbols are allowed</li>
+<li>Preferably use meaningful names</li>
+</ul>
+<h5 id="Multiple-Class-Selectors"><a href="#Multiple-Class-Selectors" class="headerlink" title="Multiple Class Selectors"></a>Multiple Class Selectors</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;any class=&quot;class1 class2 class3&quot;&gt;&lt;/any&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Group-Selector"><a href="#Group-Selector" class="headerlink" title="Group Selector"></a>Group Selector</h4><ul>
+<li>Define common styles for multiple selectors</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector1, selector2, selector3 &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Descendant-Selector"><a href="#Descendant-Selector" class="headerlink" title="Descendant Selector"></a>Descendant Selector</h4><ul>
+<li>Nesting one or more levels deep</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector1 selector2 selector3 &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Child-Selector"><a href="#Child-Selector" class="headerlink" title="Child Selector"></a>Child Selector</h4><ul>
+<li>Direct nesting</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector1&gt;selector2 &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pseudo-class-Selectors"><a href="#Pseudo-class-Selectors" class="headerlink" title="Pseudo-class Selectors"></a>Pseudo-class Selectors</h3><ul>
+<li>Match elements based on different states</li>
+</ul>
+<h4 id="Matching-unvisited-links-state"><a href="#Matching-unvisited-links-state" class="headerlink" title="Matching unvisited links state"></a>Matching unvisited links state</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:link</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-visited-links-state"><a href="#Matching-visited-links-state" class="headerlink" title="Matching visited links state"></a>Matching visited links state</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:visited</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-hover-state"><a href="#Matching-hover-state" class="headerlink" title="Matching hover state"></a>Matching hover state</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:hover</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-active-state-of-elements"><a href="#Matching-active-state-of-elements" class="headerlink" title="Matching active state of elements"></a>Matching active state of elements</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:active</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note: These four have a specific order to avoid conflicts</strong></p>
+<h4 id="Matching-focus-state-of-elements"><a href="#Matching-focus-state-of-elements" class="headerlink" title="Matching focus state of elements"></a>Matching focus state of elements</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:focus</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-disabled-form-elements"><a href="#Matching-disabled-form-elements" class="headerlink" title="Matching disabled form elements"></a>Matching disabled form elements</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector:disable &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-empty-tags"><a href="#Matching-empty-tags" class="headerlink" title="Matching empty tags"></a>Matching empty tags</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:empty</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-activated-anchor-links"><a href="#Matching-activated-anchor-links" class="headerlink" title="Matching activated anchor links"></a>Matching activated anchor links</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:target</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Attribute-Selectors"><a href="#Attribute-Selectors" class="headerlink" title="Attribute Selectors"></a>Attribute Selectors</h3><ul>
+<li>Based on element’s built-in or custom attributes</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tag<span class="selector-attr">[attr]</span> &#123;style declaration&#125;</span><br><span class="line"></span><br><span class="line">tag<span class="selector-attr">[attr=<span class="string">&quot;attr value&quot;</span>]</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Fuzzy-matching-of-attribute-values"><a href="#Fuzzy-matching-of-attribute-values" class="headerlink" title="Fuzzy matching of attribute values"></a>Fuzzy matching of attribute values</h4><h5 id="Starts-with-fuzzy-value"><a href="#Starts-with-fuzzy-value" class="headerlink" title="Starts with fuzzy value"></a>Starts with fuzzy value</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tag<span class="selector-attr">[attr^=<span class="string">&quot;fuzzy value&quot;</span>]</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Ends-with-fuzzy-value"><a href="#Ends-with-fuzzy-value" class="headerlink" title="Ends with fuzzy value"></a>Ends with fuzzy value</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tag<span class="selector-attr">[attr$=<span class="string">&quot;fuzzy value&quot;</span>]</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Contains-fuzzy-value"><a href="#Contains-fuzzy-value" class="headerlink" title="Contains fuzzy value"></a>Contains fuzzy value</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tag<span class="selector-attr">[attr*=<span class="string">&quot;fuzzy value&quot;</span>]</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Child-Selectors-Indifferent-to-Child-Element-Type"><a href="#Child-Selectors-Indifferent-to-Child-Element-Type" class="headerlink" title="Child Selectors (Indifferent to Child Element Type)"></a>Child Selectors (Indifferent to Child Element Type)</h3><h4 id="Matching-first-child-of-parent"><a href="#Matching-first-child-of-parent" class="headerlink" title="Matching first child of parent"></a>Matching first child of parent</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:first</span>-child &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-last-child-of-parent"><a href="#Matching-last-child-of-parent" class="headerlink" title="Matching last child of parent"></a>Matching last child of parent</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:last-child</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-element-at-specified-position-among-children"><a href="#Matching-element-at-specified-position-among-children" class="headerlink" title="Matching element at specified position among children"></a>Matching element at specified position among children</h4><ul>
+<li>Index starts from 1</li>
+</ul>
+<blockquote>
+<p><code>&lt;num&gt;</code>: specified position. It can be a pure number or a function containing <code>n</code></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:nth-child</span>(&lt;num&gt;) &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-element-at-specified-reverse-position-among-children"><a href="#Matching-element-at-specified-reverse-position-among-children" class="headerlink" title="Matching element at specified reverse position among children"></a>Matching element at specified reverse position among children</h4><ul>
+<li>Index starts from 1</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:nth-last-child</span>(&lt;num&gt;) &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Child-Selectors-Differentiating-Child-Element-Type"><a href="#Child-Selectors-Differentiating-Child-Element-Type" class="headerlink" title="Child Selectors (Differentiating Child Element Type)"></a>Child Selectors (Differentiating Child Element Type)</h3><ul>
+<li>Matches each child corresponding to its parent</li>
+</ul>
+<h4 id="Matching-first-element-of-specified-type"><a href="#Matching-first-element-of-specified-type" class="headerlink" title="Matching first element of specified type"></a>Matching first element of specified type</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:first</span>-of-type &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-last-element-of-specified-type"><a href="#Matching-last-element-of-specified-type" class="headerlink" title="Matching last element of specified type"></a>Matching last element of specified type</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:last-of-type</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-element-at-specified-position-of-specified-type"><a href="#Matching-element-at-specified-position-of-specified-type" class="headerlink" title="Matching element at specified position of specified type"></a>Matching element at specified position of specified type</h4><ul>
+<li>Index starts from 1</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:nth-child</span>(&lt;num&gt;) &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-element-at-specified-reverse-position-of-specified-type"><a href="#Matching-element-at-specified-reverse-position-of-specified-type" class="headerlink" title="Matching element at specified reverse position of specified type"></a>Matching element at specified reverse position of specified type</h4><ul>
+<li>Index starts from 1</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:nth-last-child</span>(&lt;num&gt;) &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-child-that-is-the-only-child-of-its-parent"><a href="#Matching-child-that-is-the-only-child-of-its-parent" class="headerlink" title="Matching child that is the only child of its parent"></a>Matching child that is the only child of its parent</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:only-child</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Relational-Selectors"><a href="#Relational-Selectors" class="headerlink" title="Relational Selectors"></a>Relational Selectors</h3><h4 id="Next-sibling-immediately-following"><a href="#Next-sibling-immediately-following" class="headerlink" title="Next sibling immediately following"></a>Next sibling immediately following</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector1+selector2 &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="All-siblings-immediately-following"><a href="#All-siblings-immediately-following" class="headerlink" title="All siblings immediately following"></a>All siblings immediately following</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector1~selector2 &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pseudo-element-Selectors"><a href="#Pseudo-element-Selectors" class="headerlink" title="Pseudo-element Selectors"></a>Pseudo-element Selectors</h3><h4 id="Matching-the-first-character"><a href="#Matching-the-first-character" class="headerlink" title="Matching the first character"></a>Matching the first character</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:first</span>-letter &#123;style declaration&#125;</span><br><span class="line"></span><br><span class="line">basic selector<span class="selector-pseudo">::first-letter</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-the-first-line-of-text"><a href="#Matching-the-first-line-of-text" class="headerlink" title="Matching the first line of text"></a>Matching the first line of text</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:first</span>-line &#123;style declaration&#125;</span><br><span class="line"></span><br><span class="line">basic selector<span class="selector-pseudo">::first-line</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Matching-the-characters-selected-by-the-mouse"><a href="#Matching-the-characters-selected-by-the-mouse" class="headerlink" title="Matching the characters selected by the mouse"></a>Matching the characters selected by the mouse</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">::selection</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Negation-Pseudo-class"><a href="#Negation-Pseudo-class" class="headerlink" title="Negation Pseudo-class"></a>Negation Pseudo-class</h3><ul>
+<li>Excludes any elements that match <code>selector</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem<span class="selector-pseudo">:not</span>(basic selector) &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Content-Generation"><a href="#Content-Generation" class="headerlink" title="Content Generation"></a>Content Generation</h3><ul>
+<li>Adds HTML elements using CSS commands</li>
+</ul>
+<ol>
+<li>Pseudo-elements can only be added to paired tags</li>
+<li>Must have a <code>content</code> attribute</li>
+<li>Must be out of the standard document flow</li>
+</ol>
+<ul>
+<li><p>The <code>content</code> attribute in pseudo-elements sets the text content, by default can pass an empty string</p>
+</li>
+<li><p>Only two pseudo-elements can exist within the same tag, if more than two, the latter overrides the former</p>
+</li>
+</ul>
+<h4 id="Add-a-pseudo-element-at-the-very-beginning-of-the-element’s-content-area"><a href="#Add-a-pseudo-element-at-the-very-beginning-of-the-element’s-content-area" class="headerlink" title="Add a pseudo-element at the very beginning of the element’s content area"></a>Add a pseudo-element at the very beginning of the element’s content area</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:before</span> &#123;style declaration&#125;</span><br><span class="line"></span><br><span class="line">basic selector<span class="selector-pseudo">::before</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Add-a-pseudo-element-at-the-very-end-of-the-element’s-content-area"><a href="#Add-a-pseudo-element-at-the-very-end-of-the-element’s-content-area" class="headerlink" title="Add a pseudo-element at the very end of the element’s content area"></a>Add a pseudo-element at the very end of the element’s content area</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basic selector<span class="selector-pseudo">:after</span> &#123;style declaration&#125;</span><br><span class="line"></span><br><span class="line">basic selector<span class="selector-pseudo">::after</span> &#123;style declaration&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Sizes"><a href="#Sizes" class="headerlink" title="Sizes"></a>Sizes</h2><ul>
+<li>Set the width and height of elements</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: ;</span><br><span class="line"><span class="attribute">height</span>: ;</span><br><span class="line"></span><br><span class="line"><span class="attribute">max-width</span>: ;</span><br><span class="line"><span class="attribute">min-width</span>: ;</span><br><span class="line"></span><br><span class="line"><span class="attribute">max-height</span>: ;</span><br><span class="line"><span class="attribute">min-height</span>: ;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Elements-Allowed-to-Have-Set-Sizes-on-a-Page"><a href="#Elements-Allowed-to-Have-Set-Sizes-on-a-Page" class="headerlink" title="Elements Allowed to Have Set Sizes on a Page"></a>Elements Allowed to Have Set Sizes on a Page</h3><blockquote>
+<p><code>span</code>: for setting background color width and height<br><code>div</code>: for setting background color, width, and height<br><code>input</code>: for setting width and height</p>
+</blockquote>
+<ul>
+<li>Block-level elements can have width and height set, if width is not set, default width is 100% of the parent element, if height is not set, default height depends on content</li>
+<li>Inline elements’ width and height settings are ineffective, width and height are determined by content</li>
+<li>Inline-blocks can have width and height set, inline-blocks have default width and height, different browsers interpret this differently (span, input)</li>
+<li>Elements with default width and height attributes can have styles applied for width and height (img, table)</li>
+</ul>
+<h2 id="Units"><a href="#Units" class="headerlink" title="Units"></a>Units</h2><h3 id="Absolute-Units"><a href="#Absolute-Units" class="headerlink" title="Absolute Units"></a>Absolute Units</h3><blockquote>
+<p><code>px</code>: pixels, logical pixels and physical pixels<br><code>in</code>: inches, 1in &#x3D; 2.54cm<br><code>pt</code>: points, 1pt &#x3D; 1&#x2F;72in, commonly used for font sizes<br><code>cm</code>: centimeters<br><code>mm</code>: millimeters</p>
+</blockquote>
+<h3 id="Relative-Units"><a href="#Relative-Units" class="headerlink" title="Relative Units"></a>Relative Units</h3><blockquote>
+<p><code>%</code>: percentage of parent element’s width<br><code>em</code>: relative to the font size of the element</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/12/30/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】CSS学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】CSS学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/01/08/%E5%9C%A8Parallels%E5%AE%89%E8%A3%85Windows10%E7%B3%BB%E7%BB%9F/" rel="next" title="【笔记】在 Parallels 安装 Windows 10 系统">
+                  【笔记】在 Parallels 安装 Windows 10 系统 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2019/12/30/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2019/12/30/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/","path":"en/2023/06/02/通过GithubActions实现自动化部署Hexo/","title":"【英文】通过GithubActions实现自动化部署Hexo"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】通过GithubActions实现自动化部署Hexo | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-SSH-Key-Pair"><span class="nav-number">2.</span> <span class="nav-text">Configure SSH Key Pair</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-an-SSH-Key-Pair"><span class="nav-number">2.1.</span> <span class="nav-text">Generate an SSH Key Pair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-the-Private-Key-in-the-Hexo-Working-Directory-Github-Repository"><span class="nav-number">2.2.</span> <span class="nav-text">Specify the Private Key in the Hexo Working Directory Github Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-the-Public-Key-in-the-Hexo-Site-Directory-Github-Repository"><span class="nav-number">2.3.</span> <span class="nav-text">Specify the Public Key in the Hexo Site Directory Github Repository</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-Deployment-Configuration"><span class="nav-number">3.</span> <span class="nav-text">Create Deployment Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced"><span class="nav-number">4.</span> <span class="nav-text">Advanced</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-an-Automated-Preheating-Script"><span class="nav-number">4.1.</span> <span class="nav-text">Write an Automated Preheating Script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-Github-Actions-Configuration"><span class="nav-number">4.2.</span> <span class="nav-text">Deploy Github Actions Configuration</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】通过GithubActions实现自动化部署Hexo | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】通过GithubActions实现自动化部署Hexo
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-06-02 15:29:58" itemprop="dateCreated datePublished" datetime="2023-06-02T15:29:58+00:00">2023-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Automating the deployment of Hexo to Github Pages using Github Actions</p>
+<span id="more"></span>
+
+<h2 id="Configure-SSH-Key-Pair"><a href="#Configure-SSH-Key-Pair" class="headerlink" title="Configure SSH Key Pair"></a>Configure SSH Key Pair</h2><ul>
+<li>Push the Hexo working directory and Hexo site directory to 2 Github repositories separately (Hexo working directory repository can be set as private)</li>
+</ul>
+<h3 id="Generate-an-SSH-Key-Pair"><a href="#Generate-an-SSH-Key-Pair" class="headerlink" title="Generate an SSH Key Pair"></a>Generate an SSH Key Pair</h3><ul>
+<li>Generate an SSH key pair to deploy from the Hexo working directory Github repository <code>hexo d</code> to the Hexo site directory Github repository</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;Hexo Deploy Key&quot; -f github-deploy-key -N &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specify-the-Private-Key-in-the-Hexo-Working-Directory-Github-Repository"><a href="#Specify-the-Private-Key-in-the-Hexo-Working-Directory-Github-Repository" class="headerlink" title="Specify the Private Key in the Hexo Working Directory Github Repository"></a>Specify the Private Key in the Hexo Working Directory Github Repository</h3><p><img src="/images/20230602152958/01.png"><br><img src="/images/20230602152958/02.png"></p>
+<h3 id="Specify-the-Public-Key-in-the-Hexo-Site-Directory-Github-Repository"><a href="#Specify-the-Public-Key-in-the-Hexo-Site-Directory-Github-Repository" class="headerlink" title="Specify the Public Key in the Hexo Site Directory Github Repository"></a>Specify the Public Key in the Hexo Site Directory Github Repository</h3><p><img src="/images/20230602152958/03.png"><br><img src="/images/20230602152958/04.png"></p>
+<h2 id="Create-Deployment-Configuration"><a href="#Create-Deployment-Configuration" class="headerlink" title="Create Deployment Configuration"></a>Create Deployment Configuration</h2><ul>
+<li>Create a directory to store the deployment configuration and create the deployment configuration file with any file name and the format <code>Yaml</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ./.github/workflows/</span><br><span class="line">touch ./.github/workflows/main.yml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Write the configuration into the file</li>
+</ul>
+<blockquote>
+<p><code>git config --global user.email &quot;&quot;</code>: Configure the email for your Git identity<br><code>git config --global user.name &quot;&quot;</code>: Configure the username for your Git identity</p>
+<p><code>name</code>: Specify the deployment configuration name<br><code>on</code>: Specify the conditions that trigger the deployment</p>
+<blockquote>
+<p><code>on.push.branches=[&quot;master&quot;]</code>: Specify to trigger the deployment when pushing to the master branch<br><code>on=[&quot;push&quot;]</code>: Specify to trigger the deployment on push operation</p>
+</blockquote>
+<p><code>jobs</code>: Specify the deployment tasks<br><code>HexoDeploy</code>: Name of the deployment, customizable<br><code>runs-on</code>: Starting container for the deployment<br><code>steps</code>: Deployment steps<br><code>uses</code>: Use deployment scripts from other Github repositories, <code>actions</code> is the official Github deployment scripts repository, where there are some commonly used deployment environments<br><code>name</code>: Specific step name<br><code>secrets.</code>: Variables in the Github repository Secrets<br><code>run</code>: Shell commands executed in the current step, ‘|’ can be used to start defining each shell command on the next line without repeating <code>- run</code></p>
+</blockquote>
+<figure class="highlight yaml"><figcaption><span>./.github/workflows/main.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">Hexo</span> <span class="string">to</span> <span class="string">Github</span> <span class="string">Page</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">&quot;master&quot;</span> ]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">HexoDeploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">node-version:</span> [<span class="number">18.</span><span class="string">x</span>]</span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span> <span class="string">environment</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configure</span> <span class="string">SSH</span> <span class="string">and</span> <span class="string">Git</span> <span class="string">environments</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">ACTION_DEPLOY_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        mkdir -p ~/.ssh/</span></span><br><span class="line"><span class="string">        echo &quot;$ACTION_DEPLOY_KEY&quot; &gt; ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">        chmod 700 ~/.ssh</span></span><br><span class="line"><span class="string">        chmod 600 ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">        ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span></span><br><span class="line"><span class="string">        git config --global user.email &quot;&quot;</span></span><br><span class="line"><span class="string">        git config --global user.name &quot;&quot;</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configure</span> <span class="string">Hexo</span> <span class="string">environment</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        export TZ=&#x27;Asia/Shanghai&#x27;</span></span><br><span class="line"><span class="string">        npm install hexo-cli -g</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Download</span> <span class="string">Npm</span> <span class="string">dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npm install</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">blog</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h2><ul>
+<li>Because the <a href="/302.html?target=https://cloud.tencent.com/document/product/440/34011">TCCLI tool</a> can operate Tencent Cloud CDN products, caching refresh and cache preheating can be automated with Github Actions</li>
+</ul>
+<p><a href="/zh-CN/2023/05/17/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%B7%E6%96%B0%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E7%BC%93%E5%AD%98/">Link</a></p>
+<ul>
+<li>Automatically fetch all URLs mentioned in the <code>sitemap.txt</code> site map using a Python script, and perform Tencent Cloud CDN preheating on URLs other than articles in the list</li>
+</ul>
+<h3 id="Write-an-Automated-Preheating-Script"><a href="#Write-an-Automated-Preheating-Script" class="headerlink" title="Write an Automated Preheating Script"></a>Write an Automated Preheating Script</h3><ul>
+<li>Before using, set <code>site</code> to your <code>site root path</code>, and set <code>site_map</code> to the site map path</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># Site root path</span></span><br><span class="line">site = <span class="string">&quot;https://loli.fj.cn&quot;</span></span><br><span class="line"><span class="comment"># Site map path</span></span><br><span class="line">site_map = <span class="string">f&quot;<span class="subst">&#123;site&#125;</span>/sitemap.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Store URLs that need to be cached and preheated</span></span><br><span class="line">result_url = []</span><br><span class="line">context = requests.get(<span class="string">f&quot;<span class="subst">&#123;site_map&#125;</span>&quot;</span>).text</span><br><span class="line">lines = context.split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    text = re.findall(<span class="string">&quot;http.*?/\\d&#123;4&#125;/\\d&#123;2&#125;/\\d&#123;2&#125;/&quot;</span>, line)</span><br><span class="line">    <span class="comment"># Add the string to the result list if it does not contain a date</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(text) == <span class="number">0</span>:</span><br><span class="line">        result_url.append(line)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Added&quot;</span>, line, <span class="string">&quot;to CDN preheating list&quot;</span>)</span><br><span class="line"></span><br><span class="line">result_command = <span class="string">&quot;tccli cdn PushUrlsCache --Urls &#x27;[&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(result_url)):</span><br><span class="line">    <span class="comment"># Skip empty strings</span></span><br><span class="line">    <span class="keyword">if</span> result_url[i] == <span class="string">&quot;&quot;</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="comment"># Concatenate separator if it is not the first element</span></span><br><span class="line">    <span class="keyword">if</span> i != <span class="number">0</span>:</span><br><span class="line">        result_command += <span class="string">&#x27;,&#x27;</span></span><br><span class="line">    result_command += <span class="string">&#x27;&quot;&#x27;</span></span><br><span class="line">    result_command += result_url[i]</span><br><span class="line">    result_command += <span class="string">&#x27;&quot;&#x27;</span></span><br><span class="line">result_command += <span class="string">&quot;]&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;== Added a total of <span class="subst">&#123;<span class="built_in">len</span>(result_url)&#125;</span> data to the CDN preheating list ==&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;== Refresh site root directory ==&quot;</span>)</span><br><span class="line">cmd = <span class="string">f&quot;tccli cdn PurgePathCache --Paths &#x27;[\&quot;<span class="subst">&#123;site&#125;</span>/\&quot;]&#x27; --FlushType delete&quot;</span></span><br><span class="line">res = os.popen(cmd)</span><br><span class="line"><span class="built_in">print</span>(cmd)</span><br><span class="line"><span class="built_in">print</span>(res.read())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;== Generate cache preheating ==&quot;</span>)</span><br><span class="line">res = os.popen(result_command)</span><br><span class="line"><span class="built_in">print</span>(result_command)</span><br><span class="line"><span class="built_in">print</span>(res.read())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;== Script execution completed ==&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deploy-Github-Actions-Configuration"><a href="#Deploy-Github-Actions-Configuration" class="headerlink" title="Deploy Github Actions Configuration"></a>Deploy Github Actions Configuration</h3><ul>
+<li>Before using:<ul>
+<li>Set <strong>Tencent Cloud SecretId</strong> as the value of <strong>Hexo working directory repository’s Secret</strong>: <code>TCCLI_API_SECRED_ID</code></li>
+<li>Set <strong>Tencent Cloud SecretKey</strong> as the value of <strong>Hexo working directory repository’s Secret</strong>: <code>TCCLI_API_SECRED_KEY</code></li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/cam/capi">Tencent Cloud Secret retrieval link</a><br><a href="/zh-CN/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/#%E5%9C%A8Hexo%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95Github%E4%BB%93%E5%BA%93%E4%B8%AD%E6%8C%87%E5%AE%9A%E7%A7%81%E9%92%A5">Add Secret to Hexo working directory link</a></p>
+<pre><code class="yaml">name: Deploy Hexo to GithubPage
+on:
+  push:
+    branches: [ &quot;master&quot; ]
+jobs:
+  HexoDeploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js $&#123;&#123; matrix.node-version &#125;&#125; environment
+      uses: actions/setup-node@v3
+      with:
+        node-version: $&#123;&#123; matrix.node-version &#125;&#125;
+    - name: Configure SSH and Git environments
+      env:
+        ACTION_DEPLOY_KEY: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125;
+      run: |
+        mkdir -p ~/.ssh/
+        echo &quot;$ACTION_DEPLOY_KEY&quot; &gt; ~/.ssh/id_rsa
+        chmod 700 ~/.ssh
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts
+        git config --global user.email &quot;feijuxiaogege@foxmail.com&quot;
+        git config --global user.name &quot;FeiJu By Github Actions&quot;
+    - name: Configure Hexo environment
+      run: |
+        export TZ=&#39;Asia/Shanghai&#39;
+        npm install hexo-cli -g
+    - name: Download Npm dependencies
+      run: |
+       
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/" rel="prev" title="【笔记】通过GithubActions实现自动化部署Hexo">
+                  <i class="fa fa-angle-left"></i> 【笔记】通过GithubActions实现自动化部署Hexo
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/06/03/Windows%E5%88%A0%E9%99%A4%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E7%9A%84%E9%9D%9E%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E5%9B%BE%E6%A0%87/" rel="next" title="【骚操作】Windows删除资源管理器的非系统自带图标">
+                  【骚操作】Windows删除资源管理器的非系统自带图标 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2023/06/02/%E9%80%9A%E8%BF%87GithubActions%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2Hexo/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

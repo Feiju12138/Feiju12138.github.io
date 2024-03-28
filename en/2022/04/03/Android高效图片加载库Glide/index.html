@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2022/04/03/Android%E9%AB%98%E6%95%88%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93Glide/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2022/04/03/Android%E9%AB%98%E6%95%88%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93Glide/","path":"en/2022/04/03/Android高效图片加载库Glide/","title":"【英文】Android高效图片加载库Glide"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Android高效图片加载库Glide | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Import-Glide-Dependency"><span class="nav-number">2.</span> <span class="nav-text">Import Glide Dependency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Network-Permission"><span class="nav-number">3.</span> <span class="nav-text">Add Network Permission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-Glide"><span class="nav-number">4.</span> <span class="nav-text">Use Glide</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-Image-View-in-Layout"><span class="nav-number">4.1.</span> <span class="nav-text">Add Image View in Layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Render-Image-Using-Glide-in-Java"><span class="nav-number">4.2.</span> <span class="nav-text">Render Image Using Glide in Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Render-Image-Directly"><span class="nav-number">4.2.1.</span> <span class="nav-text">Render Image Directly</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Use-Placeholder"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">Use Placeholder</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Transition-Animation-for-Placeholder"><span class="nav-number">4.2.1.1.1.</span> <span class="nav-text">Transition Animation for Placeholder</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-Transformation"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">Image Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Circle"><span class="nav-number">4.2.1.2.1.</span> <span class="nav-text">Circle</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Rounded-Corner"><span class="nav-number">4.2.1.2.2.</span> <span class="nav-text">Rounded Corner</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Rotation"><span class="nav-number">4.2.1.2.3.</span> <span class="nav-text">Rotation</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Glide-Extensions"><span class="nav-number">5.</span> <span class="nav-text">Glide Extensions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Glide-Annotation-Processor-Dependency"><span class="nav-number">5.1.</span> <span class="nav-text">Import Glide Annotation Processor Dependency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-GlideApp-Class"><span class="nav-number">5.2.</span> <span class="nav-text">Use GlideApp Class</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Configuration-Class"><span class="nav-number">5.2.1.</span> <span class="nav-text">Create Configuration Class</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-GlideApp-Class-to-Add-Placeholder-Configuration"><span class="nav-number">5.3.</span> <span class="nav-text">Use GlideApp Class to Add Placeholder Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-Using-Frequently-Used-Options-Set"><span class="nav-number">5.4.</span> <span class="nav-text">Configure Using Frequently Used Options Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Configuration-Class-1"><span class="nav-number">5.4.1.</span> <span class="nav-text">Create Configuration Class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-Configuration-Set"><span class="nav-number">5.4.2.</span> <span class="nav-text">Use Configuration Set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Done"><span class="nav-number">6.</span> <span class="nav-text">Done</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2022/04/03/Android%E9%AB%98%E6%95%88%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93Glide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Android高效图片加载库Glide | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Android高效图片加载库Glide
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-04-03 10:27:21" itemprop="dateCreated datePublished" datetime="2022-04-03T10:27:21+00:00">2022-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Android学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Glide is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface. (<a href="/302.html?target=https://github.com/bumptech/glide">Github</a>)</p>
+<span id="more"></span>
+
+<h2 id="Import-Glide-Dependency"><a href="#Import-Glide-Dependency" class="headerlink" title="Import Glide Dependency"></a>Import Glide Dependency</h2><figure class="highlight groovy"><figcaption><span>app/build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Add-Network-Permission"><a href="#Add-Network-Permission" class="headerlink" title="Add Network Permission"></a>Add Network Permission</h2><ul>
+<li>Add network permission outside the <code>&lt;application&gt;&lt;/application&gt;</code> tag in the manifest file</li>
+</ul>
+<figure class="highlight xml"><figcaption><span>app/src/main/AndroidManifest.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Use-Glide"><a href="#Use-Glide" class="headerlink" title="Use Glide"></a>Use Glide</h2><h3 id="Add-Image-View-in-Layout"><a href="#Add-Image-View-in-Layout" class="headerlink" title="Add Image View in Layout"></a>Add Image View in Layout</h3><figure class="highlight xml"><figcaption><span>app/src/main/res/layout/activity_main.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:id</span>=<span class="string">&quot;@+id/iv&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Render-Image-Using-Glide-in-Java"><a href="#Render-Image-Using-Glide-in-Java" class="headerlink" title="Render Image Using Glide in Java"></a>Render Image Using Glide in Java</h3><h4 id="Render-Image-Directly"><a href="#Render-Image-Directly" class="headerlink" title="Render Image Directly"></a>Render Image Directly</h4><ul>
+<li>Render a network image into an ImageView</li>
+</ul>
+<blockquote>
+<p><code>&lt;url&gt;</code>: URL of the network image resource</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ImageView</span> <span class="variable">imageView</span> <span class="operator">=</span> findViewById(R.id.iv);</span><br><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Use-Placeholder"><a href="#Use-Placeholder" class="headerlink" title="Use Placeholder"></a>Use Placeholder</h5><ul>
+<li>You can configure multiple placeholder images at the same time, or only configure one placeholder image</li>
+</ul>
+<blockquote>
+<p><code>.placeholder()</code>: Placeholder image to display when the image is being requested<br><code>.error()</code>: Placeholder image to display when the request fails. If not set, the placeholder configured by <code>.placeholder()</code> will be displayed by default<br><code>.fallback()</code>: Placeholder image to display when the request is empty. If not set, the placeholder configured by <code>.placeholder()</code> will be displayed by default<br><code>.override(&lt;width&gt;, &lt;height&gt;)</code>: Specify the width and height of the placeholder image in pixels. If not specified, it will follow the configuration of the ImageView</p>
+</blockquote>
+<blockquote>
+<p><code>.apply(requestOptions)</code>: Apply the configuration</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ImageView</span> <span class="variable">imageView</span> <span class="operator">=</span> findViewById(R.id.iv);</span><br><span class="line"></span><br><span class="line"><span class="type">RequestOptions</span> <span class="variable">requestOptions</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RequestOptions</span>()</span><br><span class="line">        .placeholder(R.drawable.image_name)</span><br><span class="line">        .error(R.drawable.image_name)</span><br><span class="line">        .fallback(R.drawable.image_name);</span><br><span class="line"></span><br><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">        .apply(requestOptions)</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h6 id="Transition-Animation-for-Placeholder"><a href="#Transition-Animation-for-Placeholder" class="headerlink" title="Transition Animation for Placeholder"></a>Transition Animation for Placeholder</h6><ul>
+<li><p>Transition animation when transitioning from the placeholder to the actual image</p>
+</li>
+<li><p>Glide provides a default cross fade effect that can be used directly</p>
+</li>
+<li><p>Using the default Drawable method</p>
+</li>
+</ul>
+<blockquote>
+<p><code>.transition(DrawableTransitionOptions.withCrossFade(&lt;time&gt;))</code>: Specify the duration of the transition animation</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ImageView</span> <span class="variable">imageView</span> <span class="operator">=</span> findViewById(R.id.iv);</span><br><span class="line"></span><br><span class="line"><span class="type">RequestOptions</span> <span class="variable">requestOptions</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RequestOptions</span>()</span><br><span class="line">        .placeholder(R.drawable.image_name);</span><br><span class="line"></span><br><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">        .apply(requestOptions)</span><br><span class="line">        .transition(DrawableTransitionOptions.withCrossFade(<span class="keyword">new</span> <span class="title class_">DrawableCrossFadeFactory</span>.Builder().setCrossFadeEnabled(<span class="literal">true</span>).build()))</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Using the Bitmap method</li>
+</ul>
+<blockquote>
+<p><code>.transition(BitmapTransitionOptions.withCrossFade(&lt;time&gt;))</code>: Specify the duration of the transition animation</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ImageView</span> <span class="variable">imageView</span> <span class="operator">=</span> findViewById(R.id.iv);</span><br><span class="line"></span><br><span class="line"><span class="type">RequestOptions</span> <span class="variable">requestOptions</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RequestOptions</span>()</span><br><span class="line">        .placeholder(R.drawable.image_name);</span><br><span class="line"></span><br><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .asBitmap()</span><br><span class="line">        .load(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">        .apply(requestOptions)</span><br><span class="line">        .transition(BitmapTransitionOptions.withCrossFade(<span class="keyword">new</span> <span class="title class_">DrawableCrossFadeFactory</span>.Builder().setCrossFadeEnabled(<span class="literal">true</span>).build()))</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Image-Transformation"><a href="#Image-Transformation" class="headerlink" title="Image Transformation"></a>Image Transformation</h5><ul>
+<li>When using image transformation, it only works for <code>.jpeg</code> format images</li>
+</ul>
+<h6 id="Circle"><a href="#Circle" class="headerlink" title="Circle"></a>Circle</h6><figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;https://s.cn.bing.net/th?id=OHR.TaihuCherry_ZH-CN9040685764_UHD.jpg&quot;</span>)</span><br><span class="line">        .transform(<span class="keyword">new</span> <span class="title class_">CircleCrop</span>())</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h6 id="Rounded-Corner"><a href="#Rounded-Corner" class="headerlink" title="Rounded Corner"></a>Rounded Corner</h6><ul>
+<li>All four corners are rounded based on the specified radius</li>
+</ul>
+<blockquote>
+<p><code>&lt;reg&gt;</code>: Radius of the corners</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;https://s.cn.bing.net/th?id=OHR.TaihuCherry_ZH-CN9040685764_UHD.jpg&quot;</span>)</span><br><span class="line">        .transform(<span class="keyword">new</span> <span class="title class_">RoundedCorners</span>(&lt;reg&gt;))</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Each of the four corners has a separate radius</li>
+</ul>
+<blockquote>
+<p><code>&lt;reg_left_top&gt;</code>: Radius of the top left corner<br><code>&lt;reg_right_top&gt;</code>: Radius of the top right corner<br><code>&lt;reg_right_bottom&gt;</code>: Radius of the bottom right corner<br><code>&lt;reg_left_bottom&gt;</code>: Radius of the bottom left corner</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;https://s.cn.bing.net/th?id=OHR.TaihuCherry_ZH-CN9040685764_UHD.jpg&quot;</span>)</span><br><span class="line">        .transform(<span class="keyword">new</span> <span class="title class_">GranularRoundedCorners</span>(&lt;reg_left_top&gt;, &lt;reg_right_top&gt;, &lt;reg_right_bottom&gt;, &lt;reg_left_bottom&gt;))</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h6 id="Rotation"><a href="#Rotation" class="headerlink" title="Rotation"></a>Rotation</h6><ul>
+<li>Rotate the image clockwise by the specified angle</li>
+</ul>
+<blockquote>
+<p><code>&lt;reg&gt;</code>: Angle of rotation</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;https://s.cn.bing.net/th?id=OHR.TaihuCherry_ZH-CN9040685764_UHD.jpg&quot;</span>)</span><br><span class="line">        .transform(<span class="keyword">new</span> <span class="title class_">Rotate</span>(&lt;reg&gt;))</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Glide-Extensions"><a href="#Glide-Extensions" class="headerlink" title="Glide Extensions"></a>Glide Extensions</h2><ul>
+<li>Using Glide annotation processor</li>
+<li>Use annotations to generate a more efficient Glide class on a class level</li>
+</ul>
+<h3 id="Import-Glide-Annotation-Processor-Dependency"><a href="#Import-Glide-Annotation-Processor-Dependency" class="headerlink" title="Import Glide Annotation Processor Dependency"></a>Import Glide Annotation Processor Dependency</h3><figure class="highlight groovy"><figcaption><span>app/build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Use-GlideApp-Class"><a href="#Use-GlideApp-Class" class="headerlink" title="Use GlideApp Class"></a>Use GlideApp Class</h3><h4 id="Create-Configuration-Class"><a href="#Create-Configuration-Class" class="headerlink" title="Create Configuration Class"></a>Create Configuration Class</h4><ul>
+<li>Create a <code>MyGlideModule</code> class (custom class name) as the configuration class, extending the <code>AppGlideModule</code> class, and add the <code>@GlideModule</code> annotation on the class to generate the GlideApp class</li>
+</ul>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MyGlideModule.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GlideModule</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyGlideModule</span> <span class="keyword">extends</span> <span class="title class_">AppGlideModule</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Recompile the project after creating the configuration class to generate the GlideApp class</li>
+</ul>
+<h3 id="Use-GlideApp-Class-to-Add-Placeholder-Configuration"><a href="#Use-GlideApp-Class-to-Add-Placeholder-Configuration" class="headerlink" title="Use GlideApp Class to Add Placeholder Configuration"></a>Use GlideApp Class to Add Placeholder Configuration</h3><ul>
+<li>With the GlideApp class, you can use a fluid API to add placeholder configurations without creating a <code>RequestOptions</code> object</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GlideApp.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">        .placeholder(R.drawable.image_name)</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Configure-Using-Frequently-Used-Options-Set"><a href="#Configure-Using-Frequently-Used-Options-Set" class="headerlink" title="Configure Using Frequently Used Options Set"></a>Configure Using Frequently Used Options Set</h3><h4 id="Create-Configuration-Class-1"><a href="#Create-Configuration-Class-1" class="headerlink" title="Create Configuration Class"></a>Create Configuration Class</h4><ul>
+<li>Create a <code>MyGlideExtension</code> class (custom class name) as the configuration class, and add the <code>@GlideExtension</code> annotation</li>
+<li>Must create a private parameterless constructor</li>
+<li>Extract frequently used configurations as option sets, create static methods that return the option sets, and add the <code>@GlideOption</code> annotation on the methods<ul>
+<li>The configuration set method names can be customized</li>
+<li>Multiple configuration set methods can be specified</li>
+<li>Transformation effects cannot be configured in the configuration set</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MyGlideExtension.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GlideExtension</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyGlideExtension</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">MyGlideExtension</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GlideOption</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BaseRequestOptions&lt;?&gt; defaultOption(BaseRequestOptions&lt;?&gt; options) &#123;</span><br><span class="line">        <span class="comment">// Return the configuration set</span></span><br><span class="line">        <span class="comment">// For example, when all image placeholders are the same, configure the placeholder option set</span></span><br><span class="line">        <span class="keyword">return</span> options</span><br><span class="line">                .placeholder(R.drawable.image_name)</span><br><span class="line">                .error(R.drawable.image_name)</span><br><span class="line">                .fallback(R.drawable.image_name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Recompile the project after creating the configuration class to make the configuration set method effective</li>
+</ul>
+<h4 id="Use-Configuration-Set"><a href="#Use-Configuration-Set" class="headerlink" title="Use Configuration Set"></a>Use Configuration Set</h4><ul>
+<li>Using the configuration set can improve the efficiency of creating objects</li>
+</ul>
+<blockquote>
+<p><code>defaultOption()</code>: Configuration set method name</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>app/src/main/java/.../MainActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GlideApp.with(<span class="built_in">this</span>)</span><br><span class="line">        .load(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">        .defaultOption();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Done"><a href="#Done" class="headerlink" title="Done"></a>Done</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13y4y1E7pF">Bilibili - Android Architecture Analysis</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/04/03/Android%E9%AB%98%E6%95%88%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93Glide/" rel="prev" title="【笔记】Android高效图片加载库Glide">
+                  <i class="fa fa-angle-left"></i> 【笔记】Android高效图片加载库Glide
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/04/03/Android%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E7%9A%84%E8%AF%81%E4%B9%A6/" rel="next" title="【笔记】Android开发阶段的证书">
+                  【笔记】Android开发阶段的证书 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2022/04/03/Android%E9%AB%98%E6%95%88%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93Glide/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2022/04/03/Android%E9%AB%98%E6%95%88%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%BA%93Glide/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

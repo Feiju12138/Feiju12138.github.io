@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2020/08/26/SpringBoot%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2020/08/26/SpringBoot%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/","path":"en/2020/08/26/SpringBoot注解笔记/","title":"【英文】SpringBoot注解笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】SpringBoot注解笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entry-Annotation"><span class="nav-number">2.</span> <span class="nav-text">Entry Annotation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Package-Scanning"><span class="nav-number">3.</span> <span class="nav-text">Add Package Scanning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Define-ordinary-components"><span class="nav-number">4.</span> <span class="nav-text">Define ordinary components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC"><span class="nav-number">5.</span> <span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Persistence-layer"><span class="nav-number">5.1.</span> <span class="nav-text">Persistence layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-layer"><span class="nav-number">5.2.</span> <span class="nav-text">Service layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller-layer"><span class="nav-number">5.3.</span> <span class="nav-text">Controller layer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Describe-the-implementation-class-object-of-the-data-layer"><span class="nav-number">6.</span> <span class="nav-text">Describe the implementation class object of the data layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Respond-to-clients"><span class="nav-number">7.</span> <span class="nav-text">Respond to clients</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestController"><span class="nav-number">7.1.</span> <span class="nav-text">RestController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestControllerAdvice"><span class="nav-number">7.2.</span> <span class="nav-text">RestControllerAdvice</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handle-requests"><span class="nav-number">8.</span> <span class="nav-text">Handle requests</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Handle-all-requests"><span class="nav-number">8.1.</span> <span class="nav-text">Handle all requests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Define-request-methods"><span class="nav-number">8.1.1.</span> <span class="nav-text">Define request methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Get-requests"><span class="nav-number">8.2.</span> <span class="nav-text">Handling Get requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handle-POST-requests"><span class="nav-number">8.3.</span> <span class="nav-text">Handle POST requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Allow-any-website-to-access-via-JavaScript"><span class="nav-number">8.4.</span> <span class="nav-text">Allow any website to access via JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Specify-parameters"><span class="nav-number">9.</span> <span class="nav-text">Specify parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rest-style-parameter-passing"><span class="nav-number">9.1.</span> <span class="nav-text">Rest-style parameter passing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-request-parameters"><span class="nav-number">9.2.</span> <span class="nav-text">Specify request parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Support-for-unmatched-number-of-parameters"><span class="nav-number">9.2.1.</span> <span class="nav-text">Support for unmatched number of parameters</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-request-parameters-1"><span class="nav-number">9.3.</span> <span class="nav-text">Specify request parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DI-inject-object"><span class="nav-number">10.</span> <span class="nav-text">DI inject object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-the-injected-object-name"><span class="nav-number">10.1.</span> <span class="nav-text">Specify the injected object name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-the-primary"><span class="nav-number">10.2.</span> <span class="nav-text">Specify the primary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-class"><span class="nav-number">11.</span> <span class="nav-text">Test class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-exception-handling-class"><span class="nav-number">12.</span> <span class="nav-text">Global exception handling class</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exception-handling-methods"><span class="nav-number">12.1.</span> <span class="nav-text">Exception handling methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration-class"><span class="nav-number">13.</span> <span class="nav-text">Configuration class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-managed-Bean"><span class="nav-number">14.</span> <span class="nav-text">Spring-managed Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy-loading"><span class="nav-number">15.</span> <span class="nav-text">Lazy loading</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Marked-on-the-class"><span class="nav-number">15.1.</span> <span class="nav-text">Marked on the class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Singleton-and-prototype"><span class="nav-number">16.</span> <span class="nav-text">Singleton and prototype</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-number">16.1.</span> <span class="nav-text">Singleton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">16.2.</span> <span class="nav-text">Prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-lifecycle-methods"><span class="nav-number">17.</span> <span class="nav-text">Object lifecycle methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialization-method"><span class="nav-number">17.1.</span> <span class="nav-text">Initialization method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#End-method"><span class="nav-number">17.2.</span> <span class="nav-text">End method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exception-handling"><span class="nav-number">18.</span> <span class="nav-text">Exception handling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-exception-handling-method"><span class="nav-number">18.1.</span> <span class="nav-text">Global exception handling method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-AOP"><span class="nav-number">19.</span> <span class="nav-text">Spring AOP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transaction"><span class="nav-number">20.</span> <span class="nav-text">Transaction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-asynchronous-operation"><span class="nav-number">21.</span> <span class="nav-text">Start asynchronous operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-asynchronous-operations"><span class="nav-number">21.1.</span> <span class="nav-text">Configure asynchronous operations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cache"><span class="nav-number">22.</span> <span class="nav-text">Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Supporting-Cross-Origin-Access"><span class="nav-number">23.</span> <span class="nav-text">Supporting Cross-Origin Access</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assigning-values-to-objects-through-configuration-files"><span class="nav-number">24.</span> <span class="nav-text">Assigning values to objects through configuration files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Through-custom-configuration-files"><span class="nav-number">24.1.</span> <span class="nav-text">Through custom configuration files</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2020/08/26/SpringBoot%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】SpringBoot注解笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】SpringBoot注解笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-08-26 17:34:05" itemprop="dateCreated datePublished" datetime="2020-08-26T17:34:05+00:00">2020-08-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Java后端学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>SpringBoot Annotation Knowledge Note</p>
+<span id="more"></span>
+
+<h2 id="Entry-Annotation"><a href="#Entry-Annotation" class="headerlink" title="Entry Annotation"></a>Entry Annotation</h2><ul>
+<li>@SpringBootApplication</li>
+<li>Describes the startup class of the SpringBoot project. The main method is defined in the class, which reads the configuration file at runtime, loads the specified resources, and performs initialization operations.</li>
+</ul>
+<h2 id="Add-Package-Scanning"><a href="#Add-Package-Scanning" class="headerlink" title="Add Package Scanning"></a>Add Package Scanning</h2><ul>
+<li><p>@ComponentScan(“”)</p>
+</li>
+<li><p>Describes the startup class of the SpringBoot project.</p>
+</li>
+<li><p>Defines the package name as a parameter and defines the classes in the specified package and subpackage as beans.</p>
+</li>
+<li><p>@MapperScan(“”)</p>
+</li>
+<li><p>Defines the package name as a parameter and tells the Mybatis framework to create proxy objects for all interfaces in the specified package.</p>
+</li>
+</ul>
+<h2 id="Define-ordinary-components"><a href="#Define-ordinary-components" class="headerlink" title="Define ordinary components"></a>Define ordinary components</h2><ul>
+<li>@Component</li>
+<li>Can obtain and inject objects from the bean pool through the @Autowired annotation in the business class.</li>
+<li>If the bean name is not specified, it defaults to the lowercase first letter of the class name (provided that the naming convention is standardized).</li>
+</ul>
+<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><h3 id="Persistence-layer"><a href="#Persistence-layer" class="headerlink" title="Persistence layer"></a>Persistence layer</h3><ul>
+<li>@Mapper</li>
+<li>Marks the Dao layer, a special type of @Component.</li>
+</ul>
+<h3 id="Service-layer"><a href="#Service-layer" class="headerlink" title="Service layer"></a>Service layer</h3><ul>
+<li>@Service</li>
+<li>Marks the service layer, a special type of @Component.</li>
+</ul>
+<h3 id="Controller-layer"><a href="#Controller-layer" class="headerlink" title="Controller layer"></a>Controller layer</h3><ul>
+<li>@Controller</li>
+<li>Marks the controller layer, a special type of @Component.</li>
+</ul>
+<h2 id="Describe-the-implementation-class-object-of-the-data-layer"><a href="#Describe-the-implementation-class-object-of-the-data-layer" class="headerlink" title="Describe the implementation class object of the data layer"></a>Describe the implementation class object of the data layer</h2><ul>
+<li>@Repository</li>
+<li>Describes on the class, a special type of @Component.</li>
+</ul>
+<h2 id="Respond-to-clients"><a href="#Respond-to-clients" class="headerlink" title="Respond to clients"></a>Respond to clients</h2><ul>
+<li>@ResponseBody</li>
+<li>When this annotation is used to describe methods in the controller layer, it is used to tell the Spring framework that the return value of this method can be converted into a specific format (such as JSON) and written to the response body of the response object.</li>
+<li>The return value of the method is not encapsulated in the ModelAndView object, and will not be parsed by the resolver, but directly responds to the client based on the response object.</li>
+</ul>
+<h3 id="RestController"><a href="#RestController" class="headerlink" title="RestController"></a>RestController</h3><ul>
+<li>@RestController</li>
+<li>Equivalent to simultaneously describing <code>@Controller</code> and <code>@ResponseBody</code></li>
+</ul>
+<h3 id="RestControllerAdvice"><a href="#RestControllerAdvice" class="headerlink" title="RestControllerAdvice"></a>RestControllerAdvice</h3><ul>
+<li>@RestControllerAdvice</li>
+<li>Equivalent to simultaneously describing <code>@ControllerAdvice</code> and <code>@ResponseBody</code></li>
+</ul>
+<h2 id="Handle-requests"><a href="#Handle-requests" class="headerlink" title="Handle requests"></a>Handle requests</h2><h3 id="Handle-all-requests"><a href="#Handle-all-requests" class="headerlink" title="Handle all requests"></a>Handle all requests</h3><ul>
+<li>@RequestMapping(“”)</li>
+<li>The parameter is the link address to jump to.</li>
+<li>Can describe classes or methods.</li>
+</ul>
+<h4 id="Define-request-methods"><a href="#Define-request-methods" class="headerlink" title="Define request methods"></a>Define request methods</h4><ul>
+<li>@RequestMapping(value&#x3D;””,method&#x3D;RequestMethod.GET)</li>
+<li>@RequestMapping(value&#x3D;””,method&#x3D;RequestMethod.POST)</li>
+</ul>
+<h3 id="Handling-Get-requests"><a href="#Handling-Get-requests" class="headerlink" title="Handling Get requests"></a>Handling Get requests</h3><ul>
+<li>@GetMapping()</li>
+<li>Equivalent to @RequestMapping(method&#x3D;RequestMethod.GET)</li>
+</ul>
+<h3 id="Handle-POST-requests"><a href="#Handle-POST-requests" class="headerlink" title="Handle POST requests"></a>Handle POST requests</h3><ul>
+<li>@PostMapping()</li>
+<li>Equivalent to @RequestMapping(method&#x3D;RequestMethod.POST)</li>
+</ul>
+<h3 id="Allow-any-website-to-access-via-JavaScript"><a href="#Allow-any-website-to-access-via-JavaScript" class="headerlink" title="Allow any website to access via JavaScript"></a>Allow any website to access via JavaScript</h3><ul>
+<li>@CrossOrigin</li>
+<li>Marked on the class or method</li>
+</ul>
+<h2 id="Specify-parameters"><a href="#Specify-parameters" class="headerlink" title="Specify parameters"></a>Specify parameters</h2><ul>
+<li>@Param(“”)</li>
+<li>Describes the parameter and can specify the parameter.</li>
+</ul>
+<h3 id="Rest-style-parameter-passing"><a href="#Rest-style-parameter-passing" class="headerlink" title="Rest-style parameter passing"></a>Rest-style parameter passing</h3><ul>
+<li>@PathVariable(“”)</li>
+<li>Describes the parameter and can specify a REST-style parameter.</li>
+<li>If the parameter name in the parameter list is the same as the parameter name in the link, @PathVariable can be omitted.</li>
+</ul>
+<h3 id="Specify-request-parameters"><a href="#Specify-request-parameters" class="headerlink" title="Specify request parameters"></a>Specify request parameters</h3><ul>
+<li>@RequestParam</li>
+<li>Describes the parameter and specifies the annotated object as the request receiving object.</li>
+<li>Used to receive <code>application/x-www-form-urlencoded</code> format data.</li>
+</ul>
+<h4 id="Support-for-unmatched-number-of-parameters"><a href="#Support-for-unmatched-number-of-parameters" class="headerlink" title="Support for unmatched number of parameters"></a>Support for unmatched number of parameters</h4><ul>
+<li>@RequestParam(required&#x3D;false)</li>
+<li>By default, required is true, which means that the number of parameters must match, otherwise an error will be reported.</li>
+</ul>
+<h3 id="Specify-request-parameters-1"><a href="#Specify-request-parameters-1" class="headerlink" title="Specify request parameters"></a>Specify request parameters</h3><ul>
+<li>@RequestBody</li>
+<li>Describes the parameter and specifies the annotated object as the request receiving object.</li>
+<li><code>application/json</code> and <code>application/xml</code> format data must be received with @RequestBody.</li>
+<li>Can also be used to receive <code>application/x-www-form-urlencoded</code> format data.</li>
+</ul>
+<h2 id="DI-inject-object"><a href="#DI-inject-object" class="headerlink" title="DI inject object"></a>DI inject object</h2><ul>
+<li>@Autowired</li>
+<li>Describes the attribute and can obtain and inject objects from the bean pool. The premise is that the implemented class or inherited class is annotated with Spring’s component annotations.</li>
+<li>Describes the constructor method can be omitted.</li>
+<li>Describes the set method, usually with a parameterless constructor.</li>
+<li>The parameterized constructor is used independently.</li>
+</ul>
+<h3 id="Specify-the-injected-object-name"><a href="#Specify-the-injected-object-name" class="headerlink" title="Specify the injected object name"></a>Specify the injected object name</h3><ul>
+<li>@Qualifier(“”)</li>
+<li>Needs to be used with @Autowired.</li>
+<li>The object name is in lowercase.</li>
+<li>Can describe attribute, constructor method, and set method parameters.</li>
+</ul>
+<h3 id="Specify-the-primary"><a href="#Specify-the-primary" class="headerlink" title="Specify the primary"></a>Specify the primary</h3><ul>
+<li>@Primary</li>
+<li>When there are multiple objects with the same name, the object marked with @Primary annotation is the preferred object.</li>
+</ul>
+<h2 id="Test-class"><a href="#Test-class" class="headerlink" title="Test class"></a>Test class</h2><ul>
+<li>@SpringBootTest</li>
+<li>Must be marked on the test class of the SpringBoot project.</li>
+<li>The methods in the class are marked with @Test to perform unit testing using Junit.</li>
+</ul>
+<h2 id="Global-exception-handling-class"><a href="#Global-exception-handling-class" class="headerlink" title="Global exception handling class"></a>Global exception handling class</h2><ul>
+<li>@ControllerAdvice</li>
+<li>Describes a control layer global exception handling class. In this class, exception handling methods can be defined to handle exceptions.</li>
+</ul>
+<h3 id="Exception-handling-methods"><a href="#Exception-handling-methods" class="headerlink" title="Exception handling methods"></a>Exception handling methods</h3><ul>
+<li>@ExceptionHandler(Throwable.class)</li>
+<li>The method marked with this annotation is an exception handling method. The exception type defined inside the annotation is the type of exception that this method can handle, including subclass types of exceptions.</li>
+<li>You can pass a parameter of the same type (or superclass type) as the exception handling method in the parameter list.</li>
+</ul>
+<h2 id="Configuration-class"><a href="#Configuration-class" class="headerlink" title="Configuration class"></a>Configuration class</h2><ul>
+<li>@Configuration</li>
+<li>Describes a configuration class marked by this annotation.</li>
+</ul>
+<h2 id="Spring-managed-Bean"><a href="#Spring-managed-Bean" class="headerlink" title="Spring-managed Bean"></a>Spring-managed Bean</h2><ul>
+<li>@Bean</li>
+<li>When the entire third-party Bean object is managed in the Spring container, the creation of the Bean object can be placed in a method, and then described using the @Bean annotation. When the Spring container manages the Bean object, it will use the method name as the key to store the Bean object.</li>
+</ul>
+<h2 id="Lazy-loading"><a href="#Lazy-loading" class="headerlink" title="Lazy loading"></a>Lazy loading</h2><h3 id="Marked-on-the-class"><a href="#Marked-on-the-class" class="headerlink" title="Marked on the class"></a>Marked on the class</h3><ul>
+<li>@Lazy(value&#x3D;true)</li>
+<li>Abbreviated as @Lazy(true)</li>
+<li>Abbreviated as @Lazy</li>
+<li>Also known as lazy loading</li>
+<li>This annotation tells the Spring framework that if the instance of the class it describes is temporarily not needed, don’t create it first, create it when it needs to be called.</li>
+<li>Only effective in singleton cases</li>
+</ul>
+<h2 id="Singleton-and-prototype"><a href="#Singleton-and-prototype" class="headerlink" title="Singleton and prototype"></a>Singleton and prototype</h2><ul>
+<li>Marked on the class</li>
+</ul>
+<h3 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h3><ul>
+<li>@Scope(“singleton”)</li>
+<li>If @Scope parameter is not written or @Scope is not written, it defaults to singleton scope.</li>
+<li>Singleton puts the created object in the bean pool.</li>
+<li>Each class will only create one object, which can be called repeatedly.</li>
+</ul>
+<h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><ul>
+<li>@Scope(“prototype”)</li>
+<li>Prototypes are created when the object is used and destroyed after use.</li>
+<li>Each class can create multiple objects for multiple instances.</li>
+<li>After this instance is created, it will not be managed by spring. Spring can initialize it, but it is not responsible for destruction.</li>
+</ul>
+<h2 id="Object-lifecycle-methods"><a href="#Object-lifecycle-methods" class="headerlink" title="Object lifecycle methods"></a>Object lifecycle methods</h2><h3 id="Initialization-method"><a href="#Initialization-method" class="headerlink" title="Initialization method"></a>Initialization method</h3><ul>
+<li>@PostConstruct</li>
+<li>Marked on the method</li>
+<li>The described method will be executed after the object is constructed</li>
+<li>Used to perform some initialization operations</li>
+</ul>
+<h3 id="End-method"><a href="#End-method" class="headerlink" title="End method"></a>End method</h3><ul>
+<li>@PreDestroy</li>
+<li>The described method will be executed before the singleton object is destroyed</li>
+<li>Only applicable to singletons</li>
+<li>The Spring container will remove the object in the container (Bean) before removal. If the object defines a lifecycle destruction method, the lifecycle destruction method of the object will also be called at this time (do some resource release operations in the method).</li>
+</ul>
+<h2 id="Exception-handling"><a href="#Exception-handling" class="headerlink" title="Exception handling"></a>Exception handling</h2><ul>
+<li>@ControllerAdvice</li>
+<li>Describes the class as a global exception handling class</li>
+<li>The class can define exception handling methods to handle exceptions based on these exception handling methods</li>
+</ul>
+<h3 id="Global-exception-handling-method"><a href="#Global-exception-handling-method" class="headerlink" title="Global exception handling method"></a>Global exception handling method</h3><ul>
+<li>@ExceptionHandler(RuntimeException.class)</li>
+<li>Exception handling method of the global exception handling class</li>
+</ul>
+<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p><a href="/en-US/2020/10/17/SpringAOP-Study-Notes/">Link</a></p>
+<h2 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h2><p><a href="/en-US/2022/10/31/SpringBoot-Transaction/">Link</a></p>
+<h2 id="Start-asynchronous-operation"><a href="#Start-asynchronous-operation" class="headerlink" title="Start asynchronous operation"></a>Start asynchronous operation</h2><ul>
+<li>@EnableAsync</li>
+<li>Marked on the startup class</li>
+</ul>
+<h3 id="Configure-asynchronous-operations"><a href="#Configure-asynchronous-operations" class="headerlink" title="Configure asynchronous operations"></a>Configure asynchronous operations</h3><ul>
+<li>@Async</li>
+<li>The method described by this annotation is an asynchronous join point method</li>
+<li>This method runs in a separate thread provided by the Spring framework when it is executed</li>
+<li>If the return value is not void, additional processing needs to be done</li>
+</ul>
+<h2 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h2><p><a href="/en-US/2020/10/24/SpringBootCache/">Link</a></p>
+<h2 id="Supporting-Cross-Origin-Access"><a href="#Supporting-Cross-Origin-Access" class="headerlink" title="Supporting Cross-Origin Access"></a>Supporting Cross-Origin Access</h2><ul>
+<li>@CrossOrigin</li>
+<li>Marked on methods in the Controller</li>
+<li>Enables cross-origin access to the current URL</li>
+</ul>
+<h2 id="Assigning-values-to-objects-through-configuration-files"><a href="#Assigning-values-to-objects-through-configuration-files" class="headerlink" title="Assigning values to objects through configuration files"></a>Assigning values to objects through configuration files</h2><ul>
+<li>@Value(“${father.son}”)</li>
+<li>For the <code>application.yml</code> configuration file</li>
+<li>Marked on the object</li>
+<li>Assign values to the marked objects</li>
+<li>The parameter is a SPEL expression</li>
+</ul>
+<h3 id="Through-custom-configuration-files"><a href="#Through-custom-configuration-files" class="headerlink" title="Through custom configuration files"></a>Through custom configuration files</h3><ul>
+<li>First create a <code>properties</code> directory under the <code>resources</code> directory to store custom configurations ending in &#96;.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+              <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/08/26/SpringBoot%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】SpringBoot注解笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】SpringBoot注解笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/08/28/SpringBoot%E6%95%B4%E5%90%88%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="next" title="【笔记】SpringBoot整合数据库连接池">
+                  【笔记】SpringBoot整合数据库连接池 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2020/08/26/SpringBoot%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2020/08/26/SpringBoot%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

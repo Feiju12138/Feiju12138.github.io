@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2022/09/20/Xlwings%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2022/09/20/Xlwings%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2022/09/20/Xlwings学习笔记/","title":"【英文】Xlwings学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Xlwings学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-the-Module"><span class="nav-number">2.</span> <span class="nav-text">Installing the Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start-Using-with-as"><span class="nav-number">3.</span> <span class="nav-text">Quick Start (Using with...as)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">4.</span> <span class="nav-text">Quick Start</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Excel-Applications"><span class="nav-number">5.</span> <span class="nav-text">Operations on Excel Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-a-New-Application"><span class="nav-number">5.1.</span> <span class="nav-text">Start a New Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activate-the-Application"><span class="nav-number">5.2.</span> <span class="nav-text">Activate the Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quit-the-Application"><span class="nav-number">5.3.</span> <span class="nav-text">Quit the Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Close-the-Application-Process"><span class="nav-number">5.4.</span> <span class="nav-text">Close the Application Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-pid-of-the-Application-Object"><span class="nav-number">5.5.</span> <span class="nav-text">Get the pid of the Application Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Display-Xlwings-operations-on-Excel"><span class="nav-number">5.6.</span> <span class="nav-text">Display Xlwings operations on Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Display-dialog-boxes-during-the-operation"><span class="nav-number">5.7.</span> <span class="nav-text">Display dialog boxes during the operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-All-Excel-Applications"><span class="nav-number">6.</span> <span class="nav-text">Operations on All Excel Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-all-Application-Objects"><span class="nav-number">6.1.</span> <span class="nav-text">Get all Application Objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-a-Specific-Application-Object"><span class="nav-number">6.2.</span> <span class="nav-text">Get a Specific Application Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-Total-Number-of-Application-Objects"><span class="nav-number">6.3.</span> <span class="nav-text">Get the Total Number of Application Objects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Workbooks"><span class="nav-number">7.</span> <span class="nav-text">Operations on Workbooks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-Workbook-Object"><span class="nav-number">7.1.</span> <span class="nav-text">Create a Workbook Object</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-a-New-Workbook"><span class="nav-number">7.1.1.</span> <span class="nav-text">Create a New Workbook</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Create-a-new-workbook-on-a-new-application"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">Create a new workbook on a new application</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Create-a-new-workbook-on-the-currently-selected-application"><span class="nav-number">7.1.1.2.</span> <span class="nav-text">Create a new workbook on the currently selected application</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-an-Existing-Workbook"><span class="nav-number">7.1.2.</span> <span class="nav-text">Use an Existing Workbook</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Open-a-workbook-on-a-new-application"><span class="nav-number">7.1.2.1.</span> <span class="nav-text">Open a workbook on a new application</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Open-a-workbook-on-the-currently-selected-application"><span class="nav-number">7.1.2.2.</span> <span class="nav-text">Open a workbook on the currently selected application</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Save-the-Workbook"><span class="nav-number">7.2.</span> <span class="nav-text">Save the Workbook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Close-the-Workbook"><span class="nav-number">7.3.</span> <span class="nav-text">Close the Workbook</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Worksheets"><span class="nav-number">8.</span> <span class="nav-text">Operations on Worksheets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-Worksheet"><span class="nav-number">8.1.</span> <span class="nav-text">Create a Worksheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-a-Worksheet-Object"><span class="nav-number">8.2.</span> <span class="nav-text">Get a Worksheet Object</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-by-Worksheet-Name"><span class="nav-number">8.2.1.</span> <span class="nav-text">Get by Worksheet Name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-by-Worksheet-Index"><span class="nav-number">8.2.2.</span> <span class="nav-text">Get by Worksheet Index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-the-currently-active-worksheet"><span class="nav-number">8.2.3.</span> <span class="nav-text">Get the currently active worksheet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-Number-of-Worksheets"><span class="nav-number">8.3.</span> <span class="nav-text">Get the Number of Worksheets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-Name-of-the-Current-Worksheet"><span class="nav-number">8.4.</span> <span class="nav-text">Get the Name of the Current Worksheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-Index-of-the-Current-Worksheet"><span class="nav-number">8.5.</span> <span class="nav-text">Get the Index of the Current Worksheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-a-Worksheet"><span class="nav-number">8.6.</span> <span class="nav-text">Delete a Worksheet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Cells"><span class="nav-number">9.</span> <span class="nav-text">Operations on Cells</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Automatically-Adjust-Row-Height-or-Column-Width"><span class="nav-number">9.1.</span> <span class="nav-text">Automatically Adjust Row Height or Column Width</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-All-Cells"><span class="nav-number">9.2.</span> <span class="nav-text">Get All Cells</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Select-a-Cell"><span class="nav-number">9.3.</span> <span class="nav-text">Select a Cell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-a-Single-Cell"><span class="nav-number">9.3.1.</span> <span class="nav-text">Select a Single Cell</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-cell-using-a-class-object"><span class="nav-number">9.3.1.1.</span> <span class="nav-text">Select a cell using a class object</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-cell-using-the-application-object"><span class="nav-number">9.3.1.2.</span> <span class="nav-text">Select a cell using the application object</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-cell-using-the-worksheet-object"><span class="nav-number">9.3.1.3.</span> <span class="nav-text">Select a cell using the worksheet object</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-cell-using-the-sheet-array"><span class="nav-number">9.3.1.4.</span> <span class="nav-text">Select a cell using the sheet array</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-a-Range-of-Cells"><span class="nav-number">9.3.2.</span> <span class="nav-text">Select a Range of Cells</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-range-using-a-class-object"><span class="nav-number">9.3.2.1.</span> <span class="nav-text">Select a range using a class object</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-range-using-the-application-object"><span class="nav-number">9.3.2.2.</span> <span class="nav-text">Select a range using the application object</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-range-using-the-worksheet-object"><span class="nav-number">9.3.2.3.</span> <span class="nav-text">Select a range using the worksheet object</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Select-a-range-using-the-sheet-array"><span class="nav-number">9.3.2.4.</span> <span class="nav-text">Select a range using the sheet array</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2022/09/20/Xlwings%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Xlwings学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Xlwings学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-20 20:01:42" itemprop="dateCreated datePublished" datetime="2022-09-20T20:01:42+00:00">2022-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Automating Excel operations with Python3 using the Xlwings module</p>
+<span id="more"></span>
+
+<h2 id="Installing-the-Module"><a href="#Installing-the-Module" class="headerlink" title="Installing the Module"></a>Installing the Module</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xlwings</span><br></pre></td></tr></table></figure>
+
+<h2 id="Quick-Start-Using-with-as"><a href="#Quick-Start-Using-with-as" class="headerlink" title="Quick Start (Using with...as)"></a>Quick Start (Using <code>with...as</code>)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import xlwings</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Create an application object</span></span><br><span class="line">with xlwings.App() as app:</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Create a workbook on the application</span></span><br><span class="line">  book = app.books.add()</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Add a sheet to the workbook</span></span><br><span class="line">  sheet = book.sheets.add()</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Change the value <span class="keyword">in</span> a cell</span></span><br><span class="line">  sheet.range(&quot;A1&quot;).value = &quot;Value&quot;</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Save to a file</span></span><br><span class="line">  book.save(&quot;./filename.xlsx&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><blockquote>
+<p><code>A1</code>: Cell coordinate<br><code>Value</code>: Data written to the cell</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlwings</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new workbook on a new application</span></span><br><span class="line">book = xlwings.Book()</span><br><span class="line"><span class="comment"># Select a sheet on the workbook</span></span><br><span class="line">sheet = book.sheets[<span class="string">&quot;Sheet1&quot;</span>]</span><br><span class="line"><span class="comment"># Change the value in a cell</span></span><br><span class="line">sheet.<span class="built_in">range</span>(<span class="string">&quot;A1&quot;</span>).value = <span class="string">&quot;Value&quot;</span></span><br><span class="line"><span class="comment"># Save the workbook</span></span><br><span class="line">book.save()</span><br><span class="line"><span class="comment"># Close the workbook</span></span><br><span class="line">book.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-Excel-Applications"><a href="#Operations-on-Excel-Applications" class="headerlink" title="Operations on Excel Applications"></a>Operations on Excel Applications</h2><h3 id="Start-a-New-Application"><a href="#Start-a-New-Application" class="headerlink" title="Start a New Application"></a>Start a New Application</h3><ul>
+<li>Requires installation of <code>Microsoft Office Excel</code></li>
+</ul>
+<blockquote>
+<p>Parameters</p>
+<blockquote>
+<p><code>visible=None</code>: Whether the application is visible</p>
+<blockquote>
+<p><code>True</code>: Visible<br><code>False</code>: Not visible<br><code>spec=None</code>: Specify the location of the Excel program<br>For Windows, specify the default Excel opening method in settings<br>For Mac, you can directly pass the path of the Excel application here<br><code>add_book=True</code>: Whether to automatically create a workbook when opening the application<br><code>True</code>: Automatically create a workbook<br><code>False</code>: Do not automatically create a workbook</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app = xlwings.App()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Activate-the-Application"><a href="#Activate-the-Application" class="headerlink" title="Activate the Application"></a>Activate the Application</h3><ul>
+<li>Switch focus from Python to Excel</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.activate()</span><br><span class="line"></span><br><span class="line">app.activate(steal_focus=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Quit-the-Application"><a href="#Quit-the-Application" class="headerlink" title="Quit the Application"></a>Quit the Application</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.quit()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Close-the-Application-Process"><a href="#Close-the-Application-Process" class="headerlink" title="Close the Application Process"></a>Close the Application Process</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.kill()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-pid-of-the-Application-Object"><a href="#Get-the-pid-of-the-Application-Object" class="headerlink" title="Get the pid of the Application Object"></a>Get the pid of the Application Object</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.pid</span><br></pre></td></tr></table></figure>
+
+<h3 id="Display-Xlwings-operations-on-Excel"><a href="#Display-Xlwings-operations-on-Excel" class="headerlink" title="Display Xlwings operations on Excel"></a>Display Xlwings operations on Excel</h3><blockquote>
+<p><code>True</code>: Display Xlwings operations on Excel<br><code>False</code>: Hide Xlwings operations on Excel</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.display_alerts = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Display-dialog-boxes-during-the-operation"><a href="#Display-dialog-boxes-during-the-operation" class="headerlink" title="Display dialog boxes during the operation"></a>Display dialog boxes during the operation</h3><blockquote>
+<p><code>True</code>: Display dialog boxes during the operation<br><code>False</code>: Hide dialog boxes during the operation</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.screen_updating = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-All-Excel-Applications"><a href="#Operations-on-All-Excel-Applications" class="headerlink" title="Operations on All Excel Applications"></a>Operations on All Excel Applications</h2><h3 id="Get-all-Application-Objects"><a href="#Get-all-Application-Objects" class="headerlink" title="Get all Application Objects"></a>Get all Application Objects</h3><ul>
+<li>Returns a list of application objects</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xlwings.apps</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-a-Specific-Application-Object"><a href="#Get-a-Specific-Application-Object" class="headerlink" title="Get a Specific Application Object"></a>Get a Specific Application Object</h3><ul>
+<li>Get a previously created application object using the pid</li>
+</ul>
+<blockquote>
+<p><code>&lt;pid&gt;</code>: Specify the pid of the object</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app = xlwings.apps[&lt;pid&gt;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-Total-Number-of-Application-Objects"><a href="#Get-the-Total-Number-of-Application-Objects" class="headerlink" title="Get the Total Number of Application Objects"></a>Get the Total Number of Application Objects</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xlwings.apps.count</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-Workbooks"><a href="#Operations-on-Workbooks" class="headerlink" title="Operations on Workbooks"></a>Operations on Workbooks</h2><ul>
+<li>Operations on workbooks using the application object</li>
+</ul>
+<blockquote>
+<p><code>app</code>: Application object</p>
+</blockquote>
+<h3 id="Create-a-Workbook-Object"><a href="#Create-a-Workbook-Object" class="headerlink" title="Create a Workbook Object"></a>Create a Workbook Object</h3><h4 id="Create-a-New-Workbook"><a href="#Create-a-New-Workbook" class="headerlink" title="Create a New Workbook"></a>Create a New Workbook</h4><h5 id="Create-a-new-workbook-on-a-new-application"><a href="#Create-a-new-workbook-on-a-new-application" class="headerlink" title="Create a new workbook on a new application"></a>Create a new workbook on a new application</h5><ul>
+<li>Create a new application object and then create a new workbook using this object</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>: Specify the file name</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">book = xlwings.Book()</span><br><span class="line"></span><br><span class="line">book = xlwings.Book(<span class="string">&quot;&lt;name&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Create-a-new-workbook-on-the-currently-selected-application"><a href="#Create-a-new-workbook-on-the-currently-selected-application" class="headerlink" title="Create a new workbook on the currently selected application"></a>Create a new workbook on the currently selected application</h5><blockquote>
+<p><code>&lt;name&gt;</code>: Specify the file name</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">book = app.books.add()</span><br><span class="line"></span><br><span class="line">book = app.books.add(<span class="string">&quot;&lt;name&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Use-an-Existing-Workbook"><a href="#Use-an-Existing-Workbook" class="headerlink" title="Use an Existing Workbook"></a>Use an Existing Workbook</h4><ul>
+<li>Use an existing workbook to get a workbook object</li>
+</ul>
+<h5 id="Open-a-workbook-on-a-new-application"><a href="#Open-a-workbook-on-a-new-application" class="headerlink" title="Open a workbook on a new application"></a>Open a workbook on a new application</h5><blockquote>
+<p><code>&lt;src&gt;</code>: Path to Excel file</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book = xlwings.Book(<span class="string">r&quot;&lt;src&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Open-a-workbook-on-the-currently-selected-application"><a href="#Open-a-workbook-on-the-currently-selected-application" class="headerlink" title="Open a workbook on the currently selected application"></a>Open a workbook on the currently selected application</h5><blockquote>
+<p><code>&lt;src&gt;</code>: Path to Excel file</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book = app.books.<span class="built_in">open</span>(<span class="string">r&quot;&lt;src&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Save-the-Workbook"><a href="#Save-the-Workbook" class="headerlink" title="Save the Workbook"></a>Save the Workbook</h3><ul>
+<li>If the file save path is not specified, it will default to saving a file named <code>Workbook1.xlsx</code> in the current directory</li>
+<li>When saving a file with the same name, it represents saving</li>
+<li>When saving a file with a different name, it represents Save As</li>
+</ul>
+<blockquote>
+<p><code>&lt;src&gt;</code>: Specify the file save path</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">book.save()</span><br><span class="line"></span><br><span class="line">book.save(<span class="string">&quot;&lt;src&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Close-the-Workbook"><a href="#Close-the-Workbook" class="headerlink" title="Close the Workbook"></a>Close the Workbook</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-Worksheets"><a href="#Operations-on-Worksheets" class="headerlink" title="Operations on Worksheets"></a>Operations on Worksheets</h2><ul>
+<li>Operations on worksheets using the workbook object</li>
+</ul>
+<blockquote>
+<p><code>book</code>: Workbook object</p>
+</blockquote>
+<h3 id="Create-a-Worksheet"><a href="#Create-a-Worksheet" class="headerlink" title="Create a Worksheet"></a>Create a Worksheet</h3><ul>
+<li>If the arrangement position is not specified, the new worksheet will default to being placed at the front</li>
+</ul>
+<blockquote>
+<p><code>before=&quot;&quot;</code>: Place the newly created worksheet before the specified sheet<br><code>after=&quot;&quot;</code>: Place the newly created worksheet after the specified sheet</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">book.sheets.add()</span><br><span class="line"></span><br><span class="line">book.sheets.add(<span class="string">&quot;SheetName&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-a-Worksheet-Object"><a href="#Get-a-Worksheet-Object" class="headerlink" title="Get a Worksheet Object"></a>Get a Worksheet Object</h3><ul>
+<li>After creating a workbook, you can directly use the automatically created worksheet</li>
+</ul>
+<h4 id="Get-by-Worksheet-Name"><a href="#Get-by-Worksheet-Name" class="headerlink" title="Get by Worksheet Name"></a>Get by Worksheet Name</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet = book.sheets(<span class="string">&quot;SheetName&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-by-Worksheet-Index"><a href="#Get-by-Worksheet-Index" class="headerlink" title="Get by Worksheet Index"></a>Get by Worksheet Index</h4><ul>
+<li>Index starts from 1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet = book.sheets(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-the-currently-active-worksheet"><a href="#Get-the-currently-active-worksheet" class="headerlink" title="Get the currently active worksheet"></a>Get the currently active worksheet</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet = book.sheets.active</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-Number-of-Worksheets"><a href="#Get-the-Number-of-Worksheets" class="headerlink" title="Get the Number of Worksheets"></a>Get the Number of Worksheets</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet.count</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-Name-of-the-Current-Worksheet"><a href="#Get-the-Name-of-the-Current-Worksheet" class="headerlink" title="Get the Name of the Current Worksheet"></a>Get the Name of the Current Worksheet</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet.name</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-Index-of-the-Current-Worksheet"><a href="#Get-the-Index-of-the-Current-Worksheet" class="headerlink" title="Get the Index of the Current Worksheet"></a>Get the Index of the Current Worksheet</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet.index</span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-Worksheet"><a href="#Delete-a-Worksheet" class="headerlink" title="Delete a Worksheet"></a>Delete a Worksheet</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet.delete()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-Cells"><a href="#Operations-on-Cells" class="headerlink" title="Operations on Cells"></a>Operations on Cells</h2><ul>
+<li>Operations on cells using the worksheet object</li>
+</ul>
+<blockquote>
+<p><code>app</code>: Application object<br><code>sheet</code>: Worksheet object</p>
+</blockquote>
+<h3 id="Automatically-Adjust-Row-Height-or-Column-Width"><a href="#Automatically-Adjust-Row-Height-or-Column-Width" class="headerlink" title="Automatically Adjust Row Height or Column Width"></a>Automatically Adjust Row Height or Column Width</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Automatically adjust row height</span></span><br><span class="line">sheet.autofit(<span class="string">&quot;1&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Automatically adjust column width</span></span><br><span class="line">sheet.autofit(<span class="string">&quot;A&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-All-Cells"><a href="#Get-All-Cells" class="headerlink" title="Get All Cells"></a>Get All Cells</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet.cells</span><br></pre></td></tr></table></figure>
+
+<h3 id="Select-a-Cell"><a href="#Select-a-Cell" class="headerlink" title="Select a Cell"></a>Select a Cell</h3><h4 id="Select-a-Single-Cell"><a href="#Select-a-Single-Cell" class="headerlink" title="Select a Single Cell"></a>Select a Single Cell</h4><blockquote>
+<p><code>&quot;A1&quot;</code>: Cell address, where the letter represents the column and the number represents the row<br><code>(1, 1)</code>: Numerical coordinate, with the upper-left cell as point <code>(1, 1)</code>, the first number indicating the row index, and the second number indicating the column index</p>
+</blockquote>
+<h5 id="Select-a-cell-using-a-class-object"><a href="#Select-a-cell-using-a-class-object" class="headerlink" title="Select a cell using a class object"></a>Select a cell using a class object</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell = xlwings.Range(<span class="string">&quot;A1&quot;</span>)</span><br><span class="line">cell = xlwings.Range((<span class="number">1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Select-a-cell-using-the-application-object"><a href="#Select-a-cell-using-the-application-object" class="headerlink" title="Select a cell using the application object"></a>Select a cell using the application object</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell = app.<span class="built_in">range</span>(<span class="string">&quot;A1&quot;</span>)</span><br><span class="line">cell = app.<span class="built_in">range</span>((<span class="number">1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Select-a-cell-using-the-worksheet-object"><a href="#Select-a-cell-using-the-worksheet-object" class="headerlink" title="Select a cell using the worksheet object"></a>Select a cell using the worksheet object</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell = sheet.<span class="built_in">range</span>(<span class="string">&quot;A1&quot;</span>)</span><br><span class="line">cell = sheet.<span class="built_in">range</span>((<span class="number">1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Select-a-cell-using-the-sheet-array"><a href="#Select-a-cell-using-the-sheet-array" class="headerlink" title="Select a cell using the sheet array"></a>Select a cell using the sheet array</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell = sheet[<span class="string">&quot;A1&quot;</span>]</span><br><span class="line">cell = sheet[<span class="number">0</span>, <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="Select-a-Range-of-Cells"><a href="#Select-a-Range-of-Cells" class="headerlink" title="Select a Range of Cells"></a>Select a Range of Cells</h4><ul>
+<li>Select a group of cells in a rectangular region</li>
+</ul>
+<blockquote>
+<p><code>A1:B2</code>: Select by cell address, where the first address indicates the upper-left corner of the selection area, and the second address indicates the lower-right corner of the selection area<br><code>(1, 1), (2, 2)</code>: Select by two numerical coordinates, with the first coordinate pair indicating the upper-left corner of the selection area</p>
+</blockquote>
+<h5 id="Select-a-range-using-a-class-object"><a href="#Select-a-range-using-a-class-object" class="headerlink" title="Select a range using a class object"></a>Select a range using a class object</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xlwings.Range(<span class="string">&quot;A1:B2&quot;</span>)</span><br><span class="line">xlwings.Range((<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Select-a-range-using-the-application-object"><a href="#Select-a-range-using-the-application-object" class="headerlink" title="Select a range using the application object"></a>Select a range using the application object</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="built_in">range</span>(<span class="string">&quot;A1:B2&quot;</span>)</span><br><span class="line">app.<span class="built_in">range</span>((<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Select-a-range-using-the-worksheet-object"><a href="#Select-a-range-using-the-worksheet-object" class="headerlink" title="Select a range using the worksheet object"></a>Select a range using the worksheet object</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sheet.<span class="built_in">range</span>(<span class="string">&quot;A1:B2&quot;</span>)</span><br><span class="line">sheet.<span class="built_in">range</span>((<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Select-a-range-using-the-sheet-array"><a href="#Select-a-range-using-the-sheet-array" class="headerlink" title="Select a range using the sheet array"></a>Select a range using the sheet array</h5>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Office/" rel="tag"># Office</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/09/20/Xlwings%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】Xlwings学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】Xlwings学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/09/21/pip%E5%AE%89%E8%A3%85%E7%9A%84%E6%A8%A1%E5%9D%97%E8%B7%AF%E5%BE%84/" rel="next" title="【笔记】pip安装的模块路径">
+                  【笔记】pip安装的模块路径 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2022/09/20/Xlwings%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2022/09/20/Xlwings%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

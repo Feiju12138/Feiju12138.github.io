@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2022/11/03/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2022/11/03/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2022/11/03/Elasticsearch学习笔记/","title":"【英文】Elasticsearch学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Elasticsearch学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">2.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts-in-Elasticsearch"><span class="nav-number">3.</span> <span class="nav-text">Concepts in Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IK-Analyzer"><span class="nav-number">4.</span> <span class="nav-text">IK Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-Extended-Words"><span class="nav-number">4.1.</span> <span class="nav-text">Adding Extended Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-Stop-Words"><span class="nav-number">4.2.</span> <span class="nav-text">Adding Stop Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tokenization-Operation"><span class="nav-number">5.</span> <span class="nav-text">Tokenization Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tokenization-Operation-in-a-Specified-Index"><span class="nav-number">5.1.</span> <span class="nav-text">Tokenization Operation in a Specified Index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-an-Index"><span class="nav-number">6.</span> <span class="nav-text">Operations on an Index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-New-Index"><span class="nav-number">6.1.</span> <span class="nav-text">Creating a New Index</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Specifying-a-Custom-Analyzer"><span class="nav-number">6.1.1.</span> <span class="nav-text">Specifying a Custom Analyzer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Querying-an-Index"><span class="nav-number">6.2.</span> <span class="nav-text">Querying an Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-an-Index"><span class="nav-number">6.3.</span> <span class="nav-text">Deleting an Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modifying-an-Index"><span class="nav-number">6.4.</span> <span class="nav-text">Modifying an Index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-a-Document"><span class="nav-number">7.</span> <span class="nav-text">Operations on a Document</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-a-Document"><span class="nav-number">7.1.</span> <span class="nav-text">Adding a Document</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2022/11/03/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Elasticsearch学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Elasticsearch学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-03 14:48:53" itemprop="dateCreated datePublished" datetime="2022-11-03T14:48:53+00:00">2022-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Java后端学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Elasticsearch Learning Notes</p>
+<span id="more"></span>
+
+<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ul>
+<li>Document: Each piece of data is a document.</li>
+<li>Term: The words separated according to semantics in the document.</li>
+<li>Index: A collection of documents of the same type.</li>
+<li>Mapping: The constraint of fields in the index on the document, similar to the structural constraints of a database table.</li>
+</ul>
+<h2 id="Concepts-in-Elasticsearch"><a href="#Concepts-in-Elasticsearch" class="headerlink" title="Concepts in Elasticsearch"></a>Concepts in Elasticsearch</h2><p>Comparison of Concepts between MySQL and Elasticsearch</p>
+<table>
+<thead>
+<tr>
+<th>Concept in Elasticsearch</th>
+<th>Description</th>
+<th>Concept in MySQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Index</td>
+<td>A collection of documents of the same type. Similar to a data table in MySQL.</td>
+<td>Table</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>Each piece of data is a document, and documents are formatted as JSON strings. Similar to a row in MySQL.</td>
+<td>Row</td>
+</tr>
+<tr>
+<td>Field</td>
+<td>Each key in the JSON document. Similar to a column name in MySQL.</td>
+<td>Column</td>
+</tr>
+<tr>
+<td>Mapping</td>
+<td>The constraint on the values of each key in the JSON document. Similar to the table structure in MySQL.</td>
+<td>Schema</td>
+</tr>
+<tr>
+<td>DSL</td>
+<td>JSON-style request statements used to manipulate Elasticsearch to implement CRUD operations. Similar to SQL statements in MySQL.</td>
+<td>SQL</td>
+</tr>
+</tbody></table>
+<h2 id="IK-Analyzer"><a href="#IK-Analyzer" class="headerlink" title="IK Analyzer"></a>IK Analyzer</h2><ul>
+<li>The IK Analysis plugin integrates the Lucene IK analyzer (&#x2F;302.html?target&#x3D;<a target="_blank" rel="noopener" href="http://code.google.com/p/ik-analyzer/">http://code.google.com/p/ik-analyzer/</a>) into Elasticsearch, supporting custom dictionaries.(<a href="/302.html?target=https://github.com/medcl/elasticsearch-analysis-ik">Github</a>)</li>
+</ul>
+<h3 id="Adding-Extended-Words"><a href="#Adding-Extended-Words" class="headerlink" title="Adding Extended Words"></a>Adding Extended Words</h3><ul>
+<li><p>In addition to the built-in dictionary, the IK Analyzer can also segment words based on the extended dictionary.</p>
+</li>
+<li><p>Create a <code>/plugins/ik/config/ext.dic</code> file, with each line specifying an extended word.</p>
+</li>
+</ul>
+<h3 id="Adding-Stop-Words"><a href="#Adding-Stop-Words" class="headerlink" title="Adding Stop Words"></a>Adding Stop Words</h3><ul>
+<li><p>If a stop word dictionary is defined, the IK Analyzer will not segment words when encountering extended words.</p>
+</li>
+<li><p>Create a <code>/plugins/ik/config/stopword.dic</code> file, with each line specifying a stop word.</p>
+</li>
+</ul>
+<h2 id="Tokenization-Operation"><a href="#Tokenization-Operation" class="headerlink" title="Tokenization Operation"></a>Tokenization Operation</h2><blockquote>
+<p><code>&quot;analyzer&quot;: &quot;&quot;</code>: Specify the tokenization method.</p>
+<blockquote>
+<p><code>standard</code>: Standard method. Tokenize word by word.<br><code>chinese</code>: Built-in Chinese tokenization. Tokenize word by word.<br><code>ik_smart</code>: IK analyzer with minimum words.<br><code>ik_max_word</code>: IK analyzer with maximum words.</p>
+</blockquote>
+<p><code>&quot;text&quot;: &quot;&quot;</code>: Specify the content to be tokenized.</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST /_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;standard&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tokenization-Operation-in-a-Specified-Index"><a href="#Tokenization-Operation-in-a-Specified-Index" class="headerlink" title="Tokenization Operation in a Specified Index"></a>Tokenization Operation in a Specified Index</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST /index_name/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;standard&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-an-Index"><a href="#Operations-on-an-Index" class="headerlink" title="Operations on an Index"></a>Operations on an Index</h2><h3 id="Creating-a-New-Index"><a href="#Creating-a-New-Index" class="headerlink" title="Creating a New Index"></a>Creating a New Index</h3><ul>
+<li>In Elasticsearch, the ID is usually defined as the <code>keyword</code> type.</li>
+</ul>
+<blockquote>
+<p><code>type: &quot;&quot;</code>: Field data type.</p>
+<blockquote>
+<p>String</p>
+<blockquote>
+<p><code>text</code>: Text that can be tokenized.<br><code>keyword</code>: Exact value, a word that cannot be separated.</p>
+</blockquote>
+<p>Number</p>
+<blockquote>
+<p><code>long</code><br><code>integer</code><br><code>short</code><br><code>byte</code><br><code>double</code><br><code>float</code></p>
+</blockquote>
+<p>Boolean</p>
+<blockquote>
+<p><code>boolean</code></p>
+</blockquote>
+<p>Date</p>
+<blockquote>
+<p><code>date</code></p>
+</blockquote>
+<p>Array</p>
+<blockquote>
+<p>Elasticsearch does not have an array type, but any data type can specify multiple values.</p>
+</blockquote>
+<p>Geographic Coordinate</p>
+<blockquote>
+<p><code>geo_point: &quot;3.1415926, 3.1415926&quot;</code>: A point on the map.<br><code>geo_shape: &quot;LINESTARING(first point longitude first point latitude, second point longitude second point latitude)&quot;</code>: A range composed of multiple points on the map.</p>
+</blockquote>
+<p>Autocomplete</p>
+<blockquote>
+<p><code>completion</code>: Allows fuzzy search using prefix keywords.</p>
+</blockquote>
+</blockquote>
+<p><code>index: &quot;&quot;</code>: Whether to create an inverted index. An inverted index is only needed if the field participates in searching; if not, the inverted index does not need to be created.</p>
+<blockquote>
+<p><code>true</code>: Default value, create an inverted index.<br><code>false</code>: Do not create an inverted index.</p>
+</blockquote>
+<p><code>analyzer: &quot;&quot;</code>: Specify which analyzer to use.</p>
+<blockquote>
+<p><code>standard</code>: Standard method. Tokenize word by word.<br><code>chinese</code>: Built-in Chinese tokenization. Tokenize word by word.<br><code>ik_smart</code>: IK analyzer with minimum words.<br><code>ik_max_word</code>: IK analyzer with maximum words.</p>
+</blockquote>
+<p><code>properties: &#123;&quot;&quot;: &quot;&quot;, &quot;&quot;: &quot;&quot;&#125;</code>: Subfields of the field.<br><code>copy_to: &quot;other_field_name&quot;</code>: Copy the value of the current field to other fields (actually, an index is created instead of actually copying the value), so that when searching other fields, the value of the current field will also be searched.</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">POST /index_name</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;properties&quot;: &#123;</span><br><span class="line">      &quot;field_name&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;field_type&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;id&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;keyword&quot;,</span><br><span class="line">        &quot;index&quot;: false</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;name&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">        &quot;analyzer&quot;: &quot;ik_smart&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;englishname&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">        &quot;copy_to&quot;: &quot;name&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;father&quot;: &#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">          &quot;son&quot;: &#123;</span><br><span class="line">            &quot;type&quot;: &quot;keyword&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Specifying-a-Custom-Analyzer"><a href="#Specifying-a-Custom-Analyzer" class="headerlink" title="Specifying a Custom Analyzer"></a>Specifying a Custom Analyzer</h4><ul>
+<li>After reconfiguring the pinyin analyzer as a filter, combine it with the IK analyzer to create a new custom analyzer.</li>
+<li>When creating an index, specify the custom analyzer to be used when adding a new document, and specify the IK analyzer to be used when searching for a document.</li>
+</ul>
+<blockquote>
+<p>Character Filter: Process the original document between tokenizations.<br><code>tokenizer</code>: Divide the text into terms according to the specified rules or tokenizer. Specify <code>keyword</code> if no tokenization is required.<br><code>filter</code>: Process the terms output by the tokenizer using the specified filter or tokenizer.</p>
+</blockquote>
+<blockquote>
+<p><code>&quot;analyzer&quot;: &quot;&quot;</code>: Specify the analyzer used when creating the index.<br><code>&quot;search_analyzer&quot;: &quot;&quot;</code>: Specify the analyzer used when searching.</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_name</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;custom_analyzer_name&quot;: &#123;</span><br><span class="line">          &quot;tokenizer&quot;: &quot;ik_max_word&quot;,</span><br><span class="line">          &quot;filter&quot;: &quot;filter_name&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;filter&quot;: &#123;</span><br><span class="line">        &quot;filter_name&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;pinyin&quot;,</span><br><span class="line">          &quot;keep_full_pinyin&quot;: false,</span><br><span class="line">          &quot;keep_joined_full_pinyin&quot;: true,</span><br><span class="line">          &quot;keep_original&quot;: true,</span><br><span class="line">          &quot;limit_first_letter_length&quot;: 16,</span><br><span class="line">          &quot;remove_duplicated_term&quot;: true,</span><br><span class="line">          &quot;none_chinese_pinyin_tokenize&quot;: false</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;mappings&quot;: &#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">          &quot;field_name&quot;: &#123;</span><br><span class="line">            &quot;type&quot;: &quot;field_type&quot;,</span><br><span class="line">            &quot;analyzer&quot;: &quot;custom_analyzer_name&quot;,</span><br><span class="line">            &quot;search_analyzer&quot;: &quot;ik_smart&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Querying-an-Index"><a href="#Querying-an-Index" class="headerlink" title="Querying an Index"></a>Querying an Index</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-an-Index"><a href="#Deleting-an-Index" class="headerlink" title="Deleting an Index"></a>Deleting an Index</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /index_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="Modifying-an-Index"><a href="#Modifying-an-Index" class="headerlink" title="Modifying an Index"></a>Modifying an Index</h3><ul>
+<li>The old fields of an index cannot be modified, only new fields can be added.</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_name/_mapping</span><br><span class="line">&#123;</span><br><span class="line">  &quot;properties&quot;: &#123;</span><br><span class="line">    &quot;new_field_name&quot;: &#123;</span><br><span class="line">      &quot;type&quot;: &quot;field_type&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-a-Document"><a href="#Operations-on-a-Document" class="headerlink" title="Operations on a Document"></a>Operations on a Document</h2><h3 id="Adding-a-Document"><a href="#Adding-a-Document" class="headerlink" title="Adding a Document"></a>Adding a Document</h3><blockquote>
+<p><code>Document ID</code>: If the document ID is not specified, the index will automatically generate a random ID.</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /index_name/_doc/document_id</span><br><span class="line">&#123;</span><br><span class="line">  &quot;key&quot;: &quot;value&quot;</span><br><span class="line">  &quot;key&quot;: &#123;</span><br><span class="line">    &quot;key&quot;: &quot;value&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/11/03/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】Elasticsearch学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】Elasticsearch学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/11/03/%E4%BD%BF%E7%94%A8docker-machine%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E6%8A%A5%E9%94%99/" rel="next" title="【笔记】使用docker-machine创建虚拟机时报错">
+                  【笔记】使用docker-machine创建虚拟机时报错 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2022/11/03/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2022/11/03/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

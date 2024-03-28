@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2021/10/03/Python3%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2021/10/03/Python3%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/","path":"en/2021/10/03/Python3的文件和目录操作/","title":"【英文】Python3的文件和目录操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Python3的文件和目录操作 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-module"><span class="nav-number">2.</span> <span class="nav-text">os module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Module"><span class="nav-number">2.1.</span> <span class="nav-text">Import Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Directory"><span class="nav-number">2.2.</span> <span class="nav-text">Create Directory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Multiple-Directories"><span class="nav-number">2.2.1.</span> <span class="nav-text">Create Multiple Directories</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-File-or-Directory"><span class="nav-number">2.3.</span> <span class="nav-text">Delete File or Directory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Delete-Multiple-Directories"><span class="nav-number">2.3.1.</span> <span class="nav-text">Delete Multiple Directories</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rename-File-or-Directory"><span class="nav-number">2.4.</span> <span class="nav-text">Rename File or Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Current-Directory"><span class="nav-number">2.5.</span> <span class="nav-text">Change Current Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Current-Directory"><span class="nav-number">2.6.</span> <span class="nav-text">Get Current Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-List-of-Files-and-Directories-in-Current-Directory"><span class="nav-number">2.7.</span> <span class="nav-text">Get List of Files and Directories in Current Directory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Returns-a-List"><span class="nav-number">2.7.1.</span> <span class="nav-text">Returns a List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Returns-an-Iterator"><span class="nav-number">2.7.2.</span> <span class="nav-text">Returns an Iterator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Returns-Recursively-the-Directory-and-File-Names"><span class="nav-number">2.7.3.</span> <span class="nav-text">Returns Recursively the Directory and File Names</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Directory-Permissions"><span class="nav-number">2.8.</span> <span class="nav-text">Change Directory Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path-Checking"><span class="nav-number">2.9.</span> <span class="nav-text">Path Checking</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-File-Name"><span class="nav-number">2.9.1.</span> <span class="nav-text">Get File Name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Directory-Name"><span class="nav-number">2.9.2.</span> <span class="nav-text">Get Directory Name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-File-Name-and-Directory-Name"><span class="nav-number">2.9.3.</span> <span class="nav-text">Get File Name and Directory Name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Combining-Path-Names"><span class="nav-number">2.9.4.</span> <span class="nav-text">Combining Path Names</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-File-Last-Access-Time"><span class="nav-number">2.9.5.</span> <span class="nav-text">Get File Last Access Time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-File-Creation-Time"><span class="nav-number">2.9.6.</span> <span class="nav-text">Get File Creation Time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-File-Modification-Time"><span class="nav-number">2.9.7.</span> <span class="nav-text">Get File Modification Time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-File-Size"><span class="nav-number">2.9.8.</span> <span class="nav-text">Get File Size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Check-if-File-Exists"><span class="nav-number">2.9.9.</span> <span class="nav-text">Check if File Exists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Check-if-Path-is-Absolute"><span class="nav-number">2.9.10.</span> <span class="nav-text">Check if Path is Absolute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Check-if-Path-is-a-Directory"><span class="nav-number">2.9.11.</span> <span class="nav-text">Check if Path is a Directory</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glob-module"><span class="nav-number">3.</span> <span class="nav-text">glob module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Module-1"><span class="nav-number">3.1.</span> <span class="nav-text">Import Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Matching-Files"><span class="nav-number">3.2.</span> <span class="nav-text">Get Matching Files</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shutil-module"><span class="nav-number">4.</span> <span class="nav-text">shutil module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Module-2"><span class="nav-number">4.1.</span> <span class="nav-text">Import Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-File"><span class="nav-number">4.2.</span> <span class="nav-text">Copy File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-Directory"><span class="nav-number">4.3.</span> <span class="nav-text">Copy Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Move-File-or-Directory"><span class="nav-number">4.4.</span> <span class="nav-text">Move File or Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Directory"><span class="nav-number">4.5.</span> <span class="nav-text">Delete Directory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pathlib-module"><span class="nav-number">5.</span> <span class="nav-text">pathlib module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Module-3"><span class="nav-number">5.1.</span> <span class="nav-text">Import Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Path-Object"><span class="nav-number">5.2.</span> <span class="nav-text">Create Path Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search"><span class="nav-number">5.3.</span> <span class="nav-text">Search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Recursive-Search"><span class="nav-number">5.3.1.</span> <span class="nav-text">Recursive Search</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Get-All-Files-and-Directories"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">Get All Files and Directories</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Open-File"><span class="nav-number">5.4.</span> <span class="nav-text">Open File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Relative-Path"><span class="nav-number">5.5.</span> <span class="nav-text">Get Relative Path</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Split-the-Relative-Path-into-Path-Levels"><span class="nav-number">5.5.1.</span> <span class="nav-text">Split the Relative Path into Path Levels</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Absolute-Path"><span class="nav-number">5.6.</span> <span class="nav-text">Get Absolute Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Directory-1"><span class="nav-number">5.7.</span> <span class="nav-text">Create Directory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Multiple-Directories-1"><span class="nav-number">5.7.1.</span> <span class="nav-text">Create Multiple Directories</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2021/10/03/Python3%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Python3的文件和目录操作 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Python3的文件和目录操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-03 21:03:19" itemprop="dateCreated datePublished" datetime="2021-10-03T21:03:19+00:00">2021-10-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Python学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Notes on file and directory operations in Python3</p>
+<span id="more"></span>
+
+<h2 id="os-module"><a href="#os-module" class="headerlink" title="os module"></a>os module</h2><h3 id="Import-Module"><a href="#Import-Module" class="headerlink" title="Import Module"></a>Import Module</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-Directory"><a href="#Create-Directory" class="headerlink" title="Create Directory"></a>Create Directory</h3><ul>
+<li>If a directory with the same name already exists, an error will be thrown</li>
+</ul>
+<blockquote>
+<p><code>&lt;dir&gt;</code>: Path of the directory</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.mkdir(<span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-Multiple-Directories"><a href="#Create-Multiple-Directories" class="headerlink" title="Create Multiple Directories"></a>Create Multiple Directories</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.makedirs(<span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-File-or-Directory"><a href="#Delete-File-or-Directory" class="headerlink" title="Delete File or Directory"></a>Delete File or Directory</h3><ul>
+<li>If the file is not found, an error will be thrown</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: Path of the file or directory</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.remove(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Delete-Multiple-Directories"><a href="#Delete-Multiple-Directories" class="headerlink" title="Delete Multiple Directories"></a>Delete Multiple Directories</h4><blockquote>
+<p><code>&lt;dir&gt;</code>: Path of the directory</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.removedirs(<span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rename-File-or-Directory"><a href="#Rename-File-or-Directory" class="headerlink" title="Rename File or Directory"></a>Rename File or Directory</h3><blockquote>
+<p><code>&lt;file_old&gt;</code>: Path of the file or directory before renaming<br><code>&lt;file_new&gt;</code>: Path of the file or directory after renaming</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.rename(<span class="string">&quot;&lt;src_old&gt;&quot;</span>, <span class="string">&quot;&lt;src_new&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Change-Current-Directory"><a href="#Change-Current-Directory" class="headerlink" title="Change Current Directory"></a>Change Current Directory</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.chdir(<span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-Current-Directory"><a href="#Get-Current-Directory" class="headerlink" title="Get Current Directory"></a>Get Current Directory</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.getcwd()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-List-of-Files-and-Directories-in-Current-Directory"><a href="#Get-List-of-Files-and-Directories-in-Current-Directory" class="headerlink" title="Get List of Files and Directories in Current Directory"></a>Get List of Files and Directories in Current Directory</h3><h4 id="Returns-a-List"><a href="#Returns-a-List" class="headerlink" title="Returns a List"></a>Returns a List</h4><ul>
+<li>Returns a list of all file and directory names</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.listdir(<span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Returns-an-Iterator"><a href="#Returns-an-Iterator" class="headerlink" title="Returns an Iterator"></a>Returns an Iterator</h4><ul>
+<li>Returns an iterator, the iterator object has many attributes to query the properties of the corresponding file</li>
+</ul>
+<blockquote>
+<p><code>file.stat().st_size</code>: File size in bytes<br><code>file.stat().st_atime</code>: File last access time<br><code>file.stat().st_mtime</code>: File last modification time<br><code>file.stat().st_ctime</code>: File creation time (Windows)</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.scandir(<span class="string">&quot;&lt;file&gt;&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(file.stat())</span><br></pre></td></tr></table></figure>
+
+<h4 id="Returns-Recursively-the-Directory-and-File-Names"><a href="#Returns-Recursively-the-Directory-and-File-Names" class="headerlink" title="Returns Recursively the Directory and File Names"></a>Returns Recursively the Directory and File Names</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> path, dirname, filename <span class="keyword">in</span> os.walk(<span class="string">&quot;&lt;dir&gt;&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Current Directory: <span class="subst">&#123;path&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Subdirectory List: <span class="subst">&#123;dirname&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Subfile List: <span class="subst">&#123;filename&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Change-Directory-Permissions"><a href="#Change-Directory-Permissions" class="headerlink" title="Change Directory Permissions"></a>Change Directory Permissions</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.chmod()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Path-Checking"><a href="#Path-Checking" class="headerlink" title="Path Checking"></a>Path Checking</h3><h4 id="Get-File-Name"><a href="#Get-File-Name" class="headerlink" title="Get File Name"></a>Get File Name</h4><ul>
+<li>Removes the directory part from the absolute path name</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: File path</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.basename(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-Directory-Name"><a href="#Get-Directory-Name" class="headerlink" title="Get Directory Name"></a>Get Directory Name</h4><ul>
+<li>Removes the file part from the absolute path name</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.dirname(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-File-Name-and-Directory-Name"><a href="#Get-File-Name-and-Directory-Name" class="headerlink" title="Get File Name and Directory Name"></a>Get File Name and Directory Name</h4><ul>
+<li>Gets a tuple containing the file name and directory name</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Directory Name: <span class="subst">&#123;os.path.split(<span class="string">&#x27;&lt;file&gt;&#x27;</span>)[<span class="number">0</span>]&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;File Name: <span class="subst">&#123;os.path.split(<span class="string">&#x27;&lt;file&gt;&#x27;</span>)[<span class="number">1</span>]&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Combining-Path-Names"><a href="#Combining-Path-Names" class="headerlink" title="Combining Path Names"></a>Combining Path Names</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.join()</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-File-Last-Access-Time"><a href="#Get-File-Last-Access-Time" class="headerlink" title="Get File Last Access Time"></a>Get File Last Access Time</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">time = os.path.getatime(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(datetime.datetime.fromtimestamp(time))</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-File-Creation-Time"><a href="#Get-File-Creation-Time" class="headerlink" title="Get File Creation Time"></a>Get File Creation Time</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">time = os.path.getctime(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(datetime.datetime.fromtimestamp(time))</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-File-Modification-Time"><a href="#Get-File-Modification-Time" class="headerlink" title="Get File Modification Time"></a>Get File Modification Time</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">time = os.path.getmtime(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(datetime.datetime.fromtimestamp(time))</span><br></pre></td></tr></table></figure>
+
+<h4 id="Get-File-Size"><a href="#Get-File-Size" class="headerlink" title="Get File Size"></a>Get File Size</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.getsize(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Check-if-File-Exists"><a href="#Check-if-File-Exists" class="headerlink" title="Check if File Exists"></a>Check if File Exists</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.exists()</span><br></pre></td></tr></table></figure>
+
+<h4 id="Check-if-Path-is-Absolute"><a href="#Check-if-Path-is-Absolute" class="headerlink" title="Check if Path is Absolute"></a>Check if Path is Absolute</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.isabs()</span><br></pre></td></tr></table></figure>
+
+<h4 id="Check-if-Path-is-a-Directory"><a href="#Check-if-Path-is-a-Directory" class="headerlink" title="Check if Path is a Directory"></a>Check if Path is a Directory</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.isdir()</span><br></pre></td></tr></table></figure>
+
+<h2 id="glob-module"><a href="#glob-module" class="headerlink" title="glob module"></a>glob module</h2><ul>
+<li>Retrieve specified files or directories</li>
+</ul>
+<h3 id="Import-Module-1"><a href="#Import-Module-1" class="headerlink" title="Import Module"></a>Import Module</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-Matching-Files"><a href="#Get-Matching-Files" class="headerlink" title="Get Matching Files"></a>Get Matching Files</h3><blockquote>
+<p><code>&lt;file&gt;</code>: File or directory name</p>
+<blockquote>
+<p><code>**</code>: Match all files and directories in the current directory<br><code>**/</code>: Match all directories in the current directory</p>
+<blockquote>
+<p><code>*&lt;keywords&gt;*</code>: Match keywords<br><code>recursive=True</code>: Recursive operation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">glob.glob(<span class="string">&quot;&lt;file&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line">glob.glob(<span class="string">&quot;&lt;file&gt;&quot;</span>, recursive=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="shutil-module"><a href="#shutil-module" class="headerlink" title="shutil module"></a>shutil module</h2><h3 id="Import-Module-2"><a href="#Import-Module-2" class="headerlink" title="Import Module"></a>Import Module</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> shutil</span><br></pre></td></tr></table></figure>
+
+<h3 id="Copy-File"><a href="#Copy-File" class="headerlink" title="Copy File"></a>Copy File</h3><ul>
+<li>Automatically creates target directory if it does not exist</li>
+</ul>
+<blockquote>
+<p><code>&lt;file_old&gt;</code>: Path of the file before copying<br><code>&lt;dir&gt;</code>: Path of the directory after copying<br><code>&lt;file_new&gt;</code>: Path of the file after copying</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shutil.copy(<span class="string">&quot;&lt;file_old&gt;&quot;</span>, <span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br><span class="line">shutil.copy(<span class="string">&quot;&lt;file_old&gt;&quot;</span>, <span class="string">&quot;&lt;dir&gt;/&lt;file_old&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Copy file with a new name</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutil.copy(<span class="string">&quot;&lt;file_old&gt;&quot;</span>, <span class="string">&quot;&lt;dir&gt;/&lt;file_new&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Copy-Directory"><a href="#Copy-Directory" class="headerlink" title="Copy Directory"></a>Copy Directory</h3><blockquote>
+<p><code>&lt;dir_old&gt;</code>: Path of the directory before copying<br><code>&lt;dir_new&gt;</code>: Path of the directory after copying</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutil.copytree(<span class="string">&quot;&lt;file_old&gt;&quot;</span>, <span class="string">&quot;&lt;file_new&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Move-File-or-Directory"><a href="#Move-File-or-Directory" class="headerlink" title="Move File or Directory"></a>Move File or Directory</h3><blockquote>
+<p><code>&lt;file_old&gt;</code>: Path of the file before moving<br><code>&lt;file_new&gt;</code>: Path of the file after moving</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutil.move(<span class="string">&quot;&lt;file_old&gt;&quot;</span>, <span class="string">&quot;&lt;file_new&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;dir_old&gt;</code>: Path of the directory before moving<br><code>&lt;dir_new&gt;</code>: Path of the directory after moving</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutil.move(<span class="string">&quot;&lt;dir_old&gt;&quot;</span>, <span class="string">&quot;&lt;dir_new&gt;/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-Directory"><a href="#Delete-Directory" class="headerlink" title="Delete Directory"></a>Delete Directory</h3><ul>
+<li>Can delete multiple directories</li>
+</ul>
+<blockquote>
+<p><code>&lt;dir&gt;</code>: Path of the directory</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutil.rmtree(<span class="string">&quot;&lt;dir&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="pathlib-module"><a href="#pathlib-module" class="headerlink" title="pathlib module"></a>pathlib module</h2><ul>
+<li>Using the pathlib module can quickly find files and directories instead of os.path</li>
+</ul>
+<h3 id="Import-Module-3"><a href="#Import-Module-3" class="headerlink" title="Import Module"></a>Import Module</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-Path-Object"><a href="#Create-Path-Object" class="headerlink" title="Create Path Object"></a>Create Path Object</h3><ul>
+<li>When using pathlib, it is necessary to create a Path object, and file operations are actually operations on Path objects</li>
+</ul>
+<blockquote>
+<p><code>&lt;src&gt;</code>: Absolute or relative path of the file or directory</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file = Path(<span class="string">&quot;&lt;src&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h3><ul>
+<li>Search all files and directories in the current directory</li>
+</ul>
+<blockquote>
+<p><code>&lt;dir&gt;</code>: Specify a directory as the root directory for the search<br><code>&lt;keywords&gt;</code>: Keywords</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="built_in">list</span>(file.glob(<span class="string">&quot;*&lt;keywords&gt;*&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="Recursive-Search"><a href="#Recursive-Search" class="headerlink" title="Recursive Search"></a>Recursive Search</h4><ul>
+<li>Search all files and directories in the current directory and its subdirectories, returns a list</li>
+</ul>
+<blockquote>
+<p><code>&lt;dir&gt;</code>: Specify a directory as the root directory for the search<br><code>&lt;keywords&gt;</code>: Keywords</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="built_in">list</span>(file.rglob(<span class="string">&quot;*&lt;keywords&gt;*&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="Get-All-Files-and-Directories"><a href="#Get-All-Files-and-Directories" class="headerlink" title="Get All Files and Directories"></a>Get All Files and Directories</h5><ul>
+<li>Get all files and directories in the current directory and its subdirectories</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="built_in">list</span>(file.rglob(<span class="string">&quot;*&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="Open-File"><a href="#Open-File" class="headerlink" title="Open File"></a>Open File</h3><blockquote>
+<p><code>&lt;file&gt;</code>: Specify the file</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.<span class="built_in">open</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-Relative-Path"><a href="#Get-Relative-Path" class="headerlink" title="Get Relative Path"></a>Get Relative Path</h3><ul>
+<li>Get the relative path of the specified file or directory from the directory where the code is located</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.parent</span><br></pre></td></tr></table></figure>
+
+<h4 id="Split-the-Relative-Path-into-Path-Levels"><a href="#Split-the-Relative-Path-into-Path-Levels" class="headerlink" title="Split the Relative Path into Path Levels"></a>Split the Relative Path into Path Levels</h4><ul>
+<li>Returns a list of all levels of the split relative path</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.parents</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Returns a tuple of all levels of the split relative path</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.parts</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-Absolute-Path"><a href="#Get-Absolute-Path" class="headerlink" title="Get Absolute Path"></a>Get Absolute Path</h3><ul>
+<li>Get the absolute path of the specified file or directory</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.resolve()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Get the absolute path of the directory where the code is located</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.cwd()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-Directory-1"><a href="#Create-Directory-1" class="headerlink" title="Create Directory"></a>Create Directory</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.mkdir()</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-Multiple-Directories-1"><a href="#Create-Multiple-Directories-1" class="headerlink" title="Create Multiple Directories"></a>Create Multiple Directories</h4><ul>
+<li>If the specified directory does not exist</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/10/03/Python3%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" rel="prev" title="【笔记】Python3的文件和目录操作">
+                  <i class="fa fa-angle-left"></i> 【笔记】Python3的文件和目录操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/10/03/Python3%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="【笔记】Python3的面向对象">
+                  【笔记】Python3的面向对象 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2021/10/03/Python3%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2021/10/03/Python3%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

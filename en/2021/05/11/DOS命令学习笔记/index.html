@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2021/05/11/DOS%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2021/05/11/DOS%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2021/05/11/DOS命令学习笔记/","title":"【英文】DOS命令学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】DOS命令学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">2.</span> <span class="nav-text">Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clearing-the-Command-Prompt-Screen"><span class="nav-number">3.</span> <span class="nav-text">Clearing the Command Prompt Screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Printing-a-Line-in-the-Command-Prompt"><span class="nav-number">4.</span> <span class="nav-text">Printing a Line in the Command Prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Switching"><span class="nav-number">5.</span> <span class="nav-text">Switching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Switching-Drives"><span class="nav-number">5.1.</span> <span class="nav-text">Switching Drives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switching-Folders"><span class="nav-number">5.2.</span> <span class="nav-text">Switching Folders</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forcing-a-Global-Path-Switch"><span class="nav-number">5.2.1.</span> <span class="nav-text">Forcing a Global Path Switch</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewing"><span class="nav-number">6.</span> <span class="nav-text">Viewing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-all-files-and-folders-in-the-current-directory"><span class="nav-number">6.1.</span> <span class="nav-text">Viewing all files and folders in the current directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-File-Contents"><span class="nav-number">6.2.</span> <span class="nav-text">Viewing File Contents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Viewing-Large-File-Contents"><span class="nav-number">6.2.1.</span> <span class="nav-text">Viewing Large File Contents</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating"><span class="nav-number">7.</span> <span class="nav-text">Creating</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-Folders"><span class="nav-number">7.1.</span> <span class="nav-text">Creating Folders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-Files"><span class="nav-number">7.2.</span> <span class="nav-text">Creating Files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Single-Line"><span class="nav-number">7.2.1.</span> <span class="nav-text">Single Line</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Output-Redirection"><span class="nav-number">7.2.1.1.</span> <span class="nav-text">Output Redirection</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Append-Redirection"><span class="nav-number">7.2.1.2.</span> <span class="nav-text">Append Redirection</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiple-Lines"><span class="nav-number">7.2.2.</span> <span class="nav-text">Multiple Lines</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Create-a-File-Directly"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">Create a File Directly</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deleting"><span class="nav-number">8.</span> <span class="nav-text">Deleting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-Folders"><span class="nav-number">8.1.</span> <span class="nav-text">Deleting Folders</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Only-Deleting-Empty-Folders"><span class="nav-number">8.1.1.</span> <span class="nav-text">Only Deleting Empty Folders</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deleting-Empty-or-Non-Empty-Folders"><span class="nav-number">8.1.2.</span> <span class="nav-text">Deleting Empty or Non-Empty Folders</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-Files"><span class="nav-number">8.2.</span> <span class="nav-text">Deleting Files</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modifying-Attributes"><span class="nav-number">9.</span> <span class="nav-text">Modifying Attributes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-a-Specified-Size-Blank-File"><span class="nav-number">10.</span> <span class="nav-text">Creating a Specified Size Blank File</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modifying-File-Associations"><span class="nav-number">11.</span> <span class="nav-text">Modifying File Associations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shutdown"><span class="nav-number">12.</span> <span class="nav-text">Shutdown</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-Off-User"><span class="nav-number">12.1.</span> <span class="nav-text">Log Off User</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copying"><span class="nav-number">13.</span> <span class="nav-text">Copying</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cutting"><span class="nav-number">14.</span> <span class="nav-text">Cutting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Renaming"><span class="nav-number">15.</span> <span class="nav-text">Renaming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Displaying-all-Command-Prompt-Colors"><span class="nav-number">16.</span> <span class="nav-text">Displaying all Command Prompt Colors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Changing-Command-Prompt-Colors"><span class="nav-number">16.1.</span> <span class="nav-text">Changing Command Prompt Colors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Opening"><span class="nav-number">17.</span> <span class="nav-text">Opening</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-XP-x2F-Windows-Server-2003-Blue-Screen"><span class="nav-number">18.</span> <span class="nav-text">Windows XP&#x2F;Windows Server 2003 Blue Screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Terminating-a-Specific-Process"><span class="nav-number">19.</span> <span class="nav-text">Terminating a Specific Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Users"><span class="nav-number">20.</span> <span class="nav-text">Users</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-All-Users"><span class="nav-number">20.1.</span> <span class="nav-text">Viewing All Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-a-Specific-User"><span class="nav-number">20.2.</span> <span class="nav-text">Viewing a Specific User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-User-and-Specifying-a-Password"><span class="nav-number">20.3.</span> <span class="nav-text">Creating a User and Specifying a Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Changing-Password"><span class="nav-number">20.4.</span> <span class="nav-text">Changing Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activating-x2F-Deactivating-User"><span class="nav-number">20.5.</span> <span class="nav-text">Activating&#x2F;Deactivating User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-a-User"><span class="nav-number">20.6.</span> <span class="nav-text">Deleting a User</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Groups"><span class="nav-number">21.</span> <span class="nav-text">Groups</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Built-in-Groups"><span class="nav-number">21.1.</span> <span class="nav-text">Built-in Groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Common-Built-in-Groups"><span class="nav-number">21.1.1.</span> <span class="nav-text">Common Built-in Groups</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-All-Local-Groups"><span class="nav-number">21.2.</span> <span class="nav-text">Viewing All Local Groups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-Members-of-a-Specific-Group"><span class="nav-number">21.3.</span> <span class="nav-text">Viewing Members of a Specific Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-a-User-to-a-Group"><span class="nav-number">21.4.</span> <span class="nav-text">Adding a User to a Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-a-User-from-a-Group"><span class="nav-number">21.5.</span> <span class="nav-text">Removing a User from a Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-Custom-Group"><span class="nav-number">21.6.</span> <span class="nav-text">Creating a Custom Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-a-Custom-Group"><span class="nav-number">21.7.</span> <span class="nav-text">Deleting a Custom Group</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewing-Port-Numbers"><span class="nav-number">22.</span> <span class="nav-text">Viewing Port Numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewing-Current-User"><span class="nav-number">23.</span> <span class="nav-text">Viewing Current User</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sharing"><span class="nav-number">24.</span> <span class="nav-text">Sharing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-All-Shares"><span class="nav-number">24.1.</span> <span class="nav-text">Viewing All Shares</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-Share"><span class="nav-number">24.2.</span> <span class="nav-text">Creating a Share</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-a-Share"><span class="nav-number">24.3.</span> <span class="nav-text">Deleting a Share</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-Resolution"><span class="nav-number">25.</span> <span class="nav-text">DNS Resolution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS-Resolution-Modes"><span class="nav-number">25.1.</span> <span class="nav-text">DNS Resolution Modes</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2021/05/11/DOS%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】DOS命令学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】DOS命令学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-11 21:29:11" itemprop="dateCreated datePublished" datetime="2021-05-11T21:29:11+00:00">2021-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">计算机网络学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>DOS, short for Disk Operating System, is a type of operating system for personal computers. From 1981 to 1995, DOS held a significant position in the IBM PC compatible market. Additionally, if we include some of the Microsoft Windows versions based on DOS, such as Windows 95, 98, and Me, its commercial life can be extended to at least the year 2000. (<a href="/302.html?target=https://en.wikipedia.org/wiki/DOS">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::Comment content</span><br></pre></td></tr></table></figure>
+
+<h2 id="Clearing-the-Command-Prompt-Screen"><a href="#Clearing-the-Command-Prompt-Screen" class="headerlink" title="Clearing the Command Prompt Screen"></a>Clearing the Command Prompt Screen</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cls</span><br></pre></td></tr></table></figure>
+
+<h2 id="Printing-a-Line-in-the-Command-Prompt"><a href="#Printing-a-Line-in-the-Command-Prompt" class="headerlink" title="Printing a Line in the Command Prompt"></a>Printing a Line in the Command Prompt</h2><blockquote>
+<p><code>&lt;text&gt;</code>: Text</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &lt;text&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Switching"><a href="#Switching" class="headerlink" title="Switching"></a>Switching</h2><h3 id="Switching-Drives"><a href="#Switching-Drives" class="headerlink" title="Switching Drives"></a>Switching Drives</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d:</span><br></pre></td></tr></table></figure>
+
+<h3 id="Switching-Folders"><a href="#Switching-Folders" class="headerlink" title="Switching Folders"></a>Switching Folders</h3><blockquote>
+<p><code>&lt;dir&gt;</code>: Folder Name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;dir&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Forcing-a-Global-Path-Switch"><a href="#Forcing-a-Global-Path-Switch" class="headerlink" title="Forcing a Global Path Switch"></a>Forcing a Global Path Switch</h4><ul>
+<li>If the specified path is not on the current drive, normally you should switch the drive first, then switch the folder</li>
+<li>If you use the <code>/d</code> parameter, you can force a switch to a different drive while switching folders</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /d &lt;dir&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Viewing"><a href="#Viewing" class="headerlink" title="Viewing"></a>Viewing</h2><h3 id="Viewing-all-files-and-folders-in-the-current-directory"><a href="#Viewing-all-files-and-folders-in-the-current-directory" class="headerlink" title="Viewing all files and folders in the current directory"></a>Viewing all files and folders in the current directory</h3><blockquote>
+<p><code>/a</code>: Includes system-protected files or folders</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-File-Contents"><a href="#Viewing-File-Contents" class="headerlink" title="Viewing File Contents"></a>Viewing File Contents</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Viewing-Large-File-Contents"><a href="#Viewing-Large-File-Contents" class="headerlink" title="Viewing Large File Contents"></a>Viewing Large File Contents</h4><ul>
+<li>Use the pipe symbol to view the file page by page</li>
+<li>Press <code>space</code> to page through the content</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type &lt;file&gt; | more</span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating"><a href="#Creating" class="headerlink" title="Creating"></a>Creating</h2><h3 id="Creating-Folders"><a href="#Creating-Folders" class="headerlink" title="Creating Folders"></a>Creating Folders</h3><ul>
+<li>You can create folders using relative paths</li>
+<li>You can create folders using absolute paths</li>
+<li>You can create multi-level folders</li>
+<li>You can create multiple folders at the current level</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">md &lt;dir&gt;</span><br><span class="line">md c:\&lt;dir&gt;</span><br><span class="line">md &lt;dir_1&gt;\&lt;dir_2&gt;</span><br><span class="line">md &lt;dir_1&gt; &lt;dir_2&gt;</span><br><span class="line"></span><br><span class="line">mkdir &lt;dir&gt;</span><br><span class="line">mkdir c:\&lt;dir&gt;</span><br><span class="line">mkdir &lt;dir_1&gt;\&lt;dir_2&gt;</span><br><span class="line">mkdir &lt;dir_1&gt; &lt;dir_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-Files"><a href="#Creating-Files" class="headerlink" title="Creating Files"></a>Creating Files</h3><h4 id="Single-Line"><a href="#Single-Line" class="headerlink" title="Single Line"></a>Single Line</h4><h5 id="Output-Redirection"><a href="#Output-Redirection" class="headerlink" title="Output Redirection"></a>Output Redirection</h5><ul>
+<li>Create a file using output redirection</li>
+<li>Overwrite text into the file</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: File Name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &lt;text&gt; &gt; &lt;file&gt;.txt</span><br></pre></td></tr></table></figure>
+
+<h5 id="Append-Redirection"><a href="#Append-Redirection" class="headerlink" title="Append Redirection"></a>Append Redirection</h5><ul>
+<li>Append text to the end of a file</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &lt;text&gt; &gt;&gt; &lt;file&gt;.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="Multiple-Lines"><a href="#Multiple-Lines" class="headerlink" title="Multiple Lines"></a>Multiple Lines</h4><h5 id="Create-a-File-Directly"><a href="#Create-a-File-Directly" class="headerlink" title="Create a File Directly"></a>Create a File Directly</h5><blockquote>
+<p><code>&lt;file&gt;</code>: File Name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy con &lt;file&gt;.txt</span><br></pre></td></tr></table></figure>
+
+<p>Start editing the content to be written to the file, press <code>ctrl</code>+<code>z</code>, then press <code>enter</code> to finish writing</p>
+<h2 id="Deleting"><a href="#Deleting" class="headerlink" title="Deleting"></a>Deleting</h2><h3 id="Deleting-Folders"><a href="#Deleting-Folders" class="headerlink" title="Deleting Folders"></a>Deleting Folders</h3><h4 id="Only-Deleting-Empty-Folders"><a href="#Only-Deleting-Empty-Folders" class="headerlink" title="Only Deleting Empty Folders"></a>Only Deleting Empty Folders</h4><blockquote>
+<p><code>&lt;dir&gt;</code>: Folder</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir &lt;dir&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Deleting-Empty-or-Non-Empty-Folders"><a href="#Deleting-Empty-or-Non-Empty-Folders" class="headerlink" title="Deleting Empty or Non-Empty Folders"></a>Deleting Empty or Non-Empty Folders</h4><blockquote>
+<p><code>/s</code>: Recursive operation<br><code>/q</code>: Do not prompt for confirmation</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rd &lt;file&gt; /s /q</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-Files"><a href="#Deleting-Files" class="headerlink" title="Deleting Files"></a>Deleting Files</h3><ul>
+<li>Delete only files, do not delete folders, keep empty folders during recursive operation</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: File</p>
+<blockquote>
+<p><code>*.*</code>: Wildcard, represents files with any name and any extension</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><code>/s</code>: Recursive operation<br><code>/q</code>: Do not prompt for confirmation</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Modifying-Attributes"><a href="#Modifying-Attributes" class="headerlink" title="Modifying Attributes"></a>Modifying Attributes</h2><blockquote>
+<p><code>&lt;file&gt;</code>: File or Folder</p>
+</blockquote>
+<blockquote>
+<p><code>+</code>, <code>-</code>: <code>+</code> to add permission, <code>-</code> to reduce permission</p>
+<blockquote>
+<p><code>+h</code>: Add hidden attribute<br><code>+a</code>: Add read-only attribute<br><code>+s</code>: Elevate to protected system level permission</p>
+</blockquote>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attrib +h &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-a-Specified-Size-Blank-File"><a href="#Creating-a-Specified-Size-Blank-File" class="headerlink" title="Creating a Specified Size Blank File"></a>Creating a Specified Size Blank File</h2><blockquote>
+<p><code>&lt;file&gt;</code>: File path and name<br><code>&lt;num&gt;</code>: File size, in bytes</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fsutil file createnew &lt;file&gt; &lt;num&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Modifying-File-Associations"><a href="#Modifying-File-Associations" class="headerlink" title="Modifying File Associations"></a>Modifying File Associations</h2><blockquote>
+<p><code>.txt</code>: Extension<br><code>exefile</code>: Executable program<br><code>txtfile</code>: Text file</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assoc .txt=exefile</span><br><span class="line"></span><br><span class="line">assoc .txt=txtfile</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shutdown"><a href="#Shutdown" class="headerlink" title="Shutdown"></a>Shutdown</h2><p><a href="/en-US/2021/10/10/Shutdown-Study-Notes/">Link</a></p>
+<h3 id="Log-Off-User"><a href="#Log-Off-User" class="headerlink" title="Log Off User"></a>Log Off User</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logoff</span><br></pre></td></tr></table></figure>
+
+<h2 id="Copying"><a href="#Copying" class="headerlink" title="Copying"></a>Copying</h2><blockquote>
+<p><code>&lt;file_1&gt;</code>: Specify the file to copy<br><code>&lt;file_2&gt;</code>: Specify the path and file name for the copied file</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy &lt;file_1&gt; &lt;file_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Cutting"><a href="#Cutting" class="headerlink" title="Cutting"></a>Cutting</h2><blockquote>
+<p><code>&lt;file_1&gt;</code>: Specify the file to cut<br><code>&lt;file_2&gt;</code>: Specify the path and file name after cutting</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move &lt;file_1&gt; &lt;file_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Renaming"><a href="#Renaming" class="headerlink" title="Renaming"></a>Renaming</h2><blockquote>
+<p><code>&lt;file_1&gt;</code>: Old file to rename<br><code>&lt;file_2&gt;</code>: New file name to rename</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ren &lt;file_1&gt; &lt;file_2&gt;</span><br><span class="line"></span><br><span class="line">rename &lt;file_1&gt; &lt;file_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Displaying-all-Command-Prompt-Colors"><a href="#Displaying-all-Command-Prompt-Colors" class="headerlink" title="Displaying all Command Prompt Colors"></a>Displaying all Command Prompt Colors</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color ?</span><br></pre></td></tr></table></figure>
+
+<h3 id="Changing-Command-Prompt-Colors"><a href="#Changing-Command-Prompt-Colors" class="headerlink" title="Changing Command Prompt Colors"></a>Changing Command Prompt Colors</h3><blockquote>
+<p><code>0</code>: First digit represents the background color<br><code>a</code>: Second letter represents the text color</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color 0a</span><br></pre></td></tr></table></figure>
+
+<h2 id="Opening"><a href="#Opening" class="headerlink" title="Opening"></a>Opening</h2><blockquote>
+<p><code>&lt;exe&gt;</code>: Specify a program to open the program, specify a website to open the website in the default browser, don’t specify anything to open cmd by default</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start &lt;exe&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Windows-XP-x2F-Windows-Server-2003-Blue-Screen"><a href="#Windows-XP-x2F-Windows-Server-2003-Blue-Screen" class="headerlink" title="Windows XP&#x2F;Windows Server 2003 Blue Screen"></a>Windows XP&#x2F;Windows Server 2003 Blue Screen</h2><ul>
+<li>Forcefully terminate winlogon.exe process</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntsd -c q -pn winlogon.exe</span><br></pre></td></tr></table></figure>
+
+<h2 id="Terminating-a-Specific-Process"><a href="#Terminating-a-Specific-Process" class="headerlink" title="Terminating a Specific Process"></a>Terminating a Specific Process</h2><ul>
+<li>Forcefully terminate the desktop process</li>
+</ul>
+<blockquote>
+<p><code>/f</code>: Force<br><code>/im &lt;task&gt;</code>: Specify the process</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /im explorer.exe /f</span><br></pre></td></tr></table></figure>
+
+<h2 id="Users"><a href="#Users" class="headerlink" title="Users"></a>Users</h2><h3 id="Viewing-All-Users"><a href="#Viewing-All-Users" class="headerlink" title="Viewing All Users"></a>Viewing All Users</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-a-Specific-User"><a href="#Viewing-a-Specific-User" class="headerlink" title="Viewing a Specific User"></a>Viewing a Specific User</h3><blockquote>
+<p><code>&lt;name&gt;</code>: User</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-a-User-and-Specifying-a-Password"><a href="#Creating-a-User-and-Specifying-a-Password" class="headerlink" title="Creating a User and Specifying a Password"></a>Creating a User and Specifying a Password</h3><blockquote>
+<p><code>&lt;pwd&gt;</code>: Password</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user &lt;name&gt; &lt;pwd&gt; /add</span><br></pre></td></tr></table></figure>
+
+<h3 id="Changing-Password"><a href="#Changing-Password" class="headerlink" title="Changing Password"></a>Changing Password</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user &lt;name&gt; &lt;pwd&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Activating-x2F-Deactivating-User"><a href="#Activating-x2F-Deactivating-User" class="headerlink" title="Activating&#x2F;Deactivating User"></a>Activating&#x2F;Deactivating User</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net user &lt;name&gt; /active:yes</span><br><span class="line">net user &lt;name&gt; /active:no</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-a-User"><a href="#Deleting-a-User" class="headerlink" title="Deleting a User"></a>Deleting a User</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user &lt;name&gt; /del</span><br></pre></td></tr></table></figure>
+
+<h2 id="Groups"><a href="#Groups" class="headerlink" title="Groups"></a>Groups</h2><ul>
+<li>Simplifies granting permissions</li>
+</ul>
+<h3 id="Built-in-Groups"><a href="#Built-in-Groups" class="headerlink" title="Built-in Groups"></a>Built-in Groups</h3><ul>
+<li>Default permissions are given to built-in groups by the system</li>
+</ul>
+<h4 id="Common-Built-in-Groups"><a href="#Common-Built-in-Groups" class="headerlink" title="Common Built-in Groups"></a>Common Built-in Groups</h4><table>
+<thead>
+<tr>
+<th>Group Name</th>
+<th>Group Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Administrators</td>
+<td>Administrator group</td>
+</tr>
+<tr>
+<td>Guests</td>
+<td>Guest group</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>Regular user group, default for new users</td>
+</tr>
+<tr>
+<td>Network Configuration Operators</td>
+<td>Network configuration group</td>
+</tr>
+<tr>
+<td>Print Operators</td>
+<td>Printer group</td>
+</tr>
+<tr>
+<td>Remote Desktop Users</td>
+<td>Remote desktop group</td>
+</tr>
+</tbody></table>
+<h3 id="Viewing-All-Local-Groups"><a href="#Viewing-All-Local-Groups" class="headerlink" title="Viewing All Local Groups"></a>Viewing All Local Groups</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-Members-of-a-Specific-Group"><a href="#Viewing-Members-of-a-Specific-Group" class="headerlink" title="Viewing Members of a Specific Group"></a>Viewing Members of a Specific Group</h3><blockquote>
+<p><code>&lt;group&gt;</code>: Group Name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup &lt;group&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Adding-a-User-to-a-Group"><a href="#Adding-a-User-to-a-Group" class="headerlink" title="Adding a User to a Group"></a>Adding a User to a Group</h3><blockquote>
+<p><code>&lt;name&gt;</code>: User</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup &lt;group&gt; &lt;name&gt; /add</span><br></pre></td></tr></table></figure>
+
+<h3 id="Removing-a-User-from-a-Group"><a href="#Removing-a-User-from-a-Group" class="headerlink" title="Removing a User from a Group"></a>Removing a User from a Group</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup &lt;group&gt; &lt;name&gt; /del</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-a-Custom-Group"><a href="#Creating-a-Custom-Group" class="headerlink" title="Creating a Custom Group"></a>Creating a Custom Group</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup &lt;group&gt; /add</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-a-Custom-Group"><a href="#Deleting-a-Custom-Group" class="headerlink" title="Deleting a Custom Group"></a>Deleting a Custom Group</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup &lt;group&gt; /del</span><br></pre></td></tr></table></figure>
+
+<h2 id="Viewing-Port-Numbers"><a href="#Viewing-Port-Numbers" class="headerlink" title="Viewing Port Numbers"></a>Viewing Port Numbers</h2><ul>
+<li>View all open port numbers locally</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an</span><br></pre></td></tr></table></figure>
+
+<h2 id="Viewing-Current-User"><a href="#Viewing-Current-User" class="headerlink" title="Viewing Current User"></a>Viewing Current User</h2><blockquote>
+<p><code>/user</code>: Show SID</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
+
+<h2 id="Sharing"><a href="#Sharing" class="headerlink" title="Sharing"></a>Sharing</h2><h3 id="Viewing-All-Shares"><a href="#Viewing-All-Shares" class="headerlink" title="Viewing All Shares"></a>Viewing All Shares</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net share</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-a-Share"><a href="#Creating-a-Share" class="headerlink" title="Creating a Share"></a>Creating a Share</h3><blockquote>
+<p><code>&lt;name&gt;</code>: Specify the share name<br><code>&lt;src&gt;</code>: Specify the folder path to share</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net share &lt;name&gt;=&lt;src&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-a-Share"><a href="#Deleting-a-Share" class="headerlink" title="Deleting a Share"></a>Deleting a Share</h3><blockquote>
+<p><code>&lt;name&gt;</code>: Share Name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net share &lt;name&gt; /del</span><br></pre></td></tr></table></figure>
+
+<h2 id="DNS-Resolution"><a href="#DNS-Resolution" class="headerlink" title="DNS Resolution"></a>DNS Resolution</h2><blockquote>
+<p><code>&lt;domain&gt;</code>: Domain name to resolve</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup &lt;domain&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DNS-Resolution-Modes"><a href="#DNS-Resolution-Modes" class="headerlink" title="DNS Resolution Modes"></a>DNS Resolution Modes</h3><ul>
+<li>In DNS mode, repeatedly resolve the domain that needs to be resolved</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/DOS/" rel="tag"># DOS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/05/11/DOS%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【命令】DOS命令学习笔记">
+                  <i class="fa fa-angle-left"></i> 【命令】DOS命令学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/05/12/%E6%89%B9%E5%A4%84%E7%90%86/" rel="next" title="【笔记】批处理">
+                  【笔记】批处理 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2021/05/11/DOS%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2021/05/11/DOS%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

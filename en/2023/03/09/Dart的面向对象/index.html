@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2023/03/09/Dart%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2023/03/09/Dart%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/","path":"en/2023/03/09/Dart的面向对象/","title":"【英文】Dart的面向对象"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Dart的面向对象 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Classes"><span class="nav-number">2.</span> <span class="nav-text">Defining Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-Properties-in-a-Class"><span class="nav-number">2.1.</span> <span class="nav-text">Defining Properties in a Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-Methods-in-a-Class"><span class="nav-number">2.2.</span> <span class="nav-text">Defining Methods in a Class</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Defining-Constructors-in-a-Class"><span class="nav-number">2.2.1.</span> <span class="nav-text">Defining Constructors in a Class</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Default-Constructor"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">Default Constructor</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Default-constructor-without-parameters"><span class="nav-number">2.2.1.1.1.</span> <span class="nav-text">Default constructor without parameters</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Default-constructor-with-parameters"><span class="nav-number">2.2.1.1.2.</span> <span class="nav-text">Default constructor with parameters</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Named-Constructors"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">Named Constructors</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Instantiating-Classes-as-Objects"><span class="nav-number">3.</span> <span class="nav-text">Instantiating Classes as Objects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-the-Default-Constructor"><span class="nav-number">3.1.</span> <span class="nav-text">Using the Default Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Named-Constructors"><span class="nav-number">3.2.</span> <span class="nav-text">Using Named Constructors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Omitting-the-new-Keyword"><span class="nav-number">3.3.</span> <span class="nav-text">Omitting the new Keyword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-Objects-Using-a-Constant-Constructor"><span class="nav-number">3.4.</span> <span class="nav-text">Creating Objects Using a Constant Constructor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accessing-Properties-in-an-Object"><span class="nav-number">4.</span> <span class="nav-text">Accessing Properties in an Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Calling-Methods-of-an-Object"><span class="nav-number">5.</span> <span class="nav-text">Calling Methods of an Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modularizing"><span class="nav-number">6.</span> <span class="nav-text">Modularizing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Separating-Classes-into-Individual-Dart-Files"><span class="nav-number">6.1.</span> <span class="nav-text">Separating Classes into Individual Dart Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Importing-Classes-in-Other-Dart-Files"><span class="nav-number">6.2.</span> <span class="nav-text">Importing Classes in Other Dart Files</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-Access"><span class="nav-number">7.</span> <span class="nav-text">Private Access</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Getter-Methods"><span class="nav-number">8.</span> <span class="nav-text">Getter Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-Getter-Methods"><span class="nav-number">8.1.</span> <span class="nav-text">Defining Getter Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Getter-Methods"><span class="nav-number">8.2.</span> <span class="nav-text">Using Getter Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setter-Methods"><span class="nav-number">9.</span> <span class="nav-text">Setter Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-Setter-Methods"><span class="nav-number">9.1.</span> <span class="nav-text">Defining Setter Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Setter-Methods"><span class="nav-number">9.2.</span> <span class="nav-text">Using Setter Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static-Properties-and-Methods"><span class="nav-number">10.</span> <span class="nav-text">Static Properties and Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Operators"><span class="nav-number">11.</span> <span class="nav-text">Object Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditional-Operator"><span class="nav-number">11.1.</span> <span class="nav-text">Conditional Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Checking"><span class="nav-number">11.2.</span> <span class="nav-text">Type Checking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Conversion"><span class="nav-number">11.3.</span> <span class="nav-text">Type Conversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cascading"><span class="nav-number">11.4.</span> <span class="nav-text">Cascading</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inheritance"><span class="nav-number">12.</span> <span class="nav-text">Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructors"><span class="nav-number">12.1.</span> <span class="nav-text">Constructors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-Overriding"><span class="nav-number">12.2.</span> <span class="nav-text">Method Overriding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Accessing-Properties-and-Methods-of-the-Parent-Class-in-a-Subclass"><span class="nav-number">12.3.</span> <span class="nav-text">Accessing Properties and Methods of the Parent Class in a Subclass</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Abstract-Classes"><span class="nav-number">13.</span> <span class="nav-text">Defining Abstract Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polymorphism"><span class="nav-number">14.</span> <span class="nav-text">Polymorphism</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Interfaces"><span class="nav-number">15.</span> <span class="nav-text">Defining Interfaces</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2023/03/09/Dart%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Dart的面向对象 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Dart的面向对象
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-09 21:29:43" itemprop="dateCreated datePublished" datetime="2023-03-09T21:29:43+00:00">2023-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Flutter学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Notes on object-oriented programming with Dart</p>
+<span id="more"></span>
+
+<h2 id="Defining-Classes"><a href="#Defining-Classes" class="headerlink" title="Defining Classes"></a>Defining Classes</h2><ul>
+<li>Class names should be capitalized</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Defining-Properties-in-a-Class"><a href="#Defining-Properties-in-a-Class" class="headerlink" title="Defining Properties in a Class"></a>Defining Properties in a Class</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    DataType propertyName = propertyValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Defining-Methods-in-a-Class"><a href="#Defining-Methods-in-a-Class" class="headerlink" title="Defining Methods in a Class"></a>Defining Methods in a Class</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    ReturnType methodName(ParameterList) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Defining-Constructors-in-a-Class"><a href="#Defining-Constructors-in-a-Class" class="headerlink" title="Defining Constructors in a Class"></a>Defining Constructors in a Class</h4><ul>
+<li>Constructors are executed immediately when an object is created to initialize the object</li>
+<li>The constructor has the same name as the class</li>
+<li>Constructors do not have a return value and do not require the <code>void</code> keyword</li>
+</ul>
+<h5 id="Default-Constructor"><a href="#Default-Constructor" class="headerlink" title="Default Constructor"></a>Default Constructor</h5><ul>
+<li>By default, the default constructor is used to create an object</li>
+<li>Each class can only have one default constructor</li>
+</ul>
+<h6 id="Default-constructor-without-parameters"><a href="#Default-constructor-without-parameters" class="headerlink" title="Default constructor without parameters"></a>Default constructor without parameters</h6><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    ClassName() &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Initializing properties</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    DataType propertyName;</span><br><span class="line"></span><br><span class="line">    ClassName():propertyName=propertyValue &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Default-constructor-with-parameters"><a href="#Default-constructor-with-parameters" class="headerlink" title="Default constructor with parameters"></a>Default constructor with parameters</h6><ul>
+<li>Initializing properties</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    DataType propertyName;</span><br><span class="line"></span><br><span class="line">    ClassName(propertyName) &#123;</span><br><span class="line">        propertyName = <span class="keyword">this</span>.propertyName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Simplified syntax</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    DataType propertyName;</span><br><span class="line"></span><br><span class="line">    ClassName(<span class="keyword">this</span>.propertyName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Named-Constructors"><a href="#Named-Constructors" class="headerlink" title="Named Constructors"></a>Named Constructors</h5><ul>
+<li>Named constructors can also be used to create objects</li>
+<li>Each class can have multiple named constructors</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    DataType propertyName;</span><br><span class="line"></span><br><span class="line">    ClassName.constructorName(propertyName) &#123;</span><br><span class="line">        propertyName = <span class="keyword">this</span>.propertyName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Instantiating-Classes-as-Objects"><a href="#Instantiating-Classes-as-Objects" class="headerlink" title="Instantiating Classes as Objects"></a>Instantiating Classes as Objects</h2><h3 id="Using-the-Default-Constructor"><a href="#Using-the-Default-Constructor" class="headerlink" title="Using the Default Constructor"></a>Using the Default Constructor</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName objectName = <span class="keyword">new</span> ClassName();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Using-Named-Constructors"><a href="#Using-Named-Constructors" class="headerlink" title="Using Named Constructors"></a>Using Named Constructors</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName objectName = <span class="keyword">new</span> ClassName.constructorName();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Omitting-the-new-Keyword"><a href="#Omitting-the-new-Keyword" class="headerlink" title="Omitting the new Keyword"></a>Omitting the <code>new</code> Keyword</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataType objectName = DataType();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-Objects-Using-a-Constant-Constructor"><a href="#Creating-Objects-Using-a-Constant-Constructor" class="headerlink" title="Creating Objects Using a Constant Constructor"></a>Creating Objects Using a Constant Constructor</h3><ul>
+<li>Adding the <code>const</code> keyword when creating an object allows multiple objects to point to the same memory space</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataType objectName = <span class="keyword">const</span> <span class="keyword">new</span> DataType();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Accessing-Properties-in-an-Object"><a href="#Accessing-Properties-in-an-Object" class="headerlink" title="Accessing Properties in an Object"></a>Accessing Properties in an Object</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.propertyName;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Calling-Methods-of-an-Object"><a href="#Calling-Methods-of-an-Object" class="headerlink" title="Calling Methods of an Object"></a>Calling Methods of an Object</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.methodName(ParameterList);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Modularizing"><a href="#Modularizing" class="headerlink" title="Modularizing"></a>Modularizing</h2><h3 id="Separating-Classes-into-Individual-Dart-Files"><a href="#Separating-Classes-into-Individual-Dart-Files" class="headerlink" title="Separating Classes into Individual Dart Files"></a>Separating Classes into Individual Dart Files</h3><figure class="highlight dart"><figcaption><span>User.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Importing-Classes-in-Other-Dart-Files"><a href="#Importing-Classes-in-Other-Dart-Files" class="headerlink" title="Importing Classes in Other Dart Files"></a>Importing Classes in Other Dart Files</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;User.dart&quot;</span>;</span><br><span class="line"></span><br><span class="line">User user = <span class="keyword">new</span> User;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Private-Access"><a href="#Private-Access" class="headerlink" title="Private Access"></a>Private Access</h2><ul>
+<li>Private properties and methods can be created by adding <code>_</code> as a prefix to the property or method name within the class</li>
+<li>Classes need to be separated into individual Dart files to implement private access</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    DataType _privatePropertyName;</span><br><span class="line">    </span><br><span class="line">    ReturnType _privateMethodName(ParameterList) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Getter-Methods"><a href="#Getter-Methods" class="headerlink" title="Getter Methods"></a>Getter Methods</h2><h3 id="Defining-Getter-Methods"><a href="#Defining-Getter-Methods" class="headerlink" title="Defining Getter Methods"></a>Defining Getter Methods</h3><ul>
+<li>Getter methods are marked with <code>get</code> for the return type</li>
+<li>Getter methods have no parameter list and do not need to use <code>()</code> to define no parameters</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">    <span class="keyword">get</span> GetterMethodName &#123;</span><br><span class="line">        <span class="keyword">return</span> Value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Using-Getter-Methods"><a href="#Using-Getter-Methods" class="headerlink" title="Using Getter Methods"></a>Using Getter Methods</h3><ul>
+<li>If a class has defined a getter method, the getter’s return value can be obtained directly by calling the getter method name</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassName variableName = <span class="keyword">new</span> ClassName();</span><br><span class="line">variableName.GetterMethodName;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Setter-Methods"><a href="#Setter-Methods" class="headerlink" title="Setter Methods"></a>Setter Methods</h2><h3 id="Defining-Setter-Methods"><a href="#Defining-Setter-Methods" class="headerlink" title="Defining Setter Methods"></a>Defining Setter Methods</h3><ul>
+<li>Setter methods are marked with <code>set</code> for the return type</li>
+<li>The parameter list of the setter method is used to pass the new value of the variable to be modified</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    DataType propertyName;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">set</span> SetterMethodName(NewValue) &#123;</span><br><span class="line">        propertyName = NewValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Using-Setter-Methods"><a href="#Using-Setter-Methods" class="headerlink" title="Using Setter Methods"></a>Using Setter Methods</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassName variableName = <span class="keyword">new</span> ClassName();</span><br><span class="line">variableName.SetterMethodName(NewValue);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Static-Properties-and-Methods"><a href="#Static-Properties-and-Methods" class="headerlink" title="Static Properties and Methods"></a>Static Properties and Methods</h2><ul>
+<li>Static properties are marked with the <code>static</code> keyword; static methods are marked with the <code>static</code> keyword</li>
+<li>Static properties and methods can be accessed directly by the class name or through objects</li>
+<li>The data of static properties and methods is stored in the heap and is shared by all objects</li>
+<li>Static methods cannot access non-static methods, but non-static methods can access static methods</li>
+<li>It is recommended to use the syntax <code>propertyName</code> to call static properties in non-static methods in the current class; it is recommended to use the syntax <code>this.propertyName</code> to call non-static properties in non-static methods in the current class</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> DataType propertyName;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> MethodName() &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-Operators"><a href="#Object-Operators" class="headerlink" title="Object Operators"></a>Object Operators</h2><h3 id="Conditional-Operator"><a href="#Conditional-Operator" class="headerlink" title="Conditional Operator"></a>Conditional Operator</h3><ul>
+<li>By using the <code>?</code> keyword to qualify an object, non-null checks can be performed on the object<ul>
+<li>If the object is null, the method call is not executed</li>
+<li>If the object is not null, the method call is executed</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassName objectName;</span><br><span class="line">objectName?.MethodName(); </span><br></pre></td></tr></table></figure>
+
+<h3 id="Type-Checking"><a href="#Type-Checking" class="headerlink" title="Type Checking"></a>Type Checking</h3><ul>
+<li>The <code>is</code> keyword is used to check if an object is of a certain type and returns a Boolean value</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName <span class="keyword">is</span> ClassName;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Type-Conversion"><a href="#Type-Conversion" class="headerlink" title="Type Conversion"></a>Type Conversion</h3><ul>
+<li>The <code>as</code> keyword is used to forcibly typecast an object to the specified class</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName <span class="keyword">as</span> ClassName;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cascading"><a href="#Cascading" class="headerlink" title="Cascading"></a>Cascading</h3><ul>
+<li>The <code>..</code> keyword is used to invoke multiple properties or methods of the same object in succession</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objectName..propertyName = propertyValue</span><br><span class="line">    ..MethodName()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h2><ul>
+<li>A subclass can only inherit from one parent class</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h3><ul>
+<li>A subclass cannot inherit the constructor of the parent class and needs to redefine the constructor</li>
+<li>The parameters obtained by the constructor of the subclass are usually passed to the super class for assignment</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="built_in">String</span> name;</span><br><span class="line">    Father(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    Son(<span class="built_in">String</span> name) : <span class="keyword">super</span>(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Method-Overriding"><a href="#Method-Overriding" class="headerlink" title="Method Overriding"></a>Method Overriding</h3><ul>
+<li>When a subclass overrides a parent class method, the method is marked with the <code>@override</code> annotation on the line above the method declaration</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">void</span> MethodName() &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="keyword">void</span> MethodName() &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Accessing-Properties-and-Methods-of-the-Parent-Class-in-a-Subclass"><a href="#Accessing-Properties-and-Methods-of-the-Parent-Class-in-a-Subclass" class="headerlink" title="Accessing Properties and Methods of the Parent Class in a Subclass"></a>Accessing Properties and Methods of the Parent Class in a Subclass</h3><ul>
+<li>A subclass can access the properties and methods of the parent class using the <code>super</code> keyword</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="built_in">String</span> name;</span><br><span class="line">    <span class="keyword">void</span> MethodName() &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">void</span> MethodName() &#123;</span><br><span class="line">        <span class="keyword">super</span>.name;</span><br><span class="line">        <span class="keyword">super</span>.MethodName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Defining-Abstract-Classes"><a href="#Defining-Abstract-Classes" class="headerlink" title="Defining Abstract Classes"></a>Defining Abstract Classes</h2><ul>
+<li>Abstract classes are marked with the <code>abstract</code> keyword</li>
+<li>Abstract methods are defined in abstract classes without method bodies</li>
+<li>Subclasses that inherit from abstract classes must override all properties and methods defined in the parent class</li>
+<li>Abstract classes can also define regular methods</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">void</span> MethodName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="keyword">void</span> MethodName() &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Polymorphism"><a href="#Polymorphism" class="headerlink" title="Polymorphism"></a>Polymorphism</h2><ul>
+<li>Allows a pointer of a subclass type to be assigned to a pointer of a parent class type, and the same method call will have different effects</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">    Father s = <span class="keyword">new</span> Son();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Defining-Interfaces"><a href="#Defining-Interfaces" class="headerlink" title="Defining Interfaces"></a>Defining Interfaces</h2><ul>
+<li>Dart does not have interfaces as they are traditionally understood, but instead, an interface is defined using an abstract class<ul>
+<li>An abstract class is usually used to define an interface, where the abstract class defining the interface only defines abstract methods and does not define regular methods</li>
+</ul>
+</li>
+<li>Subclasses implement the interface using the <code>implements</code> keyword and must override all properties and methods defined in the parent class</li>
+<li>Subclasses may use the <code>extends</code> keyword to inherit from another class and use the <code>implements</code> keyword to implement multiple interfaces</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> <span class="keyword">implements</span> <span class="title">InterfaceName</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Dart/" rel="tag"># Dart</a>
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/03/09/Dart%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="prev" title="【笔记】Dart的面向对象">
+                  <i class="fa fa-angle-left"></i> 【笔记】Dart的面向对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/03/09/Hibernate%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E6%97%B6%E6%8A%A5%E9%94%99/" rel="next" title="【踩坑】Hibernate项目运行时报错">
+                  【踩坑】Hibernate项目运行时报错 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2023/03/09/Dart%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2023/03/09/Dart%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2022/03/26/Windows%E4%B8%8ACLSID%E5%88%A9%E7%94%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2022/03/26/Windows%E4%B8%8ACLSID%E5%88%A9%E7%94%A8/","path":"en/2022/03/26/Windows上CLSID利用/","title":"【英文】Windows上CLSID利用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Windows上CLSID利用 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-CLSID-to-Create-System-Program-Shortcuts"><span class="nav-number">2.</span> <span class="nav-text">Using CLSID to Create System Program Shortcuts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-CLSID-to-Remove-and-Restore-Explorer-Sidebar-Icons"><span class="nav-number">3.</span> <span class="nav-text">Using CLSID to Remove and Restore Explorer Sidebar Icons</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-System-Icons"><span class="nav-number">3.1.</span> <span class="nav-text">Remove System Icons</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-3D-Objects"><span class="nav-number">3.1.1.</span> <span class="nav-text">Remove 3D Objects</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-OneDriver"><span class="nav-number">3.1.2.</span> <span class="nav-text">Remove OneDriver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-Dropbox"><span class="nav-number">3.1.3.</span> <span class="nav-text">Remove Dropbox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-CreativeCloudFiles"><span class="nav-number">3.1.4.</span> <span class="nav-text">Remove CreativeCloudFiles</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restore-System-Icons"><span class="nav-number">3.2.</span> <span class="nav-text">Restore System Icons</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#General-Usage-of-CLSID"><span class="nav-number">4.</span> <span class="nav-text">General Usage of CLSID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CLSID"><span class="nav-number">5.</span> <span class="nav-text">CLSID</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2022/03/26/Windows%E4%B8%8ACLSID%E5%88%A9%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Windows上CLSID利用 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Windows上CLSID利用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-26 22:32:27" itemprop="dateCreated datePublished" datetime="2022-03-26T22:32:27+00:00">2022-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Use CLSID to create shortcuts for system programs, which can be used to hide private folders.</p>
+<span id="more"></span>
+
+<h2 id="Using-CLSID-to-Create-System-Program-Shortcuts"><a href="#Using-CLSID-to-Create-System-Program-Shortcuts" class="headerlink" title="Using CLSID to Create System Program Shortcuts"></a>Using CLSID to Create System Program Shortcuts</h2><ul>
+<li>Rename the normal folder, add <code>.&#123;CLSID&#125;</code> as the suffix, and the folder will be disguised as a shortcut for a system program. The files inside the folder will not be lost, and you can use the command prompt or remove the suffix <code>.&#123;CLSID&#125;</code> from the file name to operate the files.</li>
+</ul>
+<h2 id="Using-CLSID-to-Remove-and-Restore-Explorer-Sidebar-Icons"><a href="#Using-CLSID-to-Remove-and-Restore-Explorer-Sidebar-Icons" class="headerlink" title="Using CLSID to Remove and Restore Explorer Sidebar Icons"></a>Using CLSID to Remove and Restore Explorer Sidebar Icons</h2><h3 id="Remove-System-Icons"><a href="#Remove-System-Icons" class="headerlink" title="Remove System Icons"></a>Remove System Icons</h3><ul>
+<li>In the registry editor, find the <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\</code> folder and the <code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\</code> folder. Delete the corresponding folder based on the <code>&#123;CLSID&#125;</code> to remove the corresponding system icon.</li>
+</ul>
+<h4 id="Remove-3D-Objects"><a href="#Remove-3D-Objects" class="headerlink" title="Remove 3D Objects"></a>Remove 3D Objects</h4><ul>
+<li>In the registry editor, find the <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\</code> folder and delete the <code>&#123;0DB7E03F-FC29-4DC6-9020-FF41B59E513A&#125;</code> folder.</li>
+</ul>
+<h4 id="Remove-OneDriver"><a href="#Remove-OneDriver" class="headerlink" title="Remove OneDriver"></a>Remove OneDriver</h4><ul>
+<li>In the registry editor, find the <code>HKEY_CLASSES_ROOT\CLSID\&#123;018D5C66-4533-4307-9B53-224DE2ED1FE6&#125;</code> folder and change the value of <code>System.IsPinnedToNameSpaceTree</code> from <code>1</code> to <code>0</code>.</li>
+</ul>
+<h4 id="Remove-Dropbox"><a href="#Remove-Dropbox" class="headerlink" title="Remove Dropbox"></a>Remove Dropbox</h4><ul>
+<li>In the registry editor, find the <code>HKEY_CURRENT_USER\Software\Classes\WOW6432Node\CLSID\&#123;E31EA727-12ED-4702-820C-4B6445F28E1A&#125;\ShellFolder</code> folder and change the value of <code>Attributes</code> from <code>f080004d</code> to <code>f090004d</code>.</li>
+</ul>
+<h4 id="Remove-CreativeCloudFiles"><a href="#Remove-CreativeCloudFiles" class="headerlink" title="Remove CreativeCloudFiles"></a>Remove CreativeCloudFiles</h4><ul>
+<li>In the registry editor, find the <code>\HKEY_CLASSES_ROOT\CLSID\&#123;0E270DAA-1BE6-48F2-AC49-80DEEFDBB87F&#125;</code> folder and change the value of <code>System.IsPinnedToNameSpaceTree</code> from <code>1</code> to <code>0</code>.</li>
+</ul>
+<h3 id="Restore-System-Icons"><a href="#Restore-System-Icons" class="headerlink" title="Restore System Icons"></a>Restore System Icons</h3><ul>
+<li>In the registry editor, find the <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\</code> folder. Right-click on the <code>NameSpace</code> folder and click <code>New</code>-&gt;<code>Key</code>. Use the <code>&#123;CLSID&#125;</code> as the value to restore the corresponding system icon.</li>
+</ul>
+<h2 id="General-Usage-of-CLSID"><a href="#General-Usage-of-CLSID" class="headerlink" title="General Usage of CLSID"></a>General Usage of CLSID</h2><ul>
+<li>Directly use the command <code>shell:::&#123;CLSID&#125;</code> to start the corresponding system program.</li>
+</ul>
+<h2 id="CLSID"><a href="#CLSID" class="headerlink" title="CLSID"></a>CLSID</h2><table>
+<thead>
+<tr>
+<th>System Program</th>
+<th>CLSID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3D Objects</td>
+<td><code>0DB7E03F-FC29-4DC6-9020-FF41B59E513A</code></td>
+</tr>
+<tr>
+<td>Add Network Location</td>
+<td><code>D4480A50-BA28-11d1-8E75-00C04FA31A86</code></td>
+</tr>
+<tr>
+<td>Administrative Tools</td>
+<td><code>D20EA4E1-3957-11d2-A40B-0C5020524153</code></td>
+</tr>
+<tr>
+<td>All Control Panel Items</td>
+<td><code>21EC2020-3AEA-1069-A2DD-08002B30309D</code></td>
+</tr>
+<tr>
+<td>All Settings</td>
+<td><code>5ED4F38C-D3FF-4D61-B506-6820320AEBFE</code></td>
+</tr>
+<tr>
+<td>All Tasks</td>
+<td><code>ED7BA470-8E54-465E-825C-99712043E01C</code></td>
+</tr>
+<tr>
+<td>Apps</td>
+<td><code>4234d49b-0245-4df3-b780-3893943456e1</code></td>
+</tr>
+<tr>
+<td>AppSuggestedLocations</td>
+<td><code>c57a6066-66a3-4d91-9eb9-41532179f0a5</code></td>
+</tr>
+<tr>
+<td>ActiveX Cache Folder</td>
+<td><code>88C6C381-2E85-11D0-94DE-444553540000</code></td>
+</tr>
+<tr>
+<td>Autoplay</td>
+<td><code>9C60DE1E-E5FC-40f4-A487-460851A8D915</code></td>
+</tr>
+<tr>
+<td>Backup and Restore (Windows 7)</td>
+<td><code>B98A2BEA-7D42-4558-8BD1-832F41BAC6FD</code></td>
+</tr>
+<tr>
+<td>BitLocker Drive Encryption</td>
+<td><code>D9EF8727-CAC2-4e60-809E-86F80A666C91</code></td>
+</tr>
+<tr>
+<td>Bluetooth Devices</td>
+<td><code>28803F59-3A75-4058-995F-4EE5503B023C</code></td>
+</tr>
+<tr>
+<td>Briefcase</td>
+<td><code>85BBD920-42A0-1069-A2E4-08002B30309D</code></td>
+</tr>
+<tr>
+<td>Cabinet Shell Folder</td>
+<td><code>0CD7A5C0-9F37-11CE-AE65-08002B2E1262</code></td>
+</tr>
+<tr>
+<td>CLSID_AppInstanceFolder</td>
+<td><code>64693913-1c21-4f30-a98f-4e52906d3b56</code></td>
+</tr>
+<tr>
+<td>CLSID_DBFolder</td>
+<td><code>b2952b16-0e07-4e5a-b993-58c52cb94cae</code></td>
+</tr>
+<tr>
+<td>CLSID_DBFolderBoth</td>
+<td><code>1bef2128-2f96-4500-ba7c-098dc0049cb2</code></td>
+</tr>
+<tr>
+<td>CLSID_SearchHome</td>
+<td><code>9343812e-1c37-4a49-a12e-4b2d810d956b</code></td>
+</tr>
+<tr>
+<td>CLSID_StartMenuCommandingProviderFolder</td>
+<td><code>a00ee528-ebd9-48b8-944a-8942113d46ac</code></td>
+</tr>
+<tr>
+<td>CLSID_StartMenuLauncherProviderFolder</td>
+<td><code>98F275B4-4FFF-11E0-89E2-7B86DFD72085</code></td>
+</tr>
+<tr>
+<td>CLSID_StartMenuPathCompleteProviderFolder</td>
+<td><code>e345f35f-9397-435c-8f95-4e922c26259e</code></td>
+</tr>
+<tr>
+<td>CLSID_StartMenuProviderFolder</td>
+<td><code>daf95313-e44d-46af-be1b-cbacea2c3065</code></td>
+</tr>
+<tr>
+<td>Command Folder</td>
+<td><code>437ff9c0-a07f-4fa0-af80-84b6c6440a16</code></td>
+</tr>
+<tr>
+<td>Common Places FS Folder</td>
+<td><code>d34a6ca6-62c2-4c34-8a7c-14709c1ad938</code></td>
+</tr>
+<tr>
+<td>CompressedFolder</td>
+<td><code>E88DCCE0-B7B3-11d1-A9F0-00AA0060FA31</code></td>
+</tr>
+<tr>
+<td>Connect To</td>
+<td><code>38A98528-6CBF-4CA9-8DC0-B1E1D10F7B1B</code></td>
+</tr>
+<tr>
+<td>Control Panel</td>
+<td><code>26EE0668-A00A-44D7-9371-BEB064C98683</code></td>
+</tr>
+<tr>
+<td>Control Panel</td>
+<td><code>5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0</code></td>
+</tr>
+<tr>
+<td>Credential Manager</td>
+<td><code>1206F5F1-0569-412C-8FEC-3204630DFB70</code></td>
+</tr>
+<tr>
+<td>Default Programs</td>
+<td><code>17cd9488-1228-4b2f-88ce-4298e93e0966</code></td>
+</tr>
+<tr>
+<td>Delegate folder that appears in Computer</td>
+<td><code>b155bdf8-02f0-451e-9a26-ae317cfd7779</code></td>
+</tr>
+<tr>
+<td>Delegate folder that appears in Users Files Folder</td>
+<td><code>DFFACDC5-679F-4156-8947-C5C76BC0B67F</code></td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td><code>00021400-0000-0000-C000-000000000046</code></td>
+</tr>
+<tr>
+<td>Device Center Initialization</td>
+<td><code>C2B136E2-D50E-405C-8784-363C582BF43E</code></td>
+</tr>
+<tr>
+<td>DevicePairingFolder Initialization</td>
+<td><code>AEE2420F-D50E-405C-8784-363C582BF45A</code></td>
+</tr>
+<tr>
+<td>Devices and Printers</td>
+<td><code>A8A91A66-3A7D-4424-8D24-04E180695C7A</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/Regedit/" rel="tag"># Regedit</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/03/26/Windows%E4%B8%8ACLSID%E5%88%A9%E7%94%A8/" rel="prev" title="【速查表】Windows上CLSID利用">
+                  <i class="fa fa-angle-left"></i> 【速查表】Windows上CLSID利用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/03/29/Android%E5%88%9B%E5%BB%BAActivity/" rel="next" title="【笔记】Android创建Activity">
+                  【笔记】Android创建Activity <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2022/03/26/Windows%E4%B8%8ACLSID%E5%88%A9%E7%94%A8/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2022/03/26/Windows%E4%B8%8ACLSID%E5%88%A9%E7%94%A8/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

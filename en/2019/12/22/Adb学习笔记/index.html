@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2019/12/22/Adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2019/12/22/Adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2019/12/22/Adb学习笔记/","title":"【英文】Adb 学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Adb 学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Commands"><span class="nav-number">2.</span> <span class="nav-text">Basic Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-adb-version-information"><span class="nav-number">2.1.</span> <span class="nav-text">View adb version information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-adb"><span class="nav-number">2.2.</span> <span class="nav-text">Start adb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stop-adb"><span class="nav-number">2.3.</span> <span class="nav-text">Stop adb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-adb-with-root-permission"><span class="nav-number">2.4.</span> <span class="nav-text">Run adb with root permission</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-the-network-port-for-adb-server"><span class="nav-number">2.5.</span> <span class="nav-text">Specify the network port for adb server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-connected-devices"><span class="nav-number">2.6.</span> <span class="nav-text">View connected devices</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Device-Connection-Management"><span class="nav-number">3.</span> <span class="nav-text">Device Connection Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#USB-Connection"><span class="nav-number">3.1.</span> <span class="nav-text">USB Connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WLAN-Connection-requires-USB-cable"><span class="nav-number">3.2.</span> <span class="nav-text">WLAN Connection (requires USB cable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WLAN-Connection-without-requiring-USB-cable"><span class="nav-number">3.3.</span> <span class="nav-text">WLAN Connection (without requiring USB cable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch-from-WLAN-connection-to-USB-connection"><span class="nav-number">3.4.</span> <span class="nav-text">Switch from WLAN connection to USB connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disconnect-network-connection"><span class="nav-number">3.5.</span> <span class="nav-text">Disconnect network connection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-Management"><span class="nav-number">4.</span> <span class="nav-text">Application Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-all-applications"><span class="nav-number">4.1.</span> <span class="nav-text">View all applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fuzzy-search-for-applications"><span class="nav-number">4.2.</span> <span class="nav-text">Fuzzy search for applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-applications"><span class="nav-number">4.3.</span> <span class="nav-text">Install applications</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-install-applications"><span class="nav-number">4.3.1.</span> <span class="nav-text">Batch install applications</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uninstall-applications"><span class="nav-number">4.4.</span> <span class="nav-text">Uninstall applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clear-application-data"><span class="nav-number">4.5.</span> <span class="nav-text">Clear application data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-running-Services"><span class="nav-number">4.6.</span> <span class="nav-text">View running Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-detailed-information-about-an-application"><span class="nav-number">4.7.</span> <span class="nav-text">View detailed information about an application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-application-installation-path"><span class="nav-number">4.8.</span> <span class="nav-text">View application installation path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Force-stop-an-application"><span class="nav-number">4.9.</span> <span class="nav-text">Force stop an application</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File-Management"><span class="nav-number">5.</span> <span class="nav-text">File Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-from-device-to-computer"><span class="nav-number">5.1.</span> <span class="nav-text">Download from device to computer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upload-from-computer-to-device"><span class="nav-number">5.2.</span> <span class="nav-text">Upload from computer to device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-directory-contents"><span class="nav-number">5.3.</span> <span class="nav-text">View directory contents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-directory"><span class="nav-number">5.4.</span> <span class="nav-text">Change directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-files"><span class="nav-number">5.5.</span> <span class="nav-text">Delete files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-directory"><span class="nav-number">5.6.</span> <span class="nav-text">Create a directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-file"><span class="nav-number">5.7.</span> <span class="nav-text">Create a file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-files"><span class="nav-number">5.8.</span> <span class="nav-text">Copy files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Move-or-rename-a-file"><span class="nav-number">5.9.</span> <span class="nav-text">Move or rename a file</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Management"><span class="nav-number">6.</span> <span class="nav-text">Network Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-network-statistics-information"><span class="nav-number">6.1.</span> <span class="nav-text">View network statistics information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-connection-and-latency-between-networks"><span class="nav-number">6.2.</span> <span class="nav-text">Test connection and latency between networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simulate-Key-x2F-Input"><span class="nav-number">7.</span> <span class="nav-text">Simulate Key&#x2F;Input</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Swipe-to-unlock"><span class="nav-number">7.1.</span> <span class="nav-text">Swipe to unlock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-Printing"><span class="nav-number">8.</span> <span class="nav-text">Log Printing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Filter-logs-by-level"><span class="nav-number">8.1.</span> <span class="nav-text">Filter logs by level</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clear-existing-logs"><span class="nav-number">8.2.</span> <span class="nav-text">Clear existing logs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Display-logs-on-console"><span class="nav-number">8.3.</span> <span class="nav-text">Display logs on console</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-logs-to-a-file"><span class="nav-number">8.4.</span> <span class="nav-text">Write logs to a file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kernel-logs"><span class="nav-number">8.5.</span> <span class="nav-text">Kernel logs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Properties"><span class="nav-number">9.</span> <span class="nav-text">System Properties</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-device-system-properties"><span class="nav-number">9.1.</span> <span class="nav-text">View device system properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-device-system-properties"><span class="nav-number">9.2.</span> <span class="nav-text">Set device system properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-device-model"><span class="nav-number">9.3.</span> <span class="nav-text">View device model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-device-battery-status"><span class="nav-number">9.4.</span> <span class="nav-text">View device battery status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-device-screen-resolution"><span class="nav-number">9.5.</span> <span class="nav-text">View device screen resolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-device-screen-density"><span class="nav-number">9.6.</span> <span class="nav-text">View device screen density</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2019/12/22/Adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Adb 学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Adb 学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-12-22 21:02:57" itemprop="dateCreated datePublished" datetime="2019-12-22T21:02:57+00:00">2019-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Android Debug Bridge (ADB) is a versatile command-line tool that allows you to communicate with devices. ADB commands facilitate various device operations (such as installing and debugging applications, transferring files, etc.) and provide access to the Unix shell (which can be used to run various commands on the device). It is a client-server program, consisting of the client, daemon (adbd), and server components. (<a href="/302.html?target=https://en.wikipedia.org/wiki/Android_Debug_Bridge">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><h3 id="View-adb-version-information"><a href="#View-adb-version-information" class="headerlink" title="View adb version information"></a>View adb version information</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb version</span><br></pre></td></tr></table></figure>
+
+<h3 id="Start-adb"><a href="#Start-adb" class="headerlink" title="Start adb"></a>Start adb</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="Stop-adb"><a href="#Stop-adb" class="headerlink" title="Stop adb"></a>Stop adb</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="Run-adb-with-root-permission"><a href="#Run-adb-with-root-permission" class="headerlink" title="Run adb with root permission"></a>Run adb with root permission</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb root</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specify-the-network-port-for-adb-server"><a href="#Specify-the-network-port-for-adb-server" class="headerlink" title="Specify the network port for adb server"></a>Specify the network port for adb server</h3><ul>
+<li>The default port for adb is 5037</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -P &lt;port&gt; start-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-connected-devices"><a href="#View-connected-devices" class="headerlink" title="View connected devices"></a>View connected devices</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<h2 id="Device-Connection-Management"><a href="#Device-Connection-Management" class="headerlink" title="Device Connection Management"></a>Device Connection Management</h2><h3 id="USB-Connection"><a href="#USB-Connection" class="headerlink" title="USB Connection"></a>USB Connection</h3><ul>
+<li><p>Hardware device functioning properly</p>
+</li>
+<li><p>Android Developer Mode and USB Debugging Mode are enabled</p>
+</li>
+<li><p>Device driver functioning properly</p>
+</li>
+<li><p>USB connection working</p>
+</li>
+</ul>
+<h3 id="WLAN-Connection-requires-USB-cable"><a href="#WLAN-Connection-requires-USB-cable" class="headerlink" title="WLAN Connection (requires USB cable)"></a>WLAN Connection (requires USB cable)</h3><ul>
+<li><p>Device and computer are on the same wifi network</p>
+</li>
+<li><p>USB connection between device and computer is working</p>
+</li>
+<li><p>Computer listening on port <code>5555</code></p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb tcpip 5555</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Disconnect USB connection</p>
+</li>
+<li><p>Identify device IP address</p>
+</li>
+<li><p>Connect to device using IP address</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect &lt;ip_address&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="WLAN-Connection-without-requiring-USB-cable"><a href="#WLAN-Connection-without-requiring-USB-cable" class="headerlink" title="WLAN Connection (without requiring USB cable)"></a>WLAN Connection (without requiring USB cable)</h3><ul>
+<li><p>Device and computer are on the same wifi network</p>
+</li>
+<li><p>Open a terminal on the device (using the system’s built-in terminal or third-party software like Termux)</p>
+</li>
+<li><p>Open port</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">setprop service.adb.tcp.port 5555</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Connect to device using IP address</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect &lt;ip_address&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Switch-from-WLAN-connection-to-USB-connection"><a href="#Switch-from-WLAN-connection-to-USB-connection" class="headerlink" title="Switch from WLAN connection to USB connection"></a>Switch from WLAN connection to USB connection</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb usb</span><br></pre></td></tr></table></figure>
+
+<h3 id="Disconnect-network-connection"><a href="#Disconnect-network-connection" class="headerlink" title="Disconnect network connection"></a>Disconnect network connection</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb disconnect &lt;ip_address&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Application-Management"><a href="#Application-Management" class="headerlink" title="Application Management"></a>Application Management</h2><h3 id="View-all-applications"><a href="#View-all-applications" class="headerlink" title="View all applications"></a>View all applications</h3><blockquote>
+<p><code>-s</code>: System applications<br><code>-3</code>: Third-party applications</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm list packages</span><br><span class="line">adb shell pm list packages -s</span><br><span class="line">adb shell pm list packages -3</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fuzzy-search-for-applications"><a href="#Fuzzy-search-for-applications" class="headerlink" title="Fuzzy search for applications"></a>Fuzzy search for applications</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm list packages &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-applications"><a href="#Install-applications" class="headerlink" title="Install applications"></a>Install applications</h3><blockquote>
+<p><code>-l</code>: Install application to protected directory <code>/mnt/asec</code><br><code>-r</code>: Allow installation over existing application<br><code>-s</code>: Install application to SDcard<br><code>-d</code>: Allow downgrade installation<br><code>-g</code>: Grant all runtime permissions</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install &lt;package_name&gt;.apk</span><br></pre></td></tr></table></figure>
+
+<h4 id="Batch-install-applications"><a href="#Batch-install-applications" class="headerlink" title="Batch install applications"></a>Batch install applications</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install-multiple &lt;package_name_1&gt;.apk &lt;package_name_2&gt;.apk</span><br></pre></td></tr></table></figure>
+
+<h3 id="Uninstall-applications"><a href="#Uninstall-applications" class="headerlink" title="Uninstall applications"></a>Uninstall applications</h3><blockquote>
+<p><code>-k</code>: Retain data</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb uninstall &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Clear-application-data"><a href="#Clear-application-data" class="headerlink" title="Clear application data"></a>Clear application data</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm clear &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-running-Services"><a href="#View-running-Services" class="headerlink" title="View running Services"></a>View running Services</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys activity services</span><br><span class="line">adb shell dumpsys activity services &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-detailed-information-about-an-application"><a href="#View-detailed-information-about-an-application" class="headerlink" title="View detailed information about an application"></a>View detailed information about an application</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys package &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-application-installation-path"><a href="#View-application-installation-path" class="headerlink" title="View application installation path"></a>View application installation path</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm path &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Force-stop-an-application"><a href="#Force-stop-an-application" class="headerlink" title="Force stop an application"></a>Force stop an application</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell am force-stop &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="File-Management"><a href="#File-Management" class="headerlink" title="File Management"></a>File Management</h2><h3 id="Download-from-device-to-computer"><a href="#Download-from-device-to-computer" class="headerlink" title="Download from device to computer"></a>Download from device to computer</h3><blockquote>
+<p><code>&lt;remote&gt;</code>: Device file path<br><code>&lt;local&gt;</code>: Computer directory</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb pull &lt;remote&gt;</span><br><span class="line">adb pull &lt;remote&gt; &lt;local&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Upload-from-computer-to-device"><a href="#Upload-from-computer-to-device" class="headerlink" title="Upload from computer to device"></a>Upload from computer to device</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push &lt;local&gt; &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-directory-contents"><a href="#View-directory-contents" class="headerlink" title="View directory contents"></a>View directory contents</h3><blockquote>
+<p><code>-a</code>: List all files and hidden files<br><code>-i</code>: List all files and index number<br><code>-s</code>: List all files and file size<br><code>-n</code>: List all files with UID, GID<br><code>-R</code>: List all files and subfiles in directories<br><code>&lt;directory&gt;</code>: Directory</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell ls</span><br><span class="line">adb shell ls &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Change-directory"><a href="#Change-directory" class="headerlink" title="Change directory"></a>Change directory</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell cd &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-files"><a href="#Delete-files" class="headerlink" title="Delete files"></a>Delete files</h3><blockquote>
+<p><code>-f</code>: Force delete<br><code>-r</code>: Recursive operation<br><code>-d</code>: Operation on directories<br><code>-i</code>: Prompt before delete</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell rm &lt;file_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-directory"><a href="#Create-a-directory" class="headerlink" title="Create a directory"></a>Create a directory</h3><blockquote>
+<p><code>-m</code>: Assign read-write permissions<br><code>-p</code>: Specify directory and parent directories</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell mkdir &lt;directory_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-file"><a href="#Create-a-file" class="headerlink" title="Create a file"></a>Create a file</h3><blockquote>
+<p><code>-n</code>: File’s timestamp</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell touch &lt;file_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Copy-files"><a href="#Copy-files" class="headerlink" title="Copy files"></a>Copy files</h3><blockquote>
+<p><code>&lt;source&gt;</code>: Source path<br><code>&lt;dest&gt;</code>: Destination path</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell cp &lt;source&gt; &lt;dest&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Move-or-rename-a-file"><a href="#Move-or-rename-a-file" class="headerlink" title="Move or rename a file"></a>Move or rename a file</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell mv &lt;source&gt; &lt;dest&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Network-Management"><a href="#Network-Management" class="headerlink" title="Network Management"></a>Network Management</h2><h3 id="View-network-statistics-information"><a href="#View-network-statistics-information" class="headerlink" title="View network statistics information"></a>View network statistics information</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell netstat</span><br></pre></td></tr></table></figure>
+
+<h3 id="Test-connection-and-latency-between-networks"><a href="#Test-connection-and-latency-between-networks" class="headerlink" title="Test connection and latency between networks"></a>Test connection and latency between networks</h3><blockquote>
+<p><code>-c &lt;num&gt;</code>: Number of times</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell ping &lt;URL&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Simulate-Key-x2F-Input"><a href="#Simulate-Key-x2F-Input" class="headerlink" title="Simulate Key&#x2F;Input"></a>Simulate Key&#x2F;Input</h2><blockquote>
+<p><code>&lt;keycode&gt;</code>: <a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/view/KeyEvent">Android Keycodes</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell input keyevent &lt;keycode&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Swipe-to-unlock"><a href="#Swipe-to-unlock" class="headerlink" title="Swipe to unlock"></a>Swipe to unlock</h3><blockquote>
+<p><code>&lt;start_x&gt;</code>: Starting position x coordinate<br><code>&lt;start_y&gt;</code>: Starting position y coordinate<br><code>&lt;stop_x&gt;</code>: Ending position x coordinate<br><code>&lt;stop_y&gt;</code>: Ending position y coordinate</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell input swipe &lt;start_x&gt; &lt;start_y&gt; &lt;stop_x&gt; &lt;stop_y&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Log-Printing"><a href="#Log-Printing" class="headerlink" title="Log Printing"></a>Log Printing</h2><h3 id="Filter-logs-by-level"><a href="#Filter-logs-by-level" class="headerlink" title="Filter logs by level"></a>Filter logs by level</h3><blockquote>
+<p><code>&lt;priority&gt;</code>: Priority</p>
+<blockquote>
+<p><code>*:V</code>: Show only <code>Verbose</code> and higher levels (lowest priority)<br><code>*:D</code>: Show only <code>Debug</code> and higher levels<br><code>*:I</code>: Show only <code>Info</code> and higher levels<br><code>*:W</code>: Show only <code>Warning</code> and higher levels<br><code>*:E</code>: Show only <code>Error</code> and higher levels<br><code>*:F</code>: Show only <code>Fatal</code> and higher levels<br><code>*:S</code>: Show only <code>Silent</code> and higher levels (highest priority)</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Use <code>&quot;&quot;</code> on <code>MacOS</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb logcat &lt;priority&gt;</span><br><span class="line">adb logcat &quot;&lt;priority&gt;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Clear-existing-logs"><a href="#Clear-existing-logs" class="headerlink" title="Clear existing logs"></a>Clear existing logs</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat -c</span><br></pre></td></tr></table></figure>
+
+<h3 id="Display-logs-on-console"><a href="#Display-logs-on-console" class="headerlink" title="Display logs on console"></a>Display logs on console</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="Write-logs-to-a-file"><a href="#Write-logs-to-a-file" class="headerlink" title="Write logs to a file"></a>Write logs to a file</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat -f &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Kernel-logs"><a href="#Kernel-logs" class="headerlink" title="Kernel logs"></a>Kernel logs</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dmesg</span><br></pre></td></tr></table></figure>
+
+<h2 id="System-Properties"><a href="#System-Properties" class="headerlink" title="System Properties"></a>System Properties</h2><h3 id="View-device-system-properties"><a href="#View-device-system-properties" class="headerlink" title="View device system properties"></a>View device system properties</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell getprop</span><br></pre></td></tr></table></figure>
+
+<h3 id="Set-device-system-properties"><a href="#Set-device-system-properties" class="headerlink" title="Set device system properties"></a>Set device system properties</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell setprop &lt;key&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-device-model"><a href="#View-device-model" class="headerlink" title="View device model"></a>View device model</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell getprop ro.product.model</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-device-battery-status"><a href="#View-device-battery-status" class="headerlink" title="View device battery status"></a>View device battery status</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys battery</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-device-screen-resolution"><a href="#View-device-screen-resolution" class="headerlink" title="View device screen resolution"></a>View device screen resolution</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell wm size</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-device-screen-density"><a href="#View-device-screen-density" class="headerlink" title="View device screen density"></a>View device screen density</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell wm density</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/12/22/Adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【命令】Adb 学习笔记">
+                  <i class="fa fa-angle-left"></i> 【命令】Adb 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/12/23/Adb%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" rel="next" title="【笔记】Adb环境变量">
+                  【笔记】Adb环境变量 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2019/12/22/Adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2019/12/22/Adb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

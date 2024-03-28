@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2021/07/30/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2021/07/30/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2021/07/30/React学习笔记/","title":"【英文】React学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】React学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-File"><span class="nav-number">2.</span> <span class="nav-text">JSX File</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Syntax-Format-of-JSX-File"><span class="nav-number">2.1.</span> <span class="nav-text">Syntax Format of JSX File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-of-Compiler"><span class="nav-number">2.2.</span> <span class="nav-text">Introduction of Compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manually-Compile-JSX-File"><span class="nav-number">2.3.</span> <span class="nav-text">Manually Compile JSX File</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Project-Initialization"><span class="nav-number">2.3.1.</span> <span class="nav-text">Project Initialization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-Scaffold"><span class="nav-number">2.3.2.</span> <span class="nav-text">Download Scaffold</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-a-Babel-Configuration-File"><span class="nav-number">2.3.3.</span> <span class="nav-text">Create a Babel Configuration File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-Scaffold"><span class="nav-number">2.3.4.</span> <span class="nav-text">Use Scaffold</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX-Expression"><span class="nav-number">2.4.</span> <span class="nav-text">JSX Expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#className"><span class="nav-number">2.5.</span> <span class="nav-text">className</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automatic-Expansion-of-Arrays"><span class="nav-number">2.6.</span> <span class="nav-text">Automatic Expansion of Arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operators"><span class="nav-number">2.7.</span> <span class="nav-text">Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ternary-Operator"><span class="nav-number">2.7.1.</span> <span class="nav-text">Ternary Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND-Operator"><span class="nav-number">2.7.2.</span> <span class="nav-text">AND Operator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loops"><span class="nav-number">2.8.</span> <span class="nav-text">Loops</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Events"><span class="nav-number">2.9.</span> <span class="nav-text">Events</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Passing-Custom-Parameters"><span class="nav-number">2.9.1.</span> <span class="nav-text">Passing Custom Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-Arrow-Functions"><span class="nav-number">2.9.1.1.</span> <span class="nav-text">Using Arrow Functions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-bind-Function"><span class="nav-number">2.9.1.2.</span> <span class="nav-text">Using bind Function</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-of-React"><span class="nav-number">3.</span> <span class="nav-text">Introduction of React</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Importing-via-CDN"><span class="nav-number">3.1.</span> <span class="nav-text">Importing via CDN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-World"><span class="nav-number">4.</span> <span class="nav-text">Hello World</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Functions"><span class="nav-number">5.</span> <span class="nav-text">React Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-Label"><span class="nav-number">5.1.</span> <span class="nav-text">Creating a Label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E8%AF%91%E7%BB%93%E6%9E%9C"><span class="nav-number">5.2.</span> <span class="nav-text">翻译结果:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface-1"><span class="nav-number">6.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-Files"><span class="nav-number">7.</span> <span class="nav-text">JSX Files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Syntax-Format-of-JSX-Files"><span class="nav-number">7.1.</span> <span class="nav-text">Syntax Format of JSX Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Importing-Compiler"><span class="nav-number">7.2.</span> <span class="nav-text">Importing Compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manually-Compiling-JSX-Files"><span class="nav-number">7.3.</span> <span class="nav-text">Manually Compiling JSX Files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Project-Initialization-1"><span class="nav-number">7.3.1.</span> <span class="nav-text">Project Initialization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-Scaffold-1"><span class="nav-number">7.3.2.</span> <span class="nav-text">Download Scaffold</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-a-Babel-Configuration-File-1"><span class="nav-number">7.3.3.</span> <span class="nav-text">Create a Babel Configuration File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-the-Scaffold"><span class="nav-number">7.3.4.</span> <span class="nav-text">Using the Scaffold</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX-Expressions"><span class="nav-number">7.4.</span> <span class="nav-text">JSX Expressions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#className-1"><span class="nav-number">7.5.</span> <span class="nav-text">className</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automatic-Array-Expansion"><span class="nav-number">7.6.</span> <span class="nav-text">Automatic Array Expansion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operators-1"><span class="nav-number">7.7.</span> <span class="nav-text">Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ternary-Operator-1"><span class="nav-number">7.7.1.</span> <span class="nav-text">Ternary Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND-Operator-1"><span class="nav-number">7.7.2.</span> <span class="nav-text">AND Operator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loops-1"><span class="nav-number">7.8.</span> <span class="nav-text">Loops</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Events-1"><span class="nav-number">7.9.</span> <span class="nav-text">Events</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Passing-Custom-Parameters-1"><span class="nav-number">7.9.1.</span> <span class="nav-text">Passing Custom Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-Arrow-Functions-1"><span class="nav-number">7.9.1.1.</span> <span class="nav-text">Using Arrow Functions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-the-bind-Function"><span class="nav-number">7.9.1.2.</span> <span class="nav-text">Using the bind Function</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2021/07/30/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】React学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】React学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-30 14:18:17" itemprop="dateCreated datePublished" datetime="2021-07-30T14:18:17+00:00">2021-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">前端学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>React (sometimes called React.js or ReactJS) is an open-source JavaScript library for rendering data as HTML views. React views are typically rendered using components that contain other components defined by custom HTML tags. React provides a model for programmers where child components cannot directly affect outer components (“data flows down”), allowing for efficient updates to the HTML document when data changes and clean separation of components in modern single-page applications. (<a href="/302.html?target=https://en.wikipedia.org/wiki/React_(JavaScript_library)">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="JSX-File"><a href="#JSX-File" class="headerlink" title="JSX File"></a>JSX File</h2><ul>
+<li>JSX is an extension of JavaScript (JS) and its essence is still JS.</li>
+<li>JSX files are compiled using the babel compiler.</li>
+</ul>
+<h3 id="Syntax-Format-of-JSX-File"><a href="#Syntax-Format-of-JSX-File" class="headerlink" title="Syntax Format of JSX File"></a>Syntax Format of JSX File</h3><ul>
+<li>Before compilation, the syntax is the same as HTML.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>After compilation, it is essentially a JS file.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">React</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Introduction-of-Compiler"><a href="#Introduction-of-Compiler" class="headerlink" title="Introduction of Compiler"></a>Introduction of Compiler</h3><ul>
+<li>Import the babel compiler into the html file to automatically compile the JSX syntax code.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> html = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Manually-Compile-JSX-File"><a href="#Manually-Compile-JSX-File" class="headerlink" title="Manually Compile JSX File"></a>Manually Compile JSX File</h3><ul>
+<li>Manually compile the JSX file using the babel compiler.</li>
+</ul>
+<h4 id="Project-Initialization"><a href="#Project-Initialization" class="headerlink" title="Project Initialization"></a>Project Initialization</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -y init</span><br></pre></td></tr></table></figure>
+
+<h4 id="Download-Scaffold"><a href="#Download-Scaffold" class="headerlink" title="Download Scaffold"></a>Download Scaffold</h4><ul>
+<li>Download the babel scaffold <code>@babel-cli</code>.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/core @babel/cli @babel/preset-react</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-a-Babel-Configuration-File"><a href="#Create-a-Babel-Configuration-File" class="headerlink" title="Create a Babel Configuration File"></a>Create a Babel Configuration File</h4><ul>
+<li>Create a <code>babel.config.js</code> or <code>.babelrc</code> file.</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>babelrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;@babel/preset-react&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Use-Scaffold"><a href="#Use-Scaffold" class="headerlink" title="Use Scaffold"></a>Use Scaffold</h4><ul>
+<li>Use the scaffolding to compile the <code>.jsx</code> file.</li>
+</ul>
+<blockquote>
+<p><code>&lt;input&gt;</code>: The <code>.jsx</code> file before compilation.<br><code>&lt;output&gt;</code>: The <code>.js</code> file after compilation.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx babel &lt;input&gt;.jsx -o &lt;output&gt;.js</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSX-Expression"><a href="#JSX-Expression" class="headerlink" title="JSX Expression"></a>JSX Expression</h3><ul>
+<li>JSX itself is an expression.</li>
+<li>Whether it is in JSX content, attribute, or JSX itself, JSX expressions can be used.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">&#123;name&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="className"><a href="#className" class="headerlink" title="className"></a>className</h3><ul>
+<li><code>class</code> cannot be used in JSX to add class names to elements because JSX is essentially JS and <code>class</code> is a keyword in JS. Therefore, <code>className</code> should be used instead of <code>class</code> to add class names to elements.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let jsx = &lt;div className=&quot;div&quot;&gt;&lt;/div&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Automatic-Expansion-of-Arrays"><a href="#Automatic-Expansion-of-Arrays" class="headerlink" title="Automatic Expansion of Arrays"></a>Automatic Expansion of Arrays</h3><ul>
+<li>JSX automatically iterates through arrays.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrs = [</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&quot;1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&quot;2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&quot;3&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;arrs&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><ul>
+<li>JSX syntax also supports operators.</li>
+<li>Display data dynamically based on boolean values.</li>
+</ul>
+<h4 id="Ternary-Operator"><a href="#Ternary-Operator" class="headerlink" title="Ternary Operator"></a>Ternary Operator</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;bool?<span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>:null&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="AND-Operator"><a href="#AND-Operator" class="headerlink" title="AND Operator"></a>AND Operator</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;bool&amp;&amp;<span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Loops"><a href="#Loops" class="headerlink" title="Loops"></a>Loops</h3><ul>
+<li>In JSX, loops should not use <code>for</code>, but should use <code>map</code>.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrs = [</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&quot;zhangsan&quot;</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;lisi&quot;</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&quot;wangwu&quot;</span>&#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">let</span> jsx =</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;</span></span><br><span class="line"><span class="language-xml">        arrs.map(function(p, index) &#123;</span></span><br><span class="line"><span class="language-xml">          return <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;p.name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#125;)</span></span><br><span class="line"><span class="language-xml">      &#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h3><ul>
+<li>Add events to components using <code>on+event name</code>.</li>
+<li>This writing style automatically passes the event object as a parameter.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;fn&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="Passing-Custom-Parameters"><a href="#Passing-Custom-Parameters" class="headerlink" title="Passing Custom Parameters"></a>Passing Custom Parameters</h4><h5 id="Using-Arrow-Functions"><a href="#Using-Arrow-Functions" class="headerlink" title="Using Arrow Functions"></a>Using Arrow Functions</h5><ul>
+<li>An arrow function can be used to pass a custom parameter.</li>
+<li>In this case, the second parameter is the event object.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">e, event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>&#123;fn(&quot;hello&quot;)&#125;&#125;&gt;按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h5 id="Using-bind-Function"><a href="#Using-bind-Function" class="headerlink" title="Using bind Function"></a>Using bind Function</h5><ul>
+<li>The <code>bind</code> function can also be used to pass custom parameters. The custom parameters passed should be defined on the second parameter.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;fn.bind(null,</span> &quot;<span class="attr">hello</span>&quot;)&#125;&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Introduction-of-React"><a href="#Introduction-of-React" class="headerlink" title="Introduction of React"></a>Introduction of React</h2><h3 id="Importing-via-CDN"><a href="#Importing-via-CDN" class="headerlink" title="Importing via CDN"></a>Importing via CDN</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@16/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@16/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">crossorigin</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> html1 = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(html1, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="React-Functions"><a href="#React-Functions" class="headerlink" title="React Functions"></a>React Functions</h2><h3 id="Creating-a-Label"><a href="#Creating-a-Label" class="headerlink" title="Creating a Label"></a>Creating a Label</h3><ul>
+<li>A component can also be created directly through JSX code.</li>
+<li>Returns a virtual object.</li>
+</ul>
+<blockquote>
+<p>First parameter: tag name<br>Second parameter: tag attributes<br>Third parameter: tag content</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">React</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="翻译结果"><a href="#翻译结果" class="headerlink" title="翻译结果:"></a>翻译结果:</h3><h2 id="Preface-1"><a href="#Preface-1" class="headerlink" title="Preface"></a>Preface</h2><p>React (sometimes called React.js or ReactJS) is an open-source JavaScript library that renders data into HTML views. React views are usually rendered using components that include other components defined by custom HTML tags. React provides a model for programmers where child components cannot directly influence outer components (“data flows down”), enabling effective updates to the HTML document when data changes and clean separation between components in modern single-page applications. (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/React_(JavaScript_library)">Wikipedia</a>)</p>
+<!-- more -->
+
+<h2 id="JSX-Files"><a href="#JSX-Files" class="headerlink" title="JSX Files"></a>JSX Files</h2><ul>
+<li>JSX is an extension of JavaScript (JS) and its essence is still JS.</li>
+<li>JSX files are compiled using the babel compiler.</li>
+</ul>
+<h3 id="Syntax-Format-of-JSX-Files"><a href="#Syntax-Format-of-JSX-Files" class="headerlink" title="Syntax Format of JSX Files"></a>Syntax Format of JSX Files</h3><ul>
+<li>Before compilation, the syntax is similar to HTML.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>After compilation, it essentially becomes a JS file.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">React</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Importing-Compiler"><a href="#Importing-Compiler" class="headerlink" title="Importing Compiler"></a>Importing Compiler</h3><ul>
+<li>Import the babel compiler into the HTML file to automatically compile JSX syntax code.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> html = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Manually-Compiling-JSX-Files"><a href="#Manually-Compiling-JSX-Files" class="headerlink" title="Manually Compiling JSX Files"></a>Manually Compiling JSX Files</h3><ul>
+<li>Manually compile JSX files using the babel compiler.</li>
+</ul>
+<h4 id="Project-Initialization-1"><a href="#Project-Initialization-1" class="headerlink" title="Project Initialization"></a>Project Initialization</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -y init</span><br></pre></td></tr></table></figure>
+
+<h4 id="Download-Scaffold-1"><a href="#Download-Scaffold-1" class="headerlink" title="Download Scaffold"></a>Download Scaffold</h4><ul>
+<li>Download the babel scaffold <code>@babel-cli</code>.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/core @babel/cli @babel/preset-react</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-a-Babel-Configuration-File-1"><a href="#Create-a-Babel-Configuration-File-1" class="headerlink" title="Create a Babel Configuration File"></a>Create a Babel Configuration File</h4><ul>
+<li>Create a <code>babel.config.js</code> or <code>.babelrc</code> file.</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>babelrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;@babel/preset-react&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Using-the-Scaffold"><a href="#Using-the-Scaffold" class="headerlink" title="Using the Scaffold"></a>Using the Scaffold</h4><ul>
+<li>Use the scaffold to compile <code>.jsx</code> files.</li>
+</ul>
+<blockquote>
+<p><code>&lt;input&gt;</code>: The <code>.jsx</code> file before compilation<br><code>&lt;output&gt;</code>: The <code>.js</code> file after compilation</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx babel &lt;input&gt;.jsx -o &lt;output&gt;.js</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSX-Expressions"><a href="#JSX-Expressions" class="headerlink" title="JSX Expressions"></a>JSX Expressions</h3><ul>
+<li>JSX itself is an expression.</li>
+<li>JSX expressions can be used in JSX content, attributes, or JSX itself.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">&#123;name&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="className-1"><a href="#className-1" class="headerlink" title="className"></a>className</h3><ul>
+<li><code>class</code> cannot be used in JSX to add class names to elements because JSX is essentially JS, and <code>class</code> is a keyword in JS. Instead, use <code>className</code> to add class names to elements.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let jsx = &lt;div className=&quot;div&quot;&gt;&lt;/div&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Automatic-Array-Expansion"><a href="#Automatic-Array-Expansion" class="headerlink" title="Automatic Array Expansion"></a>Automatic Array Expansion</h3><ul>
+<li>JSX automatically loops through arrays.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrs = [</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&quot;1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&quot;2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&quot;3&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;arrs&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Operators-1"><a href="#Operators-1" class="headerlink" title="Operators"></a>Operators</h3><ul>
+<li>JSX syntax also supports operators.</li>
+<li>Display data dynamically based on boolean values.</li>
+</ul>
+<h4 id="Ternary-Operator-1"><a href="#Ternary-Operator-1" class="headerlink" title="Ternary Operator"></a>Ternary Operator</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;bool?<span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>:null&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="AND-Operator-1"><a href="#AND-Operator-1" class="headerlink" title="AND Operator"></a>AND Operator</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;bool&amp;&amp;<span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Loops-1"><a href="#Loops-1" class="headerlink" title="Loops"></a>Loops</h3><ul>
+<li>In JSX, loops should use <code>map</code> instead of <code>for</code>.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrs = [</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&quot;zhangsan&quot;</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;lisi&quot;</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&quot;wangwu&quot;</span>&#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">let</span> jsx =</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;</span></span><br><span class="line"><span class="language-xml">        arrs.map(function(p, index) &#123;</span></span><br><span class="line"><span class="language-xml">          return <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;p.name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#125;)</span></span><br><span class="line"><span class="language-xml">      &#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Events-1"><a href="#Events-1" class="headerlink" title="Events"></a>Events</h3><ul>
+<li>Add events to components using <code>on+event name</code>.</li>
+<li>This writing style automatically passes the event object as a parameter.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;fn&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="Passing-Custom-Parameters-1"><a href="#Passing-Custom-Parameters-1" class="headerlink" title="Passing Custom Parameters"></a>Passing Custom Parameters</h4><h5 id="Using-Arrow-Functions-1"><a href="#Using-Arrow-Functions-1" class="headerlink" title="Using Arrow Functions"></a>Using Arrow Functions</h5><ul>
+<li>An arrow function can be used to pass a custom parameter.</li>
+<li>In this case, the second parameter is the event object.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">e, event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> jsx = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>&#123;fn(&quot;hello&quot;)&#125;&#125;&gt;按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(jsx, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h5 id="Using-the-bind-Function"><a href="#Using-the-bind-Function" class="headerlink" title="Using the bind Function"></a>Using the bind Function</h5><ul>
+<li>The <code>bind</code> function can also be used to pass custom parameters. The custom parameters passed should be defined on the second parameter.</li>
+</ul>
+<pre><code class="javascript">function fn(e) &#123;
+  console
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/07/30/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】React学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】React学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/08/01/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/" rel="next" title="【笔记】Vue脚手架工具">
+                  【笔记】Vue脚手架工具 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2021/07/30/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2021/07/30/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2019/11/11/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2019/11/11/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/","path":"en/2019/11/11/Linux基础命令/","title":"【英文】Linux 基础命令（RetHat篇）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】Linux 基础命令（RetHat篇） | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notes"><span class="nav-number">2.</span> <span class="nav-text">Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Display-Date"><span class="nav-number">2.1.</span> <span class="nav-text">Display Date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-Statement"><span class="nav-number">2.2.</span> <span class="nav-text">Output Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Processes-Static"><span class="nav-number">2.3.</span> <span class="nav-text">View Processes (Static)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Services"><span class="nav-number">2.4.</span> <span class="nav-text">View Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipe-Symbol"><span class="nav-number">2.5.</span> <span class="nav-text">Pipe Symbol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retrieve-Based-on-Keywords-With-Pipe-Symbol"><span class="nav-number">2.6.</span> <span class="nav-text">Retrieve Based on Keywords (With Pipe Symbol)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Processes-Dynamic"><span class="nav-number">2.7.</span> <span class="nav-text">View Processes (Dynamic)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Process-IDs"><span class="nav-number">2.8.</span> <span class="nav-text">View Process IDs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Terminate-Process"><span class="nav-number">2.9.</span> <span class="nav-text">Terminate Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Terminate-All-Processes"><span class="nav-number">2.10.</span> <span class="nav-text">Terminate All Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-System-Information"><span class="nav-number">2.11.</span> <span class="nav-text">View System Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Line-of-the-top-Command"><span class="nav-number">2.12.</span> <span class="nav-text">First Line of the top Command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-System-Memory-Information"><span class="nav-number">2.13.</span> <span class="nav-text">View System Memory Information</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Automatic-Units"><span class="nav-number">2.13.1.</span> <span class="nav-text">Automatic Units</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#In-Megabytes"><span class="nav-number">2.13.2.</span> <span class="nav-text">In Megabytes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#In-Gigabytes"><span class="nav-number">2.13.3.</span> <span class="nav-text">In Gigabytes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Login-Information-of-Current-User"><span class="nav-number">2.14.</span> <span class="nav-text">View Login Information of Current User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Login-Records-of-Current-System"><span class="nav-number">2.15.</span> <span class="nav-text">View Login Records of Current System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Command-Line-History"><span class="nav-number">2.16.</span> <span class="nav-text">Command Line History</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collect-Important-Information-Troubleshooting"><span class="nav-number">2.17.</span> <span class="nav-text">Collect Important Information (Troubleshooting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Current-Directory"><span class="nav-number">2.18.</span> <span class="nav-text">View Current Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Directory"><span class="nav-number">2.19.</span> <span class="nav-text">Change Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-File-Information"><span class="nav-number">2.20.</span> <span class="nav-text">View File Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Document-Operations"><span class="nav-number">2.21.</span> <span class="nav-text">Document Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Display-Number-of-Lines-in-File"><span class="nav-number">2.21.1.</span> <span class="nav-text">Display Number of Lines in File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Display-Number-of-Bytes-in-File"><span class="nav-number">2.21.2.</span> <span class="nav-text">Display Number of Bytes in File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Display-Number-of-Words-in-File"><span class="nav-number">2.21.3.</span> <span class="nav-text">Display Number of Words in File</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-File-Time"><span class="nav-number">2.22.</span> <span class="nav-text">View File Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extract-File-Content-by-Column"><span class="nav-number">2.23.</span> <span class="nav-text">Extract File Content by Column</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-if-Two-Files-are-the-Same"><span class="nav-number">2.24.</span> <span class="nav-text">Determine if Two Files are the Same</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Determine-Where-Exactly-the-Two-Files-Differ"><span class="nav-number">2.24.1.</span> <span class="nav-text">Determine Where Exactly the Two Files Differ</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-New-Text-File"><span class="nav-number">2.25.</span> <span class="nav-text">Create a New Text File</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Modify-the-Last-Modified-Time-of-a-File"><span class="nav-number">2.25.1.</span> <span class="nav-text">Modify the Last Modified Time of a File</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-New-Directory"><span class="nav-number">2.26.</span> <span class="nav-text">Create a New Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File-Copy-Move-Rename"><span class="nav-number">2.27.</span> <span class="nav-text">File Copy, Move, Rename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File-Deletion"><span class="nav-number">2.28.</span> <span class="nav-text">File Deletion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Display-File-Type"><span class="nav-number">2.29.</span> <span class="nav-text">Display File Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Location-of-a-Command"><span class="nav-number">2.30.</span> <span class="nav-text">View Location of a Command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Hostname"><span class="nav-number">2.31.</span> <span class="nav-text">View Hostname</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Modify-Hostname"><span class="nav-number">2.31.1.</span> <span class="nav-text">Modify Hostname</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Temporary-Modification"><span class="nav-number">2.31.1.1.</span> <span class="nav-text">Temporary Modification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Permanent-Modification"><span class="nav-number">2.31.1.2.</span> <span class="nav-text">Permanent Modification</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-CPU"><span class="nav-number">2.32.</span> <span class="nav-text">View CPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shutdown-System"><span class="nav-number">2.33.</span> <span class="nav-text">Shutdown System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restart-System"><span class="nav-number">2.34.</span> <span class="nav-text">Restart System</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Completion"><span class="nav-number">3.</span> <span class="nav-text">Completion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2019/11/11/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】Linux 基础命令（RetHat篇） | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】Linux 基础命令（RetHat篇）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-11 22:30:29" itemprop="dateCreated datePublished" datetime="2019-11-11T22:30:29+00:00">2019-11-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The most basic commands of the Linux operating system, other advanced commands will be updated in other notes.</p>
+<span id="more"></span>
+
+<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><h3 id="Display-Date"><a href="#Display-Date" class="headerlink" title="Display Date"></a>Display Date</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date</span><br></pre></td></tr></table></figure>
+
+<h3 id="Output-Statement"><a href="#Output-Statement" class="headerlink" title="Output Statement"></a>Output Statement</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Processes-Static"><a href="#View-Processes-Static" class="headerlink" title="View Processes (Static)"></a>View Processes (Static)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Services"><a href="#View-Services" class="headerlink" title="View Services"></a>View Services</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pipe-Symbol"><a href="#Pipe-Symbol" class="headerlink" title="Pipe Symbol"></a>Pipe Symbol</h3><ul>
+<li>The command’s result (printed to the command line) before the pipe symbol is passed to the command after the pipe symbol for processing.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|</span><br></pre></td></tr></table></figure>
+
+<h3 id="Retrieve-Based-on-Keywords-With-Pipe-Symbol"><a href="#Retrieve-Based-on-Keywords-With-Pipe-Symbol" class="headerlink" title="Retrieve Based on Keywords (With Pipe Symbol)"></a>Retrieve Based on Keywords (With Pipe Symbol)</h3><blockquote>
+<p><code>&lt;a&gt;</code>: keyword to retrieve</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &lt;a&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Processes-Dynamic"><a href="#View-Processes-Dynamic" class="headerlink" title="View Processes (Dynamic)"></a>View Processes (Dynamic)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Process-IDs"><a href="#View-Process-IDs" class="headerlink" title="View Process IDs"></a>View Process IDs</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pidof process_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="Terminate-Process"><a href="#Terminate-Process" class="headerlink" title="Terminate Process"></a>Terminate Process</h3><blockquote>
+<p><code>-9</code>: force terminate the process<br><code>-15</code>: allow the program to do cleanup before terminating</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill process_id</span><br></pre></td></tr></table></figure>
+
+<h3 id="Terminate-All-Processes"><a href="#Terminate-All-Processes" class="headerlink" title="Terminate All Processes"></a>Terminate All Processes</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall process_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-System-Information"><a href="#View-System-Information" class="headerlink" title="View System Information"></a>View System Information</h3><p><a href="/en-US/2020/06/20/View-System-Info/">Link</a></p>
+<h3 id="First-Line-of-the-top-Command"><a href="#First-Line-of-the-top-Command" class="headerlink" title="First Line of the top Command"></a>First Line of the top Command</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uptime</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-System-Memory-Information"><a href="#View-System-Memory-Information" class="headerlink" title="View System Memory Information"></a>View System Memory Information</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free</span><br></pre></td></tr></table></figure>
+
+<h4 id="Automatic-Units"><a href="#Automatic-Units" class="headerlink" title="Automatic Units"></a>Automatic Units</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br></pre></td></tr></table></figure>
+
+<h4 id="In-Megabytes"><a href="#In-Megabytes" class="headerlink" title="In Megabytes"></a>In Megabytes</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure>
+
+<h4 id="In-Gigabytes"><a href="#In-Gigabytes" class="headerlink" title="In Gigabytes"></a>In Gigabytes</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Login-Information-of-Current-User"><a href="#View-Login-Information-of-Current-User" class="headerlink" title="View Login Information of Current User"></a>View Login Information of Current User</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Login-Records-of-Current-System"><a href="#View-Login-Records-of-Current-System" class="headerlink" title="View Login Records of Current System"></a>View Login Records of Current System</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last</span><br></pre></td></tr></table></figure>
+
+<h3 id="Command-Line-History"><a href="#Command-Line-History" class="headerlink" title="Command Line History"></a>Command Line History</h3><ul>
+<li><a href="/en-US/2020/06/20/Command-Line-History/">History-related commands</a></li>
+</ul>
+<h3 id="Collect-Important-Information-Troubleshooting"><a href="#Collect-Important-Information-Troubleshooting" class="headerlink" title="Collect Important Information (Troubleshooting)"></a>Collect Important Information (Troubleshooting)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sosreport</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Current-Directory"><a href="#View-Current-Directory" class="headerlink" title="View Current Directory"></a>View Current Directory</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<h3 id="Change-Directory"><a href="#Change-Directory" class="headerlink" title="Change Directory"></a>Change Directory</h3><ul>
+<li><a href="/en-US/2020/06/20/Command-Line-Change-Directory/">cd-related commands</a></li>
+</ul>
+<h3 id="View-File-Information"><a href="#View-File-Information" class="headerlink" title="View File Information"></a>View File Information</h3><ul>
+<li><a href="/en-US/2020/06/20/Command-Line-View-File-Info/">ls-related commands</a></li>
+</ul>
+<h3 id="Document-Operations"><a href="#Document-Operations" class="headerlink" title="Document Operations"></a>Document Operations</h3><ul>
+<li><a href="/en-US/2020/02/07/Document-Operations/">cat-related commands</a></li>
+</ul>
+<h4 id="Display-Number-of-Lines-in-File"><a href="#Display-Number-of-Lines-in-File" class="headerlink" title="Display Number of Lines in File"></a>Display Number of Lines in File</h4><blockquote>
+<p><code>&lt;file&gt;</code>: file path</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Display-Number-of-Bytes-in-File"><a href="#Display-Number-of-Bytes-in-File" class="headerlink" title="Display Number of Bytes in File"></a>Display Number of Bytes in File</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -c &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Display-Number-of-Words-in-File"><a href="#Display-Number-of-Words-in-File" class="headerlink" title="Display Number of Words in File"></a>Display Number of Words in File</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -w &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-File-Time"><a href="#View-File-Time" class="headerlink" title="View File Time"></a>View File Time</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stat &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Extract-File-Content-by-Column"><a href="#Extract-File-Content-by-Column" class="headerlink" title="Extract File Content by Column"></a>Extract File Content by Column</h3><p>Example: Extract 1st column information with “:” as the delimiter</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d : -f 1 &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Determine-if-Two-Files-are-the-Same"><a href="#Determine-if-Two-Files-are-the-Same" class="headerlink" title="Determine if Two Files are the Same"></a>Determine if Two Files are the Same</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff --brief &lt;file_1&gt; &lt;file_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Determine-Where-Exactly-the-Two-Files-Differ"><a href="#Determine-Where-Exactly-the-Two-Files-Differ" class="headerlink" title="Determine Where Exactly the Two Files Differ"></a>Determine Where Exactly the Two Files Differ</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff -c &lt;file_1&gt; &lt;file_2&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-New-Text-File"><a href="#Create-a-New-Text-File" class="headerlink" title="Create a New Text File"></a>Create a New Text File</h3><blockquote>
+<p><code>&lt;file&gt;</code>: path and filename of the new file</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Modify-the-Last-Modified-Time-of-a-File"><a href="#Modify-the-Last-Modified-Time-of-a-File" class="headerlink" title="Modify the Last Modified Time of a File"></a>Modify the Last Modified Time of a File</h4><ul>
+<li>Change the file modification time to “13:14”</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch -d &quot;13:14&quot; &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-New-Directory"><a href="#Create-a-New-Directory" class="headerlink" title="Create a New Directory"></a>Create a New Directory</h3><p><a href="/en-US/2020/06/20/Command-Line-Create-Directory/">Link</a></p>
+<h3 id="File-Copy-Move-Rename"><a href="#File-Copy-Move-Rename" class="headerlink" title="File Copy, Move, Rename"></a>File Copy, Move, Rename</h3><p><a href="/en-US/2020/06/20/Command-Line-Copy-Move-Rename-File/">Link</a></p>
+<h3 id="File-Deletion"><a href="#File-Deletion" class="headerlink" title="File Deletion"></a>File Deletion</h3><p><a href="/en-US/2020/06/20/Command-Line-File-Deletion/">Link</a></p>
+<h3 id="Display-File-Type"><a href="#Display-File-Type" class="headerlink" title="Display File Type"></a>Display File Type</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Location-of-a-Command"><a href="#View-Location-of-a-Command" class="headerlink" title="View Location of a Command"></a>View Location of a Command</h3><blockquote>
+<p><code>&lt;command&gt;</code>: command name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis &lt;command&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Hostname"><a href="#View-Hostname" class="headerlink" title="View Hostname"></a>View Hostname</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
+
+<h4 id="Modify-Hostname"><a href="#Modify-Hostname" class="headerlink" title="Modify Hostname"></a>Modify Hostname</h4><h5 id="Temporary-Modification"><a href="#Temporary-Modification" class="headerlink" title="Temporary Modification"></a>Temporary Modification</h5><blockquote>
+<p><code>&lt;name&gt;</code>: new hostname</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Permanent-Modification"><a href="#Permanent-Modification" class="headerlink" title="Permanent Modification"></a>Permanent Modification</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-CPU"><a href="#View-CPU" class="headerlink" title="View CPU"></a>View CPU</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shutdown-System"><a href="#Shutdown-System" class="headerlink" title="Shutdown System"></a>Shutdown System</h3><p><a href="/en-US/2020/06/16/Poweroff-Study-Notes/">Link</a></p>
+<h3 id="Restart-System"><a href="#Restart-System" class="headerlink" title="Restart System"></a>Restart System</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="Completion"><a href="#Completion" class="headerlink" title="Completion"></a>Completion</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="/302.html?target=https://www.linuxprobe.com">Linux Study in This Way - Liu Zheng</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/11/11/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="prev" title="【命令】Linux 基础命令（RetHat篇）">
+                  <i class="fa fa-angle-left"></i> 【命令】Linux 基础命令（RetHat篇）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2019/11/13/Linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C/" rel="next" title="【踩坑】Linux 开机自动连接网络（CentOS篇）">
+                  【踩坑】Linux 开机自动连接网络（CentOS篇） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2019/11/11/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2019/11/11/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

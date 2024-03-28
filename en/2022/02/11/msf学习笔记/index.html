@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2022/02/11/msf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2022/02/11/msf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2022/02/11/msf学习笔记/","title":"【英文】msf学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】msf学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-number">1.</span> <span class="nav-text">Foreword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Development-History"><span class="nav-number">2.</span> <span class="nav-text">Development History</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Technical-Architecture"><span class="nav-number">3.</span> <span class="nav-text">Technical Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metasploit-Framework"><span class="nav-number">4.</span> <span class="nav-text">Metasploit Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">4.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update"><span class="nav-number">4.2.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialize-Vulnerability-Database"><span class="nav-number">4.3.</span> <span class="nav-text">Initialize Vulnerability Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-msfconsole"><span class="nav-number">4.4.</span> <span class="nav-text">Start msfconsole</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#msf-Commands"><span class="nav-number">5.</span> <span class="nav-text">msf Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-for-Vulnerabilities"><span class="nav-number">5.1.</span> <span class="nav-text">Search for Vulnerabilities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-Exploitation-Module"><span class="nav-number">5.2.</span> <span class="nav-text">Use Exploitation Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-All-Details-of-the-Exploitation"><span class="nav-number">5.3.</span> <span class="nav-text">View All Details of the Exploitation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#View-Details-of-Exploitation-Options"><span class="nav-number">5.3.1.</span> <span class="nav-text">View Details of Exploitation Options</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View-Available-Payloads"><span class="nav-number">5.3.2.</span> <span class="nav-text">View Available Payloads</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View-Executable-Operating-Systems"><span class="nav-number">5.3.3.</span> <span class="nav-text">View Executable Operating Systems</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Exploitation-Parameters"><span class="nav-number">5.4.</span> <span class="nav-text">Set Exploitation Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Exploitation-Payloads"><span class="nav-number">5.5.</span> <span class="nav-text">Set Exploitation Payloads</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-Exploitation"><span class="nav-number">5.6.</span> <span class="nav-text">Start Exploitation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Return-to-the-Use-of-the-Script"><span class="nav-number">5.7.</span> <span class="nav-text">Return to the Use of the Script</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meterpreter-Commands"><span class="nav-number">6.</span> <span class="nav-text">meterpreter Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-All-Available-Commands-to-Use-on-the-Target"><span class="nav-number">6.1.</span> <span class="nav-text">View All Available Commands to Use on the Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hide-the-meterpreter-Terminal-in-the-Background"><span class="nav-number">6.2.</span> <span class="nav-text">Hide the meterpreter Terminal in the Background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Successfully-Obtained-Sessions"><span class="nav-number">6.3.</span> <span class="nav-text">View Successfully Obtained Sessions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Target-System-Shell"><span class="nav-number">6.4.</span> <span class="nav-text">Get Target System Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Close-the-Current-Meterpreter-Session"><span class="nav-number">6.5.</span> <span class="nav-text">Close the Current Meterpreter Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Commands-Similar-to-Shell-Commands"><span class="nav-number">6.6.</span> <span class="nav-text">Basic Commands Similar to Shell Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-for-Files"><span class="nav-number">6.7.</span> <span class="nav-text">Search for Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Configuration-Information"><span class="nav-number">6.8.</span> <span class="nav-text">View Configuration Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch-Process"><span class="nav-number">6.9.</span> <span class="nav-text">Switch Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upload-x2F-Download-Files"><span class="nav-number">6.10.</span> <span class="nav-text">Upload&#x2F;Download Files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Upload-Files"><span class="nav-number">6.10.1.</span> <span class="nav-text">Upload Files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-Files"><span class="nav-number">6.10.2.</span> <span class="nav-text">Download Files</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Execute-Files"><span class="nav-number">6.11.</span> <span class="nav-text">Execute Files</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2022/02/11/msf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】msf学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】msf学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-11 11:18:00" itemprop="dateCreated datePublished" datetime="2022-02-11T11:18:00+00:00">2022-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>The Metasploit Project is a computer security project aimed at providing security vulnerability information. It assists security engineers in conducting penetration testing and developing intrusion detection system signatures. (<a href="/302.html?target=https://en.wikipedia.org/wiki/Metasploit">Wikipedia</a>)</p>
+<p><font color="red">This article is only for learning network information defense</font></p>
+<span id="more"></span>
+
+<h2 id="Development-History"><a href="#Development-History" class="headerlink" title="Development History"></a>Development History</h2><ul>
+<li><strong>October 2003:</strong> HD Moore developed Metasploit v1.0 using Perl language.</li>
+<li>April 2004: With the help of Spoonm, the code of Metasploit was completely rewritten. Main updates: 18 attack modules and 27 attack payloads, and it provided three interfaces for use: console terminal, command line, and web interface.</li>
+<li><strong>August 2004:</strong> HD and Spoonm gave a speech at the BlackHat Global Developer Conference held in Las Vegas with the newly released Metasploit v2.0.</li>
+<li><strong>2005:</strong> At CanSecWest and hacker conferences, HD and Spoonm pointed out that the Perl version of Metasploit had many problems. After 18 months, the Metasploit team completely rewrote Metasploit in Ruby language and released Metasploit v3.0. Main updates: 177 attack modules, 104 attack payloads, and 30 auxiliary modules.</li>
+<li>October 2009: Metasploit was acquired by Rapid7.</li>
+<li>October 2010: Rapid7 released commercial versions: Metasploit Express and Metasploit Pro.</li>
+<li><strong>August 2011:</strong> The Metasploit team released v4.0. Main updates: introduced post-exploitation modules (used for long-term authorization positions and attack achievements extension).</li>
+<li><strong>January 2019:</strong> The Metasploit team released v5.0. Main updates: introduced new modules evasion capabilities (used to bypass anti-virus software).</li>
+</ul>
+<h2 id="Technical-Architecture"><a href="#Technical-Architecture" class="headerlink" title="Technical Architecture"></a>Technical Architecture</h2><ul>
+<li>Auxiliary Modules: Provide support for information collection in penetration testing, including scanning and checkpoints for various network services, building false services to collect passwords, password guessing and cracking, sensitive information sniffing, probing for sensitive information leakage, fuzz testing to discover vulnerabilities, and implementing network protocol deception, etc.</li>
+<li>Exploitation Modules: Exploit discovered security vulnerabilities or configuration weaknesses to attack target systems, implant and execute attack payloads, and obtain remote access to the target system.<ul>
+<li>Active Exploitation: The vulnerabilities exploited by active exploitation are located in server software and upper-layer application programs of the service carrier.</li>
+<li>Passive Exploitation: The vulnerabilities exploited by passive exploitation are located in client software, such as browsers, browser plugins, email clients, etc.</li>
+</ul>
+</li>
+<li>Payload Modules: Run a piece of implanted code on the target system after successful exploitation, usually used to open a control session connection on the target system for penetration.</li>
+<li>NOP Modules: Some NOP instructions or unrelated operation instructions that do not have any substantial impact on program operation. For example, the opcode is 0x90 on an x86 architecture CPU host.</li>
+<li>Encoder Modules: Ensure that no bad characters that should be avoided during the penetration process appear in the attack payload; perform bypass of anti-virus software for the attack payload.</li>
+<li>Post-Exploitation Modules: Provide attack springboard.</li>
+<li>Evasion Modules: Perform bypass of the payload.</li>
+</ul>
+<h2 id="Metasploit-Framework"><a href="#Metasploit-Framework" class="headerlink" title="Metasploit Framework"></a>Metasploit Framework</h2><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install metasploit-framework</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Installation location: <code>/usr/share/metasploit-framework</code></li>
+</ul>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Although the update command can be used, it is still recommended to reinstall using apt</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install metasploit-framework</span><br></pre></td></tr></table></figure>
+
+<h3 id="Initialize-Vulnerability-Database"><a href="#Initialize-Vulnerability-Database" class="headerlink" title="Initialize Vulnerability Database"></a>Initialize Vulnerability Database</h3><ul>
+<li>First use</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfdb init</span><br></pre></td></tr></table></figure>
+
+<h3 id="Start-msfconsole"><a href="#Start-msfconsole" class="headerlink" title="Start msfconsole"></a>Start msfconsole</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+
+<h2 id="msf-Commands"><a href="#msf-Commands" class="headerlink" title="msf Commands"></a>msf Commands</h2><h3 id="Search-for-Vulnerabilities"><a href="#Search-for-Vulnerabilities" class="headerlink" title="Search for Vulnerabilities"></a>Search for Vulnerabilities</h3><blockquote>
+<p><code>17</code>: Refers to the year when the vulnerability was discovered<br><code>010</code>: Refers to the number of the vulnerability discovered that year</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; search ms17_010</span><br></pre></td></tr></table></figure>
+
+<h3 id="Use-Exploitation-Module"><a href="#Use-Exploitation-Module" class="headerlink" title="Use Exploitation Module"></a>Use Exploitation Module</h3><ul>
+<li>A module is a <code>.rb</code> Ruby script</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>: Module name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Module location: <code>/usr/share/metasploit-framework/modules</code></li>
+</ul>
+<h3 id="View-All-Details-of-the-Exploitation"><a href="#View-All-Details-of-the-Exploitation" class="headerlink" title="View All Details of the Exploitation"></a>View All Details of the Exploitation</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; info</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-Details-of-Exploitation-Options"><a href="#View-Details-of-Exploitation-Options" class="headerlink" title="View Details of Exploitation Options"></a>View Details of Exploitation Options</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; show options</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-Available-Payloads"><a href="#View-Available-Payloads" class="headerlink" title="View Available Payloads"></a>View Available Payloads</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; show payloads</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-Executable-Operating-Systems"><a href="#View-Executable-Operating-Systems" class="headerlink" title="View Executable Operating Systems"></a>View Executable Operating Systems</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; show targets</span><br></pre></td></tr></table></figure>
+
+<h3 id="Set-Exploitation-Parameters"><a href="#Set-Exploitation-Parameters" class="headerlink" title="Set Exploitation Parameters"></a>Set Exploitation Parameters</h3><ul>
+<li>Based on the listed <code>Module options</code>, view all options, then view the required options, which are the data where the <code>Required</code> field is yes. If the <code>Current Setting</code> of this row is empty, you need to add parameters.</li>
+</ul>
+<blockquote>
+<p><code>RHOST</code>: Parameter name<br><code>127.0.0.1</code>: Parameter value</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; set RHOST 127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="Set-Exploitation-Payloads"><a href="#Set-Exploitation-Payloads" class="headerlink" title="Set Exploitation Payloads"></a>Set Exploitation Payloads</h3><ul>
+<li>Based on the listed <code>Payload options</code>, view all options, then view the required options, which are the data where the <code>Required</code> field is yes. If the <code>Current Setting</code> of this row is empty, you need to add parameters.</li>
+</ul>
+<blockquote>
+<p><code>payload/windows/x64/meterpreter/reverse_tcp</code>: Payload name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; set payload payload/windows/x64/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
+
+<h3 id="Start-Exploitation"><a href="#Start-Exploitation" class="headerlink" title="Start Exploitation"></a>Start Exploitation</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; exploit</span><br></pre></td></tr></table></figure>
+
+<h3 id="Return-to-the-Use-of-the-Script"><a href="#Return-to-the-Use-of-the-Script" class="headerlink" title="Return to the Use of the Script"></a>Return to the Use of the Script</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf exploit(...) &gt; back</span><br></pre></td></tr></table></figure>
+
+<h2 id="meterpreter-Commands"><a href="#meterpreter-Commands" class="headerlink" title="meterpreter Commands"></a>meterpreter Commands</h2><ul>
+<li>Commands after obtaining a reverse shell</li>
+</ul>
+<h3 id="View-All-Available-Commands-to-Use-on-the-Target"><a href="#View-All-Available-Commands-to-Use-on-the-Target" class="headerlink" title="View All Available Commands to Use on the Target"></a>View All Available Commands to Use on the Target</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; help</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hide-the-meterpreter-Terminal-in-the-Background"><a href="#Hide-the-meterpreter-Terminal-in-the-Background" class="headerlink" title="Hide the meterpreter Terminal in the Background"></a>Hide the meterpreter Terminal in the Background</h3><ul>
+<li>Hide the meterpreter terminal in the background and continue to use the msf terminal</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; background</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Successfully-Obtained-Sessions"><a href="#View-Successfully-Obtained-Sessions" class="headerlink" title="View Successfully Obtained Sessions"></a>View Successfully Obtained Sessions</h3><blockquote>
+<p><code>-i</code>: Switch to background session</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; session</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-Target-System-Shell"><a href="#Get-Target-System-Shell" class="headerlink" title="Get Target System Shell"></a>Get Target System Shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; shell</span><br></pre></td></tr></table></figure>
+
+<h3 id="Close-the-Current-Meterpreter-Session"><a href="#Close-the-Current-Meterpreter-Session" class="headerlink" title="Close the Current Meterpreter Session"></a>Close the Current Meterpreter Session</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; quit</span><br></pre></td></tr></table></figure>
+
+<h3 id="Basic-Commands-Similar-to-Shell-Commands"><a href="#Basic-Commands-Similar-to-Shell-Commands" class="headerlink" title="Basic Commands Similar to Shell Commands"></a>Basic Commands Similar to Shell Commands</h3><blockquote>
+<p><code>&lt;src&gt;</code>: The path to switch<br><code>&lt;file&gt;</code>: File path</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Switch path</span></span><br><span class="line">meterpreter &gt; cd &lt;src&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View files <span class="keyword">in</span> the current path</span></span><br><span class="line">meterpreter &gt; ls</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View the current path</span></span><br><span class="line">meterpreter &gt; pwd</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View file content</span></span><br><span class="line">meterpreter &gt; cat &lt;file&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Open the specified file with vim editor</span></span><br><span class="line">meterpreter &gt; edit &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Search-for-Files"><a href="#Search-for-Files" class="headerlink" title="Search for Files"></a>Search for Files</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View <span class="built_in">help</span></span></span><br><span class="line">meterpreter &gt; search -h</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Search <span class="keyword">for</span> files</span></span><br><span class="line">meterpreter &gt; search -f *.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="View-Configuration-Information"><a href="#View-Configuration-Information" class="headerlink" title="View Configuration Information"></a>View Configuration Information</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View system information</span></span><br><span class="line">meterpreter &gt; sysinfo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View current user (permissions)</span></span><br><span class="line">meterpreter &gt; getuid</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View all processes</span></span><br><span class="line">meterpreter &gt; ps</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View the current process ID</span></span><br><span class="line">meterpreter &gt; getpid</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View network card information</span></span><br><span class="line">meterpreter &gt; ifconfig</span><br><span class="line">meterpreter &gt; ipconfig</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">View routing information</span></span><br><span class="line">meterpreter &gt; route</span><br></pre></td></tr></table></figure>
+
+<h3 id="Switch-Process"><a href="#Switch-Process" class="headerlink" title="Switch Process"></a>Switch Process</h3><ul>
+<li>Switch (attach) the current process to another process (usually switch to <code>explorer.exe</code> on Windows)</li>
+<li>Can only switch from a process with higher privileges to a process with lower privileges</li>
+</ul>
+<blockquote>
+<p><code>&lt;pid&gt;</code>: Process ID</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; migrate &lt;pid&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Upload-x2F-Download-Files"><a href="#Upload-x2F-Download-Files" class="headerlink" title="Upload&#x2F;Download Files"></a>Upload&#x2F;Download Files</h3><h4 id="Upload-Files"><a href="#Upload-Files" class="headerlink" title="Upload Files"></a>Upload Files</h4><ul>
+<li>Upload the specified file from the local machine to the current directory of the target</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: The specified file path on the local machine</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; upload &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Download-Files"><a href="#Download-Files" class="headerlink" title="Download Files"></a>Download Files</h4><ul>
+<li>Download the file from the target to the current directory of the local machine</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: The specified file path on the target</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; download &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Execute-Files"><a href="#Execute-Files" class="headerlink" title="Execute Files"></a>Execute Files</h3><ul>
+<li>Execute the target’s executable file and return the process ID after running</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;</code>: Target’s executable file path</p>
+</blockquote>
+<pre><code>
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Metasploit/" rel="tag"># Metasploit</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/02/11/msf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】msf学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】msf学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2022/02/24/%E5%AF%84%E5%AD%98%E5%99%A8/" rel="next" title="【笔记】寄存器">
+                  【笔记】寄存器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2022/02/11/msf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2022/02/11/msf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

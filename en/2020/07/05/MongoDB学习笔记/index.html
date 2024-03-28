@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2020/07/05/MongoDB学习笔记/","title":"【英文】MongoDB学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】MongoDB学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Differences-Between-MongoDB-and-Other-Databases"><span class="nav-number">2.</span> <span class="nav-text">Differences Between MongoDB and Other Databases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Types"><span class="nav-number">3.</span> <span class="nav-text">Data Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Databases"><span class="nav-number">4.</span> <span class="nav-text">Operations on Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Switching-Creating-x2F-Using-Databases"><span class="nav-number">4.1.</span> <span class="nav-text">Switching (Creating&#x2F;Using) Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Database-Naming-Rules"><span class="nav-number">4.1.1.</span> <span class="nav-text">Database Naming Rules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Default-Databases"><span class="nav-number">4.1.2.</span> <span class="nav-text">Default Databases</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-the-Current-Database"><span class="nav-number">4.2.</span> <span class="nav-text">Deleting the Current Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-the-Current-Database"><span class="nav-number">4.3.</span> <span class="nav-text">Viewing the Current Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-All-Databases"><span class="nav-number">4.4.</span> <span class="nav-text">Viewing All Databases</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Collections"><span class="nav-number">5.</span> <span class="nav-text">Operations on Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-Collection"><span class="nav-number">5.1.</span> <span class="nav-text">Creating a Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Explicit-Creation"><span class="nav-number">5.1.1.</span> <span class="nav-text">Explicit Creation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Implicit-Creation"><span class="nav-number">5.1.2.</span> <span class="nav-text">Implicit Creation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-a-Collection"><span class="nav-number">5.2.</span> <span class="nav-text">Deleting a Collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-All-Collections"><span class="nav-number">5.3.</span> <span class="nav-text">Viewing All Collections</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations-on-Documents"><span class="nav-number">6.</span> <span class="nav-text">Operations on Documents</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-Documents"><span class="nav-number">6.1.</span> <span class="nav-text">Adding Documents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Adding-a-Single-Document"><span class="nav-number">6.1.1.</span> <span class="nav-text">Adding a Single Document</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Adding-a-Document-via-a-Variable"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">Adding a Document via a Variable</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adding-Multiple-Documents"><span class="nav-number">6.1.2.</span> <span class="nav-text">Adding Multiple Documents</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-Documents"><span class="nav-number">6.2.</span> <span class="nav-text">Deleting Documents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deleting-all-documents-that-match-a-condition"><span class="nav-number">6.2.1.</span> <span class="nav-text">Deleting all documents that match a condition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deleting-all-documents"><span class="nav-number">6.2.2.</span> <span class="nav-text">Deleting all documents</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modifying-Documents"><span class="nav-number">6.3.</span> <span class="nav-text">Modifying Documents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Modifying-a-Single-Document-that-Meets-the-Condition"><span class="nav-number">6.3.1.</span> <span class="nav-text">Modifying a Single Document that Meets the Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Overwrite-Modification"><span class="nav-number">6.3.1.1.</span> <span class="nav-text">Overwrite Modification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Partial-Modification"><span class="nav-number">6.3.1.2.</span> <span class="nav-text">Partial Modification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Auto-increment-Field-Value"><span class="nav-number">6.3.1.3.</span> <span class="nav-text">Auto-increment Field Value</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Modifying-Multiple-Documents-that-Meet-the-Condition"><span class="nav-number">6.3.2.</span> <span class="nav-text">Modifying Multiple Documents that Meet the Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Overwrite-Modification-1"><span class="nav-number">6.3.2.1.</span> <span class="nav-text">Overwrite Modification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Partial-Modification-1"><span class="nav-number">6.3.2.2.</span> <span class="nav-text">Partial Modification</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Querying-Documents"><span class="nav-number">6.4.</span> <span class="nav-text">Querying Documents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Querying-all-documents"><span class="nav-number">6.4.1.</span> <span class="nav-text">Querying all documents</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Querying-Documents-that-Match-a-Condition"><span class="nav-number">6.4.2.</span> <span class="nav-text">Querying Documents that Match a Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Exact-Match"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">Exact Match</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Multiple-Documents-Matching-the-Condition"><span class="nav-number">6.4.2.1.1.</span> <span class="nav-text">Multiple Documents Matching the Condition</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Single-Document-Matching-the-Condition"><span class="nav-number">6.4.2.1.2.</span> <span class="nav-text">Single Document Matching the Condition</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Regular-Expression-Matching"><span class="nav-number">6.4.2.2.</span> <span class="nav-text">Regular Expression Matching</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Comparison-Operators"><span class="nav-number">6.4.2.3.</span> <span class="nav-text">Comparison Operators</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】MongoDB学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】MongoDB学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-07-05 12:43:55" itemprop="dateCreated datePublished" datetime="2020-07-05T12:43:55+00:00">2020-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>MongoDB is a document-oriented database management system written in languages such as C++, designed to solve a plethora of real-world problems in the application development community. MongoDB was developed by MongoDB Inc. (then the 10gen team) in October 2007 and released for the first time in February 2009, distributed under the Server Side Public License (SSPL). (<a href="/302.html?target=https://en.wikipedia.org/wiki/MongoDB">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="Differences-Between-MongoDB-and-Other-Databases"><a href="#Differences-Between-MongoDB-and-Other-Databases" class="headerlink" title="Differences Between MongoDB and Other Databases"></a>Differences Between MongoDB and Other Databases</h2><ul>
+<li>Databases are represented by <code>database</code></li>
+<li>Collections (equivalent to tables in other databases) are represented by <code>collection</code></li>
+<li>Fields (equivalent to columns in other databases) are represented by <code>field</code></li>
+<li>MongoDB commands are case-sensitive</li>
+<li>MongoDB commands do not require a semicolon at the end.</li>
+</ul>
+<h2 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h2><ul>
+<li>MongoDB stores data using BSON (a binary version of JSON)</li>
+<li>BSON Data Types<ul>
+<li>Data types that can be used in the Shell<ul>
+<li>String</li>
+<li>Object ID</li>
+<li>Boolean</li>
+<li>Array</li>
+<li>32-bit integer</li>
+<li>64-bit integer</li>
+<li>64-bit floating point number</li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+<li>Regular expression <code>//i</code></li>
+<li><code>function()&#123;&#125;</code></li>
+</ul>
+</li>
+<li>Data types that cannot be used in the Shell<ul>
+<li>Symbol</li>
+<li>Binary data</li>
+<li>Max&#x2F;Min values</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Operations-on-Databases"><a href="#Operations-on-Databases" class="headerlink" title="Operations on Databases"></a>Operations on Databases</h2><h3 id="Switching-Creating-x2F-Using-Databases"><a href="#Switching-Creating-x2F-Using-Databases" class="headerlink" title="Switching (Creating&#x2F;Using) Databases"></a>Switching (Creating&#x2F;Using) Databases</h3><ul>
+<li>After executing the <code>use</code> command, you will enter the database with the specified database name, regardless of whether the database name exists or not.<ul>
+<li>If the database name already exists, you will enter an existing database for operations.</li>
+<li>If the database name does not exist, the database will be created automatically after creating a collection. It will still not appear in the list of all databases until a collection is created.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>&lt;database_name&gt;</code>: Database Name</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use <span class="operator">&lt;</span>database_name<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Database-Naming-Rules"><a href="#Database-Naming-Rules" class="headerlink" title="Database Naming Rules"></a>Database Naming Rules</h4><ul>
+<li>Cannot be an empty string</li>
+<li>Cannot contain null character (<code>\0</code>)</li>
+<li>Cannot contain spaces (<code> </code>)</li>
+<li>Cannot contain special characters: <code>.</code>, <code>\</code>, <code>/</code>, <code>$</code></li>
+<li>Must be in all lowercase letters</li>
+<li>Maximum length of 64 bytes</li>
+</ul>
+<h4 id="Default-Databases"><a href="#Default-Databases" class="headerlink" title="Default Databases"></a>Default Databases</h4><ul>
+<li>admin: Stores all users and permissions</li>
+<li>local: Data stored in this database will not be synchronized after deploying a cluster</li>
+<li>config: Stores sharding information</li>
+</ul>
+<h3 id="Deleting-the-Current-Database"><a href="#Deleting-the-Current-Database" class="headerlink" title="Deleting the Current Database"></a>Deleting the Current Database</h3><ul>
+<li>Delete the currently used database</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-the-Current-Database"><a href="#Viewing-the-Current-Database" class="headerlink" title="Viewing the Current Database"></a>Viewing the Current Database</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-All-Databases"><a href="#Viewing-All-Databases" class="headerlink" title="Viewing All Databases"></a>Viewing All Databases</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> dbs</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-Collections"><a href="#Operations-on-Collections" class="headerlink" title="Operations on Collections"></a>Operations on Collections</h2><h3 id="Creating-a-Collection"><a href="#Creating-a-Collection" class="headerlink" title="Creating a Collection"></a>Creating a Collection</h3><h4 id="Explicit-Creation"><a href="#Explicit-Creation" class="headerlink" title="Explicit Creation"></a>Explicit Creation</h4><blockquote>
+<p><code>&lt;collection_name&gt;</code>: Collection Name</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(&lt;collection_name&gt;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Implicit-Creation"><a href="#Implicit-Creation" class="headerlink" title="Implicit Creation"></a>Implicit Creation</h4><ul>
+<li>When adding a document directly to the specified collection, the collection will be automatically created</li>
+</ul>
+<blockquote>
+<p><code>&lt;collection_name&gt;</code>: Collection Name<br><code>&lt;key&gt;</code>: Key<br><code>&lt;value&gt;</code>: Value</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.insert(&#123;&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.insert(&#123;&quot;&lt;key_1&gt;&quot;: &quot;&lt;value_1&gt;&quot;, &quot;&lt;key_2&gt;&quot;: &quot;&lt;value_2&gt;&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-a-Collection"><a href="#Deleting-a-Collection" class="headerlink" title="Deleting a Collection"></a>Deleting a Collection</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.drop()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-All-Collections"><a href="#Viewing-All-Collections" class="headerlink" title="Viewing All Collections"></a>Viewing All Collections</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operations-on-Documents"><a href="#Operations-on-Documents" class="headerlink" title="Operations on Documents"></a>Operations on Documents</h2><h3 id="Adding-Documents"><a href="#Adding-Documents" class="headerlink" title="Adding Documents"></a>Adding Documents</h3><ul>
+<li><p>Add a document to the specified collection</p>
+</li>
+<li><p>The content of the document is BSON, similar to JSON</p>
+</li>
+<li><p>When adding a new document, the <code>_id</code> field is the default primary key of MongoDB, self-incrementing. It can be omitted or manually specified.</p>
+<ul>
+<li>Although the <code>_id</code> field increments starting from 1, its data type is a string.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Adding-a-Single-Document"><a href="#Adding-a-Single-Document" class="headerlink" title="Adding a Single Document"></a>Adding a Single Document</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.insert(&#123;field_name: field_value&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Adding-a-Document-via-a-Variable"><a href="#Adding-a-Document-via-a-Variable" class="headerlink" title="Adding a Document via a Variable"></a>Adding a Document via a Variable</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">variable = &#123;field_name: field_value&#125;</span><br><span class="line">db.&lt;collection_name&gt;.insert(variable)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Adding-Multiple-Documents"><a href="#Adding-Multiple-Documents" class="headerlink" title="Adding Multiple Documents"></a>Adding Multiple Documents</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.insertMany([&#123;field_name1: field_value1&#125;, &#123;field_name2: field_value2&#125;])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-Documents"><a href="#Deleting-Documents" class="headerlink" title="Deleting Documents"></a>Deleting Documents</h3><h4 id="Deleting-all-documents-that-match-a-condition"><a href="#Deleting-all-documents-that-match-a-condition" class="headerlink" title="Deleting all documents that match a condition"></a>Deleting all documents that match a condition</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.remove(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Deleting-all-documents"><a href="#Deleting-all-documents" class="headerlink" title="Deleting all documents"></a>Deleting all documents</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.remove(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Modifying-Documents"><a href="#Modifying-Documents" class="headerlink" title="Modifying Documents"></a>Modifying Documents</h3><ul>
+<li>The first parameter of the modification operation is the query condition</li>
+<li>The second parameter of the modification operation is the document after modification</li>
+<li>The third parameter of the modification operation is other parameters, which can be omitted if there are no additional parameters</li>
+</ul>
+<h4 id="Modifying-a-Single-Document-that-Meets-the-Condition"><a href="#Modifying-a-Single-Document-that-Meets-the-Condition" class="headerlink" title="Modifying a Single Document that Meets the Condition"></a>Modifying a Single Document that Meets the Condition</h4><ul>
+<li>When multiple documents match the condition, by default only the first document that fulfills the condition will be modified</li>
+</ul>
+<h5 id="Overwrite-Modification"><a href="#Overwrite-Modification" class="headerlink" title="Overwrite Modification"></a>Overwrite Modification</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;field_to_be_modified: &quot;modified_field_value&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Partial-Modification"><a href="#Partial-Modification" class="headerlink" title="Partial Modification"></a>Partial Modification</h5><ul>
+<li>Specify individual fields to modify using <code>$set:</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;$set: &#123;field_to_be_modified: &quot;modified_field_value&quot;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;$set: &#123;field_to_be_modified1: &quot;modified_field_value1&quot;&#125;, $set: &#123;field_to_be_modified2: &quot;modified_field_value2&quot;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Auto-increment-Field-Value"><a href="#Auto-increment-Field-Value" class="headerlink" title="Auto-increment Field Value"></a>Auto-increment Field Value</h5><blockquote>
+<p><code>1</code>: Incremental step</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;$inc: &#123;field_to_be_modified: NumberInt(1)&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Modifying-Multiple-Documents-that-Meet-the-Condition"><a href="#Modifying-Multiple-Documents-that-Meet-the-Condition" class="headerlink" title="Modifying Multiple Documents that Meet the Condition"></a>Modifying Multiple Documents that Meet the Condition</h4><ul>
+<li>Use <code>&#123;multi:true&#125;</code> to modify all matched documents</li>
+</ul>
+<h5 id="Overwrite-Modification-1"><a href="#Overwrite-Modification-1" class="headerlink" title="Overwrite Modification"></a>Overwrite Modification</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;field_to_be_modified: &quot;modified_field_value&quot;&#125;, &#123;multi: true&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Partial-Modification-1"><a href="#Partial-Modification-1" class="headerlink" title="Partial Modification"></a>Partial Modification</h5><ul>
+<li>Specify individual fields to modify using <code>$set:</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;$set: &#123;field_to_be_modified: &quot;modified_field_value&quot;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.update(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;, &#123;$set: &#123;field_to_be_modified1: &quot;modified_field_value1&quot;&#125;, $set: &#123;field_to_be_modified2: &quot;modified_field_value2&quot;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Querying-Documents"><a href="#Querying-Documents" class="headerlink" title="Querying Documents"></a>Querying Documents</h3><h4 id="Querying-all-documents"><a href="#Querying-all-documents" class="headerlink" title="Querying all documents"></a>Querying all documents</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.find()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.find(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Querying-Documents-that-Match-a-Condition"><a href="#Querying-Documents-that-Match-a-Condition" class="headerlink" title="Querying Documents that Match a Condition"></a>Querying Documents that Match a Condition</h4><h5 id="Exact-Match"><a href="#Exact-Match" class="headerlink" title="Exact Match"></a>Exact Match</h5><ul>
+<li>The first parameter of the query operation represents the query condition</li>
+</ul>
+<h6 id="Multiple-Documents-Matching-the-Condition"><a href="#Multiple-Documents-Matching-the-Condition" class="headerlink" title="Multiple Documents Matching the Condition"></a>Multiple Documents Matching the Condition</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.find(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.find(&#123;query_condition_field_name1: &quot;query_condition_field_value1&quot;, query_condition_field_name2: &quot;query_condition_field_value2&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="Single-Document-Matching-the-Condition"><a href="#Single-Document-Matching-the-Condition" class="headerlink" title="Single Document Matching the Condition"></a>Single Document Matching the Condition</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.findOne(&#123;query_condition_field_name: &quot;query_condition_field_value&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.findOne(&#123;query_condition_field_name1: &quot;query_condition_field_value1&quot;, query_condition_field_name2: &quot;query_condition_field_value2&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Regular-Expression-Matching"><a href="#Regular-Expression-Matching" class="headerlink" title="Regular Expression Matching"></a>Regular Expression Matching</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.find(&#123;query_condition_field_name: /regular_expression/&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Comparison-Operators"><a href="#Comparison-Operators" class="headerlink" title="Comparison Operators"></a>Comparison Operators</h5><blockquote>
+<p><code>&lt;num&gt;</code>: Number</p>
+</blockquote>
+<blockquote>
+<p><code>$gt</code>: Greater than<br><code>$gte</code>: Greater than or equal to<br><code>$lt</code>: Less than<br><code>$lte</code>: Less than or equal to<br><code>$eq</code>: Equal to<br><code>$ne</code>: Not equal to</p>
+</blockquote>
+<pre><code class="shell">db.&lt;collection_name&gt;.find(&#123;&quot;query_condition_field_name&quot;: &#123;$gt: NumberInt(&lt;num&gt;)&#125;&#125;)
+db.&lt;collection_name&gt;.find(&#123;&quot;query_condition_field_name&quot;: &#123;$gt:
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+              <a href="/tags/Database/" rel="tag"># Database</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】MongoDB学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】MongoDB学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/07/06/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/" rel="next" title="【代码】二进制求和">
+                  【代码】二进制求和 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

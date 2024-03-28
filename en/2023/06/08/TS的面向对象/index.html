@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2023/06/08/TS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2023/06/08/TS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/","path":"en/2023/06/08/TS的面向对象/","title":"【英文】TS的面向对象"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】TS的面向对象 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Define-a-class"><span class="nav-number">2.</span> <span class="nav-text">Define a class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-an-object"><span class="nav-number">3.</span> <span class="nav-text">Create an object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">4.</span> <span class="nav-text">Properties</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-instance-properties"><span class="nav-number">4.1.</span> <span class="nav-text">Define instance properties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Access-instance-properties-through-objects"><span class="nav-number">4.1.1.</span> <span class="nav-text">Access instance properties through objects</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-class-properties-static-properties"><span class="nav-number">4.2.</span> <span class="nav-text">Define class properties (static properties)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Access-class-properties-through-class-name"><span class="nav-number">4.2.1.</span> <span class="nav-text">Access class properties through class name</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-read-only-properties"><span class="nav-number">4.3.</span> <span class="nav-text">Define read-only properties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Define-static-read-only-properties"><span class="nav-number">4.3.1.</span> <span class="nav-text">Define static read-only properties</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">5.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-instance-methods"><span class="nav-number">5.1.</span> <span class="nav-text">Define instance methods</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Call-instance-methods-through-objects"><span class="nav-number">5.1.1.</span> <span class="nav-text">Call instance methods through objects</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-class-methods"><span class="nav-number">5.2.</span> <span class="nav-text">Define class methods</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Call-class-methods-through-class-name"><span class="nav-number">5.2.1.</span> <span class="nav-text">Call class methods through class name</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constructor"><span class="nav-number">6.</span> <span class="nav-text">Constructor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-objects-using-the-constructor"><span class="nav-number">6.1.</span> <span class="nav-text">Create objects using the constructor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inheritance"><span class="nav-number">7.</span> <span class="nav-text">Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subclass-inherits-from-superclass"><span class="nav-number">7.1.</span> <span class="nav-text">Subclass inherits from superclass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-overriding"><span class="nav-number">7.2.</span> <span class="nav-text">Method overriding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-instance-of-the-superclass"><span class="nav-number">7.3.</span> <span class="nav-text">Get the instance of the superclass</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-class"><span class="nav-number">8.</span> <span class="nav-text">Abstract class</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-an-abstract-class"><span class="nav-number">8.1.</span> <span class="nav-text">Define an abstract class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-abstract-methods"><span class="nav-number">8.2.</span> <span class="nav-text">Define abstract methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interfaces"><span class="nav-number">9.</span> <span class="nav-text">Interfaces</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-an-interface"><span class="nav-number">9.1.</span> <span class="nav-text">Define an interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-an-interface"><span class="nav-number">9.2.</span> <span class="nav-text">Implement an interface</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encapsulation"><span class="nav-number">10.</span> <span class="nav-text">Encapsulation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shorthand-for-getter-methods"><span class="nav-number">10.1.</span> <span class="nav-text">Shorthand for getter methods</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Access-the-getter-method-directly-using"><span class="nav-number">10.1.1.</span> <span class="nav-text">Access the getter method directly using .</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shorthand-for-setter-methods"><span class="nav-number">10.2.</span> <span class="nav-text">Shorthand for setter methods</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Access-the-setter-method-directly-using"><span class="nav-number">10.2.1.</span> <span class="nav-text">Access the setter method directly using .</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shorthand-for-class-properties"><span class="nav-number">10.3.</span> <span class="nav-text">Shorthand for class properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generics"><span class="nav-number">11.</span> <span class="nav-text">Generics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-generics-when-defining-a-function"><span class="nav-number">11.1.</span> <span class="nav-text">Define generics when defining a function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Define-multiple-generics"><span class="nav-number">11.1.1.</span> <span class="nav-text">Define multiple generics</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-generics-when-calling-a-function"><span class="nav-number">11.2.</span> <span class="nav-text">Specify generics when calling a function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Specify-multiple-generics"><span class="nav-number">11.2.1.</span> <span class="nav-text">Specify multiple generics</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call-a-function-without-specifying-generics"><span class="nav-number">11.3.</span> <span class="nav-text">Call a function without specifying generics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generics-with-interface-inheritance"><span class="nav-number">11.4.</span> <span class="nav-text">Generics with interface inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Call-a-function-that-includes-a-generic-that-implements-an-interface"><span class="nav-number">11.4.1.</span> <span class="nav-text">Call a function that includes a generic that implements an interface</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2023/06/08/TS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】TS的面向对象 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】TS的面向对象
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-06-08 09:32:02" itemprop="dateCreated datePublished" datetime="2023-06-08T09:32:02+00:00">2023-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Object-oriented programming in TypeScript</p>
+<span id="more"></span>
+
+<h2 id="Define-a-class"><a href="#Define-a-class" class="headerlink" title="Define a class"></a>Define a class</h2><ul>
+<li>Class names are usually capitalized</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-an-object"><a href="#Create-an-object" class="headerlink" title="Create an object"></a>Create an object</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> objectName = <span class="keyword">new</span> <span class="title class_">ClassName</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><h3 id="Define-instance-properties"><a href="#Define-instance-properties" class="headerlink" title="Define instance properties"></a>Define instance properties</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="attr">propertyName</span>: <span class="keyword">type</span> = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Access-instance-properties-through-objects"><a href="#Access-instance-properties-through-objects" class="headerlink" title="Access instance properties through objects"></a>Access instance properties through objects</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.<span class="property">propertyName</span> = value;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Define-class-properties-static-properties"><a href="#Define-class-properties-static-properties" class="headerlink" title="Define class properties (static properties)"></a>Define class properties (static properties)</h3><ul>
+<li>Use the <code>static</code> keyword to define class properties</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="attr">propertyName</span>: <span class="keyword">type</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Access-class-properties-through-class-name"><a href="#Access-class-properties-through-class-name" class="headerlink" title="Access class properties through class name"></a>Access class properties through class name</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ClassName</span>.<span class="property">propertyName</span> = value;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Define-read-only-properties"><a href="#Define-read-only-properties" class="headerlink" title="Define read-only properties"></a>Define read-only properties</h3><ul>
+<li>Use the <code>readonly</code> keyword to define read-only properties</li>
+<li>Read-only properties cannot be modified</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="attr">propertyName</span>: <span class="keyword">type</span> = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Define-static-read-only-properties"><a href="#Define-static-read-only-properties" class="headerlink" title="Define static read-only properties"></a>Define static read-only properties</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="attr">propertyName</span>: <span class="keyword">type</span> = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="Define-instance-methods"><a href="#Define-instance-methods" class="headerlink" title="Define instance methods"></a>Define instance methods</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="title function_">methodName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Call-instance-methods-through-objects"><a href="#Call-instance-methods-through-objects" class="headerlink" title="Call instance methods through objects"></a>Call instance methods through objects</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.<span class="title function_">methodName</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Define-class-methods"><a href="#Define-class-methods" class="headerlink" title="Define class methods"></a>Define class methods</h3><ul>
+<li>Use the <code>static</code> keyword to define class methods</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="title function_">methodName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Call-class-methods-through-class-name"><a href="#Call-class-methods-through-class-name" class="headerlink" title="Call class methods through class name"></a>Call class methods through class name</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ClassName</span>.<span class="title function_">methodName</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h2><ul>
+<li>Use <code>constructor</code> as the method name to define a constructor</li>
+<li><code>this</code> represents the current instance</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">propertyName</span>: <span class="keyword">type</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">propertyName: <span class="keyword">type</span></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">propertyName</span> = propertyName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-objects-using-the-constructor"><a href="#Create-objects-using-the-constructor" class="headerlink" title="Create objects using the constructor"></a>Create objects using the constructor</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> objectName = <span class="keyword">new</span> <span class="title class_">ClassName</span>(propertyValue);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h2><h3 id="Subclass-inherits-from-superclass"><a href="#Subclass-inherits-from-superclass" class="headerlink" title="Subclass inherits from superclass"></a>Subclass inherits from superclass</h3><ul>
+<li>Use the <code>extends</code> keyword to implement class inheritance</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Method-overriding"><a href="#Method-overriding" class="headerlink" title="Method overriding"></a>Method overriding</h3><ul>
+<li>If a subclass defines a method with the same name as the superclass, the method in the subclass will override the method in the superclass</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="title function_">methodName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123;</span><br><span class="line">    <span class="title function_">methodName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-the-instance-of-the-superclass"><a href="#Get-the-instance-of-the-superclass" class="headerlink" title="Get the instance of the superclass"></a>Get the instance of the superclass</h3><ul>
+<li>Use the <code>super</code> keyword to get the instance of the superclass<ul>
+<li>Call the constructor of the superclass using <code>super()</code><ul>
+<li>If a subclass defines a constructor, be sure to call the constructor of the superclass in the subclass’s constructor</li>
+</ul>
+</li>
+<li>Call a method of the superclass using <code>super.methodName</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">propertyName</span>: dataType;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">propertyName: dataType</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">propertyName</span> = propertyName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">superClassMethod</span>(<span class="params"></span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">propertyName</span>: dataType;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">propertyName: dataType</span>) &#123;</span><br><span class="line">        <span class="variable language_">super</span>(propertyName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">subClassMethod</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">super</span>.superClassMethod()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Abstract-class"><a href="#Abstract-class" class="headerlink" title="Abstract class"></a>Abstract class</h2><h3 id="Define-an-abstract-class"><a href="#Define-an-abstract-class" class="headerlink" title="Define an abstract class"></a>Define an abstract class</h3><ul>
+<li>Use the <code>abstract</code> keyword to define an abstract class, abstract classes cannot create objects, they are mainly used as base classes to be inherited</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Define-abstract-methods"><a href="#Define-abstract-methods" class="headerlink" title="Define abstract methods"></a>Define abstract methods</h3><ul>
+<li>In an abstract class, abstract methods can be defined using the <code>abstract</code> keyword, abstract methods do not have a method body</li>
+<li>Subclasses that inherit from an abstract class that contains abstract methods must override the abstract methods</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="title function_">abstractMethodName</span>(parameterList): returnType;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><h3 id="Define-an-interface"><a href="#Define-an-interface" class="headerlink" title="Define an interface"></a>Define an interface</h3><ul>
+<li>Use the <code>interface</code> keyword to define an interface</li>
+<li>Interfaces are used to define the structure of a class and specify which properties and methods a class should have</li>
+<li>The methods in an interface can only be abstract methods</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">InterfaceName</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">propertyName</span>: dataType;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">methodName</span>(): <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Implement-an-interface"><a href="#Implement-an-interface" class="headerlink" title="Implement an interface"></a>Implement an interface</h3><ul>
+<li>Use the <code>implements</code> keyword to implement an interface</li>
+<li>The subclass that implements an interface must override all the properties and methods defined in the interface</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> <span class="keyword">implements</span> <span class="title class_">InterfaceName</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">propertyName</span>: dataType;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">propertyName: dataType</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">propertyName</span> = propertyName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">methodName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h2><ul>
+<li>Use access modifiers to limit the scope of a property</li>
+</ul>
+<blockquote>
+<p><code>public</code>: public, default value, can be modified at any time<br><code>private</code>: private, can only be used within the class<br><code>protected</code>: protected, can only be used within the current class and its subclasses</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="attr">_propertyName</span>: dataType;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">propertyName: dataType</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_propertyName</span> = propertyName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">propertyName</span>(): dataType &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_propertyName</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">propertyName</span>(<span class="params">propertyName: dataType</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_propertyName</span> = propertyName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shorthand-for-getter-methods"><a href="#Shorthand-for-getter-methods" class="headerlink" title="Shorthand for getter methods"></a>Shorthand for getter methods</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> <span class="title function_">propertyName</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_propertyName</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Access-the-getter-method-directly-using"><a href="#Access-the-getter-method-directly-using" class="headerlink" title="Access the getter method directly using ."></a>Access the getter method directly using <code>.</code></h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.<span class="property">propertyName</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shorthand-for-setter-methods"><a href="#Shorthand-for-setter-methods" class="headerlink" title="Shorthand for setter methods"></a>Shorthand for setter methods</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="title function_">propertyName</span>(<span class="params">propertyName: dataType</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_propertyName</span> = propertyName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Access-the-setter-method-directly-using"><a href="#Access-the-setter-method-directly-using" class="headerlink" title="Access the setter method directly using ."></a>Access the setter method directly using <code>.</code></h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.<span class="property">propertyName</span> = propertyValue;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shorthand-for-class-properties"><a href="#Shorthand-for-class-properties" class="headerlink" title="Shorthand for class properties"></a>Shorthand for class properties</h3><ul>
+<li>When defining a class, you don’t need to define the properties separately, you can define the properties directly in the constructor’s parameter list by adding access modifiers</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> propertyName: dataType</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">propertyName</span> = propertyName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h2><h3 id="Define-generics-when-defining-a-function"><a href="#Define-generics-when-defining-a-function" class="headerlink" title="Define generics when defining a function"></a>Define generics when defining a function</h3><ul>
+<li>When defining a function, if you encounter a situation where the type is not clear, you can use generics</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> functionName&lt;T&gt;(<span class="attr">parameter</span>: T): T &#123;</span><br><span class="line">    <span class="keyword">return</span> parameter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Define-multiple-generics"><a href="#Define-multiple-generics" class="headerlink" title="Define multiple generics"></a>Define multiple generics</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> functionName&lt;T, K&gt;(<span class="attr">parameter</span>: T): T &#123;</span><br><span class="line">    <span class="keyword">return</span> parameter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specify-generics-when-calling-a-function"><a href="#Specify-generics-when-calling-a-function" class="headerlink" title="Specify generics when calling a function"></a>Specify generics when calling a function</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">functionName&lt;dataType&gt;(argument);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Specify-multiple-generics"><a href="#Specify-multiple-generics" class="headerlink" title="Specify multiple generics"></a>Specify multiple generics</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">functionName&lt;dataType, dataType&gt;(argument);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Call-a-function-without-specifying-generics"><a href="#Call-a-function-without-specifying-generics" class="headerlink" title="Call a function without specifying generics"></a>Call a function without specifying generics</h3><ul>
+<li>When calling a function, TypeScript will automatically infer the generic type</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">functionName</span>(argument);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Generics-with-interface-inheritance"><a href="#Generics-with-interface-inheritance" class="headerlink" title="Generics with interface inheritance"></a>Generics with interface inheritance</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">InterfaceName</span> &#123;</span><br><span class="line">    <span class="attr">propertyName</span>: dataType;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> functionName&lt;T <span class="keyword">extends</span> <span class="title class_">InterfaceName</span>&gt;(<span class="attr">parameter</span>: T): T &#123;</span><br><span class="line">    <span class="keyword">return</span> parameter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Call-a-function-that-includes-a-generic-that-implements-an-interface"><a href="#Call-a-function-that-includes-a-generic-that-implements-an-interface" class="headerlink" title="Call a function that includes a generic that implements an interface"></a>Call a function that includes a generic that implements an interface</h4><ul>
+<li>When calling a function that includes a generic that implements an interface, the parameter passed should be an instance of a class that implements the interface</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> <span class="keyword">implements</span> <span class="title class_">InterfaceName</span> &#123;</span><br><span class="line">    <span class="attr">propertyName</span>: dataType;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> objectName = <span class="keyword">new</span> <span class="title class_">ClassName</span>(...)</span><br><span class="line"><span class="title function_">functionName</span>(objectName);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/06/08/TS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="prev" title="【笔记】TS的面向对象">
+                  <i class="fa fa-angle-left"></i> 【笔记】TS的面向对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2023/06/08/Less%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【笔记】Less学习笔记">
+                  【笔记】Less学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2023/06/08/TS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2023/06/08/TS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

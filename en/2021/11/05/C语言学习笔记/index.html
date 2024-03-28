@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2021/11/05/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2021/11/05/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2021/11/05/C语言学习笔记/","title":"【英文】C语言学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】C语言学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-Keyword"><span class="nav-number">2.</span> <span class="nav-text">include Keyword</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Header-file-in-the-system-directory"><span class="nav-number">2.1.</span> <span class="nav-text">Header file in the system directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Header-file-in-the-current-directory"><span class="nav-number">2.2.</span> <span class="nav-text">Header file in the current directory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-Function"><span class="nav-number">3.</span> <span class="nav-text">main Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">4.</span> <span class="nav-text">Comments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Line-Comment"><span class="nav-number">4.1.</span> <span class="nav-text">Line Comment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Comment"><span class="nav-number">4.2.</span> <span class="nav-text">Block Comment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Naming-Rules"><span class="nav-number">5.</span> <span class="nav-text">Variable Naming Rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#print-Function"><span class="nav-number">6.</span> <span class="nav-text">print Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compilation-Errors"><span class="nav-number">7.</span> <span class="nav-text">Compilation Errors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Warning"><span class="nav-number">7.1.</span> <span class="nav-text">Warning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error"><span class="nav-number">7.2.</span> <span class="nav-text">Error</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return-Keyword"><span class="nav-number">8.</span> <span class="nav-text">return Keyword</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#return-in-the-main-Function"><span class="nav-number">8.1.</span> <span class="nav-text">return in the main Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Function"><span class="nav-number">9.</span> <span class="nav-text">System Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Finding-Required-Header-Files-on-Linux"><span class="nav-number">10.</span> <span class="nav-text">Finding Required Header Files on Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Location-of-Header-Files"><span class="nav-number">11.</span> <span class="nav-text">Location of Header Files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-Platform-Considerations"><span class="nav-number">12.</span> <span class="nav-text">Cross-Platform Considerations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operating-System-Structure"><span class="nav-number">13.</span> <span class="nav-text">Operating System Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Mode"><span class="nav-number">13.1.</span> <span class="nav-text">User Mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kernel-Mode"><span class="nav-number">13.2.</span> <span class="nav-text">Kernel Mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU"><span class="nav-number">14.</span> <span class="nav-text">CPU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-Between-32-bit-and-64-bit-Systems"><span class="nav-number">14.1.</span> <span class="nav-text">Difference Between 32-bit and 64-bit Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RISC-and-CISC"><span class="nav-number">14.2.</span> <span class="nav-text">RISC and CISC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constants"><span class="nav-number">15.</span> <span class="nav-text">Constants</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-Constants"><span class="nav-number">15.1.</span> <span class="nav-text">Defining Constants</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define"><span class="nav-number">15.1.1.</span> <span class="nav-text">define</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const"><span class="nav-number">15.1.2.</span> <span class="nav-text">const</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-System-Conversion"><span class="nav-number">16.</span> <span class="nav-text">Number System Conversion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Converting-Binary"><span class="nav-number">16.1.</span> <span class="nav-text">Converting Binary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Quick-Binary-to-Octal-Conversion"><span class="nav-number">16.1.1.</span> <span class="nav-text">Quick Binary to Octal Conversion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Quick-Binary-to-Hexadecimal-Conversion"><span class="nav-number">16.1.2.</span> <span class="nav-text">Quick Binary to Hexadecimal Conversion</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unsigned-and-Signed-Numbers"><span class="nav-number">16.2.</span> <span class="nav-text">Unsigned and Signed Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unsigned-Numbers"><span class="nav-number">16.2.1.</span> <span class="nav-text">Unsigned Numbers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Signed-Numbers"><span class="nav-number">16.2.2.</span> <span class="nav-text">Signed Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Signed-Magnitude"><span class="nav-number">16.2.2.1.</span> <span class="nav-text">Signed Magnitude</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ones%E2%80%99-Complement"><span class="nav-number">16.2.2.2.</span> <span class="nav-text">Ones’ Complement</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Two%E2%80%99s-Complement"><span class="nav-number">16.2.2.3.</span> <span class="nav-text">Two’s Complement</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sizeof-Keyword"><span class="nav-number">17.</span> <span class="nav-text">sizeof Keyword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Endianness"><span class="nav-number">18.</span> <span class="nav-text">Endianness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Types"><span class="nav-number">19.</span> <span class="nav-text">Data Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-Qualifiers"><span class="nav-number">20.</span> <span class="nav-text">Type Qualifiers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#const-Keyword"><span class="nav-number">20.1.</span> <span class="nav-text">const Keyword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-Keyword"><span class="nav-number">20.2.</span> <span class="nav-text">volatile Keyword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#register-Keyword"><span class="nav-number">20.3.</span> <span class="nav-text">register Keyword</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2021/11/05/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】C语言学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】C语言学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-05 17:37:54" itemprop="dateCreated datePublished" datetime="2021-11-05T17:37:54+00:00">2021-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">C语言学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>C is a general-purpose programming language widely used in the development of system software and application software. It was designed and developed by Dennis Ritchie and Ken Thompson at Bell Labs between 1969 and 1973, based on the B language, for the purpose of porting and developing the UNIX operating system. C language is favored in program design for its characteristics of efficiency, flexibility, rich functionality, strong expressiveness, and high portability, becoming the most widely used programming language in the past 25 years. (<a href="/302.html?target=https://wiki.hk.wjbk.site/zh-hans/C%E8%AF%AD%E8%A8%80">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="include-Keyword"><a href="#include-Keyword" class="headerlink" title="include Keyword"></a>include Keyword</h2><ul>
+<li>Include a header file</li>
+</ul>
+<h3 id="Header-file-in-the-system-directory"><a href="#Header-file-in-the-system-directory" class="headerlink" title="Header file in the system directory"></a>Header file in the system directory</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;header_file.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Header-file-in-the-current-directory"><a href="#Header-file-in-the-current-directory" class="headerlink" title="Header file in the current directory"></a>Header file in the current directory</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;header_file.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="main-Function"><a href="#main-Function" class="headerlink" title="main Function"></a>main Function</h2><ul>
+<li>The main function is the entry point of a C program.</li>
+<li>A C program must have one and only one main function.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><h3 id="Line-Comment"><a href="#Line-Comment" class="headerlink" title="Line Comment"></a>Line Comment</h3><ul>
+<li>This type of comment is inherited from C++ and can now be used in C language.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Line comment</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Block-Comment"><a href="#Block-Comment" class="headerlink" title="Block Comment"></a>Block Comment</h3><ul>
+<li>This type of comment is the standard way of commenting in C language.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Block comment</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Variable-Naming-Rules"><a href="#Variable-Naming-Rules" class="headerlink" title="Variable Naming Rules"></a>Variable Naming Rules</h2><ul>
+<li>Allowed characters include letters, numbers, and underscores.</li>
+<li>The first character cannot be a number.</li>
+<li>Cannot be a C language built-in keyword.</li>
+</ul>
+<h2 id="print-Function"><a href="#print-Function" class="headerlink" title="print Function"></a>print Function</h2><ul>
+<li>Outputs a string to a standard output device.</li>
+</ul>
+<blockquote>
+<p><code>&lt;str&gt;</code>: Any type of data</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    system(&lt;str&gt;);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Compilation-Errors"><a href="#Compilation-Errors" class="headerlink" title="Compilation Errors"></a>Compilation Errors</h2><h3 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h3><ul>
+<li>A warning that does not affect compilation.</li>
+</ul>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul>
+<li>An error that prevents compilation.</li>
+</ul>
+<h2 id="return-Keyword"><a href="#return-Keyword" class="headerlink" title="return Keyword"></a>return Keyword</h2><ul>
+<li>Return value.</li>
+<li>If the return type is void, no return value is needed.</li>
+<li>Execution stops immediately at the return statement, and any code after return has no effect.</li>
+</ul>
+<h3 id="return-in-the-main-Function"><a href="#return-in-the-main-Function" class="headerlink" title="return in the main Function"></a>return in the main Function</h3><ul>
+<li>Calling the return keyword in the main function immediately terminates the program.</li>
+<li><code>return 0</code> indicates successful execution.</li>
+<li><code>return -1</code> indicates program failure.</li>
+</ul>
+<h2 id="System-Function"><a href="#System-Function" class="headerlink" title="System Function"></a>System Function</h2><ul>
+<li>Invoking system allows running another program within a C program.</li>
+</ul>
+<blockquote>
+<p><code>&lt;command&gt;</code>: Command specific to the current operating system.</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    system(<span class="string">&quot;&lt;command&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Finding-Required-Header-Files-on-Linux"><a href="#Finding-Required-Header-Files-on-Linux" class="headerlink" title="Finding Required Header Files on Linux"></a>Finding Required Header Files on Linux</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man 2 print</span><br><span class="line">man 3 system</span><br></pre></td></tr></table></figure>
+
+<h2 id="Location-of-Header-Files"><a href="#Location-of-Header-Files" class="headerlink" title="Location of Header Files"></a>Location of Header Files</h2><ul>
+<li>Location of header files in the Linux platform</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/include/stdio.h</span><br></pre></td></tr></table></figure>
+
+<h2 id="Cross-Platform-Considerations"><a href="#Cross-Platform-Considerations" class="headerlink" title="Cross-Platform Considerations"></a>Cross-Platform Considerations</h2><ul>
+<li>In different platforms, C language can guarantee consistent syntax in source code, but not necessarily the same execution results.</li>
+<li>To address cross-platform issues, POSIX standards can be used for writing code.<ul>
+<li>Windows has poor support for POSIX standards.</li>
+</ul>
+</li>
+<li>When possible, use functions that comply with POSIX standards.</li>
+</ul>
+<h2 id="Operating-System-Structure"><a href="#Operating-System-Structure" class="headerlink" title="Operating System Structure"></a>Operating System Structure</h2><h3 id="User-Mode"><a href="#User-Mode" class="headerlink" title="User Mode"></a>User Mode</h3><ul>
+<li>Regular C programs can only access their own memory.</li>
+</ul>
+<h3 id="Kernel-Mode"><a href="#Kernel-Mode" class="headerlink" title="Kernel Mode"></a>Kernel Mode</h3><ul>
+<li>Only low-level C programs can access memory related to the system kernel.</li>
+</ul>
+<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><h3 id="Difference-Between-32-bit-and-64-bit-Systems"><a href="#Difference-Between-32-bit-and-64-bit-Systems" class="headerlink" title="Difference Between 32-bit and 64-bit Systems"></a>Difference Between 32-bit and 64-bit Systems</h3><ul>
+<li>32-bit CPU<ul>
+<li>32 registers can hold 32 binary bits.</li>
+<li>32-bit CPU has a 32-bit bus.</li>
+<li>Maximum memory capacity managed by 32-bit is 4GB.<ul>
+<li>Therefore, installing a 64-bit OS on a system with less than or equal to 4GB of memory doesn’t necessarily offer faster performance compared to a 32-bit system.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>By installing a 64-bit OS on a 64-bit CPU, the system becomes 64-bit.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0000 0000 0000 0000 0000 0000 0000 0000</span><br><span class="line">1111 1111 1111 1111 1111 1111 1111 1111</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>64-bit CPU<ul>
+<li>64 registers can hold 64 binary bits.</li>
+<li>64-bit CPU has a 64-bit bus.</li>
+<li>The maximum memory capacity managed by 64-bit is at least greater than 4GB.</li>
+</ul>
+</li>
+<li>By installing a 32-bit OS on a 64-bit CPU, the system is 32-bit.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000</span><br><span class="line">1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Quasi-64-bit CPU<ul>
+<li>64 registers with a 32-bit bus.</li>
+<li>Operations can achieve 64-bit effectiveness, but data exchange externally can only be done at 32-bit speed.</li>
+</ul>
+</li>
+</ul>
+<h3 id="RISC-and-CISC"><a href="#RISC-and-CISC" class="headerlink" title="RISC and CISC"></a>RISC and CISC</h3><ul>
+<li>RISC: Reduced Instruction Set Computing<ul>
+<li>SPARC</li>
+<li>ARM</li>
+</ul>
+</li>
+<li>CISC: Complex Instruction Set Computing<ul>
+<li>x86</li>
+</ul>
+</li>
+</ul>
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><h3 id="Defining-Constants"><a href="#Defining-Constants" class="headerlink" title="Defining Constants"></a>Defining Constants</h3><h4 id="define"><a href="#define" class="headerlink" title="define"></a>define</h4><ul>
+<li>This method of defining constants is called macro constants, where constant names are usually in all uppercase.</li>
+<li>The define directive typically follows include.</li>
+<li>C language typically uses define for defining constants.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> CONSTANT_NAME CONSTANT_VALUE</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="const"><a href="#const" class="headerlink" title="const"></a>const</h4><ul>
+<li>Constant variable names with const can be lowercase.</li>
+<li>const is usually written within code.</li>
+<li>In C++, const is typically used for defining constants.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> constant_type CONSTANT_NAME = CONSTANT_VALUE</span><br></pre></td></tr></table></figure>
+
+<h2 id="Number-System-Conversion"><a href="#Number-System-Conversion" class="headerlink" title="Number System Conversion"></a>Number System Conversion</h2><table>
+<thead>
+<tr>
+<th>Decimal</th>
+<th>Binary</th>
+<th>Octal</th>
+<th>Hexadecimal</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>101</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>110</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>111</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1000</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1001</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1010</td>
+<td>11</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1011</td>
+<td>12</td>
+<td>A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1100</td>
+<td>13</td>
+<td>B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1101</td>
+<td>14</td>
+<td>C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1110</td>
+<td>15</td>
+<td>D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1111</td>
+<td>15</td>
+<td>E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>10000</td>
+<td>17</td>
+<td>F</td>
+</tr>
+<tr>
+<td>16</td>
+<td>10001</td>
+<td>20</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<ul>
+<li>1 binary digit &#x3D; 1 bit</li>
+<li>8 bits &#x3D; 1 byte</li>
+<li>2 bytes &#x3D; 1 word</li>
+<li>2 words &#x3D; 1 double word</li>
+<li>1024 bytes &#x3D; 1 kilobyte (KB)</li>
+<li>1024 kilobytes &#x3D; 1 megabyte (MB)</li>
+<li>1024 megabytes &#x3D; 1 gigabyte (GB)</li>
+</ul>
+<h3 id="Converting-Binary"><a href="#Converting-Binary" class="headerlink" title="Converting Binary"></a>Converting Binary</h3><ul>
+<li>If there is a binary number set like this:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10101010111</span><br></pre></td></tr></table></figure>
+
+<h4 id="Quick-Binary-to-Octal-Conversion"><a href="#Quick-Binary-to-Octal-Conversion" class="headerlink" title="Quick Binary to Octal Conversion"></a>Quick Binary to Octal Conversion</h4><ul>
+<li>Divide into groups of 3 bits each, pad the front with zeros if needed</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">010 101 010 111</span><br><span class="line"></span><br><span class="line">2   5   2   7</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Therefore, the Octal equivalent is 2527</li>
+</ul>
+<h4 id="Quick-Binary-to-Hexadecimal-Conversion"><a href="#Quick-Binary-to-Hexadecimal-Conversion" class="headerlink" title="Quick Binary to Hexadecimal Conversion"></a>Quick Binary to Hexadecimal Conversion</h4><ul>
+<li>Divide into groups of 4 bits each, pad the front with zeros if needed</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0101 0101 0111</span><br><span class="line"></span><br><span class="line">5    5    7   </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Therefore, the Hexadecimal equivalent is 557</li>
+</ul>
+<h3 id="Unsigned-and-Signed-Numbers"><a href="#Unsigned-and-Signed-Numbers" class="headerlink" title="Unsigned and Signed Numbers"></a>Unsigned and Signed Numbers</h3><h4 id="Unsigned-Numbers"><a href="#Unsigned-Numbers" class="headerlink" title="Unsigned Numbers"></a>Unsigned Numbers</h4><ul>
+<li>Can only represent positive numbers.</li>
+<li>Range: 0 to 255</li>
+</ul>
+<h4 id="Signed-Numbers"><a href="#Signed-Numbers" class="headerlink" title="Signed Numbers"></a>Signed Numbers</h4><ul>
+<li>The first bit is a sign bit, allowing for representation of negative numbers.</li>
+<li>Range: -125 to 124</li>
+</ul>
+<h5 id="Signed-Magnitude"><a href="#Signed-Magnitude" class="headerlink" title="Signed Magnitude"></a>Signed Magnitude</h5><ul>
+<li>The first bit is the sign bit, and the remaining bits represent the magnitude.</li>
+<li>Sign bit for positive numbers is 0, for negative numbers is 1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+7 in signed magnitude (1 byte)</span><br><span class="line">0000 0111</span><br><span class="line"></span><br><span class="line">-7 in signed magnitude (1 byte)</span><br><span class="line">1000 0111</span><br></pre></td></tr></table></figure>
+
+<h5 id="Ones’-Complement"><a href="#Ones’-Complement" class="headerlink" title="Ones’ Complement"></a>Ones’ Complement</h5><ul>
+<li>For positive numbers, ones’ complement is the same as signed magnitude.</li>
+<li>For negative numbers, the first bit is the sign bit, with the other bits being the one’s complement of the magnitude.<ul>
+<li>Sign bit for positive numbers is 0, for negative numbers is 1</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+7 in ones’ complement (1 byte)</span><br><span class="line">0000 0111</span><br><span class="line"></span><br><span class="line">-7 in ones’ complement (1 byte)</span><br><span class="line">1111 1000</span><br></pre></td></tr></table></figure>
+
+<h5 id="Two’s-Complement"><a href="#Two’s-Complement" class="headerlink" title="Two’s Complement"></a>Two’s Complement</h5><ul>
+<li>For positive numbers, two’s complement is the same as ones’ complement.</li>
+<li>For negative numbers, the first bit is the sign bit, and the rest of the bits are the one’s complement plus 1.<ul>
+<li>Sign bit for positive numbers is 0, for negative numbers is 1</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+7 in two’s complement (1 byte)</span><br><span class="line">0000 0111</span><br><span class="line"></span><br><span class="line">-7 in two’s complement (1 byte)</span><br><span class="line">1111 1001</span><br></pre></td></tr></table></figure>
+
+<h2 id="sizeof-Keyword"><a href="#sizeof-Keyword" class="headerlink" title="sizeof Keyword"></a>sizeof Keyword</h2><ul>
+<li>Determines the size of a variable in memory.</li>
+<li>Returns an unsigned number.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(variable)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Endianness"><a href="#Endianness" class="headerlink" title="Endianness"></a>Endianness</h2><ul>
+<li>Little-Endian (reverse): High memory stores integer high-order bits, while low memory stores integer low-order bits.<ul>
+<li>x86 and ARM CPUs typically use Little-Endian storage.</li>
+</ul>
+</li>
+<li>Big-Endian (normal): Low memory stores integer high-order bits, while high memory stores integer low-order bits.<ul>
+<li>Unix CPUs typically use Big-Endian storage.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h2><p><a href="/zh-CN/2021/11/12/C%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Link to Data Types post</a></p>
+<h2 id="Type-Qualifiers"><a href="#Type-Qualifiers" class="headerlink" title="Type Qualifiers"></a>Type Qualifiers</h2><h3 id="const-Keyword"><a href="#const-Keyword" class="headerlink" title="const Keyword"></a>const Keyword</h3><ul>
+<li>Prevents variables from being modified; can be understood as a constant.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> type variable = value;</span><br></pre></td></tr></table></figure>
+
+<h3 id="volatile-Keyword"><a href="#volatile-Keyword" class="headerlink" title="volatile Keyword"></a>volatile Keyword</h3><ul>
+<li>When a variable is changed frequently, the compiler automatically optimizes the code. This optimization can have its own drawbacks. To prevent the compiler from optimizing, the volatile keyword can be used.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> type variable = value;</span><br></pre></td></tr></table></figure>
+
+<h3 id="register-Keyword"><a href="#register-Keyword" class="headerlink" title="register Keyword"></a>register Keyword</h3><ul>
+<li>Directly places variables in registers for faster access.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/11/05/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】C语言学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】C语言学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2021/11/07/ZShell%E6%8F%90%E7%A4%BA%E7%AC%A6%E5%A2%9E%E5%8A%A0Git%E5%88%86%E6%94%AF%E6%98%BE%E7%A4%BA/" rel="next" title="【进阶】ZShell提示符增加Git分支显示">
+                  【进阶】ZShell提示符增加Git分支显示 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2021/11/05/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2021/11/05/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

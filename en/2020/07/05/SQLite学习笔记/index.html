@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/en/2020/07/05/SQLite%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://loli.fj.cn/en/2020/07/05/SQLite%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"en/2020/07/05/SQLite学习笔记/","title":"【英文】SQLite学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【英文】SQLite学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">甜妹统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>friends</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>reward</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>command</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>contribute</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+<!-- 切换搜索引擎 -->
+<script type="text/javascript" src="/dist/js/elasticsearch.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-SQLite"><span class="nav-number">2.</span> <span class="nav-text">Installing SQLite</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS"><span class="nav-number">2.1.</span> <span class="nav-text">MacOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux"><span class="nav-number">2.2.</span> <span class="nav-text">Linux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Starting-SQLite"><span class="nav-number">3.</span> <span class="nav-text">Starting SQLite</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Executing-Direct-Commands"><span class="nav-number">3.1.</span> <span class="nav-text">Executing Direct Commands</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Types"><span class="nav-number">4.</span> <span class="nav-text">Data Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLite-Commands"><span class="nav-number">5.</span> <span class="nav-text">SQLite Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Comments"><span class="nav-number">5.1.</span> <span class="nav-text">Comments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-Help"><span class="nav-number">5.2.</span> <span class="nav-text">Viewing Help</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Opening-or-Creating-Database-Files"><span class="nav-number">5.3.</span> <span class="nav-text">Opening or Creating Database Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewing-Information-of-the-Current-Database"><span class="nav-number">5.4.</span> <span class="nav-text">Viewing Information of the Current Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Displaying-All-Databases"><span class="nav-number">5.5.</span> <span class="nav-text">Displaying All Databases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Displaying-All-Tables"><span class="nav-number">5.6.</span> <span class="nav-text">Displaying All Tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backing-Up-Database-Exporting"><span class="nav-number">5.7.</span> <span class="nav-text">Backing Up Database (Exporting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restoring-Database-Importing"><span class="nav-number">5.8.</span> <span class="nav-text">Restoring Database (Importing)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Statements"><span class="nav-number">6.</span> <span class="nav-text">SQL Statements</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-Tables"><span class="nav-number">6.1.</span> <span class="nav-text">Creating Tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropping-Tables"><span class="nav-number">6.2.</span> <span class="nav-text">Dropping Tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inserting-Data"><span class="nav-number">6.3.</span> <span class="nav-text">Inserting Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Specifying-Fields"><span class="nav-number">6.3.1.</span> <span class="nav-text">Specifying Fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Not-Specifying-Fields"><span class="nav-number">6.3.2.</span> <span class="nav-text">Not Specifying Fields</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copying-Data-from-a-Table"><span class="nav-number">6.4.</span> <span class="nav-text">Copying Data from a Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Specifying-Fields-1"><span class="nav-number">6.4.1.</span> <span class="nav-text">Specifying Fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Not-Specifying-Fields-1"><span class="nav-number">6.4.2.</span> <span class="nav-text">Not Specifying Fields</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Querying-Data"><span class="nav-number">6.5.</span> <span class="nav-text">Querying Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Querying-All-Fields"><span class="nav-number">6.5.1.</span> <span class="nav-text">Querying All Fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Querying-Specific-Fields"><span class="nav-number">6.5.2.</span> <span class="nav-text">Querying Specific Fields</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Restricting-Statements"><span class="nav-number">6.5.3.</span> <span class="nav-text">Restricting Statements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Operators"><span class="nav-number">6.5.4.</span> <span class="nav-text">Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Numeric-Operators"><span class="nav-number">6.5.4.1.</span> <span class="nav-text">Numeric Operators</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modifying-Data"><span class="nav-number">6.6.</span> <span class="nav-text">Modifying Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-Data"><span class="nav-number">6.7.</span> <span class="nav-text">Deleting Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Completion"><span class="nav-number">7.</span> <span class="nav-text">Completion</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/lolifjcn" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;lolifjcn" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/en/2020/07/05/SQLite%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【英文】SQLite学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【英文】SQLite学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-07-05 09:33:01" itemprop="dateCreated datePublished" datetime="2020-07-05T09:33:01+00:00">2020-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-28 10:31:17" itemprop="dateModified" datetime="2024-03-28T10:31:17+00:00">2024-03-28</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>SQLite is a relational database management system that follows the ACID properties, and it is contained within a relatively small C library. Unlike many other database management systems, SQLite is not a client&#x2F;server structured database engine but is integrated into the user’s program. (<a href="/302.html?target=https://en.wikipedia.org/wiki/SQLite">Wikipedia</a>)</p>
+<span id="more"></span>
+
+<h2 id="Installing-SQLite"><a href="#Installing-SQLite" class="headerlink" title="Installing SQLite"></a>Installing SQLite</h2><h3 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h3><ul>
+<li>Newer versions of MacOS come with SQLite pre-installed. If not, you can use brew to install it.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install sqlite</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install sqlite3</span><br></pre></td></tr></table></figure>
+
+<h2 id="Starting-SQLite"><a href="#Starting-SQLite" class="headerlink" title="Starting SQLite"></a>Starting SQLite</h2><ul>
+<li>SQLite allows direct command operations on databases.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3</span><br></pre></td></tr></table></figure>
+
+<h3 id="Executing-Direct-Commands"><a href="#Executing-Direct-Commands" class="headerlink" title="Executing Direct Commands"></a>Executing Direct Commands</h3><ul>
+<li>When executing only one command, you can also append the command without starting SQLite.</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;.db</code>: Name of the database you want to operate on<br><code>.show</code>: A SQLite command</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 &lt;name&gt;.db .show</span><br></pre></td></tr></table></figure>
+
+<h2 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h2><table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NULL</td>
+<td>Empty value</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>Signed integer. Automatically stored in 1, 2, 3, 4, 6, or 8 bytes based on the value’s size</td>
+</tr>
+<tr>
+<td>real</td>
+<td>Floating-point. Stores an 8-byte decimal number</td>
+</tr>
+<tr>
+<td>text</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>blob</td>
+<td>Blob</td>
+</tr>
+</tbody></table>
+<h2 id="SQLite-Commands"><a href="#SQLite-Commands" class="headerlink" title="SQLite Commands"></a>SQLite Commands</h2><h3 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-- Comment content</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-Help"><a href="#Viewing-Help" class="headerlink" title="Viewing Help"></a>Viewing Help</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.help</span><br></pre></td></tr></table></figure>
+
+<h3 id="Opening-or-Creating-Database-Files"><a href="#Opening-or-Creating-Database-Files" class="headerlink" title="Opening or Creating Database Files"></a>Opening or Creating Database Files</h3><ul>
+<li>SQLite stores data in files, so opening a database essentially means opening a <code>.db</code> file.</li>
+</ul>
+<blockquote>
+<p><code>&lt;name&gt;</code>: Name of the database file you want to create or open</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.open &lt;name&gt;.db</span><br><span class="line"></span><br><span class="line">sqlite3 &lt;name&gt;.db</span><br></pre></td></tr></table></figure>
+
+<h3 id="Viewing-Information-of-the-Current-Database"><a href="#Viewing-Information-of-the-Current-Database" class="headerlink" title="Viewing Information of the Current Database"></a>Viewing Information of the Current Database</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.show</span><br></pre></td></tr></table></figure>
+
+<h3 id="Displaying-All-Databases"><a href="#Displaying-All-Databases" class="headerlink" title="Displaying All Databases"></a>Displaying All Databases</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.databases</span><br></pre></td></tr></table></figure>
+
+<h3 id="Displaying-All-Tables"><a href="#Displaying-All-Tables" class="headerlink" title="Displaying All Tables"></a>Displaying All Tables</h3><ul>
+<li>Essentially prints the creation statements of tables.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.schema</span><br></pre></td></tr></table></figure>
+
+<h3 id="Backing-Up-Database-Exporting"><a href="#Backing-Up-Database-Exporting" class="headerlink" title="Backing Up Database (Exporting)"></a>Backing Up Database (Exporting)</h3><ul>
+<li>Using input redirection to export the database.</li>
+</ul>
+<blockquote>
+<p><code>&lt;file&gt;.sql</code>: Export as an SQL file</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 &lt;name&gt;.db .dump &gt; &lt;file&gt;.sql</span><br></pre></td></tr></table></figure>
+
+<h3 id="Restoring-Database-Importing"><a href="#Restoring-Database-Importing" class="headerlink" title="Restoring Database (Importing)"></a>Restoring Database (Importing)</h3><ul>
+<li>Using input redirection to import the database.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 &lt;name&gt;.db &lt; &lt;file&gt;.sql</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Statements"><a href="#SQL-Statements" class="headerlink" title="SQL Statements"></a>SQL Statements</h2><h3 id="Creating-Tables"><a href="#Creating-Tables" class="headerlink" title="Creating Tables"></a>Creating Tables</h3><blockquote>
+<p><code>&lt;table_name&gt;</code>: Table name<br><code>&lt;field_name&gt;</code>: Field name<br><code>&lt;field_type&gt;</code>: Field type</p>
+</blockquote>
+<blockquote>
+<p><code>PRIMARY KEY</code>: Defined as the primary key</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span>(</span><br><span class="line">  <span class="operator">&lt;</span>field_name_1<span class="operator">&gt;</span> <span class="operator">&lt;</span>field_type_1<span class="operator">&gt;</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  <span class="operator">&lt;</span>field_name_2<span class="operator">&gt;</span> <span class="operator">&lt;</span>field_type_2<span class="operator">&gt;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Dropping-Tables"><a href="#Dropping-Tables" class="headerlink" title="Dropping Tables"></a>Dropping Tables</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Inserting-Data"><a href="#Inserting-Data" class="headerlink" title="Inserting Data"></a>Inserting Data</h3><h4 id="Specifying-Fields"><a href="#Specifying-Fields" class="headerlink" title="Specifying Fields"></a>Specifying Fields</h4><ul>
+<li>Specifying fields just requires adding data to the corresponding fields.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span>(<span class="operator">&lt;</span>field_name_1<span class="operator">&gt;</span>, <span class="operator">&lt;</span>field_name_2<span class="operator">&gt;</span>, ...) <span class="keyword">VALUES</span>(<span class="operator">&lt;</span>value_1<span class="operator">&gt;</span>, <span class="operator">&lt;</span>value_2<span class="operator">&gt;</span>, ...);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Not-Specifying-Fields"><a href="#Not-Specifying-Fields" class="headerlink" title="Not Specifying Fields"></a>Not Specifying Fields</h4><ul>
+<li>Not specifying fields means adding data to all fields.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span> <span class="keyword">VALUES</span>(<span class="operator">&lt;</span>value_1<span class="operator">&gt;</span>, <span class="operator">&lt;</span>value_2<span class="operator">&gt;</span>, ...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Copying-Data-from-a-Table"><a href="#Copying-Data-from-a-Table" class="headerlink" title="Copying Data from a Table"></a>Copying Data from a Table</h3><h4 id="Specifying-Fields-1"><a href="#Specifying-Fields-1" class="headerlink" title="Specifying Fields"></a>Specifying Fields</h4><blockquote>
+<p><code>&lt;new_table_name&gt;</code>: New table name<br><code>&lt;select&gt;</code>: Select statement</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>new_table_name<span class="operator">&gt;</span> (<span class="operator">&lt;</span>field_name_1<span class="operator">&gt;</span>, <span class="operator">&lt;</span>field_name_2<span class="operator">&gt;</span>, ...) <span class="operator">&lt;</span><span class="keyword">select</span><span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Not-Specifying-Fields-1"><a href="#Not-Specifying-Fields-1" class="headerlink" title="Not Specifying Fields"></a>Not Specifying Fields</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>new_table_name<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">select</span><span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Querying-Data"><a href="#Querying-Data" class="headerlink" title="Querying Data"></a>Querying Data</h3><h4 id="Querying-All-Fields"><a href="#Querying-All-Fields" class="headerlink" title="Querying All Fields"></a>Querying All Fields</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Querying-Specific-Fields"><a href="#Querying-Specific-Fields" class="headerlink" title="Querying Specific Fields"></a>Querying Specific Fields</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">&lt;</span>field_name_1<span class="operator">&gt;</span>, <span class="operator">&lt;</span>field_name_2<span class="operator">&gt;</span>, ... <span class="keyword">FROM</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Restricting-Statements"><a href="#Restricting-Statements" class="headerlink" title="Restricting Statements"></a>Restricting Statements</h4><ul>
+<li>Use <code>WHERE</code> to restrict <code>SELECT</code> statements.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span> <span class="keyword">WHERE</span> <span class="operator">&lt;</span>field_name<span class="operator">&gt;=</span><span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="number">1</span> <span class="operator">+</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Numeric-Operators"><a href="#Numeric-Operators" class="headerlink" title="Numeric Operators"></a>Numeric Operators</h5><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>Division</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>Equal</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>Greater than or equal</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>Less than or equal</td>
+</tr>
+<tr>
+<td>and</td>
+<td>And</td>
+</tr>
+<tr>
+<td>or</td>
+<td>Or</td>
+</tr>
+<tr>
+<td>is</td>
+<td>Is</td>
+</tr>
+<tr>
+<td>is not</td>
+<td>Is not</td>
+</tr>
+</tbody></table>
+<h3 id="Modifying-Data"><a href="#Modifying-Data" class="headerlink" title="Modifying Data"></a>Modifying Data</h3><blockquote>
+<p><code>&lt;where&gt;</code>: Where clause</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">No</span> `<span class="keyword">WHERE</span>` clause means modifying <span class="keyword">all</span> data</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>field_name<span class="operator">&gt;=</span><span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"># `<span class="keyword">WHERE</span>` clause means modifying restricted data</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="operator">&lt;</span>table_name<span class="operator">&gt;</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>field_name<span class="operator">&gt;=</span><span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">where</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-Data"><a href="#Deleting-Data" class="headerlink" title="Deleting Data"></a>Deleting Data</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">No `WHERE` clause means deleting all data</span></span><br><span class="line">DELETE FROM &lt;table_name&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">`WHERE` clause means deleting restricted data</span></span><br><span class="line">DELETE FROM &lt;table_name&gt; &lt;where&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Completion"><a href="#Completion" class="headerlink" title="Completion"></a>Completion</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div> </div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 Bitcoin">
+        <span>Bitcoin</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Database/" rel="tag"># Database</a>
+              <a href="/tags/SQLite/" rel="tag"># SQLite</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/07/05/SQLite%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="【笔记】SQLite学习笔记">
+                  <i class="fa fa-angle-left"></i> 【笔记】SQLite学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/zh-CN/2020/07/05/MongoDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【笔记】MongoDB学习笔记">
+                  【笔记】MongoDB学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+  <div class="languages">
+    <label class="lang-select-label">
+      <i class="fa fa-language"></i>
+      <span>English</span>
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </label>
+    <select class="lang-select" data-canonical="" aria-label="Select language">
+      
+        <option value="zh-CN" data-href="/2020/07/05/SQLite%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          简体中文
+        </option>
+      
+        <option value="en" data-href="/en/2020/07/05/SQLite%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" selected="">
+          English
+        </option>
+      
+    </select>
+  </div>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备2022003684号 </a>
+      <img src="/dist/images/beian.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15220102010165" rel="noopener" target="_blank">蒙公网安备15220102010165号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play-piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 重写i18n跳转路径 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/rewrite_i18n_path.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>
