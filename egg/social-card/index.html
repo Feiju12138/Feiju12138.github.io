@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>社交名片</title>
+  <link rel="stylesheet" href="/egg/social-card/bootstrap.min.css">
+  <!-- 图标可删除 -->
+<!--  <link rel="stylesheet" href="social-card_files/all.min.css">-->
+  <!-- 图标样式可删除 -->
+<!--  <link rel="stylesheet" href="social-card_files/default_002.css">-->
+  <!-- 全局样式 -->
+  <link rel="stylesheet" href="index.css">
+  <!-- 移动端图标和描述文件 -->
+  <link rel="icon" type="image/png" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<!--  <link rel="manifest" href="https://mo.run/feiju/manifest.webmanifest">-->
+  <script src="/egg/social-card/bootstrap.bundle.min.js"></script>
+</head>
+
+<body style="" class="">
+<div class="mt-3 mt-lg-5"></div>
+<div class="container">
+  <div class="row pt-0 pt-lg-0">
+    <div class="col-12 col-lg-8 mb-3 mx-auto">
+      <div class="card pt-3 pb-2 bg-white profile">
+        <div id="header" class="card-header border-0 text-center d-flex flex-column align-items-center justify-content-center bg-transparent">
+          <!-- 点击头像的URL -->
+          <a id="avatar-url" href="" class="text-decoration-none">
+            <div class="mx-auto home-avatar">
+              <!-- 我的头像 -->
+              <img id="avatar-img" src="" class="card-img-top rounded-circle border border-3 border-white" alt="">
+            </div>
+            <!-- 我的名称 -->
+            <h5 id="user-name" class="h5 my-3 username"></h5>
+          </a>
+          <!-- 我的简介 -->
+          <div id="user-desc" class="bio"></div>
+          <!-- 模态框 -->
+          <!-- 激活模态框 data-bs-toggle="modal" data-bs-target="#modal-id" -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8 mx-auto">
+      <div class="row mx-0">
+        <div id="card-main" class="d-flex flex-wrap justify-content-between p-0">
+
+          <!-- 标签 -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 全局配置
+  const main_config = {
+    "avatar-url": `https://loli.fj.cn`,
+    "avatar-img": `/egg/social-card/images/avatar.jpg`,
+    "user-name": `王雨晨`,
+    "user-desc": `有小郭就有一切啦❤️`
+  }
+  // 标签配置
+  const card_configs = [
+    // {
+    //   // 标签类型: 6短标签 12长标签
+    //   "size": 6,
+    //   "url": "",
+    //   "img": "/egg/social-card/logo/xxx.svg",
+    //   "title": "",
+    //   "desc": "",
+    //   "modal-qrcode-exist": false,
+    //   "modal-qrcode-content": "/egg/social-card/qrcode/xxx.png",
+    //   "modal-text-exist": false,
+    //   "modal-text-content": ""
+    // },
+    {
+      // 标签类型: 6短标签 12长标签
+      "size": 6,
+      "url": "",
+      "img": "/egg/social-card/logo/phone.svg",
+      "title": "电话",
+      "desc": "",
+      "modal-qrcode-exist": false,
+      "modal-qrcode-content": "",
+      "modal-text-exist": true,
+      "modal-text-content": "18204808969"
+    },
+    {
+      "size": 6,
+      "url": "https://qm.qq.com/cgi-bin/qm/qr?k=K6mCLSYK_SJm3ymfocJxdtp4le531upz&noverify=0&personal_qrcode_source=4",
+      "img": "/egg/social-card/logo/qq.svg",
+      "title": "QQ",
+      "desc": "",
+      "modal-qrcode-exist": true,
+      "modal-qrcode-content": "/egg/social-card/qrcode/qq.png",
+      "modal-text-exist": false,
+      "modal-text-content": ""
+    },
+    {
+      "size": 6,
+      "url": "https://work.weixin.qq.com/u/vcbbf12e3b89ec175e?v=4.1.2.21650",
+      "img": "/egg/social-card/logo/wechat.svg",
+      "title": "企业微信",
+      "desc": "",
+      "modal-qrcode-exist": true,
+      "modal-qrcode-content": "/egg/social-card/qrcode/wechat.png",
+      "modal-text-exist": false,
+      "modal-text-content": ""
+    },
+    {
+      "size": 6,
+      "url": "https://qr.alipay.com/12013028jonbloesx77fi75",
+      "img": "/egg/social-card/logo/alipay.svg",
+      "title": "支付宝",
+      "desc": "",
+      "modal-qrcode-exist": true,
+      "modal-qrcode-content": "/egg/social-card/qrcode/alipay.png",
+      "modal-text-exist": false,
+      "modal-text-content": ""
+    },
+    {
+      "size": 6,
+      "url": "https://h5.dingtalk.com/zproject/profile.html?fr_source=13&profile=%40kgDOWeHN5w&cardToken=7aaf350a71&cardId=CARD-07B4E3DD-6A08-4D21-AC10-B225CEA541F3",
+      "img": "/egg/social-card/logo/dingtalk.svg",
+      "title": "钉钉",
+      "desc": "",
+      "modal-qrcode-exist": true,
+      "modal-qrcode-content": "/egg/social-card/qrcode/dingtalk.png",
+      "modal-text-exist": false,
+      "modal-text-content": ""
+    },
+    {
+      "size": 6,
+      "url": "https://www.huya.com/feiju",
+      "img": "/egg/social-card/logo/huya.svg",
+      "title": "虎牙直播",
+      "desc": "",
+      "modal-qrcode-exist": true,
+      "modal-qrcode-content": "/egg/social-card/qrcode/huya.png",
+      "modal-text-exist": false,
+      "modal-text-content": ""
+    }
+  ]
+  // 渲染全局配置
+  document.getElementById("avatar-url").href = main_config["avatar-url"];
+  document.getElementById("avatar-img").src = main_config["avatar-img"];
+  document.getElementById("user-name").innerText = main_config["user-name"];
+  document.getElementById("user-desc").innerText = main_config["user-desc"];
+  // 渲染标签配置
+  for (const [index,card_config] of card_configs.entries()) {
+    let div1 = document.createElement("div");
+    div1.className = `card col-12 rounded-8 mb-3 px-0 bg-white bg-opacity home-widget-width-${card_config["size"]} post-item`;
+    div1.innerHTML = `
+      <div class="card-body position-relative">
+        <div class="d-flex align-items-center h-100">
+          <div class="me-3">
+            <!-- 点击标签图标的URL -->
+            <a href="javascript:void(0);" ${card_config["modal-qrcode-exist"] || card_config["modal-text-exist"] ? 'data-bs-toggle="modal" data-bs-target="#modal-id-' + index + '"':''}>
+              <!-- 标签图标 -->
+              <img src="${card_config["img"]}" class="home-post-cover">
+            </a>
+          </div>
+          <div class="overflow-hidden">
+            <!-- 点击标签名称的URL -->
+            <a href="${card_config["url"]}">
+              <!-- 标签名称 -->
+              <span class="home-post-link text-nowrap">${card_config["title"]}</span>
+            </a>
+            <!-- 标签摘要 -->
+            <div class="mt-1 home-post-summary text-nowrap overflow-hidden">${card_config["desc"]}</div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById("card-main").appendChild(div1);
+    let div2 = document.createElement("div");
+    div2.id = `modal-id-${index}`;
+    div2.className = "modal fade";
+    div2.tabindex = "-1";
+    div2.ariaLabelledby = "modal-label-name";
+    div2.style.display = "none";
+    div2.ariaHidden = "true";
+    div2.innerHTML = `
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content rounded-8">
+          <div class="modal-header py-2">
+            <!-- 指定模态框标题 -->
+            <h6 class="modal-title">${card_config["title"]}</h6>
+            <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- 二维码图片 -->
+            <img class="my-5 w-50" src="${card_config["modal-qrcode-exist"]?card_config["modal-qrcode-content"]:''}" ${card_config["modal-qrcode-exist"]?'':'style="display:none"'}>
+            <a href="tel:${card_config["modal-text-exist"]?card_config["modal-text-content"]:''}" class="badge rounded-pill bg-secondary fs-6 w-50">${card_config["modal-text-exist"]?card_config["modal-text-content"]:''}</a>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById("header").appendChild(div2);
+  }
+
+</script>
+
+</body>
+</html>

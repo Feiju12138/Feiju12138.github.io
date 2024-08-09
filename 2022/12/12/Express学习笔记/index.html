@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/dist/images/favicon_package/site.webmanifest">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/2022/12/12/Express%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://loli.fj.cn/2022/12/12/Express%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2022/12/12/Express学习笔记/","title":"【笔记】Express学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【笔记】Express学习笔记 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="981ed5a0-eea5-4426-a8a9-c16a789ccc3f" src="https://umami.loli.fj.cn/script.js" data-host-url="https://umami.loli.fj.cn/"></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">连蜜统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>赞助</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>指令</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>贡献</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>订阅</a></li><li class="menu-item menu-item-theme"><a target="_blank" href="//butterfly.loli.fj.cn" rel="section noopener"><i class="fa fa-arrow-right fa-fw"></i>彩蛋?</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载字体样式 -->
+<link rel="stylesheet" href="/dist/css/fonts.css">
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 禁止镜像站 -->
+<script type="text/javascript" src="/dist/js/ban_mirror.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">创建服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86GET%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">处理GET请求参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86RESTful%E9%A3%8E%E6%A0%BC%E7%9A%84GET%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">处理RESTful风格的GET请求参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86POST%E8%AF%B7%E6%B1%82%E4%BD%93%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">处理POST请求体数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="nav-number">7.</span> <span class="nav-text">设置响应头</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AECORS%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="nav-number">7.1.</span> <span class="nav-text">设置CORS响应头</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F"><span class="nav-number">7.1.1.</span> <span class="nav-text">设置允许跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E6%8C%87%E5%AE%9A%E5%9F%9F%E7%9A%84%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">允许指定域的跨域请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E4%BB%BB%E4%BD%95%E5%9F%9F%E7%9A%84%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82"><span class="nav-number">7.1.1.2.</span> <span class="nav-text">允许任何域的跨域请求</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E9%A2%9D%E5%A4%96%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">7.1.2.</span> <span class="nav-text">设置允许额外的请求头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E7%9A%84%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="nav-number">7.1.3.</span> <span class="nav-text">设置允许的请求方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E6%8C%87%E5%AE%9A%E8%AF%B7%E6%B1%82"><span class="nav-number">7.1.3.1.</span> <span class="nav-text">允许客户端发送指定请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E4%BB%BB%E4%BD%95%E8%AF%B7%E6%B1%82"><span class="nav-number">7.1.3.2.</span> <span class="nav-text">允许客户端发送任何请求</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">创建静态资源服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E8%AE%BF%E9%97%AE%E8%B7%AF%E5%BE%84%E5%89%8D%E7%BC%80"><span class="nav-number">8.1.</span> <span class="nav-text">指定访问路径前缀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1"><span class="nav-number">9.</span> <span class="nav-text">路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%88%B0app%E5%AF%B9%E8%B1%A1"><span class="nav-number">9.1.</span> <span class="nav-text">挂载到app对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1"><span class="nav-number">9.2.</span> <span class="nav-text">模块化路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E8%AE%BF%E9%97%AE%E8%B7%AF%E5%BE%84%E5%89%8D%E7%BC%80-1"><span class="nav-number">9.2.1.</span> <span class="nav-text">指定访问路径前缀</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%88Middleware%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">中间件（Middleware）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%94%9F%E6%95%88%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.1.</span> <span class="nav-text">全局生效中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8C%96"><span class="nav-number">10.1.1.</span> <span class="nav-text">简化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%9A%E4%B8%AA%E5%85%A8%E5%B1%80%E7%94%9F%E6%95%88%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.1.2.</span> <span class="nav-text">定义多个全局生效中间件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E7%94%9F%E6%95%88%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.2.</span> <span class="nav-text">局部生效中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%9A%E4%B8%AA%E5%B1%80%E9%83%A8%E7%94%9F%E6%95%88%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.2.1.</span> <span class="nav-text">定义多个局部生效中间件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E7%BA%A7%E5%88%AB%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.3.</span> <span class="nav-text">错误级别中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Express%E5%86%85%E7%BD%AE%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.4.</span> <span class="nav-text">Express内置中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#express-static"><span class="nav-number">10.4.1.</span> <span class="nav-text">express.static</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#express-json"><span class="nav-number">10.4.2.</span> <span class="nav-text">express.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#express-urlencoded"><span class="nav-number">10.4.3.</span> <span class="nav-text">express.urlencoded</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.5.</span> <span class="nav-text">第三方中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#body-parser"><span class="nav-number">10.5.1.</span> <span class="nav-text">body-parser</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">10.5.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E5%85%A5"><span class="nav-number">10.5.1.2.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E5%B9%B6%E4%BD%BF%E7%94%A8"><span class="nav-number">10.5.1.3.</span> <span class="nav-text">注册并使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cors"><span class="nav-number">10.5.2.</span> <span class="nav-text">cors</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-2"><span class="nav-number">10.5.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E5%85%A5-1"><span class="nav-number">10.5.2.2.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E5%B9%B6%E4%BD%BF%E7%94%A8-1"><span class="nav-number">10.5.2.3.</span> <span class="nav-text">注册并使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#express-session%E8%BF%9B%E8%A1%8C%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81"><span class="nav-number">10.5.3.</span> <span class="nav-text">express-session进行身份认证</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-3"><span class="nav-number">10.5.3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E5%85%A5-2"><span class="nav-number">10.5.3.2.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C"><span class="nav-number">10.5.3.3.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%9A%E8%BF%87req-session%E5%AF%B9%E8%B1%A1%E4%B8%AD%E5%AD%98%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">10.5.3.4.</span> <span class="nav-text">通过req.session对象中存取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%94%80%E6%AF%81req-session%E5%AF%B9%E8%B1%A1%E4%B8%AD%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">10.5.3.5.</span> <span class="nav-text">销毁req.session对象中存储的数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsonwebtoken%E5%92%8Cexpress-jwt"><span class="nav-number">10.5.4.</span> <span class="nav-text">jsonwebtoken和express-jwt</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-4"><span class="nav-number">10.5.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E5%85%A5-3"><span class="nav-number">10.5.4.2.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%9A%84%E5%AF%86%E9%92%A5"><span class="nav-number">10.5.4.3.</span> <span class="nav-text">定义一个用于加解密的密钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="nav-number">10.5.4.4.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86"><span class="nav-number">10.5.4.5.</span> <span class="nav-text">解密</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.5.4.5.1.</span> <span class="nav-text">注册中间件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%A7%A3%E5%AF%86%E5%90%8E%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.5.4.5.2.</span> <span class="nav-text">获取解密后的对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number">10.5.4.5.3.</span> <span class="nav-text">异常处理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.6.</span> <span class="nav-text">自定义中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%B0%81%E8%A3%85%E4%B8%BA%E6%A8%A1%E5%9D%97"><span class="nav-number">10.6.1.</span> <span class="nav-text">将自定义中间件封装为模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87Express%E7%BC%96%E5%86%99%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3"><span class="nav-number">11.</span> <span class="nav-text">通过Express编写后端接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">12.</span> <span class="nav-text">请求的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82"><span class="nav-number">12.1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82"><span class="nav-number">12.2.</span> <span class="nav-text">预检请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP"><span class="nav-number">13.</span> <span class="nav-text">JSONP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99JSONP%E6%8E%A5%E5%8F%A3"><span class="nav-number">13.1.</span> <span class="nav-text">编写JSONP接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90"><span class="nav-number">14.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">15.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/LittleSweetCookie" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;LittleSweetCookie" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/2022/12/12/Express%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【笔记】Express学习笔记 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Express学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-12 16:46:21" itemprop="dateCreated datePublished" datetime="2022-12-12T16:46:21+00:00">2022-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-09 10:23:50" itemprop="dateModified" datetime="2024-08-09T10:23:50+00:00">2024-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Nodejs%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/" itemprop="url" rel="index"><span itemprop="name">Nodejs学习指北</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Fast, unopinionated, minimalist web framework for Node.js（<a href="/302.html?target=https://expressjs.com">官网</a>）</p>
+<p>使用Express快速创建Web服务器或API接口服务器</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建服务器"><a href="#创建服务器" class="headerlink" title="创建服务器"></a>创建服务器</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入模块</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="comment">// 创建服务器</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听GET请求</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听POST请求</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动服务器</span></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="处理GET请求参数"><a href="#处理GET请求参数" class="headerlink" title="处理GET请求参数"></a>处理GET请求参数</h2><ul>
+<li>默认情况下<code>req.query</code>是一个空对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">query</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="处理RESTful风格的GET请求参数"><a href="#处理RESTful风格的GET请求参数" class="headerlink" title="处理RESTful风格的GET请求参数"></a>处理RESTful风格的GET请求参数</h2><ul>
+<li>通过<code>req.params</code>来接收RESTful风格的请求参数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/:key1/:key2&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">params</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果发送的请求是<code>http://127.0.0.1/value1/value2</code>，通过<code>req.params</code>得到的响应如下</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;key1&quot;: &quot;value1&quot;,</span><br><span class="line">  &quot;key2&quot;: &quot;value2&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="处理POST请求体数据"><a href="#处理POST请求体数据" class="headerlink" title="处理POST请求体数据"></a>处理POST请求体数据</h2><ul>
+<li>如果不配置解析请求体数据的中间件，默认返回undefined</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.<span class="property">body</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置响应头"><a href="#设置响应头" class="headerlink" title="设置响应头"></a>设置响应头</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.<span class="title function_">setHeader</span>(<span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置CORS响应头"><a href="#设置CORS响应头" class="headerlink" title="设置CORS响应头"></a>设置CORS响应头</h3><h4 id="设置允许跨域"><a href="#设置允许跨域" class="headerlink" title="设置允许跨域"></a>设置允许跨域</h4><h5 id="允许指定域的跨域请求"><a href="#允许指定域的跨域请求" class="headerlink" title="允许指定域的跨域请求"></a>允许指定域的跨域请求</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.<span class="title function_">setHeader</span>(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;http://127.0.0.1:80&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="允许任何域的跨域请求"><a href="#允许任何域的跨域请求" class="headerlink" title="允许任何域的跨域请求"></a>允许任何域的跨域请求</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.<span class="title function_">setHeader</span>(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置允许额外的请求头"><a href="#设置允许额外的请求头" class="headerlink" title="设置允许额外的请求头"></a>设置允许额外的请求头</h4><ul>
+<li>默认情况下，为了设置CORS，客户端只能向服务端发送如下9个请求头：<code>Accept</code>、<code>Accept-Language</code>、<code>Content-Language</code>、<code>DPR</code>、<code>Downlink</code>、<code>Save-Data</code>、<code>Viewport-Width</code>、<code>Width</code>、<code>Content-Type</code></li>
+<li>如果需要设置其他请求头，需要在<code>Access-Control-Allow-Headers</code>进行声明</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.<span class="title function_">setHeader</span>(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;X-Custom-Header&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置允许的请求方式"><a href="#设置允许的请求方式" class="headerlink" title="设置允许的请求方式"></a>设置允许的请求方式</h4><h5 id="允许客户端发送指定请求"><a href="#允许客户端发送指定请求" class="headerlink" title="允许客户端发送指定请求"></a>允许客户端发送指定请求</h5><ul>
+<li>默认情况下，客户端只能向服务端发送<code>GET</code>、<code>POST</code>、<code>HEAD</code>请求</li>
+<li>如果需要发送其他请求，需要使用<code>Access-Control-Allow-Methods</code>来指明允许使用的请求方式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.<span class="title function_">setHeader</span>(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET, POST, PUT, DELETE&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="允许客户端发送任何请求"><a href="#允许客户端发送任何请求" class="headerlink" title="允许客户端发送任何请求"></a>允许客户端发送任何请求</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.<span class="title function_">setHeader</span>(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建静态资源服务器"><a href="#创建静态资源服务器" class="headerlink" title="创建静态资源服务器"></a>创建静态资源服务器</h2><ul>
+<li>指定一个目录，将这个目录作为静态资源目录，所有静态资源的请求可以直接被访问</li>
+<li>如果先后指定了多个相同层级的相同静态资源，此时先托管的静态资源路径会生效，后托管的静态资源路径不会生效</li>
+</ul>
+<blockquote>
+<p><code>./public</code>：静态资源目录名</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&quot;./public&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ public</span><br><span class="line">  - index.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此时访问<code>http://127.0.0.1/index.html</code>时就会从静态资源中获取了</li>
+</ul>
+<h3 id="指定访问路径前缀"><a href="#指定访问路径前缀" class="headerlink" title="指定访问路径前缀"></a>指定访问路径前缀</h3><ul>
+<li>通常情况下访问前缀名与静态资源目录名相同</li>
+</ul>
+<blockquote>
+<p><code>/public</code>：访问路径前缀</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/public&quot;</span>, express.<span class="title function_">static</span>(<span class="string">&quot;./public&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此时访问<code>http://127.0.0.1/public/index.html</code>时就会从静态资源中获取了</li>
+</ul>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><ul>
+<li>将请求类型和请求路径映射到指定处理函数，这种映射就是Express中的路由</li>
+<li>路由有优先级，会从上到下依次匹配，先被匹配成功的路由将会先执行处理函数</li>
+</ul>
+<h3 id="挂载到app对象"><a href="#挂载到app对象" class="headerlink" title="挂载到app对象"></a>挂载到app对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="模块化路由"><a href="#模块化路由" class="headerlink" title="模块化路由"></a>模块化路由</h3><ul>
+<li>为了方便模块化管理，不建议直接将路由挂载到app对象，而是将路由抽离为单独的模块</li>
+</ul>
+<ol>
+<li>创建路由模块对应的JS文件</li>
+<li>调用<code>express.Router()</code>函数创建路由对象</li>
+<li>由路由对象挂载具体路由</li>
+<li>使用<code>module.exports</code>向外共享路由对象</li>
+<li>使用<code>app.use()</code>注册路由模块</li>
+</ol>
+<figure class="highlight javascript"><figcaption><span>router.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.<span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入路由模块</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">&quot;./router&quot;</span>);</span><br><span class="line"><span class="comment">// 注册路由模块</span></span><br><span class="line">app.<span class="title function_">use</span>(router);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>app.use()</code>来注册全局中间件</li>
+</ul>
+<h4 id="指定访问路径前缀-1"><a href="#指定访问路径前缀-1" class="headerlink" title="指定访问路径前缀"></a>指定访问路径前缀</h4><blockquote>
+<p><code>/router</code>：访问路径前缀</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/router&quot;</span>, router);</span><br></pre></td></tr></table></figure>
+
+<h2 id="中间件（Middleware）"><a href="#中间件（Middleware）" class="headerlink" title="中间件（Middleware）"></a>中间件（Middleware）</h2><ul>
+<li><p>中间件指业务流程的中间处理环节</p>
+</li>
+<li><p>Express中的中间件本质上就是一个特殊的处理函数</p>
+</li>
+<li><p>中间件处理函数的形参必须包含<code>next</code>，同时函数体中结尾必须包含<code>next()</code>函数</p>
+</li>
+<li><p>中间件处理函数在做完处理后，会交给下一个中间件或路由进行进一步处理</p>
+</li>
+<li><p>除了错误级别的中间件，其他的中间件一定要在路由之前配置</p>
+</li>
+<li><p>中间件的分类</p>
+<ul>
+<li>应用级别的中间件：绑定到<code>app</code>实例上的中间件</li>
+<li>路由级别的中间件：绑定到<code>express.Router()</code>实例上的中间件</li>
+<li>错误级别的中间件：错误级别的中间件是一种特殊的全局中间件，专门用来捕获整个项目中发生的异常错误，从而防止项目异常崩溃的问题<ul>
+<li>错误级别的中间件函数必须有4个形参，形参顺序从前到后分别是<code>err</code>、<code>req</code>、<code>resp</code>、<code>next</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="全局生效中间件"><a href="#全局生效中间件" class="headerlink" title="全局生效中间件"></a>全局生效中间件</h3><ul>
+<li>当客户端发起任何请求，到达服务器时，都会触发全局生效中间件</li>
+<li>通过<code>app.use()</code>可以设置一个中间件处理函数作为全局生效中间件</li>
+<li>多个中间件之间共用一份<code>req</code>和<code>resp</code>对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件函数</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将中间件函数设置为全局生效</span></span><br><span class="line">app.<span class="title function_">use</span>(func);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载全局生效中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义多个全局生效中间件"><a href="#定义多个全局生效中间件" class="headerlink" title="定义多个全局生效中间件"></a>定义多个全局生效中间件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件函数</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载全局生效中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(func);</span><br><span class="line">app.<span class="title function_">use</span>(func);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="局部生效中间件"><a href="#局部生效中间件" class="headerlink" title="局部生效中间件"></a>局部生效中间件</h3><ul>
+<li>将中间件函数传递给指定路由，使中间件函数只在指定路由上生效</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件函数</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, func, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义多个局部生效中间件"><a href="#定义多个局部生效中间件" class="headerlink" title="定义多个局部生效中间件"></a>定义多个局部生效中间件</h4><ul>
+<li>直接传递多个中间件函数传递给路由</li>
+<li>也可以将多个中间件函数作为数组传递给路由</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件函数</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, func, func, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, [func, func], <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误级别中间件"><a href="#错误级别中间件" class="headerlink" title="错误级别中间件"></a>错误级别中间件</h3><ul>
+<li>错误级别中间件必须在挂载所有路由之后</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件函数</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">function</span> (<span class="params">err, req, resp, next</span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err.<span class="property">message</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 响应数据</span></span><br><span class="line">  resp.<span class="title function_">send</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载错误级别中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(func);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Express内置中间件"><a href="#Express内置中间件" class="headerlink" title="Express内置中间件"></a>Express内置中间件</h3><h4 id="express-static"><a href="#express-static" class="headerlink" title="express.static"></a>express.static</h4><ul>
+<li>快速托管静态资源</li>
+<li>无兼容性</li>
+</ul>
+<h4 id="express-json"><a href="#express-json" class="headerlink" title="express.json"></a>express.json</h4><ul>
+<li>解析JSON格式的请求体数据</li>
+<li>仅在4.16.0及以后的版本可用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>());</span><br></pre></td></tr></table></figure>
+
+<h4 id="express-urlencoded"><a href="#express-urlencoded" class="headerlink" title="express.urlencoded"></a>express.urlencoded</h4><ul>
+<li>解析url-encoded格式的请求体数据</li>
+<li>仅在4.16.0及以后的版本可用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">urlencoded</span>(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三方中间件"><a href="#第三方中间件" class="headerlink" title="第三方中间件"></a>第三方中间件</h3><h4 id="body-parser"><a href="#body-parser" class="headerlink" title="body-parser"></a>body-parser</h4><ul>
+<li>express内置中间件就是根据body-parser进一步封装的</li>
+</ul>
+<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install body-parser</span><br></pre></td></tr></table></figure>
+
+<h5 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">&quot;body-parser&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="注册并使用"><a href="#注册并使用" class="headerlink" title="注册并使用"></a>注册并使用</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(parser.<span class="title function_">urlencoded</span>(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;));</span><br></pre></td></tr></table></figure>
+
+<h4 id="cors"><a href="#cors" class="headerlink" title="cors"></a>cors</h4><ul>
+<li>通过cors模块解决跨域问题</li>
+</ul>
+<h5 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cors</span><br></pre></td></tr></table></figure>
+
+<h5 id="引入-1"><a href="#引入-1" class="headerlink" title="引入"></a>引入</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="注册并使用-1"><a href="#注册并使用-1" class="headerlink" title="注册并使用"></a>注册并使用</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>());</span><br></pre></td></tr></table></figure>
+
+<h4 id="express-session进行身份认证"><a href="#express-session进行身份认证" class="headerlink" title="express-session进行身份认证"></a>express-session进行身份认证</h4><ul>
+<li>通过express-session进行身份认证</li>
+<li>在不跨域的情况下推荐使用session进行身份认证</li>
+</ul>
+<h5 id="安装-3"><a href="#安装-3" class="headerlink" title="安装"></a>安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express-session</span><br></pre></td></tr></table></figure>
+
+<h5 id="引入-2"><a href="#引入-2" class="headerlink" title="引入"></a>引入</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">&quot;express-session&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h5><blockquote>
+<p><code>secret</code>：随意指定一个字符串作为Session的加密密钥</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="title function_">session</span>(&#123;</span><br><span class="line">  <span class="attr">secret</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">saveUninitialized</span>: <span class="literal">true</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h5 id="通过req-session对象中存取数据"><a href="#通过req-session对象中存取数据" class="headerlink" title="通过req.session对象中存取数据"></a>通过req.session对象中存取数据</h5><ul>
+<li>通常在登录成功后将用户登录状态和用户信息存储在session中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.<span class="property">session</span> = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="销毁req-session对象中存储的数据"><a href="#销毁req-session对象中存储的数据" class="headerlink" title="销毁req.session对象中存储的数据"></a>销毁req.session对象中存储的数据</h5><ul>
+<li>通常在退出登录后，将当前请求的用户对应的session清除</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.<span class="property">session</span>.<span class="title function_">destroy</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="jsonwebtoken和express-jwt"><a href="#jsonwebtoken和express-jwt" class="headerlink" title="jsonwebtoken和express-jwt"></a>jsonwebtoken和express-jwt</h4><ul>
+<li>使用<code>jsonwebtoken</code>模块将JSON字符串生成JWT加密字符串Token</li>
+<li>使用<code>express-jwt</code>模块将JWT加密字符串Token还原成JSON对象</li>
+</ul>
+<h5 id="安装-4"><a href="#安装-4" class="headerlink" title="安装"></a>安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jsonwebtoken express-jwt</span><br></pre></td></tr></table></figure>
+
+<h5 id="引入-3"><a href="#引入-3" class="headerlink" title="引入"></a>引入</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&quot;jsonwebtoken&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> expressJWT = <span class="built_in">require</span>(<span class="string">&quot;express-jwt&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="定义一个用于加解密的密钥"><a href="#定义一个用于加解密的密钥" class="headerlink" title="定义一个用于加解密的密钥"></a>定义一个用于加解密的密钥</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> secretKey = <span class="string">&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h5><ul>
+<li>将用户登录信息加密成为token，并响应给前端</li>
+</ul>
+<blockquote>
+<p><code>&lt;user&gt;</code>：需要存储的用户信息<br><code>secretKey</code>：指定密钥<br><code>expiresIn: &quot;&quot;</code>：指定有效时间</p>
+<blockquote>
+<p><code>s</code>：秒<br><code>m</code>：分钟<br><code>h</code>：小时</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, <span class="keyword">function</span> (<span class="params">req, resp</span>) &#123;</span><br><span class="line">  resp.<span class="title function_">send</span>(&#123;</span><br><span class="line">    <span class="attr">token</span>: jwt.<span class="title function_">sign</span>(&lt;user&gt;, secretKey, &#123;<span class="attr">expiresIn</span>: <span class="string">&quot;30s&quot;</span>&#125;)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h5><h6 id="注册中间件"><a href="#注册中间件" class="headerlink" title="注册中间件"></a>注册中间件</h6><ul>
+<li>将express-jwt对象作为中间件注册</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="title function_">expressJWT</span>(&#123;<span class="attr">secret</span>: secretKey&#125;));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过<code>unless()</code>指定不需要鉴权的请求路径，可以使用通配符</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="title function_">expressJWT</span>(&#123;<span class="attr">secret</span>: secretKey&#125;).<span class="title function_">unless</span>(&#123;<span class="attr">path</span>: [<span class="regexp">/^\/dist/</span>]&#125;));</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取解密后的对象"><a href="#获取解密后的对象" class="headerlink" title="获取解密后的对象"></a>获取解密后的对象</h6><ul>
+<li>中间件在得到加密的Token后，会自动解密，并将解密后的对象挂载在<code>req.user</code>对象上</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, <span class="keyword">function</span> (<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">user</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h6><ul>
+<li>如果Token是无效或者过期的，会报错：<code>UnauthorizedError</code>，通过全局异常处理函数可以捕获异常</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">err, req, resp, next</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.<span class="property">name</span> === <span class="string">&quot;UnauthorizedError&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> resp.<span class="title function_">send</span>(&#123;</span><br><span class="line">      <span class="attr">code</span>: <span class="string">&quot;401&quot;</span>,</span><br><span class="line">      <span class="attr">msg</span>: <span class="string">&quot;鉴权失败&quot;</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义中间件"><a href="#自定义中间件" class="headerlink" title="自定义中间件"></a>自定义中间件</h3><ul>
+<li>示例：通过自定义中间件实现express.urlencoded中间件的功能<ul>
+<li>定义一个自定义中间件</li>
+<li>监听data事件<ul>
+<li>在中间件中，需要坚挺req对象的data事件，来获取客户端发送到服务端的数据</li>
+<li>如果数据量比较大，无法一次性发送完毕，则客户端会把数据切割后，分批发送到服务端，所以data事件可能会触发多次，每次触发data事件️，获取到的数据都只是完整数据的一部分，需要手动对接收到的数据进行拼接</li>
+</ul>
+</li>
+<li>监听end事件<ul>
+<li>当数据发送完毕，会自动触发req对象的end事件</li>
+</ul>
+</li>
+<li>使用Nodejs的内置模块querystring将请求体字符串转换成JS对象<ul>
+<li>如果请求体字符串中包含url编码的中文字符，也会自动解码</li>
+</ul>
+</li>
+<li>将解析后的数据挂载为<code>req.body</code></li>
+<li><code>next()</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">&quot;querystring&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="keyword">function</span> (<span class="params">chunk</span>) &#123;</span><br><span class="line">    data += chunk;</span><br><span class="line">  &#125;);</span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">    data = querystring.<span class="title function_">parse</span>(data);</span><br><span class="line">    req.<span class="property">body</span> = data;</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="将自定义中间件封装为模块"><a href="#将自定义中间件封装为模块" class="headerlink" title="将自定义中间件封装为模块"></a>将自定义中间件封装为模块</h4><ul>
+<li>封装为模块</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>模块名.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">&quot;querystring&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> 模块名 = <span class="keyword">function</span> (<span class="params">req, resp, next</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="keyword">function</span> (<span class="params">chunk</span>) &#123;</span><br><span class="line">    data += chunk;</span><br><span class="line">  &#125;);</span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">    data = querystring.<span class="title function_">parse</span>(data);</span><br><span class="line">    req.<span class="property">body</span> = data;</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = 模块名;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引入模块</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 模块名 = <span class="built_in">require</span>(<span class="string">&quot;./模块名.js&quot;</span>);</span><br><span class="line">app.<span class="title function_">use</span>(模块名);</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过Express编写后端接口"><a href="#通过Express编写后端接口" class="headerlink" title="通过Express编写后端接口"></a>通过Express编写后端接口</h2><ul>
+<li>通过路由模块编写后端接口</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>router.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.<span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/子路径&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  resp.<span class="title function_">send</span>(&#123;</span><br><span class="line">    <span class="string">&quot;code&quot;</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;ok&quot;</span>,</span><br><span class="line">    <span class="string">&quot;data&quot;</span>: req.<span class="property">query</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">&quot;./router.js&quot;</span>);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/父路径&quot;</span>, router);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">80</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;express server run at http://127.0.0.1&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="请求的分类"><a href="#请求的分类" class="headerlink" title="请求的分类"></a>请求的分类</h2><h3 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h3><ul>
+<li>请求方式为<code>GET</code>、<code>POST</code>、<code>HEAD</code>之一的请求</li>
+<li>请求头内只包含<code>Accept</code>、<code>Accept-Language</code>、<code>Content-Language</code>、<code>DPR</code>、<code>Downlink</code>、<code>Save-Data</code>、<code>Viewport-Width</code>、<code>Width</code>、<code>Content-Type</code>之一的信息</li>
+</ul>
+<h3 id="预检请求"><a href="#预检请求" class="headerlink" title="预检请求"></a>预检请求</h3><ul>
+<li><p>请求方式为<code>GET</code>、<code>POST</code>、<code>HEAD</code>之外的请求</p>
+</li>
+<li><p>请求头内包含除了<code>Accept</code>、<code>Accept-Language</code>、<code>Content-Language</code>、<code>DPR</code>、<code>Downlink</code>、<code>Save-Data</code>、<code>Viewport-Width</code>、<code>Width</code>、<code>Content-Type</code>之外的信息</p>
+</li>
+<li><p>客户端向服务断发送了<code>application/json</code>格式的数据</p>
+</li>
+<li><p>预检请求与简单请求的区别：在浏览器与服务器正式通信之前，浏览器会先发送<code>OPTION</code>请求进行预检，以获知服务端是否允许该实际请求，所以这一次<code>OPTION</code>请求被成为预检请求，服务端成功响应预检请求后，客户端才会发送真正的请求，并且携带真实数据</p>
+</li>
+</ul>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><ul>
+<li>浏览器通过<code>&lt;script&gt;&lt;/script&gt;</code>标签的<code>src</code>属性向服务端请求数据，得到的是一个函数调用，这种请求方式就是JSONP</li>
+<li>JSONP不属于真正的AJAX请求，因为没有使用<code>XMLHttpRequest</code>对象</li>
+<li>JSONP仅支持GET请求方式</li>
+</ul>
+<h3 id="编写JSONP接口"><a href="#编写JSONP接口" class="headerlink" title="编写JSONP接口"></a>编写JSONP接口</h3><ul>
+<li>应当在配置cors中间件之前编写JSONP接口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/jsonp&quot;</span>, <span class="keyword">function</span> (<span class="params">req, resp</span>) &#123;</span><br><span class="line">  <span class="comment">// 1. 获取客户端发送过来的回调函数的名字</span></span><br><span class="line">  <span class="keyword">const</span> funcName = req.<span class="property">query</span>.<span class="property">callback</span>;</span><br><span class="line">  <span class="comment">// 2. 得到要通过JSONP形式发送给客户端的数据对象</span></span><br><span class="line">  <span class="keyword">let</span> data = &#123;<span class="string">&quot;key&quot;</span>, <span class="string">&quot;value&quot;</span>&#125;;</span><br><span class="line">  <span class="comment">// 3. 根据得到的数据拼接一个函数调用的字符串</span></span><br><span class="line">  <span class="keyword">const</span> scriptStr = <span class="string">`<span class="subst">$&#123;funcName&#125;</span>(<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(data)&#125;</span>)`</span>;</span><br><span class="line">  <span class="comment">// 4. 响应给前段的&lt;script&gt;&lt;/script&gt;标签进行解析</span></span><br><span class="line">  resp.<span class="title function_">send</span>(scriptStr);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a34y167AZ/">哔哩哔哩——黑马程序员</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div><svg class="coin" width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.045 25.5454C7.69377 25.5454 2.54504 20.3967 2.54504 14.0454C2.54504 7.69413 7.69377 2.54541 14.045 2.54541C20.3963 2.54541 25.545 7.69413 25.545 14.0454C25.545 17.0954 24.3334 20.0205 22.1768 22.1771C20.0201 24.3338 17.095 25.5454 14.045 25.5454ZM9.66202 6.81624H18.2761C18.825 6.81624 19.27 7.22183 19.27 7.72216C19.27 8.22248 18.825 8.62807 18.2761 8.62807H14.95V10.2903C17.989 10.4444 20.3766 12.9487 20.3855 15.9916V17.1995C20.3854 17.6997 19.9799 18.1052 19.4796 18.1052C18.9793 18.1052 18.5738 17.6997 18.5737 17.1995V15.9916C18.5667 13.9478 16.9882 12.2535 14.95 12.1022V20.5574C14.95 21.0577 14.5444 21.4633 14.0441 21.4633C13.5437 21.4633 13.1382 21.0577 13.1382 20.5574V12.1022C11.1 12.2535 9.52148 13.9478 9.51448 15.9916V17.1995C9.5144 17.6997 9.10883 18.1052 8.60856 18.1052C8.1083 18.1052 7.70273 17.6997 7.70265 17.1995V15.9916C7.71158 12.9487 10.0992 10.4444 13.1382 10.2903V8.62807H9.66202C9.11309 8.62807 8.66809 8.22248 8.66809 7.72216C8.66809 7.22183 9.11309 6.81624 9.66202 6.81624Z" fill="currentColor"></path></svg></div>
+  <button>
+    储钱罐
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 微信支付">
+        <span>微信支付</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 支付宝">
+        <span>支付宝</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 比特币">
+        <span>比特币</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 贝宝">
+        <span>贝宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Nodejs/" rel="tag"># Nodejs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/11/%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B%E8%8F%9C%E5%8D%95/" rel="prev" title="【笔记】安卓手机打开工程菜单">
+                  <i class="fa fa-angle-left"></i> 【笔记】安卓手机打开工程菜单
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/12/12/Nodemon%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【笔记】Nodemon学习笔记">
+                  【笔记】Nodemon学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 滑翔机 -->
+<a target="_blank" rel="noopener" href="http://www.catb.org/hacker-emblem/" style="border-bottom: 0 solid #999;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Glider.svg" style="width: 55px; height: 55px;">
+</a>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play_piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

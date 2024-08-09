@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon_package/favicon-16x16.png">
+  <link rel="mask-icon" href="/dist/images/favicon_package/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/dist/images/favicon_package/site.webmanifest">
+  <meta name="google-site-verification" content="qIz-Tg08U6gyN_53z89yii0ZmKx2avfsO-iyOWhsRx8">
+  <meta name="msvalidate.01" content="096F3D01D2AA04148F10750CD4566535">
+  <meta name="yandex-verification" content="43f790b7e38394a4">
+  <meta name="baidu-site-verification" content="codeva-LMZoUaXjJl">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/black/pace-theme-material.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"loli.fj.cn","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":false,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://loli.fj.cn/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://loli.fj.cn/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/","path":"2022/05/28/时序电路/","title":"【笔记】时序电路"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【笔记】时序电路 | 绯鞠的博客</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="981ed5a0-eea5-4426-a8a9-c16a789ccc3f" src="https://umami.loli.fj.cn/script.js" data-host-url="https://umami.loli.fj.cn/"></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">绯鞠的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">连蜜统治世界!!!💕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-reward"><a href="/reward/" rel="section"><i class="fa fa-hand-holding-heart fa-fw"></i>赞助</a></li><li class="menu-item menu-item-command"><a href="/command/" rel="section"><i class="fa fa-book fa-fw"></i>指令</a></li><li class="menu-item menu-item-contribute"><a href="/contribute/" rel="section"><i class="fa fa-chart-line fa-fw"></i>贡献</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>订阅</a></li><li class="menu-item menu-item-theme"><a target="_blank" href="//butterfly.loli.fj.cn" rel="section noopener"><i class="fa fa-arrow-right fa-fw"></i>彩蛋?</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- 加载字体样式 -->
+<link rel="stylesheet" href="/dist/css/fonts.css">
+<!-- 加载鼠标样式 -->
+<link rel="stylesheet" href="/dist/css/cursor.css">
+<!-- 加载滚动条样式 -->
+<link rel="stylesheet" href="/dist/css/scrollbar.css">
+<!-- 加载分类页样式 -->
+<link rel="stylesheet" href="/categories/index.css">
+<!-- 加载标签页样式 -->
+<link rel="stylesheet" href="/tags/index.css">
+<!-- 加载投币动画 -->
+<link rel="stylesheet" href="/dist/css/coin.css">
+
+<!-- 加载色彩 -->
+<script type="text/javascript" src="/dist/js/lipstick.js"></script>
+<!-- 加载站内快捷键 -->
+<script type="text/javascript" src="/dist/js/hotkey.js"></script>
+<!-- Toast加载 -->
+<script type="text/javascript" src="/dist/js/toast.js"></script>
+<!-- 获取浏览器类型 -->
+<script type="text/javascript" src="/dist/js/get_browser_kind.js"></script>
+<!-- 禁止镜像站 -->
+<script type="text/javascript" src="/dist/js/ban_mirror.js"></script>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B1"><span class="nav-number">2.</span> <span class="nav-text">题型1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B2"><span class="nav-number">3.</span> <span class="nav-text">题型2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B3"><span class="nav-number">4.</span> <span class="nav-text">题型3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B4"><span class="nav-number">5.</span> <span class="nav-text">题型4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B5"><span class="nav-number">6.</span> <span class="nav-text">题型5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B6"><span class="nav-number">7.</span> <span class="nav-text">题型6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B7"><span class="nav-number">8.</span> <span class="nav-text">题型7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B8"><span class="nav-number">9.</span> <span class="nav-text">题型8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90"><span class="nav-number">10.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">11.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="绯鞠"
+      src="/dist/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">绯鞠</p>
+  <div class="site-description" itemprop="description">捕捉一只爱折腾的绯鞠</div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:00-isomer-cabbies@icloud.com" title="E-Mail → mailto:00-isomer-cabbies@icloud.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/LittleSweetCookie" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;LittleSweetCookie" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+<!-- 设置Aplayer挂载点 -->
+<div id="aplayer"></div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://loli.fj.cn/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dist/images/avatar.gif">
+      <meta itemprop="name" content="绯鞠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="绯鞠的博客">
+      <meta itemprop="description" content="捕捉一只爱折腾的绯鞠">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【笔记】时序电路 | 绯鞠的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】时序电路
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-28 08:54:06" itemprop="dateCreated datePublished" datetime="2022-05-28T08:54:06+00:00">2022-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-09 10:23:50" itemprop="dateModified" datetime="2024-08-09T10:23:50+00:00">2024-08-09</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>时序电路学习笔记<br><a target="_blank" rel="noopener" href="http://127.0.0.1:4000/2022/06/01/555%E5%AE%9A%E6%97%B6%E5%99%A8/#%E9%A2%98%E5%9E%8B1">http://127.0.0.1:4000/2022/06/01/555定时器/#题型1</a></p>
+<span id="more"></span>
+
+<h2 id="题型1"><a href="#题型1" class="headerlink" title="题型1"></a>题型1</h2><ul>
+<li>判断同步时序电路还是异步时序电路，并写出时钟方程</li>
+</ul>
+<p>示例：判断同步时序电路还是异步时序电路，并写出时钟方程</p>
+<p><img src="/images/20220528085406/01.webp"></p>
+<ol>
+<li>判断C1接口是不是连接在同一个电路上</li>
+</ol>
+<ul>
+<li>如果连接在同一电路上则是同步时序电路</li>
+<li>如果没有连接在同一电路上则是异步时序电路</li>
+</ul>
+<p>本题是同步时序电路</p>
+<ol start="2">
+<li>时钟方程就是C1接口所连接电路的表达式，格式为<code>CP=</code></li>
+</ol>
+<p>CP<sub>0</sub>&#x3D;CP<br>CP<sub>1</sub>&#x3D;CP</p>
+<h2 id="题型2"><a href="#题型2" class="headerlink" title="题型2"></a>题型2</h2><ul>
+<li>写出时序逻辑电路的输出方程</li>
+</ul>
+<p>示例：写出时序逻辑电路的输出方程</p>
+<p><img src="/images/20220528085406/01.webp"></p>
+<ol>
+<li>输出方程就是连接Z电路的表达式，格式为<code>Z=</code>，结果中如果有Q，需要将Q变为Q<sup>n</sup></li>
+</ol>
+<p>Z&#x3D;(Q<sub>1</sub><sup>n</sup>⊕X)·<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<h2 id="题型3"><a href="#题型3" class="headerlink" title="题型3"></a>题型3</h2><ul>
+<li>写出时序逻辑电路的驱动方程</li>
+</ul>
+<p>示例：写出时序逻辑电路的驱动方程</p>
+<p><img src="/images/20220528085406/01.webp"></p>
+<ol>
+<li>驱动方程就是连接J、K、D电路的表达式，格式为，结果中如果有Q，需要将Q变为Q<sup>n</sup></li>
+</ol>
+<ul>
+<li>如果是JK触发器，则只写出<code>J=</code>、<code>K=</code>表达式</li>
+<li>如果是D触发器，则只写出<code>D=</code>表达式</li>
+</ul>
+<p>J<sub>0</sub>&#x3D;X⊕<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span><br>K<sub>0</sub>&#x3D;1</p>
+<p>J<sub>1</sub>&#x3D;Q<sub>0</sub><sup>n</sup>⊕X<br>K<sub>1</sub>&#x3D;1</p>
+<h2 id="题型4"><a href="#题型4" class="headerlink" title="题型4"></a>题型4</h2><ul>
+<li>写出时序逻辑电路的次态方程</li>
+</ul>
+<p>示例：写出时序逻辑电路的次态方程</p>
+<p><img src="/images/20220528085406/01.webp"></p>
+<ol>
+<li>写出各个触发器的特性方程</li>
+</ol>
+<ul>
+<li>JK触发器：Q<sup>n+1</sup>&#x3D;J<span style="border-top: 1px solid black">Q<sup>n</sup></span>+<span style="border-top: 1px solid black">K</span>Q<sup>n</sup></li>
+<li>D触发器：Q<sup>n+1</sup>&#x3D;D</li>
+</ul>
+<p>Q<sub>0</sub><sup>n+1</sup>&#x3D;J<sub>0</sub><span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>+<span style="border-top: 1px solid black">K<sub>0</sub></span>Q<sub>0</sub><sup>n</sup><br>Q<sub>1</sub><sup>n+1</sup>&#x3D;J<sub>1</sub><span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>+<span style="border-top: 1px solid black">K<sub>1</sub></span>Q<sub>1</sub><sup>n</sup></p>
+<ol start="2">
+<li>求<a href="/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/#%E9%A2%98%E5%9E%8B3">驱动方程</a></li>
+</ol>
+<p>J<sub>0</sub>&#x3D;X⊕<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span><br>K<sub>0</sub>&#x3D;1</p>
+<p>J<sub>1</sub>&#x3D;Q<sub>0</sub><sup>n</sup>⊕X<br>K<sub>1</sub>&#x3D;1</p>
+<ol start="3">
+<li>将驱动方程带入特性方程</li>
+</ol>
+<p>Q<sub>0</sub><sup>n+1</sup>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>+0·Q<sub>0</sub><sup>n</sup><br>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<p>Q<sub>1</sub><sup>n+1</sup>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>+0·Q<sub>1</sub><sup>n</sup><br>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span></p>
+<h2 id="题型5"><a href="#题型5" class="headerlink" title="题型5"></a>题型5</h2><ul>
+<li>作时序逻辑电路的状态转换表</li>
+</ul>
+<p>示例：作时序逻辑电路的状态转换表</p>
+<p><img src="/images/20220528085406/02.webp"></p>
+<ol>
+<li>求<a href="/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/#%E9%A2%98%E5%9E%8B4">次态方程</a>和<a href="/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/#%E9%A2%98%E5%9E%8B2">输出方程</a></li>
+</ol>
+<p>Q<sub>0</sub><sup>n+1</sup>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>+0·Q<sub>0</sub><sup>n</sup><br>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<p>Q<sub>1</sub><sup>n+1</sup>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>+0·Q<sub>1</sub><sup>n</sup><br>&#x3D;(X⊕<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span></p>
+<p>Z&#x3D;(Q<sub>1</sub><sup>n</sup>⊕X)·<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<ol start="2">
+<li>将输出方程和次态方程的异或化简</li>
+</ol>
+<p>∵ A⊕B&#x3D;A·<span style="text-decoration: overline">B</span>+<span style="text-decoration: overline">A</span>·B<br>∴ Q<sub>0</sub><sup>n+1</sup>&#x3D;(X·Q<sub>1</sub><sup>n</sup>+<span style="text-decoration: overline">X</span>·<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span><br>∴ Q<sub>1</sub><sup>n+1</sup>&#x3D;(X·<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>+<span style="text-decoration: overline">X</span>·Q<sub>0</sub><sup>n</sup>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup></sup>n</span><br>∴ Z&#x3D;(X·<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>+<span style="text-decoration: overline">X</span>·Q<sub>1</sub><sup>n</sup>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<ol start="3">
+<li>分别将X&#x3D;0和X&#x3D;1代入式子，化简，然后绘制转换表</li>
+</ol>
+<ul>
+<li>从Q<sub>1</sub><sup>n</sup>&#x3D;0，Q<sub>0</sub><sup>n</sup>&#x3D;0时开始绘制</li>
+<li>当Q<sub>1</sub><sup>n+1</sup>&#x3D;0，Q<sub>0</sub><sup>n+1</sup>&#x3D;0时截止绘制</li>
+</ul>
+<p><strong>当X&#x3D;0时</strong></p>
+<p>Q<sub>0</sub><sup>n+1</sup>&#x3D;(0·Q<sub>1</sub><sup>n</sup>+1·<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span><br>&#x3D;<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span><span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<p>Q<sub>1</sub><sup>n+1</sup>&#x3D;(0·<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>+1·Q<sub>0</sub><sup>n</sup>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup></sup>n</span><br>&#x3D;Q<sub>0</sub><sup>n</sup><span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span></p>
+<p>Z&#x3D;(0·<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>+1·Q<sub>1</sub><sup>n</sup>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span><br>&#x3D;Q<sub>1</sub><sup>n</sup><span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<table>
+  <tr>
+    <th colspan="2">现态</th>
+    <th colspan="2">次态</th>
+    <th>输出</th>
+  </tr>
+  <tr>
+    <th>Q<sub>1</sub><sup>n</sup></th>
+    <th>Q<sub>0</sub><sup>n</sup></th>
+    <th>Q<sub>1</sub><sup>n+1</sup></th>
+    <th>Q<sub>0</sub><sup>n+1</sup></th>
+    <th>Z</th>
+  </tr>
+  <tr>
+    <td style="color: purple">0</td>
+    <td style="color: purple">0</td>
+    <td style="color: blue">0</td>
+    <td style="color: blue">1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td style="color: blue">0</td>
+    <td style="color: blue">1</td>
+    <td style="color: green">1</td>
+    <td style="color: green">0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td style="color: green">1</td>
+    <td style="color: green">0</td>
+    <td style="color: orange">0</td>
+    <td style="color: orange">0</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>当X&#x3D;1时</p>
+<p>Q<sub>0</sub><sup>n+1</sup>&#x3D;(1·Q<sub>1</sub><sup>n</sup>+0·<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span><br>&#x3D;Q<sub>1</sub><sup>n</sup><span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<p>Q<sub>1</sub><sup>n+1</sup>&#x3D;(1·<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span>+0·Q<sub>0</sub><sup>n</sup>)<span style="border-top: 1px solid black">Q<sub>1</sub><sup></sup>n</span><br>&#x3D;<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</span></sup><span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span></p>
+<p>Z&#x3D;(1·<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span>+0·Q<sub>1</sub><sup>n</sup>)<span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span><br>&#x3D;<span style="border-top: 1px solid black">Q<sub>1</sub><sup>n</sup></span><span style="border-top: 1px solid black">Q<sub>0</sub><sup>n</sup></span></p>
+<table>
+  <tr>
+    <th colspan="2">现态</th>
+    <th colspan="2">次态</th>
+    <th>输出</th>
+  </tr>
+  <tr>
+    <th>Q<sub>1</sub><sup>n</sup></th>
+    <th>Q<sub>0</sub><sup>n</sup></th>
+    <th>Q<sub>1</sub><sup>n+1</sup></th>
+    <th>Q<sub>0</sub><sup>n+1</sup></th>
+    <th>Z</th>
+  </tr>
+  <tr>
+    <td style="color: purple">0</td>
+    <td style="color: purple">0</td>
+    <td style="color: blue">1</td>
+    <td style="color: blue">0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td style="color: blue">1</td>
+    <td style="color: blue">0</td>
+    <td style="color: green">0</td>
+    <td style="color: green">1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td style="color: green">0</td>
+    <td style="color: green">1</td>
+    <td style="color: orange">0</td>
+    <td style="color: orange">0</td>
+    <td>0</td>
+  </tr>
+</table>
+
+<h2 id="题型6"><a href="#题型6" class="headerlink" title="题型6"></a>题型6</h2><ul>
+<li>作时序电路的状态图</li>
+</ul>
+<p>示例：作时序电路的状态图</p>
+<p><img src="/images/20220528085406/02.webp"></p>
+<ol>
+<li><p>求<a href="/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/#%E9%A2%98%E5%9E%8B5">状态转换表</a></p>
+</li>
+<li><p>画图</p>
+</li>
+</ol>
+<ul>
+<li>画出Q<sub>1</sub>Q<sub>0</sub>，并用实线圆圈圈起来，在旁边标注<code>位置输入量/Z</code></li>
+<li>画出所有现态的Q<sub>1</sub><sup>n</sup>Q<sub>0</sub><sup>n</sup>可能出现的值，并用实线圆圈圈起来</li>
+<li>当X&#x3D;0时，将箭头从现态的起始数值循环指向截止数值，在箭头旁标注<code>0/输出值</code></li>
+<li>当X&#x3D;1时，将箭头从现态的起始数值循环指向截止数值，在箭头旁标注<code>1/输出值</code></li>
+</ul>
+<p><img src="/images/20220528085406/03.webp"></p>
+<h2 id="题型7"><a href="#题型7" class="headerlink" title="题型7"></a>题型7</h2><ul>
+<li>作时序逻辑电路的时序图</li>
+</ul>
+<p>示例：作时序逻辑电路的时序图</p>
+<p><img src="/images/20220528085406/02.webp"></p>
+<ol>
+<li><p>求<a href="/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/#%E9%A2%98%E5%9E%8B5">状态转换表</a></p>
+</li>
+<li><p>根据状态转换表，找出行数，画CP图，突起数为状态转换表行数的2倍</p>
+</li>
+</ol>
+<p><img src="/images/20220528085406/04.webp"></p>
+<ol start="3">
+<li>原图观察C1接口</li>
+</ol>
+<ul>
+<li>如果没有圈，则在突起左侧向下画虚线</li>
+<li>如果有圈，则在突起右侧向下画虚线</li>
+</ul>
+<p><img src="/images/20220528085406/05.webp"></p>
+<ol start="4">
+<li>在下方画X线，平均分为两段，前半段画0，后半段画1</li>
+</ol>
+<p><img src="/images/20220528085406/06.webp"></p>
+<ol start="5">
+<li>在下方画Q<sub>1</sub>线和Q<sub>0</sub>线</li>
+</ol>
+<ul>
+<li>根据当前小段的X值，查看当X等于对应值的状态表</li>
+<li>根据上一段现态的Q<sub>1</sub>和Q<sub>0</sub>的值，得到次态的Q<sub>1</sub>和Q<sub>0</sub>的值，将次态的Q<sub>1</sub>和Q<sub>0</sub>的值画在Q<sub>1</sub>线和Q<sub>0</sub>线</li>
+</ul>
+<p>本题中是7小段</p>
+<p><img src="/images/20220528085406/07.webp"></p>
+<ol start="6">
+<li>将X线中，不对齐的位置，向下画虚线</li>
+</ol>
+<p><img src="/images/20220528085406/08.webp"></p>
+<ol start="7">
+<li>在下方画Z线</li>
+</ol>
+<ul>
+<li>根据当前小段的X值、Q<sub>1</sub>值、Q<sub>0</sub>值，得到Z值</li>
+</ul>
+<p><img src="/images/20220528085406/09.webp"></p>
+<h2 id="题型8"><a href="#题型8" class="headerlink" title="题型8"></a>题型8</h2><ul>
+<li>分析时序逻辑电路的功能</li>
+</ul>
+<p>可能出现的情况：N进制加计数器、N进制减计数器</p>
+<p>示例：分析时序逻辑电路的功能</p>
+<p><img src="/images/20220528085406/02.webp"></p>
+<ol>
+<li><p>求<a href="/2022/05/28/%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF/#%E9%A2%98%E5%9E%8B6">状态图</a></p>
+</li>
+<li><p>判断状态图中有几个圈被环形箭头指向</p>
+</li>
+</ol>
+<ul>
+<li>有几个圈参与环形箭头指向，就是几进制计数器</li>
+</ul>
+<p>3进制计数器</p>
+<ol start="3">
+<li>判断状态图中的箭头方向是递增还是递减</li>
+</ol>
+<ul>
+<li>如果递增，就是加计数器</li>
+<li>如果递减，就是减计数器</li>
+</ul>
+<p>当X&#x3D;0时，3进制加计数器<br>当X&#x3D;1时，3进制减计数器</p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="/302.html?target=https://www.bilibili.com/video/BV1Vx411s7CE">哔哩哔哩——猴博士爱讲课</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div><svg class="coin" width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.045 25.5454C7.69377 25.5454 2.54504 20.3967 2.54504 14.0454C2.54504 7.69413 7.69377 2.54541 14.045 2.54541C20.3963 2.54541 25.545 7.69413 25.545 14.0454C25.545 17.0954 24.3334 20.0205 22.1768 22.1771C20.0201 24.3338 17.095 25.5454 14.045 25.5454ZM9.66202 6.81624H18.2761C18.825 6.81624 19.27 7.22183 19.27 7.72216C19.27 8.22248 18.825 8.62807 18.2761 8.62807H14.95V10.2903C17.989 10.4444 20.3766 12.9487 20.3855 15.9916V17.1995C20.3854 17.6997 19.9799 18.1052 19.4796 18.1052C18.9793 18.1052 18.5738 17.6997 18.5737 17.1995V15.9916C18.5667 13.9478 16.9882 12.2535 14.95 12.1022V20.5574C14.95 21.0577 14.5444 21.4633 14.0441 21.4633C13.5437 21.4633 13.1382 21.0577 13.1382 20.5574V12.1022C11.1 12.2535 9.52148 13.9478 9.51448 15.9916V17.1995C9.5144 17.6997 9.10883 18.1052 8.60856 18.1052C8.1083 18.1052 7.70273 17.6997 7.70265 17.1995V15.9916C7.71158 12.9487 10.0992 10.4444 13.1382 10.2903V8.62807H9.66202C9.11309 8.62807 8.66809 8.22248 8.66809 7.72216C8.66809 7.22183 9.11309 6.81624 9.66202 6.81624Z" fill="currentColor"></path></svg></div>
+  <button>
+    储钱罐
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/dist/images/reward/images/wxpay.png" alt="绯鞠 微信支付">
+        <span>微信支付</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/alipay.png" alt="绯鞠 支付宝">
+        <span>支付宝</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/qqpay.png" alt="绯鞠 qqpay">
+        <span>qqpay</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/bitcoin.png" alt="绯鞠 比特币">
+        <span>比特币</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/ethereum.png" alt="绯鞠 ethereum">
+        <span>ethereum</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/monero.png" alt="绯鞠 monero">
+        <span>monero</span>
+      </div>
+      <div>
+        <img src="/dist/images/reward/images/paypal.png" alt="绯鞠 贝宝">
+        <span>贝宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/DigitalCircuit/" rel="tag"># DigitalCircuit</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/26/malloc-h%E5%9C%A8MacOS%E4%B8%8A%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="【踩坑】malloc.h在MacOS上的使用">
+                  <i class="fa fa-angle-left"></i> 【踩坑】malloc.h在MacOS上的使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/29/MacOS%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE%E5%BA%94%E7%94%A8%E7%9A%84%E4%BD%8D%E7%BD%AE/" rel="next" title="【笔记】MacOS系统内置应用的位置">
+                  【笔记】MacOS系统内置应用的位置 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">绯鞠</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div><!-- 当前在线人数统计 -->
+<div>当前在线人数 <span id="current_visitors_count">0</span></div>
+<script src="/dist/js/current_visitors_count.js"></script>
+
+<!-- 网站运行时间统计 -->
+<div id="sitetime"></div>
+<script type="text/javascript" src="/dist/js/sitetime.js"></script>
+
+<!-- 网站标记 -->
+<div>
+    <!-- SSL标记 -->
+    <a href="https://ipw.cn/ssl/?site=loli.fj.cn" title="本站支持SSL安全访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问"
+                src="https://static.ipw.cn/icon/ssl-s6.svg"></a>
+    <!-- IPv6标记 -->
+    <a href="https://ipw.cn/ipv6webcheck/?site=loli.fj.cn" title="本站支持IPv6访问" target='_blank'
+       style="display: inline; border-bottom: 1px solid rgba(255, 255, 255, 0);"><img
+                style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                src="https://static.ipw.cn/icon/ipv6-certified-s6.svg"></a>
+</div>
+
+<!-- 滑翔机 -->
+<a target="_blank" rel="noopener" href="http://www.catb.org/hacker-emblem/" style="border-bottom: 0 solid #999;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Glider.svg" style="width: 55px; height: 55px;">
+</a>
+
+<!-- 加载APlayer播放器 -->
+<link rel="stylesheet" href="/dist/aplayer/APlayer.min.css">
+<script type="text/javascript" src="/dist/aplayer/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/aplayer/index.js"></script>
+
+<!-- 加载看板娘 必须在渲染APlayer播放器之后渲染 -->
+<link rel="stylesheet" href="/dist/live2d/v2/waifu.css">
+<script type="text/javascript" src="/dist/live2d/v2/live2d.min.js"></script>
+<script type="text/javascript" src="/dist/live2d/v2/waifu.js"></script>
+
+<!-- 加载钢琴音 -->
+<script type="text/javascript" src="/dist/js/play_piano.js"></script>
+
+<!-- 渲染分类页面 PJAX排除 -->
+<script type="text/javascript" src="/categories/index.js" data-pjax=""></script>
+
+<!-- 渲染标签页面 PJAX排除 -->
+<script type="text/javascript" src="/tags/index.js" data-pjax=""></script>
+
+<!-- 渲染贡献页面 PJAX排除 -->
+<script type="text/javascript" src="/dist/echarts5/echarts.min.js"></script>
+<script type="text/javascript" src="/contribute/index.js" data-pjax=""></script>
+
+<!-- 渲染代码块中代码类型 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_type.js" data-pjax=""></script>
+
+<!-- 渲染代码块顶部按钮 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/code_block_button.js" data-pjax=""></script>
+
+<!-- 渲染打字机效果 PJAX排除 -->
+<script type="text/javascript" src="/dist/js/ai_excerpt_typing.js" data-pjax=""></script>
+
+<!-- 渲染加载门 -->
+<div id="loading-door-left"></div>
+<div id="loading-door-right"></div>
+<a id="loading-door-a" href="javascript:loadingDoorOpen();">芝麻开门</a>
+<link rel="stylesheet" href="/dist/css/loading_door.css">
+
+<!-- 其他JS代码 -->
+<script>
+
+    // 移除PJAX
+    function removePJAX() {
+        // 获取所有菜单的超链接
+        let menus = document.querySelectorAll(".site-nav a");
+        // 遍历这些超链接对象
+        for (let menu of menus) {
+            // 移除首页的PJAX
+            // if (menu.getAttribute("href")==="/") {
+            //     menu.setAttribute("data-pjax-state", "unload");
+            // }
+        }
+    }
+    removePJAX();
+
+    // 加载门关闭
+    function loadingDoorClose() {
+        // 加载门关闭
+        document.getElementById("loading-door-left").style.width = `${window.innerWidth / 2}px`;
+        document.getElementById("loading-door-right").style.width = `${window.innerWidth / 2}px`;
+        // 锁定滚动条
+        document.body.style.overflow = "hidden";
+        // 显示咒语
+        setTimeout(function () {
+            if (document.getElementById("loading-door-left").style.width === `${window.innerWidth / 2}px`) {
+                document.getElementById("loading-door-a").style.display = "inline";
+            }
+        }, 3000);
+    }
+
+    // 加载门打开
+    function loadingDoorOpen() {
+        // 加载门打开
+        document.getElementById("loading-door-left").style.width = "0";
+        document.getElementById("loading-door-right").style.width = "0";
+        // 解锁滚动条
+        document.body.style.overflow = "";
+        // 隐藏咒语
+        document.getElementById("loading-door-a").style.display = "none";
+    }
+
+    // PJAX渲染完成后执行
+    document.addEventListener("pjax:success", function () {
+        // 将滚动条置顶
+        document.documentElement.scrollTop = 0;
+        // 移除PJAX
+        removePJAX();
+    });
+
+    // PJAX开始请求后执行
+    document.addEventListener("pjax:send", function () {
+        // 加载门关闭
+        loadingDoorClose();
+    });
+    // PJAX结束请求后执行
+    document.addEventListener("pjax:complete", function () {
+        // 加载门打开
+        loadingDoorOpen();
+    });
+
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":false,"envId":"https://twikoo.loli.fj.cn","jsUrl":"/dist/js/twikoo.all.min.js","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>
